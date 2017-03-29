@@ -34,6 +34,5 @@ options like normal into the `Parent.call()` or `mutate()` function calls.
     + Add the listeners for the keyboard that are already set up for the mouse.
         * `this.addAccessibleInputListener( { [event]: function(){}});` 
         * This [event] should reflect the event from the `tagName` html element that was passed in the options.
-        
-        
-        
+  * Use `this.accessibleOrder = []` to set the ordering of tab navigation. The first element in the array
+  is prioritized first and all elements that are not included in the array are appended last.
