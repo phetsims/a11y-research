@@ -4,7 +4,10 @@
 		<meta charset="UTF-8">
 		<title>Build and Atom, an Interactive PhET Simulation</title> 
 		<style>
-			h3 {
+			:focus {
+				border: 3px solid hotpink;
+			}
+			h3, h4 {
 				margin: 0;
 				padding: 5px;
 			}
@@ -96,9 +99,9 @@
 				    </div><!-- end inner oribtal listbox -->
 					
 				    <div class="listbox-area">
-				      <h3 id="outer-orbit-listbox-label">
+				      <h4 id="outer-orbit-listbox-label">
 				        Outer Orbital
-				      </h3>
+				      </h4>
 				      <ul id="outer-orbit-position-listbox"
 				        tabindex="0"
 				        role="listbox"
@@ -117,37 +120,35 @@
 					
 			      <div role="toolbar" aria-label="Actions">
 			        <button id="listbox-control-grab"
-			              aria-disabled="true">
+			              aria-disabled="false">
 			          Grab
 			        </button>
 			        <button id="listbox-control-drop"
-			              tabindex="-1"
-			              aria-disabled="true">
+			              aria-disabled="false">
 			          Drop
 			        </button>
 			        <button id="listbox-control-delete"
-			              tabindex="-1"
-			              aria-disabled="true">
+			              aria-disabled="false">
 			          Delete
 			        </button>
 				    <button id="listbox-control-add-to-nucleus"
-				          aria-disabled="true">
+				          aria-disabled="false">
 				      To Nucleus
 				    </button>
 				    <button id="listbox-control-add-to-inner"
-				          aria-disabled="true">
+				          aria-disabled="false">
 				      To Inner Oribital
 				    </button>
 				    <button id="listbox-control-add-to-outer"
-				          aria-disabled="true">
+				          aria-disabled="false">
 				      To Outer Oribital
 				    </button>
 				    <button id="listbox-control-move-up"
-				          aria-disabled="true">
+				          aria-disabled="false">
 				      Up
 				    </button>
 				    <button id="listbox-control-move-down"
-				          aria-disabled="true">
+				          aria-disabled="false">
 				      Down
 				    </button>
 			      </div><!-- end toolbar -->
