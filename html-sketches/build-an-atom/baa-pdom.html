@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Build and Atom, an Interactive PhET Simulation</title>                                                     
+	</head>
+	<body>
+		<header>
+			<!-- Header area for common sim stuff.-->  
+			<h1>Build an Atom</h1> 
+		</header>
+		<!-- Scene Summary Region --> 
+		  <section id="scene-summary" aria-labelledby="scene-label">
+		    <h2 id="scene-label">Scene Summary</h2>
+			  <p>Simulation contains a Play Area and a Control Panel.</p>
+			  <!-- Dynamic List for necessary sim state information. -->
+			  <ul>
+			    <li>list</li>
+			  </ul>
+
+			   <!-- Static interaction hints. -->
+			   <p>Grab a particle to play.</p>
+			   <p>If needed, check out the <a href="#keyboard-shortcuts">keyboard shortcuts</a> for this sim.</p>			 
+		  </section>
+		  
+		  <!-- Play Area Region -->
+		  <section id="play-area" aria-label="Play Area">                                      	
+			  <div role="region" aria-labelledby="label-my-atom">
+				  <h2 id="label-my-atom">My Atom</h2>
+				    <p>
+				      Grab a particle from a bucket, and explore dropping them into areas in My Atom.
+				    </p>
+				    <div class="buckets-listbox-area">
+				      <h3 id="buckets-listbox-label">
+				        Particle Buckets
+				      </h3>
+				      <ul id="bucket-listbox" 
+					  	tabindex="0" 
+					  	role="listbox" 
+					  	aria-labelledby="nucleus-listbox-label">
+				        <li id="proton-bucket" role="option">Proton Bucket</li>
+					    <li id="neutron-bucket" role="option">Neutron Bucket</li>
+						<li id="electron-bucket" role="option">Electron Bucket</li>
+				      </ul>
+				    </div><!-- end nucleus listbox -->
+				    <div class="nucleus-listbox-area">
+				      <h3 id="nucleus-listbox-label">
+				        Nucleus
+				      </h3>
+				      <ul id="nucleus-position-listbox" 
+					  	tabindex="0" 
+					  	role="listbox" 
+					  	aria-labelledby="nucleus-listbox-label">
+				        <li id="nucleus-pp-01" role="option">1st nucleus position</li>
+					    <li id="nucleus-pp-02" role="option">2nd nucleus position</li>
+				      </ul>
+				    </div><!-- end nucleus listbox -->
+					
+				    <div class="inner-orbit-lisbox-area">
+				      <h3 id="inner-orbit-listbox-label">
+				        Inner Orbital
+				      </h3>
+				      <ul id="inner-orbit-position-listbox"
+				        tabindex="0"
+				        role="listbox"
+				        aria-labelledby="inner-orbit-listbox-label"
+				        aria-activedescendant="">
+				        <li id="inner-pp-01" role="option">1st Inner position</li>
+					    <li id="inner-pp-02" role="option">2nd Inner position</li>
+				      </ul> 
+				    </div><!-- end inner oribtal listbox -->
+					
+				    <div class="inner-orbit-lisbox-area">
+				      <h3 id="inner-orbit-listbox-label">
+				        Outer Orbital
+				      </h3>
+				      <ul id="inner-orbit-position-listbox"
+				        tabindex="0"
+				        role="listbox"
+				        aria-labelledby="inner-orbit-listbox-label"
+				        aria-activedescendant="">
+				        <li id="inner-pp-01" role="option">1st Outer position</li>
+					    <li id="inner-pp-02" role="option">2nd Outer position</li>
+						<li id="inner-pp-03" role="option">3rd Outer position</li>
+						<li id="inner-pp-04" role="option">4th Outer position</li>
+						<li id="inner-pp-05" role="option">5th Outer position</li>
+						<li id="inner-pp-06" role="option">6th Outer position</li>
+						<li id="inner-pp-07" role="option">7th Outer position</li>
+						<li id="inner-pp-08" role="option">8th Outer position</li>
+				      </ul> 
+				    </div><!-- end outer orbital listbox -->
+					
+			      <div role="toolbar" aria-label="Actions">
+			        <button id="listbox-control-grab"
+			              aria-disabled="true">
+			          Grab
+			        </button>
+			        <button id="listbox-control-drop"
+			              tabindex="-1"
+			              aria-disabled="true">
+			          Drop
+			        </button>
+			        <button id="listbox-control-delete"
+			              tabindex="-1"
+			              aria-disabled="true">
+			          Delete
+			        </button>
+				    <button id="listbox-control-add-to-nucleus"
+				          aria-disabled="true">
+				      To Nucleus
+				    </button>
+				    <button id="listbox-control-add-to-inner"
+				          aria-disabled="true">
+				      To Inner Oribital
+				    </button>
+				    <button id="listbox-control-add-to-inner"
+				          aria-disabled="true">
+				      To Outer Oribital
+				    </button>
+				    <button id="listbox-control-move-up"
+				          aria-disabled="true">
+				      Up
+				    </button>
+				    <button id="listbox-control-move-down"
+				          aria-disabled="true">
+				      Down
+				    </button>
+			      </div><!-- end toolbar -->
+			  </div>
+		  </section>
+			
+			<!-- Control Panel -->
+			<section id="control-panel" aria-label="Control Panel">
+
+			    <div role="group" aria-labelledby="show-labels">
+				  <h3 id="show-labels">Show labels in My Atom</h3>	  
+				  <ul>
+					<li>
+						  <label for="show-element-name">Element Name</label> 
+						  <input id="show-element-name" type="checkbox" aria-checked="true" checked>
+					</li>
+														
+					<li><label for="show-neutral-ion-state">Neutral or Ion State</label> 
+						<input id="show-neutral-ion-state" type="checkbox" aria-checked="true" checked>
+					</li>	
+					<li><label for="show-stable-unstable">Stable or Unstable</label> 
+						<input id="show-stable-unstable" type="checkbox" aria-checked="false">
+					</li>					
+			      </ul>
+				</div>
+				
+			    <div role="radiogroup" aria-labelledby="atom-model">
+				  <h3 id="atom-model">Model</h3>
+				  <!-- Static on-demand help text for radios. -->
+				  <p>Choose scientific model for atom.</p>	  
+				  <ul>
+					<li>
+						  <label for="orbit-model">Orbit model</label> 
+						  <input id="orbit-model" value="orbit" type="radio" aria-checked="true" checked>
+					</li>
+														
+					<li><label for="cloud-model">Cloud model</label> 
+						<input id="cloud-model" value="cloud" type="radio" aria-checked="false">
+					</li>						
+			      </ul>
+				</div> 	                                                  
+					
+			    
+				<div id="sim-reset-widget">
+			      <button id="sim-reset" type="reset">Reset All</button>
+				  <!-- No on-demand help-text for reset all. -->
+				</div>  
+	    </section>
+		
+		<!-- Simulation Bottom Bar -->
+		<div role="region" aria-label="Sim Screens, Resources, and Tools">
+		  <ul aria-label="Sim Resources and Tools">
+		    <li>
+		      <button aria-haspopup="true">Keyboard Shortcuts</button>
+		      <p>Tips on how to use this sim with a keyboard.</p>
+		    </li>
+		    <li>
+		      <button id="phet-menu-button" aria-haspopup="true">PhET Menu</button>
+		      <p>Tools and links for this sim.</p>
+		    </li>
+		</ul>
+		</div>
+		<!-- PhET Menu items dynamically placed into PDOM. -->
+		<ul role="menu" aria-labelledby="phet-menu-button" hidden>
+		  <li><button role="menuitem">View Options</button></li> 
+		    <!-- Rest of the Phet Menu Items -->
+		</ul>
+	</body>
+</html>
