@@ -2,7 +2,29 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Build and Atom, an Interactive PhET Simulation</title>                                                     
+		<title>Build and Atom, an Interactive PhET Simulation</title> 
+		<style>
+			h3 {
+				margin: 0;
+				padding: 5px;
+			}
+			.listbox-area {
+				background-color: #f6f6f6;
+				border: 1px solid #666;
+				width: 20%;
+				margin: 2%;
+				float: left;
+			}
+			ul[role="listbox"] {
+				padding: 4px 0 4px 8px;
+				margin: 0;
+				list-style: none;
+			}
+			#my-atoms-regions-label,
+			[role="toolbar"] {
+				clear: both;
+			}
+		</style>                                                    
 	</head>
 	<body>
 		<header>
@@ -28,25 +50,28 @@
 			  <div role="region" aria-labelledby="label-my-atom">
 				  <h2 id="label-my-atom">My Atom</h2>
 				    <p>
-				      Grab a particle from a bucket, and explore dropping them into areas in My Atom.
+				      Grab a particle from a bucket, and explore dropping them into the Atom's regions.
 				    </p>
-				    <div class="buckets-listbox-area">
+				    <div class="listbox-area">
 				      <h3 id="buckets-listbox-label">
 				        Particle Buckets
 				      </h3>
 				      <ul id="bucket-listbox" 
 					  	tabindex="0" 
 					  	role="listbox" 
-					  	aria-labelledby="nucleus-listbox-label">
+					  	aria-labelledby="buckets-listbox-label">
 				        <li id="proton-bucket" role="option">Proton Bucket</li>
 					    <li id="neutron-bucket" role="option">Neutron Bucket</li>
 						<li id="electron-bucket" role="option">Electron Bucket</li>
 				      </ul>
-				    </div><!-- end nucleus listbox -->
-				    <div class="nucleus-listbox-area">
-				      <h3 id="nucleus-listbox-label">
+				    </div><!-- end bucket listbox -->
+			        <h3 id="my-atoms-regions-label">
+			          My Atom's Regions
+			        </h3>
+				    <div class="listbox-area">
+				      <h4 id="nucleus-listbox-label">
 				        Nucleus
-				      </h3>
+				      </h4>
 				      <ul id="nucleus-position-listbox" 
 					  	tabindex="0" 
 					  	role="listbox" 
@@ -56,10 +81,10 @@
 				      </ul>
 				    </div><!-- end nucleus listbox -->
 					
-				    <div class="inner-orbit-lisbox-area">
-				      <h3 id="inner-orbit-listbox-label">
+				    <div class="listbox-area">
+				      <h4 id="inner-orbit-listbox-label">
 				        Inner Orbital
-				      </h3>
+				      </h4>
 				      <ul id="inner-orbit-position-listbox"
 				        tabindex="0"
 				        role="listbox"
@@ -70,23 +95,23 @@
 				      </ul> 
 				    </div><!-- end inner oribtal listbox -->
 					
-				    <div class="inner-orbit-lisbox-area">
-				      <h3 id="inner-orbit-listbox-label">
+				    <div class="listbox-area">
+				      <h3 id="outer-orbit-listbox-label">
 				        Outer Orbital
 				      </h3>
-				      <ul id="inner-orbit-position-listbox"
+				      <ul id="outer-orbit-position-listbox"
 				        tabindex="0"
 				        role="listbox"
-				        aria-labelledby="inner-orbit-listbox-label"
+				        aria-labelledby="outer-orbit-listbox-label"
 				        aria-activedescendant="">
-				        <li id="inner-pp-01" role="option">1st Outer position</li>
-					    <li id="inner-pp-02" role="option">2nd Outer position</li>
-						<li id="inner-pp-03" role="option">3rd Outer position</li>
-						<li id="inner-pp-04" role="option">4th Outer position</li>
-						<li id="inner-pp-05" role="option">5th Outer position</li>
-						<li id="inner-pp-06" role="option">6th Outer position</li>
-						<li id="inner-pp-07" role="option">7th Outer position</li>
-						<li id="inner-pp-08" role="option">8th Outer position</li>
+				        <li id="outer-pp-01" role="option">1st Outer position</li>
+					    <li id="outer-pp-02" role="option">2nd Outer position</li>
+						<li id="outer-pp-03" role="option">3rd Outer position</li>
+						<li id="outer-pp-04" role="option">4th Outer position</li>
+						<li id="outer-pp-05" role="option">5th Outer position</li>
+						<li id="outer-pp-06" role="option">6th Outer position</li>
+						<li id="outer-pp-07" role="option">7th Outer position</li>
+						<li id="outer-pp-08" role="option">8th Outer position</li>
 				      </ul> 
 				    </div><!-- end outer orbital listbox -->
 					
@@ -113,7 +138,7 @@
 				          aria-disabled="true">
 				      To Inner Oribital
 				    </button>
-				    <button id="listbox-control-add-to-inner"
+				    <button id="listbox-control-add-to-outer"
 				          aria-disabled="true">
 				      To Outer Oribital
 				    </button>
@@ -126,8 +151,34 @@
 				      Down
 				    </button>
 			      </div><!-- end toolbar -->
-			  </div>
-		  </section>
+			  </div><!-- end My Atom region -->
+			  
+		  	<div>
+				<h3>Details About My Atom</h3>
+		  			  	<ul>
+		  			  	    <li>
+		  			  			<h4 id="details01">Element and Location</h4>
+		  			  			<ul aria-labelledby="details01"> 
+		  			  	        	<li aria-label="Element Symbol"><abbr>He</abbr></li>
+		  			  				<li aria-label="Location in Periodic Table">Top right-most cell.</li>
+		  			  			</ul>
+		  			  		</li>
+		  	
+		  			  	    <li>
+		  			  			<h4 id="details02">Net Charge</h4>
+		  			  			<ul aria-labelledby="details02"> 
+		  			  		    	<li aria-label="Net charge">&#8722;1</li>
+		  			  				<li aria-label="Sum of charges">Charge meter needle slightly left of center in blue region.</li>
+		  			  				<li aria-label="Charge comparison">Showing 2 positive signs and 3 negative</li>
+		  			  			</ul>			
+		  			  		<li>
+		  			  			<h4 id="details03">Mass Number</h4>
+		  			  		    <ul aria-labelledby="details03">
+		  			  				<li aria-label="Mass">4</li>
+		  			  			</ul>
+		  			      </ul>
+			</div>
+		  </section> 
 			
 			<!-- Control Panel -->
 			<section id="control-panel" aria-label="Control Panel">
