@@ -3,31 +3,10 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Build and Atom, an Interactive PhET Simulation</title> 
-		<style>
-			:focus {
-				border: 3px solid hotpink;
-			}
-			h3, h4 {
-				margin: 0;
-				padding: 5px;
-			}
-			.listbox-area {
-				background-color: #f6f6f6;
-				border: 1px solid #666;
-				width: 20%;
-				margin: 2%;
-				float: left;
-			}
-			ul[role="listbox"] {
-				padding: 4px 0 4px 8px;
-				margin: 0;
-				list-style: none;
-			}
-			#my-atoms-regions-label,
-			[role="toolbar"] {
-				clear: both;
-			}
-		</style>                                                    
+		
+		<!-- Style Sheets -->
+		<link rel=stylesheet type="text/css" href="assets/listbox.css">
+		                                                  
 	</head>
 	<body>
 		<header>
@@ -63,94 +42,106 @@
 					  	tabindex="0" 
 					  	role="listbox" 
 					  	aria-labelledby="buckets-listbox-label">
-				        <li id="proton-bucket" role="option">Proton Bucket</li>
-					    <li id="neutron-bucket" role="option">Neutron Bucket</li>
-						<li id="electron-bucket" role="option">Electron Bucket</li>
+				        <li id="proton-bucket" role="option">Protons</li>
+					    <li id="neutron-bucket" role="option">Neutrons</li>
+						<li id="electron-bucket" role="option">Electrons</li>
 				      </ul>
 				    </div><!-- end bucket listbox -->
-			        <h3 id="my-atoms-regions-label">
-			          My Atom's Regions
-			        </h3>
+			     
 				    <div class="listbox-area">
-				      <h4 id="nucleus-listbox-label">
-				        Nucleus
-				      </h4>
-				      <ul id="nucleus-position-listbox" 
-					  	tabindex="0" 
-					  	role="listbox" 
-					  	aria-labelledby="nucleus-listbox-label">
-				        <li id="nucleus-pp-01" role="option">1st nucleus position</li>
-					    <li id="nucleus-pp-02" role="option">2nd nucleus position</li>
-				      </ul>
-				    </div><!-- end nucleus listbox -->
+						<h3 id="nucleus-listbox-label">
+				    	Nucleus
+				    	</h3>
+				    	<ul id="nucleus-position-listbox" 
+				    		tabindex="0" 
+				    		role="listbox" 
+				    		aria-labelledby="nucleus-listbox-label">
+				    	  <li id="nucleus-pp-01" role="option">First nucleus position</li>
+				    	  <li id="nucleus-pp-02" role="option">Second nucleus position</li>
+				    	</ul><!-- end nucleus listbox -->
+					</div>
 					
 				    <div class="listbox-area">
-				      <h4 id="inner-orbit-listbox-label">
-				        Inner Orbital
-				      </h4>
-				      <ul id="inner-orbit-position-listbox"
-				        tabindex="0"
-				        role="listbox"
-				        aria-labelledby="inner-orbit-listbox-label"
-				        aria-activedescendant="">
-				        <li id="inner-pp-01" role="option">1st Inner position</li>
-					    <li id="inner-pp-02" role="option">2nd Inner position</li>
-				      </ul> 
-				    </div><!-- end inner oribtal listbox -->
+						  <h3 id="inner-orbit-listbox-label">
+				    		  Inner Orbital
+				    	  </h3>
+				    	  <ul id="inner-orbit-position-listbox"
+				    	    tabindex="0"
+				    	    role="listbox"
+				    	    aria-labelledby="inner-orbit-listbox-label"
+				    	    aria-activedescendant="">
+				    	    <li id="inner-pp-01" role="option">First Inner position</li>
+				    	    <li id="inner-pp-02" role="option">Second Inner position</li>
+				    	  </ul><!-- end inner oribtal listbox -->
+					</div>
 					
 				    <div class="listbox-area">
-				      <h4 id="outer-orbit-listbox-label">
-				        Outer Orbital
-				      </h4>
-				      <ul id="outer-orbit-position-listbox"
-				        tabindex="0"
-				        role="listbox"
-				        aria-labelledby="outer-orbit-listbox-label"
-				        aria-activedescendant="">
-				        <li id="outer-pp-01" role="option">1st Outer position</li>
-					    <li id="outer-pp-02" role="option">2nd Outer position</li>
-						<li id="outer-pp-03" role="option">3rd Outer position</li>
-						<li id="outer-pp-04" role="option">4th Outer position</li>
-						<li id="outer-pp-05" role="option">5th Outer position</li>
-						<li id="outer-pp-06" role="option">6th Outer position</li>
-						<li id="outer-pp-07" role="option">7th Outer position</li>
-						<li id="outer-pp-08" role="option">8th Outer position</li>
-				      </ul> 
-				    </div><!-- end outer orbital listbox -->
-					
-			      <div role="toolbar" aria-label="Actions">
+						  <h3 id="outer-orbit-listbox-label">
+				    	    Outer Orbital
+				    	  </h3>
+				    	  <ul id="outer-orbit-position-listbox"
+				    	    tabindex="0"
+				    	    role="listbox"
+				    	    aria-labelledby="outer-orbit-listbox-label"
+				    	    aria-activedescendant="">
+				    	    <li id="outer-pp-01" role="option">First Outer position</li>
+				    	    <li id="outer-pp-02" role="option">Second Outer position</li>
+				    	    <li id="outer-pp-03" role="option">Third Outer position</li>
+				    	    <li id="outer-pp-04" role="option">Fourth Outer position</li>
+				    	    <li id="outer-pp-05" role="option">Fifth Outer position</li>
+				    	    <li id="outer-pp-06" role="option">Sixth Outer position</li>
+				    	    <li id="outer-pp-07" role="option">Seventh Outer position</li>
+				    	    <li id="outer-pp-08" role="option">Eighth Outer position</li>
+				    	  </ul> <!-- end outer orbital listbox -->
+					</div>
+		
+			      <div role="toolbar" aria-label="Actions for particles">
 			        <button id="listbox-control-grab"
-			              aria-disabled="false">
+					  class="toolbar-item selected"
+					  aria-disabled="true">
 			          Grab
 			        </button>
 			        <button id="listbox-control-drop"
-			              aria-disabled="false">
+					  class="toolbar-item"
+					  tabindex="-1"
+					  aria-disabled="true">
 			          Drop
 			        </button>
+				    <button id="listbox-control-add-to-nucleus"
+					  class="toolbar-item add-to-nucleus-btn"
+					  tabindex="-1"
+					  aria-disabled="true">
+				      To Nucleus
+				    </button>
+				    <button id="listbox-control-add-to-inner"
+					  class="toolbar-item add-to-inner-orbital-btn"
+					  tabindex="-1"
+					  aria-disabled="true">
+				      To Inner Oribital
+				    </button>
+				    <button id="listbox-control-add-to-outer"
+					  class="toolbar-item add-to-outer-orbital-btn"
+					  tabindex="-1"
+					  aria-disabled="true">
+				      To Outer Oribital
+				    </button>
+				    <button id="listbox-control-move-up"
+					  class="toolbar-item selected"
+					  aria-keyshortcuts="Alt+ArrowUp"
+					  aria-disabled="true">
+				      Up
+				    </button>
+				    <button id="listbox-control-move-down"
+					  class="toolbar-item"
+					  tabindex="-1"
+					  aria-keyshortcuts="Alt+ArrowDown"
+					  aria-disabled="true">
+				      Down
+				    </button>
 			        <button id="listbox-control-delete"
 			              aria-disabled="false">
 			          Delete
 			        </button>
-				    <button id="listbox-control-add-to-nucleus"
-				          aria-disabled="false">
-				      To Nucleus
-				    </button>
-				    <button id="listbox-control-add-to-inner"
-				          aria-disabled="false">
-				      To Inner Oribital
-				    </button>
-				    <button id="listbox-control-add-to-outer"
-				          aria-disabled="false">
-				      To Outer Oribital
-				    </button>
-				    <button id="listbox-control-move-up"
-				          aria-disabled="false">
-				      Up
-				    </button>
-				    <button id="listbox-control-move-down"
-				          aria-disabled="false">
-				      Down
-				    </button>
 			      </div><!-- end toolbar -->
 			  </div><!-- end My Atom region -->
 			  
@@ -242,5 +233,7 @@
 		  <li><button role="menuitem">View Options</button></li> 
 		    <!-- Rest of the Phet Menu Items -->
 		</ul>
+<!-- Javascript -->
+<script type="text/javascript" src="assets/listbox.js"></script>
 	</body>
 </html>
