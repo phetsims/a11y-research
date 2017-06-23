@@ -16,6 +16,7 @@ html {
 		font-size: 14px;
 		vertical-align: top;
 	}
+	
 	ul[role="listbox"] {
 		min-height: 14em;
 		padding: 0px;
@@ -81,3 +82,7 @@ html {
 	top: 4px;
 }
 */
+/** Design Note Styles **/
+.string-parameter {
+	background-color: #ececb8;
+}
