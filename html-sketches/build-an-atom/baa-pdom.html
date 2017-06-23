@@ -5,8 +5,7 @@
 		<title>Build and Atom, an Interactive PhET Simulation</title> 
 		
 		<!-- Style Sheets -->
-		<link rel=stylesheet type="text/css" href="assets/listbox.css">
-		                                                  
+		<link rel=stylesheet type="text/css" href="assets/listbox.css">                                     
 	</head>
 	<body>
 		<header>
@@ -16,42 +15,38 @@
 		<!-- Scene Summary Region --> 
 		  <section id="scene-summary" aria-labelledby="scene-label">
 		    <h2 id="scene-label">Scene Summary</h2>
-			  <p>Simulation contains a Play Area and a Control Panel.</p>
+			<p>This sim has three screens, Atom, Symbol, and a Game. Each sim screen contains a Play Area and a Control Panel.</p>
 			  <!-- Dynamic List for necessary sim state information. -->
 			  <ul>
-			    <li>list</li>
-			  </ul>
-
+				<li>On current screen the Play Area contains a model of an atom called My Atom, three buckets of particles, and three detail panels that track important things about My Atom. The Control Panel has radio buttons to switch the model, and checkboxes to show or hide labels in My Atom.</li>
 			   <!-- Static interaction hints. -->
-			   <p>Grab a particle to play.</p>
-			   <p>If needed, check out the <a href="#keyboard-shortcuts">keyboard shortcuts</a> for this sim.</p>			 
+			   <li>Look for particle buckets to play.</li>
+			   <li>If needed, check out the <a href="#keyboard-shortcuts">keyboard shortcuts</a> for this sim.</li>	
+		   </ul>		 
 		  </section>
 		  
 		  <!-- Play Area Region -->
 		  <section id="play-area" aria-label="Play Area">                                      	
 			  <div role="region" aria-labelledby="label-my-atom">
-				  <h2 id="label-my-atom">My Atom</h2>
-				    <p>
-				      Grab a particle from a bucket, and explore dropping them into the Atom's regions.
-				    </p>
-				    <div class="listbox-area">
-				      <h3 id="buckets-listbox-label">
-				        Particle Buckets
-				      </h3>
-				      <ul id="bucket-listbox" 
-					  	tabindex="0" 
-					  	role="listbox" 
-					  	aria-labelledby="buckets-listbox-label">
-				        <li id="proton-bucket" role="option">Protons</li>
-					    <li id="neutron-bucket" role="option">Neutrons</li>
-						<li id="electron-bucket" role="option">Electrons</li>
-				      </ul>
-				    </div><!-- end bucket listbox -->
+				  <h2 id="label-my-atom">My Atom <em class="string-parameter">in Orbit View</em></h2>
+				  <p>Three-part concentric circular model starting at the center region.</p>
+				  
+				  <!-- Dynamic summary description of My Atom -->
+				  	<ul aria-label="My Atom Summary">
+						<li>Atom has <em class="string-parameter">two</em> protons, <em class="string-parameter">two</em> neutrons, or <em class="string-parameter">three</em> electrons.</li>
+						<!-- Dynamically add list items depending on what Show items are checked -->
+					    <li>The particles form <em class="string-parameter">Helium</em>.</li>
+					    <li>Atom has <em class="string-parameter">a negative ion</em> state.</li>
+					    <li>Atom is <em cclass="string-parameter">stable</em>.</li>
+					</ul>
+						
+				    <p>Explore the Atom's regions and grab a particle.</p>
 			     
 				    <div class="listbox-area">
 						<h3 id="nucleus-listbox-label">
 				    	Nucleus
 				    	</h3>
+						<p class="region-summary">Cluster of <em class="string-parameter">two</em> protons and <em class="string-parameter">two</em> neutrons.</p>
 				    	<ul id="nucleus-position-listbox" 
 				    		tabindex="0" 
 				    		role="listbox" 
@@ -65,20 +60,22 @@
 						  <h3 id="inner-orbit-listbox-label">
 				    		  Inner Orbital
 				    	  </h3>
+						  <p class="region-summary"><em class="string-parameter">Two</em> of two positions filled with electrons.</p>
 				    	  <ul id="inner-orbit-position-listbox"
 				    	    tabindex="0"
 				    	    role="listbox"
 				    	    aria-labelledby="inner-orbit-listbox-label"
 				    	    aria-activedescendant="">
-				    	    <li id="inner-pp-01" role="option">First Inner position</li>
-				    	    <li id="inner-pp-02" role="option">Second Inner position</li>
-				    	  </ul><!-- end inner oribtal listbox -->
+				    	    <li id="inner-pp-01" role="option"><em class="string-parameter">Electron in</em> first Inner position</li>
+				    	    <li id="inner-pp-02" role="option"><em class="string-parameter">Electron in</em> second Inner position</li>
+				    	  </ul><!-- end inner orbital listbox -->
 					</div>
 					
 				    <div class="listbox-area">
 						  <h3 id="outer-orbit-listbox-label">
 				    	    Outer Orbital
 				    	  </h3>
+						  <p><em class="string-parameter">One</em> of eight positions filled with electrons.</p>
 				    	  <ul id="outer-orbit-position-listbox"
 				    	    tabindex="0"
 				    	    role="listbox"
@@ -87,13 +84,28 @@
 				    	    <li id="outer-pp-01" role="option">First Outer position</li>
 				    	    <li id="outer-pp-02" role="option">Second Outer position</li>
 				    	    <li id="outer-pp-03" role="option">Third Outer position</li>
-				    	    <li id="outer-pp-04" role="option">Fourth Outer position</li>
+				    	    <li id="outer-pp-04" role="option"><em class="string-parameter">Electron in</em> fourth Outer position</li>
 				    	    <li id="outer-pp-05" role="option">Fifth Outer position</li>
 				    	    <li id="outer-pp-06" role="option">Sixth Outer position</li>
 				    	    <li id="outer-pp-07" role="option">Seventh Outer position</li>
 				    	    <li id="outer-pp-08" role="option">Eighth Outer position</li>
 				    	  </ul> <!-- end outer orbital listbox -->
 					</div>
+					
+				    <div class="listbox-area">
+				      <h3 id="buckets-listbox-label">
+				        Particle Buckets
+				      </h3>
+					  <p class="bucket-summary">Three buckets of particles.</p>
+				      <ul id="bucket-listbox" 
+					  	tabindex="0" 
+					  	role="listbox" 
+					  	aria-labelledby="buckets-listbox-label">
+				        <li id="proton-bucket" role="option">Protons</li>
+					    <li id="neutron-bucket" role="option">Neutrons</li>
+						<li id="electron-bucket" role="option">Electrons</li>
+				      </ul>
+				    </div><!-- end bucket listbox -->
 		
 			      <div role="toolbar" aria-label="Actions for particles">
 			        <button id="listbox-control-grab"
@@ -146,29 +158,30 @@
 			  </div><!-- end My Atom region -->
 			  
 		  	<div>
-				<h3>Details About My Atom</h3>
-		  			  	<ul>
-		  			  	    <li>
-		  			  			<h4 id="details01">Element and Location</h4>
-		  			  			<ul aria-labelledby="details01"> 
-		  			  	        	<li aria-label="Element Symbol"><abbr>He</abbr></li>
-		  			  				<li aria-label="Location in Periodic Table">Top right-most cell.</li>
-		  			  			</ul>
-		  			  		</li>
-		  	
-		  			  	    <li>
-		  			  			<h4 id="details02">Net Charge</h4>
-		  			  			<ul aria-labelledby="details02"> 
-		  			  		    	<li aria-label="Net charge">&#8722;1</li>
-		  			  				<li aria-label="Sum of charges">Charge meter needle slightly left of center in blue region.</li>
-		  			  				<li aria-label="Charge comparison">Showing 2 positive signs and 3 negative</li>
-		  			  			</ul>			
-		  			  		<li>
-		  			  			<h4 id="details03">Mass Number</h4>
-		  			  		    <ul aria-labelledby="details03">
-		  			  				<li aria-label="Mass">4</li>
-		  			  			</ul>
-		  			      </ul>
+				<h2>Details About My Atom</h2>
+		  		<ul>
+		  		  <li>
+		  			<h3 id="details-01"><button aria-expanded="true" aria-controls="collapsible-01">Element and Location</button></h3>
+		  				<ul id="collapsible-01" aria-labelledby="details-01"> 
+		  		      	    <li aria-label="Element Symbol"><abbr title="Helium">He</abbr></li>
+		  					<li aria-label="Location in Periodic Table">Top right-most cell.</li>
+		  				</ul>
+		  		  </li>
+		  		  <li>
+		  				<h3 id="details-02"><button aria-expanded="true" aria-controls="collapsible-02">Net Charge</button></h3>
+		  				<ul id="collapsible-02" aria-labelledby="details-02"> 
+		  			    	<li aria-label="Net charge">&#8722;1</li>
+		  					<li aria-label="Sum of charges">Charge meter needle slightly left of center in blue region.</li>
+		  					<li aria-label="Charge comparison">Showing 2 positive signs and 3 negative</li>
+		  				</ul>
+					</li>			
+		  			<li>
+		  				<h3 id="details-03"><button aria-expanded="true" aria-controls="collapsible-0">Mass Number</h3>
+		  			    <ul id="collapsible-03" aria-labelledby="details-03">
+		  					<li aria-label="Mass">4</li>
+		  				</ul>
+					</li>
+		  		</ul>
 			</div>
 		  </section> 
 			
@@ -219,7 +232,7 @@
 		<div role="region" aria-label="Sim Screens, Resources, and Tools">
 		  <ul aria-label="Sim Resources and Tools">
 		    <li>
-		      <button aria-haspopup="true">Keyboard Shortcuts</button>
+		      <button id="keyboard-shortcuts-button" aria-haspopup="true">Keyboard Shortcuts</button>
 		      <p>Tips on how to use this sim with a keyboard.</p>
 		    </li>
 		    <li>
