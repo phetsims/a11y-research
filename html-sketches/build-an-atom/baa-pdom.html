@@ -15,11 +15,11 @@
 		<!-- Scene Summary Region --> 
 		  <section id="scene-summary" aria-labelledby="scene-label">
 		    <h2 id="scene-label">Scene Summary</h2>
-			<p>This sim has three screens, Atom, Symbol, and a Game. Each sim screen contains a Play Area and a Control Panel.</p>
+			<p>This sim has three screens, Atom, Symbol, and Game. Each sim screen contains a Play Area and a Control Panel.</p>
 			  <!-- Dynamic List for necessary sim state information. -->
 			  <ul>
 				<li>On current screen the Play Area contains a model of an atom called My Atom, three buckets of particles, and three detail panels that track important things about My Atom. The Control Panel has radio buttons to switch the model, and checkboxes to show or hide labels in My Atom.</li>
-			   <!-- Static interaction hints. -->
+			   <!-- Static interaction hints. Seperate paragrpah or part of list??? -->
 			   <li>Look for particle buckets to play.</li>
 			   <li>If needed, check out the <a href="#keyboard-shortcuts">keyboard shortcuts</a> for this sim.</li>	
 		   </ul>		 
@@ -29,18 +29,18 @@
 		  <section id="play-area" aria-label="Play Area">                                      	
 			  <div role="region" aria-labelledby="label-my-atom">
 				  <h2 id="label-my-atom">My Atom <em class="string-parameter">in Orbit View</em></h2>
-				  <p>Three-part concentric circular model starting at the center region.</p>
+				  <p>Three-part concentric circular model starting at the center region, the Nucleus.</p>
 				  
 				  <!-- Dynamic summary description of My Atom -->
 				  	<ul aria-label="My Atom Summary">
-						<li>Atom has <em class="string-parameter">two</em> protons, <em class="string-parameter">two</em> neutrons, or <em class="string-parameter">three</em> electrons.</li>
+						<li>Atom has <em class="string-parameter">two</em> protons, <em class="string-parameter">two</em> neutrons, and <em class="string-parameter">three</em> electrons.</li>
 						<!-- Dynamically add list items depending on what Show items are checked -->
 					    <li>The particles form <em class="string-parameter">Helium</em>.</li>
 					    <li>Atom has <em class="string-parameter">a negative ion</em> state.</li>
 					    <li>Atom is <em class="string-parameter">stable</em>.</li>
 					</ul>
 						
-				    <p>Explore the Atom's regions and grab a particle.</p>
+				    <p>Explore the Atom's regions and grab a particle to play.</p>
 			     
 				    <div class="listbox-area">
 						<h3 id="nucleus-listbox-label">
@@ -155,34 +155,32 @@
 			          Delete
 			        </button>
 			      </div><!-- end toolbar -->
-			  </div><!-- end My Atom region -->
+			  </div><!-- end My Atom's regions -->
 			  
-		  	<div>
-				<h2>Details About My Atom</h2>
-		  		<ul>
-		  		  <li>
-		  			<h3 id="details-01"><button aria-expanded="true" aria-controls="collapsible-01">Element and Location</button></h3>
-		  				<ul id="collapsible-01" aria-labelledby="details-01"> 
-		  		      	    <li aria-label="Element Symbol"><abbr title="Helium">He</abbr></li>
-		  					<li aria-label="Location in Periodic Table">Top right-most cell.</li>
-		  				</ul>
-		  		  </li>
-		  		  <li>
-		  				<h3 id="details-02"><button aria-expanded="true" aria-controls="collapsible-02">Net Charge</button></h3>
-		  				<ul id="collapsible-02" aria-labelledby="details-02"> 
-		  			    	<li aria-label="Net charge">&#8722;1</li>
-		  					<li aria-label="Sum of charges">Charge meter needle slightly left of center in blue region.</li>
-		  					<li aria-label="Charge comparison">Showing 2 positive signs and 3 negative</li>
-		  				</ul>
-					</li>			
-		  			<li>
-		  				<h3 id="details-03"><button aria-expanded="true" aria-controls="collapsible-0">Mass Number</h3>
-		  			    <ul id="collapsible-03" aria-labelledby="details-03">
-		  					<li aria-label="Mass">4</li>
-		  				</ul>
-					</li>
-		  		</ul>
-			</div>
+		  	<!-- Begin Details about My Atom -->
+			<div>
+			  <h2>Details About My Atom</h2>
+	  		    <details open>
+	  			<summary id="summary-01">Element and Location</summary>
+	  				<ul id="details-01" aria-labelledby="summary-01"> 
+	  		      	    <li><strong>Element Symbol:</strong> <em class="string-parameter"><abbr title="Helium">He</abbr></em></li>
+	  					<li><strong>Location in Periodic Table:</strong> <em class="string-parameter">Top right-most cell</em> </li>
+	  				</ul>
+	  		    </details>
+	  		    <details>
+	  				<summary id="summary-02"><label>Net Charge</label></summary>
+	  				<ul id="details-02" aria-labelledby="summary-02"> 
+	  			    	<li><strong>Net charge:</strong> <em class="string-parameter">&#8722;1</em></li>
+	  					<li><strong>Sum of charges:</strong> Charge meter needle <em class="string-parameter">slightly left of center</em> in <em class="string-parameter">blue</em> region.</li>
+	  					<li><strong>Charge comparison:</strong> Showing <em class="string-parameter">2</em> positive signs and <em class="string-parameter">3</em> negative signs.</li>
+	  				</ul>
+			    </details>			
+	  		    <details>
+	  				<summary id="summary-03">Mass Number</summary>
+	  			    <p id="details-03" aria-labelledby="summary-03"><strong>Mass</strong> of <em class="string-parameter">4</em> showing in scale.</p>
+			    </details>
+			</div> <!-- End	 Details about My Atom -->
+			
 		  </section> 
 			
 			<!-- Control Panel -->
