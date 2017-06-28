@@ -1,9 +1,12 @@
 html {
 		font-family: helvetica, arial, sans-serif;
 	}
+	
+	ul[role="listbox"]:focus,
 	:focus {
 		border: 3px solid #ff69b4;
 	}
+	
 	h3, h4 {
 		margin: 0;
 		padding: 5px;
@@ -32,7 +35,7 @@ html {
 	}
 
 	[role="option"].focused {
-		background: #fffb6c;
+		background: hsla(330, 82%, 67%, 0.5);
 	}
 
 	[role="option"][aria-selected] {
