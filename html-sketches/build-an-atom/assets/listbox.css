@@ -3,6 +3,7 @@ html {
 	}
 	
 	ul[role="listbox"]:focus,
+	#region-my-atom:focus,
 	:focus {
 		border: 3px solid #ff69b4;
 	}
