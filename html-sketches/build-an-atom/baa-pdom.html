@@ -32,7 +32,7 @@
 
 <!-- Play Area Region -->
 <section id="play-area" aria-label="Play Area">
-  <div role="region" aria-labelledby="label-my-atom">
+  <div role="region" id="region-my-atom"  aria-labelledby="label-my-atom" tabindex="0">
     <h2 id="label-my-atom">My Atom <em class="string-parameter">in Orbit View</em></h2>
     <p>Three-part concentric circular model starting at the center region, the Nucleus.</p>
 
@@ -54,7 +54,7 @@
       <h3 id="nucleus-listbox-label">
         Nucleus
       </h3>
-      <p class="region-summary">Cluster of <em class="string-parameter">two</em> protons and <em
+      <p id="nucleus-region-summary" class="region-summary">Cluster of <em class="string-parameter">two</em> protons and <em
           class="string-parameter">two</em> neutrons.</p>
       <ul id="nucleus-position-listbox"
           tabindex="0"
@@ -70,7 +70,7 @@
       <h3 id="inner-orbit-listbox-label">
         Inner Orbital
       </h3>
-      <p class="region-summary"><em class="string-parameter">Two</em> of two positions filled with electrons.</p>
+      <p id="inner-orbit-region-summary" class="region-summary"><em class="string-parameter">Two</em> of two positions filled with electrons.</p>
       <ul id="inner-orbit-position-listbox"
           tabindex="0"
           role="listbox"
@@ -86,7 +86,7 @@
       <h3 id="outer-orbit-listbox-label">
         Outer Orbital
       </h3>
-      <p><em class="string-parameter">One</em> of eight positions filled with electrons.</p>
+      <p id="out-orbit-region-summary" class="region-summary"><em class="string-parameter">One</em> of eight positions filled with electrons.</p>
       <ul id="outer-orbit-position-listbox"
           tabindex="0"
           role="listbox"
@@ -123,35 +123,42 @@
     <!-- listbox toolbar -->
     <div role="toolbar" aria-label="Actions for particles">
       <button id="listbox-control-grab"
-              class="toolbar-item selected"
+              class="toolbar-item"
               aria-disabled="false">
         Grab
       </button>
       <button id="listbox-control-drop"
+	  		  class="toolbar-item"	
               aria-disabled="false">
         Drop
       </button>
       <button id="listbox-control-add-to-nucleus"
+	  		  class="toolbar-item"
               aria-disabled="false">
         To Nucleus
       </button>
       <button id="listbox-control-add-to-inner"
+	  		  class="toolbar-item"
               aria-disabled="false">
         To Inner Oribital
       </button>
       <button id="listbox-control-add-to-outer"
+	  		  class="toolbar-item"
               aria-disabled="false">
         To Outer Oribital
       </button>
       <button id="listbox-control-move-up"
+	  	  	  class="toolbar-item"
               aria-disabled="false">
         Up
       </button>
       <button id="listbox-control-move-down"
+	  		  class="toolbar-item"
               aria-disabled="false">
         Down
       </button>
       <button id="listbox-control-delete"
+	  		  class="toolbar-item"
               aria-disabled="false">
         Delete
       </button>
