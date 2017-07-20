@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		 <!-- Meta Tags --> 
+		<meta charset="UTF-8">
+		<!-- Name of Sim and Name of Project --> 
+		<title>Build an Atom: PhET Interactive Simulations</title>
+		
+		<!--  js and css for this example. -->
+		<link href="assets/css/toolbar.css" rel="stylesheet">
+		<script src="assets/js/toolbar.js" type="text/javascript"></script>
+		
+		<style>
+		html {
+			font-size: 100%;
+		}
+		/*Focus style just for demonstration*/
+		:focus {
+		    border: 3px solid hotpink;
+		}
+		section {
+			background-color: #efefef;
+			border-bottom: 2px solid #666;
+			margin-bottom: 1em;
+			padding: 0.5em;
+		}
+
+		</style>                                                  
+	</head>
+	
+	<body>
+		<header>
+			<!-- Header area for common sim stuff -->  
+			<!-- Name of Sim minus project name --> 
+			<h1>Atom</h1> 
+		</header>
+		<!-- Sim Screen 1 goes here! -->
+		<section id="scene-summary">
+			<h2>Screen 1: Scene Summary</h2>
+				<p>Structured Scene Summary content here.</p>
+				<p>Playful sim-specific interaction hint, if needed.</p>
+				<p>If you need to, check out the <a href="#keyboard-shortcuts">keyboard shortcuts</a> for this sim.</p>
+		</section>
+		
+		<section id="play-area" aria-label="Play Area">
+			<h2>My Atom</h2>
+			<p>Essential interactive objets here.</p>
+			<p>Note in this sim, the Play Area is identified with an aria-label on the region/section, rather than with a heading.</p>	
+		</section>
+		
+		<section id="control-panel" aria-label="Control Panel">
+		    <div role="group" aria-labelledby="show-labels">
+		      <h2 id="show-labels">Show labels in My Atom</h2>
+		      <p>Checkboxes here!</p>
+		    </div>
+
+		    <div role="radiogroup" aria-labelledby="atom-model">
+		      <h2 id="atom-model">Model</h2>
+		      <!-- Static on-demand help text for radios. -->
+		      <p>Radio buttons here!</p>
+		    </div>
+
+
+		    <div id="sim-reset-widget">
+		      <button id="sim-reset" type="reset">Reset All</button>
+		      <!-- No on-demand help-text for reset all. -->
+		    </div>	
+		</section>
+<!-- Bottom Bar as Region -->			
+	<div class="toolbar" role="toolbar">
+		<!-- Buttons bring activate sim screens -->
+	    <div class="toolbar-item selected"
+	       role="button"
+	       tabindex="0"
+	       aria-selected="true">Atom</div>
+	    <div class="toolbar-item"
+	       role="button"
+	       tabindex="-1">Symbol</div>
+	    <div class="toolbar-item"
+	       role="button"
+	       tabindex="-1">Game</div>
+	    <div class="toolbar-item"
+	       role="button"
+	       tabindex="-1">Home Screen</div>
+		   
+	  <!-- Button activates keyboard shortcuts dialog. -->
+	    <button id="keyboard-shortcuts">Keyboard Shortcuts</button>
+	   
+	   <!-- PhET Menu button activates PhET Menu -->
+	    <div class="menu-wrapper">
+	      <button tabindex="-1"
+	            aria-haspopup="true"
+	            aria-controls="menu1"
+	            class="toolbar-item menu-button">PhET Menu</button>
+		  <p>Tools and links for this sim.</p>
+	      <ul role="menu" id="menu1">
+	        <li role="menuitem">
+	          View Options
+	        </li>
+	        <li role="menuitem">
+	          Check for Updates
+	        </li>
+	        <li role="menuitem">
+	          Take Screenshot
+	        </li>
+	        <li role="menuitem">
+	          Full Screen
+	        </li>
+	        <li role="menuitem">
+	          <a href="https://phet.colorado.edu/files/troubleshooting/?BIG-LONG-LINK">Report Problem</a>
+	        </li>
+	        <li role="menuitem">
+	          About this Sim
+	        </li>
+	        <li role="menuitem">
+	          <a href="http://phet.colorado.edu/">PhET Website</a>
+	        </li>
+	      </ul>
+	    </div><!-- end menu-wrapper -->
+	  </div><!-- end bottom bar/toolbar -->
+</html>
