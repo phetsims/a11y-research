@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		 <!-- Meta Tags --> 
+		<meta charset="UTF-8">
+		<!-- Name of Sim and Name of Project --> 
+		<title>Build an Atom: PhET Interactive Simulations</title>
+		
+		<!--  js and css for this example. -->
+		<link href="css/toolbar.css" rel="stylesheet">
+			                                        
+	</head>
+	
+	<body>
+		<h1>Build an Atom</h1> 
+		<p><em>Build an Atom</em> has three screens.</p>		
+		<!-- Path to sim screens -->
+		  <ul>
+	        <li class="toolbar-item"><a href="baa-01-atom-template.html">Atom</a></li>
+	        <li class="toolbar-item"><button>Symbol</button></li>
+	        <li class="toolbar-item"><button>Game</button></li>
+	      </ul>
+		
+	    <!-- PhET Menu button activates PhET Menu -->
+	    <div class="menu-wrapper" aria-label="Sim tools and links">
+	      <button
+	            aria-haspopup="true"
+	            aria-controls="menu1"
+	            class="toolbar-item menu-button">PhET Menu</button>
+	      <ul role="menu" id="menu1">
+	        <li role="menuitem">
+	          View Options
+	        </li>
+	        <li role="menuitem">
+	          Check for Updates
+	        </li>
+	        <li role="menuitem">
+	          Take Screenshot
+	        </li>
+	        <li role="menuitem">
+	          Full Screen
+	        </li>
+	        <li role="menuitem">
+	          <a href="https://phet.colorado.edu/files/troubleshooting/?BIG-LONG-LINK">Report Problem</a>
+	   	    </li>
+	   	    <li role="menuitem">
+	   	      About this Sim
+	   	    </li>
+	   	    <li role="menuitem">
+	   	      <a href="http://phet.colorado.edu/">PhET Website</a>
+	   	    </li>
+	   	  </ul>
+	  </div><!-- end menu-wrapper -->
+<script>
+// Javascript from Pickering Menu Button
+	   	
+		//For Example 1
+	   (function() {
+	   	// get the button and menu nodes
+	   	var button = document.querySelector('[aria-label="Sim tools and links"] button');
+	   	var menu = button.nextElementSibling;
+
+	   	// set initial (closed menu) states
+	   	button.setAttribute('aria-expanded', 'false');
+	   	button.hidden = false;
+	   	menu.hidden = true;
+	   	button.addEventListener('click', function() {
+
+	   	// toggle menu visibility
+	   	var expanded = this.getAttribute('aria-expanded') ==='true';
+	   	this.setAttribute('aria-expanded', String(!expanded));
+	   	menu.hidden = expanded;
+	     });
+	   })();
+</script>
+</html>

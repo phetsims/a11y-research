@@ -4,12 +4,11 @@
 		 <!-- Meta Tags --> 
 		<meta charset="UTF-8">
 		<!-- Name of Sim and Name of Project --> 
-		<title>Build an Atom: PhET Interactive Simulations</title>
+		<title>Atom Screen: Build an Atom</title>
 		
 		<!--  js and css for this example. -->
 		<link href="css/toolbar.css" rel="stylesheet">
-		<script src="js/toolbar.js" type="text/javascript"></script>
-		                                                  
+		<script src="js/toolbar.js" type="text/javascript"></script>                                                  
 	</head>
 	
 	<body>
@@ -56,20 +55,16 @@
 		<!-- aria-selected="true" will need to be added dynamically to selected buttons -->
 	    <button class="toolbar-item selected"
 	       tabindex="0">Atom</button>
-	    <button class="toolbar-item"
-	       tabindex="-1">Symbol</button>
-	    <button class="toolbar-item"
-	       tabindex="-1">Game</button>
-	    <button class="toolbar-item"
-	       tabindex="-1">Home Screen</button>
+	    <button class="toolbar-item">Symbol</button>
+	    <button class="toolbar-item">Game</button>
+	    <a href="index.html" class="toolbar-item">Home Screen</a>
 		   
 	  <!-- Button activates keyboard shortcuts dialog. -->
-	    <button class="toolbar-item"
-	       tabindex="-1" id="keyboard-shortcuts">Keyboard Shortcuts</button>
+	    <button class="toolbar-item" id="keyboard-shortcuts">Keyboard Shortcuts</button>
 	   
 	   <!-- PhET Menu button activates PhET Menu -->
 	    <div class="menu-wrapper" aria-label="Sim tools and links">
-	      <button tabindex="-1"
+	      <button
 	            aria-haspopup="true"
 	            aria-controls="menu1"
 	            class="toolbar-item menu-button">PhET Menu</button>
@@ -98,25 +93,26 @@
 	      </ul>
 	    </div><!-- end menu-wrapper -->
 	  </div><!-- end bottom bar/toolbar -->
-<!-- Javascript from Pickering Menu Button-->
 <script>
-	//For Example 1
-(function() {
-	// get the button and menu nodes
-	var button = document.querySelector('[aria-label="Sim tools and links"] button');
-	var menu = button.nextElementSibling;
+// Javascript from Pickering Menu Button
+	   	
+		//For Example 1
+	   (function() {
+	   	// get the button and menu nodes
+	   	var button = document.querySelector('[aria-label="Sim tools and links"] button');
+	   	var menu = button.nextElementSibling;
 
-	// set initial (closed menu) states
-	button.setAttribute('aria-expanded', 'false');
-	button.hidden = false;
-	menu.hidden = true;
-	button.addEventListener('click', function() {
+	   	// set initial (closed menu) states
+	   	button.setAttribute('aria-expanded', 'false');
+	   	button.hidden = false;
+	   	menu.hidden = true;
+	   	button.addEventListener('click', function() {
 
-	// toggle menu visibility
-	var expanded = this.getAttribute('aria-expanded') ==='true';
-	this.setAttribute('aria-expanded', String(!expanded));
-	menu.hidden = expanded;
-  });
-})();
+	   	// toggle menu visibility
+	   	var expanded = this.getAttribute('aria-expanded') ==='true';
+	   	this.setAttribute('aria-expanded', String(!expanded));
+	   	menu.hidden = expanded;
+	     });
+	   })();
 </script>
 </html>
