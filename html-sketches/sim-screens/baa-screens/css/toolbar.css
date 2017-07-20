@@ -1,12 +1,24 @@
+
+/*Focus style just for demonstration*/
+:focus {
+    border: 3px solid hotpink;
+}
+section {
+	border-bottom: 2px solid #666;
+	margin-bottom: 1em;
+	padding: 0.5em;
+}
+/*W3C Styles below*/
 .annotate {
 		color: #366ED4;
 	  font-style: italic;
 }
 
 .toolbar {
-		border-left: 1px solid #aaa;
+		border-left:none;
 		margin-top: 10px;
 		font-size: 0;
+		padding-bottom: 40px;
 }
 
 .toolbar-item {

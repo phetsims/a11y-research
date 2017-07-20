@@ -9,23 +9,7 @@
 		<!--  js and css for this example. -->
 		<link href="css/toolbar.css" rel="stylesheet">
 		<script src="js/toolbar.js" type="text/javascript"></script>
-		
-		<style>
-		html {
-			font-size: 100%;
-		}
-		/*Focus style just for demonstration*/
-		:focus {
-		    border: 3px solid hotpink;
-		}
-		section {
-			background-color: #efefef;
-			border-bottom: 2px solid #666;
-			margin-bottom: 1em;
-			padding: 0.5em;
-		}
-
-		</style>                                                  
+		                                                  
 	</head>
 	
 	<body>
@@ -69,30 +53,26 @@
 <!-- Bottom Bar as Region -->			
 	<div class="toolbar" role="toolbar">
 		<!-- Buttons bring activate sim screens -->
-	    <div class="toolbar-item selected"
-	       role="button"
-	       tabindex="0"
-	       aria-selected="true">Atom</div>
-	    <div class="toolbar-item"
-	       role="button"
-	       tabindex="-1">Symbol</div>
-	    <div class="toolbar-item"
-	       role="button"
-	       tabindex="-1">Game</div>
-	    <div class="toolbar-item"
-	       role="button"
-	       tabindex="-1">Home Screen</div>
+		<!-- aria-selected="true" will need to be added dynamically to selected buttons -->
+	    <button class="toolbar-item selected"
+	       tabindex="0">Atom</button>
+	    <button class="toolbar-item"
+	       tabindex="-1">Symbol</button>
+	    <button class="toolbar-item"
+	       tabindex="-1">Game</button>
+	    <button class="toolbar-item"
+	       tabindex="-1">Home Screen</button>
 		   
 	  <!-- Button activates keyboard shortcuts dialog. -->
-	    <button id="keyboard-shortcuts">Keyboard Shortcuts</button>
+	    <button class="toolbar-item"
+	       tabindex="-1" id="keyboard-shortcuts">Keyboard Shortcuts</button>
 	   
 	   <!-- PhET Menu button activates PhET Menu -->
-	    <div class="menu-wrapper">
+	    <div class="menu-wrapper" aria-label="Sim tools and links">
 	      <button tabindex="-1"
 	            aria-haspopup="true"
 	            aria-controls="menu1"
 	            class="toolbar-item menu-button">PhET Menu</button>
-		  <p>Tools and links for this sim.</p>
 	      <ul role="menu" id="menu1">
 	        <li role="menuitem">
 	          View Options
@@ -118,4 +98,25 @@
 	      </ul>
 	    </div><!-- end menu-wrapper -->
 	  </div><!-- end bottom bar/toolbar -->
+<!-- Javascript from Pickering Menu Button-->
+<script>
+	//For Example 1
+(function() {
+	// get the button and menu nodes
+	var button = document.querySelector('[aria-label="Sim tools and links"] button');
+	var menu = button.nextElementSibling;
+
+	// set initial (closed menu) states
+	button.setAttribute('aria-expanded', 'false');
+	button.hidden = false;
+	menu.hidden = true;
+	button.addEventListener('click', function() {
+
+	// toggle menu visibility
+	var expanded = this.getAttribute('aria-expanded') ==='true';
+	this.setAttribute('aria-expanded', String(!expanded));
+	menu.hidden = expanded;
+  });
+})();
+</script>
 </html>
