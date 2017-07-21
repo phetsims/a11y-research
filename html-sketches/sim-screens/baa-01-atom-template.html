@@ -7,28 +7,27 @@
 		<title>Atom Screen: Build an Atom</title>
 		
 		<!--  js and css for this example. -->
-		<link rel="stylesheet" type="text/css" href="assets/toolbar.css">
-		<script src="assets/toolbar.js" type="text/javascript"></script>                                                  
+		<link rel="stylesheet" type="text/css" href="assets/toolbar.css">                                                  
 	</head>
 	
 	<body>
 		<header>
 			<!-- Header area for common sim stuff -->  
-			<!-- Name of Sim minus project name --> 
+			<!-- Name of Sim minus project name -->
+			<!-- Sim Screen 1 goes here! --> 
 			<h1>Atom</h1> 
 		</header>
-		<!-- Sim Screen 1 goes here! -->
+		
 		<section id="scene-summary">
 			<h2>Screen 1: Scene Summary</h2>
 				<p>Structured Scene Summary content here.</p>
-				<p>Playful sim-specific interaction hint, if needed.</p>
+				<p>Grab a particle to play.</p>
 				<p>If you need to, check out the <a href="#keyboard-shortcuts">keyboard shortcuts</a> for this sim.</p>
 		</section>
 		
 		<section id="play-area" aria-label="Play Area">
 			<h2>My Atom</h2>
-			<p>Essential interactive objets here.</p>
-			<p>Note in this sim, the Play Area is identified with an aria-label on the region/section, rather than with a heading.</p>	
+			<p>Essential interactive objets here.</p>	
 		</section>
 		
 		<section id="control-panel" aria-label="Control Panel">
@@ -39,60 +38,49 @@
 
 		    <div role="radiogroup" aria-labelledby="atom-model">
 		      <h2 id="atom-model">Model</h2>
-		      <!-- Static on-demand help text for radios. -->
 		      <p>Radio buttons here!</p>
 		    </div>
 
-
 		    <div id="sim-reset-widget">
 		      <button id="sim-reset" type="reset">Reset All</button>
-		      <!-- No on-demand help-text for reset all. -->
 		    </div>	
 		</section>
-<!-- Bottom Bar as Region -->			
-	<div class="toolbar" role="toolbar">
-		<!-- Buttons bring activate sim screens -->
-		<!-- aria-selected="true" will need to be added dynamically to selected buttons -->
-	    <button class="toolbar-item selected"
-	       tabindex="0">Atom</button>
-	    <button class="toolbar-item">Symbol</button>
-	    <button class="toolbar-item">Game</button>
-	    <button class="toolbar-item">Home Screen</button>
+<!-- Bottom Navigation Bar Region -->			
+	<div role="region" aria-label="Sim Screens, Resources, and Tools.">
+		<div role="navigation" aria-label="Sim Screens">
+			<!-- aria-selected="true" will need to be added dynamically to selected buttons -->
+		    <ul>
+				<li><button class="toolbar-item" tabindex="0">Atom</button></li>
+		    	<li><button class="toolbar-item">Symbol</button></li>
+		    	<li><button class="toolbar-item">Game</button></li>
+		    	<li><button class="toolbar-item">Home Screen</button></li>
+			</ul>
+		</div>	   
+		 
+		<!-- Keyboard Shortcuts --> 
+		<div id="keyboar-shortcuts-widget">
+			<button class="toolbar-item" id="keyboard-shortcuts">Keyboard Shortcuts</button>
+			<p>Tips on how to use this sim with a keyboard.</p>
+		</div>
 		   
-	  <!-- Button activates keyboard shortcuts dialog. -->
-	    <button class="toolbar-item" id="keyboard-shortcuts">Keyboard Shortcuts</button>
-	   
-	   <!-- PhET Menu button activates PhET Menu -->
-	    <div class="menu-wrapper" aria-label="Sim tools and links">
-	      <button
-	            aria-haspopup="true"
-	            aria-controls="menu1"
-	            class="toolbar-item menu-button">PhET Menu</button>
-	      <ul role="menu" id="menu1">
-	        <li role="menuitem">
-	          View Options
-	        </li>
-	        <li role="menuitem">
-	          Check for Updates
-	        </li>
-	        <li role="menuitem">
-	          Take Screenshot
-	        </li>
-	        <li role="menuitem">
-	          Full Screen
-	        </li>
-	        <li role="menuitem">
-	          <a href="https://phet.colorado.edu/files/troubleshooting/?BIG-LONG-LINK">Report Problem</a>
-	        </li>
-	        <li role="menuitem">
-	          About this Sim
-	        </li>
-	        <li role="menuitem">
-	          <a href="http://phet.colorado.edu/">PhET Website</a>
-	        </li>
-	      </ul>
-	    </div><!-- end menu-wrapper -->
-	  </div><!-- end bottom bar/toolbar -->
+		<!-- PhET Menu button activates PhET Menu -->
+		<div class="menu-wrapper" aria-label="Sim Tools and Links">
+		  <button
+		        aria-haspopup="true"
+		        aria-controls="phet-menu-items"
+		        class="toolbar-item menu-button">PhET Menu</button>
+		  <ul role="menu" id="phet-menu-items">
+		    <li role="menuitem">View Options</li>
+		    <li role="menuitem">Check for Updates</li>
+		    <li role="menuitem">Take Screenshot</li>
+		    <li role="menuitemcheckbox">Full Screen</li>
+		    <li role="menuitem"><a href="https://phet.colorado.edu/files/troubleshooting/?BIG-LONG-LINK">Report Problem</a></li>
+		    <li role="menuitem">About this Sim</li>
+		    <li role="menuitem"><a href="http://phet.colorado.edu/">PhET Website</a></li>
+		  </ul>
+		</div><!-- end menu-wrapper -->
+	</div><!-- end bottom bar/toolbar -->
+</div><!-- End navigation region -->
 <!-- Javascript from Pickering Menu Button-->
 <script>
 (function() {
