@@ -241,24 +241,38 @@
 
 <!-- Simulation Bottom Bar -->
 <div role="region" aria-label="Sim Screens, Resources, and Tools">
-  <ul aria-label="Sim Resources and Tools">
-    <li>
+  <!-- Sim Screens widget. -->
+  <div>
+	  <ul aria-label="Sim Screens">
+  	<li><button>Atom</button></li>
+    	<li><button>Symbol</button></li>
+    	<li><button>Game</button></li>
+    	<li><button>Home Screen</button></li>	  
+    </ul>
+  </div>
+  
+   <!-- Keyboard Shortcuts widget. -->  
+  <div>
       <button id="keyboard-shortcuts-button" aria-haspopup="true">Keyboard Shortcuts</button>
       <p>Tips on how to use this sim with a keyboard.</p>
-    </li>
-    <li>
-      <button id="phet-menu-button" aria-haspopup="true">PhET Menu</button>
-      <p>Tools and links for this sim.</p>
-    </li>
+  </div>
+  
+   <!-- PhET Menu Button widget. -->
+  <div>
+     <button id="phet-menu-button" aria-haspopup="true">PhET Menu</button>
+     <p>Tools and links for this sim.</p>
+  </div>
+  
+  <!-- PhET Menu items dynamically added to PDOM. -->
+  <ul role="menu" aria-labelledby="phet-menu-button" hidden>
+      <li role="menuitem">View Options</li>
+      <li role="menuitem">Check for Updates</li>
+      <li role="menuitem">Take Screenshot</li>
+      <li role="menuitemcheckbox">Full Screen</li>
+      <li role="menuitem"><a href="https://phet.colorado.edu/files/troubleshooting/?BIG-LONG-LINK">Report Problem</a></li>
+      <li role="menuitem">About this Sim</li>
+      <li role="menuitem"><a href="http://phet.colorado.edu/">PhET Website</a></li>
   </ul>
-</div>
-<!-- PhET Menu items dynamically placed into PDOM. -->
-<ul role="menu" aria-labelledby="phet-menu-button" hidden>
-  <li>
-    <button role="menuitem">View Options</button>
-  </li>
-  <!-- Rest of the Phet Menu Items -->
-</ul>
 
 <!-- Javascript -->
 <script type="text/javascript" src="assets/listbox.js"></script>
