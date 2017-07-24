@@ -17,22 +17,21 @@
 		<!-- Path to sim screens -->
 		  <nav aria-label="Sim Screens">
 			<ul>
-		  	    <li><button aria-describedby="screen01-description">Atom</button>
-				 	<p id="screen01-description">Play with what makes up an atom.</p></li>
-		  	    <li><button aria-describedby="screen02-description">Symbol</button>
-					<p id="screen02-description">Explore symbols that represent atoms.</p></li>
-		  	    <li><button aria-describedby="screen03-description">Game</button>
-					<p id="screen03-description">Test your knowledge of atoms and symbols.</p></li>
-		  	  </ul>
-		</nav>
+		  	  <li><button aria-roledescription="Sim Screen" aria-describedby="screen01-description">Atom</button>
+			   	<p id="screen01-description">Play with what makes up an atom.</p></li>
+		  	  <li><button aria-roledescription="Sim Screen" aria-describedby="screen02-description">Symbol</button>
+			  	<p id="screen02-description">Explore symbols that represent atoms.</p></li>
+		  	  <li><button aria-roledescription="Sim Screen" aria-describedby="screen03-description">Game</button>
+			  	<p id="screen03-description">Test your knowledge of atoms and symbols.</p></li>
+		  	</ul>
+		  </nav>
 		
 	    <!-- PhET Menu button activates PhET Menu -->
 	    <div class="menu-wrapper" aria-label="Sim tools and links">
 	      <button
 	            aria-haspopup="true"
-	            aria-controls="menu1"
-	            class="toolbar-item menu-button">PhET Menu</button>
-	      <ul role="menu" id="menu1">
+	            aria-controls="phet-menu">PhET Menu</button>
+	      <ul role="menu" id="phet-menu">
 	        <li role="menuitem">
 	          View Options
 	        </li>
