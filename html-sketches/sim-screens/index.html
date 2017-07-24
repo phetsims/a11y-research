@@ -7,7 +7,7 @@
 		<title>Build an Atom: PhET Interactive Simulations</title>
 		
 		<!--  js and css for this example. -->
-		<link rel="stylesheet" type="text/css" href="assets/toolbar.css">
+		<!-- <link rel="stylesheet" type="text/css" href="assets/toolbar.css"> -->
 			                                        
 	</head>
 	
@@ -15,11 +15,13 @@
 		<h1>Build an Atom</h1> 
 		<p><em>Build an Atom</em> has three screens.</p>		
 		<!-- Path to sim screens -->
-		  <ul>
-	        <li class="toolbar-item"><button>Atom</button></li>
-	        <li class="toolbar-item"><button>Symbol</button></li>
-	        <li class="toolbar-item"><button>Game</button></li>
-	      </ul>
+		  <nav aria-label="Sim Screens">
+			  <ul>
+		  	    <li><button>Atom</button></li>
+		  	    <li><button>Symbol</button></li>
+		  	    <li><button>Game</button></li>
+		  	  </ul>
+		</nav>
 		
 	    <!-- PhET Menu button activates PhET Menu -->
 	    <div class="menu-wrapper" aria-label="Sim tools and links">

@@ -8,8 +8,11 @@ section {
 	margin-bottom: 1em;
 	padding: 0.5em;
 }
+#bottom-bar {
+	padding-bottom: 100px;
+}
 /*W3C Styles below*/
-.annotate {
+/*.annotate {
 		color: #366ED4;
 	  font-style: italic;
 }
@@ -58,4 +61,4 @@ section {
   position: absolute;
   right: 1em;
   top: 1.1em;
-}
+}*/
