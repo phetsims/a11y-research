@@ -19,27 +19,20 @@
 		</header>
 		
 		<section id="scene-summary">
-			<h2>Screen 1: Scene Summary</h2>
-				<p>Structured Scene Summary content here.</p>
-				<p>Grab a particle to play.</p>
+			<h2>Atom Screen: Scene Summary</h2>
+				<p>Summarized content here.</p>
 				<p>If you need to, check out the <a href="#keyboard-shortcuts">keyboard shortcuts</a> for this sim.</p>
 		</section>
 		
 		<section id="play-area" aria-label="Play Area">
 			<h2>My Atom</h2>
-			<p>Essential interactive objets here.</p>	
+			<p>My Atom and other essential interactive objects are found in the <em>Play Area</em>.</p>
+			<p>In this sim, an <code>aria-label</code> designates the <em>Play Area</em>.</p>	
 		</section>
 		
-		<section id="control-panel" aria-label="Control Panel">
-		    <div role="group" aria-labelledby="show-labels">
-		      <h2 id="show-labels">Show labels in My Atom</h2>
-		      <p>Checkboxes here!</p>
-		    </div>
-
-		    <div role="radiogroup" aria-labelledby="atom-model">
-		      <h2 id="atom-model">Model</h2>
-		      <p>Radio buttons here!</p>
-		    </div>
+		<section id="control-panel">
+			<h2>Control Panel</h2>
+			<p>Less essential controls, often different settings and resets go in the <em>Control Panel</em>.</p>
 
 		    <div id="sim-reset-widget">
 		      <button id="sim-reset" type="reset">Reset All</button>
@@ -49,12 +42,16 @@
 	<div id="bottom-bar" role="region" aria-label="Sim Screens, Resources, and Tools.">
 		<nav aria-label="Sim Screens">
 			<!-- aria-selected="true" will need to be added dynamically to selected buttons -->
-		    <ul>
-				<li><button>Atom</button></li>
-		    	<li><button>Symbol</button></li>
-		    	<li><button>Game</button></li>
-		    	<li><button>Home Screen</button></li>
-			</ul>
+		  <ul>
+	  	    <li><button>Atom</button>
+			 	<p id="screen01-description">Play with what makes up an atom.</p></li>
+	  	    <li><button>Symbol</button>
+				<p id="screen02-description">Explore symbols that represent atoms.</p></li>
+	  	    <li><button>Game</button>
+				<p id="screen03-description">Test your knowledge of atoms and symbols.</p></li>
+			<li><button>Home</button>
+				<p id="screen03-description">Return to sim home screen.</p></li>
+	  	  </ul>
 		</nav>	   
 		 
 		<!-- Keyboard Shortcuts widget--> 
