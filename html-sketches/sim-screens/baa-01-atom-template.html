@@ -7,7 +7,7 @@
 		<title>Build an Atom, Phet Interactive Simulation</title>
 		
 		<!--  js and css for this example. -->
-		<link rel="stylesheet" type="text/css" href="assets/toolbar.css">                                                
+		<!--<link rel="stylesheet" type="text/css" href="assets/toolbar.css">-->                                               
 	</head>
 	
 	<body>
@@ -39,7 +39,8 @@
 		    </div>	
 		</section>
 <!-- Bottom Navigation Bar Region -->			
-	<div id="bottom-bar" role="region" aria-label="Sim Screens, Resources, and Tools.">
+	<div id="bottom-bar" role="region" aria-labelledby="navbar-label">
+		<h2 id="navbar-label">Sim Screens, Resources, and Tools.</h2>
 		<nav aria-label="Sim Screens">
 			<!-- aria-selected="true" will need to be added dynamically to selected buttons -->
 		  <ol>
