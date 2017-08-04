@@ -1,0 +1,23 @@
+/** Design Note Styles **/
+
+html {
+	font-family: helvetica, arial, sans-serif;
+	font-size: 1em;
+}
+
+h1 {
+	font-size: 2em;
+}
+
+h2, 
+legend {
+	font-size: 1.6em;
+	font-weight: normal;
+}
+:focus {
+		border: 3px solid #ff69b4;
+}
+
+.string-parameter {
+	background-color: #ececb8;
+}
