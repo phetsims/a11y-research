@@ -5,7 +5,7 @@
   <title>Ohms Law, an Interactive PhET Simulation</title>
 
   <!-- Style Sheets -->
-  <link rel=stylesheet type="text/css" href="assets/listbox.css">
+  <link rel=stylesheet type="text/css" href="assets/main.css">
 </head>
 <body>
 <header>
@@ -20,55 +20,54 @@
   <p>In this sim, the play area contains the Ohm's Law equation, a circuit, and controls for adjusting voltage and resistance. The control panel is where you can turn off sound and reset the sim.</p>
   <!-- Dynamic List for necessary sim state information. -->
   <ul>
-    <li>Right now, voltage is set to <em class="string-parameter">[[4.5]]</em> volts, and resistance to <em class="string-parameter">[[500]]</em> ohms, resulting in a current of <em class="string-parameter">[[9.0]]</em> milliamps.
+    <li><strong>Right now,</strong> voltage is set to <em class="string-parameter">[[4.5]]</em> volts, and resistance to <em class="string-parameter">[[500]]</em> ohms, resulting in a current of <em class="string-parameter">[[9.0]]</em> milliamps.
     </li>
     <!-- Static interaction hints. Seperate paragrpah or part of list??? -->
-    <li>Look for silders to play.</li>
-    <li>If needed, check out the <a href="#keyboard-shortcuts">keyboard shortcuts</a> for this sim.</li>
+    <li>Look for sliders to play.</li> 
+	<li>If you need to, check out the <a href="#keyboard-shortcuts">keyboard shortcuts</a> for this sim.</li>
   </ul>
 </section>
 
 <!-- Play Area Region -->
 <section id="play-area" aria-label="Play Area">
-  <div role="region" id=""  aria-labelledby="label-equation" tabindex="0">
     <div id="equation-widget">
 		<h2 id="label-equation">Ohm's Law Equation</h2>
         <p>Voltage, V, is equal to Current, I, times Resistance, R.</p>
     
         <!-- Dynamic summary description of Ohm's Law -->
-        <p>With [[4.5]] volts, the size of V is [[large]] [[much larger than]] I with [[9.0]] millamps and [[comparable to]] the size of R with [[500]] ohms.</p></div>
+        <p>With <em class="string-parameter">[[4.5]]</em> volts, the size of <strong id="eq-v">V</strong> is <em class="string-parameter">[[large]]</em> <em class="string-parameter">[[much larger than]]</em> <strong id="eq-i">I</strong> with <em class="string-parameter">[[9.0]]</em> millamps and <em class="string-parameter">[[comparable to]]</em> the size of <strong id="eq-r">R</strong> with <em class="string-parameter">[[500]]</em> ohms.</p></div>
 	
 	<!-- Circuit -->
 	<div id="circuit-widget">
 		<h2 id="label-circuit">Circuit</h2>
-		<p>With [[3]] batteries totalling [[4.5]] volts, and [[several]] dots in the resistor, the arrows representing the circuit's current are [[average size]].</p> 
+		<p>With <em class="string-parameter">[[3]</em> batteries totalling <em class="string-parameter">[[4.5]]</em> volts, and <em class="string-parameter">[[several]]</em> dots in the resistor, the arrows representing the circuit's current are <em class="string-parameter">[[medium size]]</em>.</p> 
 	
-		<p>Actual current is equal to [[5.0]] millamps.</p>
+		<p>Actual current is equal to <em class="string-parameter">[[5.0]]</em> millamps.</p>
 	</div>
 	
 	<!-- Sliders for Voltage and Resistance -->
-	<fieldset id="silder-widget">
-		<legend id="label-silders">Slider Controls</legdend>
+	<fieldset id="silder-widget" role="form" aria-labelledby="label-silders">
+	  <legend id="label-silders">Slider Controls</legend>
 		<p>Change sliders to explore changes in the equation and circuit.</p>
 		
-		<label for="v-slider">V, voltage</label>
-		<input id="v-slider" name="v-slider" type="range" min="0.1" max="9.0" step="10">
-		 
-		<label for="r-slider">R, resistance</label>
-		<input id="r-slider" name="r-slider" type="range" min="10" max="1000" step="10">
-	
+		<ul>
+			<li><label for="v-slider">V, voltage</label>
+				<input id="v-slider" name="v-slider" aria-roledescription="voltage slider" type="range" min="0.1" max="9.0" step="0.1"></li>
+				
+			<li><label for="r-slider">R, resistance</label>
+				<input id="r-slider" name="r-slider" type="range" min="10" max="1000" step="5"></li>
+		</ul>
 	</fieldset>
-
 
 </section>
 
 <!-- Control Panel -->
 <section id="control-panel" aria-labelledby="cp-label">
-	<h2>Control Panel</h2>
+	<h2 id="cp-label">Control Panel</h2>
 
-  <div id="sim-reset-widget">
+  <div id="sim-mute-widget">
 	<label>Mute Sound</label>
-    <input type="checkbox" notchecked>
+    <input type="checkbox">
     <!-- No on-demand help-text for reset all. -->
   </div>
   <div id="sim-reset-widget">
@@ -78,34 +77,64 @@
 </section>
 
 <!-- Simulation Bottom Bar -->
-<div role="region" aria-label="Sim Resources, and Tools">
-   <!-- Keyboard Shortcuts widget. -->  
-  <div>
-      <button id="keyboard-shortcuts-button" aria-haspopup="true">Keyboard Shortcuts</button>
-      <p>Tips on how to use this sim with a keyboard.</p>
-  </div>
-  
-   <!-- PhET Menu Button widget. -->
-  <div>
-     <button id="phet-menu-button" aria-haspopup="true">PhET Menu</button>
-     <p>Tools and links for this sim.</p>
-  </div>
-  
-  <!-- PhET Menu items dynamically added to PDOM. -->
-  <ul role="menu" aria-labelledby="phet-menu-button" hidden>
-      <li role="menuitem">View Options</li>
-      <li role="menuitem">Check for Updates</li>
-      <li role="menuitem">Take Screenshot</li>
-      <li role="menuitemcheckbox">Full Screen</li>
-      <li role="menuitem"><a href="https://phet.colorado.edu/files/troubleshooting/?BIG-LONG-LINK">Report Problem</a></li>
-      <li role="menuitem">About this Sim</li>
-      <li role="menuitem"><a href="http://phet.colorado.edu/">PhET Website</a></li>
-  </ul>
+<!-- Bottom Navigation Bar Region -->			
+	<div id="bottom-bar" role="region" aria-labelledby="navbar-label">
+		<h2 id="navbar-label">Sim Resources, and Tools</h2>
+			 
+		<!-- Keyboard Shortcuts widget--> 
+		<div id="keyboar-shortcuts-widget">
+			<button id="keyboard-shortcuts">Keyboard Shortcuts</button>
+			<p>Tips on how to use this sim with a keyboard.</p>
+		</div>
+		   
+		<!-- PhET Menu button widget -->
+			    <div class="menu-wrapper" aria-label="Sim tools and links">
+			      <button
+			            aria-haspopup="true"
+			            aria-controls="phet-menu">PhET Menu</button>
+			      <ul role="menu" id="phet-menu">
+			        <li role="menuitem">
+			          View Options
+			        </li>
+			        <li role="menuitem">
+			          Check for Updates
+			        </li>
+			        <li role="menuitem">
+			          Take Screenshot
+			        </li>
+			        <li role="menuitem">
+			          Full Screen
+			        </li>
+			        <li role="menuitem">
+			          <a href="https://phet.colorado.edu/files/troubleshooting/?BIG-LONG-LINK">Report Problem</a>
+			   	    </li>
+			   	    <li role="menuitem">
+			   	      About this Sim
+			   	    </li>
+			   	    <li role="menuitem">
+			   	      <a href="http://phet.colorado.edu/">PhET Website</a>
+			   	    </li>
+			   	  </ul>
+			  </div><!-- end menu-wrapper -->
+</div> <!-- end bottom bar region -->
+		<!-- Javascript from Pickering Menu Button-->
+		<script>
+		(function() {
+			// get the button and menu nodes
+			var button = document.querySelector('[aria-label="Sim tools and links"] button');
+			var menu = button.nextElementSibling;
 
-<!-- Javascript -->
-<script type="text/javascript" src="assets/listbox.js"></script>
-<script type="text/javascript" src="assets/toolbar.js"></script>
-<script type="text/javascript" src="assets/Utils.js"></script>
-<script type="text/javascript" src="assets/main.js"></script>
-</body>
-</html>
+			// set initial (closed menu) states
+			button.setAttribute('aria-expanded', 'false');
+			button.hidden = false;
+			menu.hidden = true;
+			button.addEventListener('click', function() {
+
+			// toggle menu visibility
+			var expanded = this.getAttribute('aria-expanded') ==='true';
+			this.setAttribute('aria-expanded', String(!expanded));
+			menu.hidden = expanded;
+		  });
+		})();
+		</script>
+		</html>
