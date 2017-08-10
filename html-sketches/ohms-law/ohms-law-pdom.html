@@ -17,32 +17,42 @@
 <!-- Scene Summary Region -->
 <section id="scene-summary" aria-labelledby="scene-label">
   <h2 id="scene-label">Scene Summary</h2>
-  <p>In this sim, the play area contains the Ohm's Law equation, a circuit, and controls for adjusting voltage and resistance. The control panel is where you can turn off sound and reset the sim.</p>
+  <p>In this sim, the Play Area contains Ohm's Law, <strong>V</strong> equals <strong>I</strong> times <strong>R</strong>, and a physical circuit connecting a series of batteries and a resistor. There are two sliders for adjusting voltage and resistance. In the Control Panel, you find buttons to reset sim and mute sound.</p>
   <!-- Dynamic List for necessary sim state information. -->
+  <p>Right now,</p>
   <ul>
-    <li><strong>Right now,</strong> voltage is set to <em class="string-parameter">[[4.5]]</em> volts, and resistance to <em class="string-parameter">[[500]]</em> ohms, resulting in a current of <em class="string-parameter">[[9.0]]</em> milliamps.
-    </li>
-    <!-- Static interaction hints. Seperate paragrpah or part of list??? -->
-    <li>Look for sliders to play.</li> 
-	<li>If you need to, check out the <a href="#keyboard-shortcuts">keyboard shortcuts</a> for this sim.</li>
+    <li>voltage, <strong>V</strong> is <em class="string-parameter">[[4.5]]</em> volts</li>
+	<li>resistance, <strong>R</strong> is [[500]]</em> ohms</li>
+	<li>current, <strong>I</strong> is <em class="string-parameter">[[9.0]]</em> milliamps.</li>
   </ul>
+  <p>With these values,</p> 
+  <ul>
+    <li><strong>V</strong> is <em class="string-parameter">[[medium size]]</em>, <em class="string-parameter">[[much larger]]</em> than <strong>I</strong> and <em class="string-parameter">[[comparable to]]</em> <strong>R</strong>.</li>
+	<li>Circuit has <em class="string-parameter">[[a series of batteries]]</em> and <em class="string-parameter">[[several]]</em> dots in resistor representing impurities.</li>
+</ul>
+    <!-- Static interaction hints. Seperate paragrpah or part of list??? -->
+    <p>Look for sliders to play.</p> 
+	<p>If you need to, check out <a href="#keyboard-shortcuts">keyboard shortcuts</a> for this sim.</p>
+
 </section>
 
 <!-- Play Area Region -->
 <section id="play-area" aria-label="Play Area">
     <div id="equation-widget">
 		<h2 id="label-equation">Ohm's Law Equation</h2>
-        <p>Voltage, V, is equal to Current, I, times Resistance, R.</p>
+        <p>Voltage, <strong>V</strong>, is equal to Current, <strong>I</strong>, times Resistance, <strong>R</strong>.</p>
     
-        <!-- Dynamic summary description of Ohm's Law -->
-        <p>With <em class="string-parameter">[[4.5]]</em> volts, the size of <strong id="eq-v">V</strong> is <em class="string-parameter">[[large]]</em> <em class="string-parameter">[[much larger than]]</em> <strong id="eq-i">I</strong> with <em class="string-parameter">[[9.0]]</em> millamps and <em class="string-parameter">[[comparable to]]</em> the size of <strong id="eq-r">R</strong> with <em class="string-parameter">[[500]]</em> ohms.</p></div>
+        <!-- Dynamic proportional description of Ohm's Law -->
+		<p>Size of <strong>V</strong> is <em class="string-parameter">[[medium]]</em>, <em class="string-parameter">[[much larger than]]</em> <strong>I</strong> and <em class="string-parameter">[[comparable to]]</em> <strong>R</strong>.</p>
 	
 	<!-- Circuit -->
 	<div id="circuit-widget">
-		<h2 id="label-circuit">Circuit</h2>
-		<p>With <em class="string-parameter">[[3]</em> batteries totalling <em class="string-parameter">[[4.5]]</em> volts, and <em class="string-parameter">[[several]]</em> dots in the resistor, the arrows representing the circuit's current are <em class="string-parameter">[[medium size]]</em>.</p> 
-	
-		<p>Actual current is equal to <em class="string-parameter">[[5.0]]</em> millamps.</p>
+		<h2 id="label-circuit">The Circuit</h2>
+		<ul>
+			<li>Wire connects <em class="string-parameter">[[exactly]]</em> <em class="string-parameter">[[3]</em> batteries totalling <em class="string-parameter">[[4.5]]</em> volts with resistor. </li>
+			<li><em class="string-parameter">[[Many]]</em> dots in resistor represent impurities.</li>
+			<li><em class="string-parameter">[[Mediumed sized]]</em> arrows flow clockwise showing a current of <em class="string-parameter">[[5.0]]</em> millamps.</li>
+		</ul>
 	</div>
 	
 	<!-- Sliders for Voltage and Resistance -->
