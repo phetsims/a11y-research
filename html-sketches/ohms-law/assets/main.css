@@ -9,10 +9,13 @@ h1 {
 	font-size: 2em;
 }
 
-h2, 
-legend {
+h2 {
 	font-size: 1.6em;
 	font-weight: normal;
+}
+h3, legend {
+	font-size: 1.4em;
+	font-weight: bold;
 }
 :focus {
 		border: 3px solid #ff69b4;
