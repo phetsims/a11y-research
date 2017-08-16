@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Ohms Law, an Interactive PhET Simulation</title>
@@ -8,17 +8,39 @@
   <link rel=stylesheet type="text/css" href="assets/main.css">
 </head>
 <body>
+<!-- Live Regions for Alert -->
+	<!-- Moving slider V slider up -->
+	<div>
+		<em>SLIDER VALUE: 5.4 volts.</em> As <strong>letter V</strong> <em class="string-parameter">[[grows]]</em>, <strong>letter I</strong> <em class="string-parameter">[[grows]]</em>. Current now <em class="string-parameter">[[10.8]] millamps</em> with voltage at <em class="string-parameter">[[5.4]] volts</em>.
+	</div>
+
+	<!-- Moving V slider down -->
+	<div> 
+		<em>SLIDER VALUE: 3.6 volts.</em> As <strong>letter V</strong> <em class="string-parameter">[[shrinks]]</em>, <strong>letter I</strong> [[shrinks]]. Current now <em class="string-parameter">[[7.2]] millamps</em> with voltage at <em class="string-parameter">[[3.6]] volts</em>.
+	</div>
+	
+	<!-- Moving R slider up -->
+	<div>
+		<em>SLIDER VALUE: 600 ohms.</em> As <strong>letter R</strong>, <em>[[grows]]</em>, <strong>letter I</strong>, <em>[[shrinks]]</em>. Current now <em>[[7.5]] millamps</em> with resistance at <em class="string-parameter">[[600]] ohms</em>.
+	</div>
+
+	<!-- Moving R slider down -->
+	<div>
+		<em>SLIDER VALUE: 400 ohms.</em> As <strong>letter R</strong>, <em class="string-parameter">[[shrinks]]</em>, <strong>letter I</strong>, <em class="string-parameter">[[grows]]</em>. Current now <em class="string-parameter">[[11.3]] millamps</em> with resistance at <em class="string-parameter">[[400]] ohms</em>.
+	</div>
+
 <header>
   <!-- Header area for common sim stuff.-->
-  <h1>Ohms Law</h1>
+  <h1>Ohm's Law</h1>
 </header>
 
 
 <!-- Scene Summary Region -->
 <section id="scene-summary" aria-labelledby="scene-label">
   <h2 id="scene-label">Scene Summary</h2>
-  <p>In this sim, the Play Area contains the Ohm's Law equation, <strong>V</strong> equals <strong>I</strong> times <strong>R</strong>, a physical circuit, and sliders to play with voltage and resistance. The circuit wire connects a series of batteries and runs through a resistor. Batteries show amount of voltage, and dots in the resistor show the level of resistance in the resistor. In the Control Panel, use buttons to reset sim or mute sound.</p>
+  <p>In this sim, the Play Area contains the Ohm's Law equation, <strong>V</strong> equals <strong>I</strong> times <strong>R</strong>, a physical circuit, and sliders to play with voltage and resistance. The circuit connects a resistor to a series of batteries. Batteries show amount of voltage. Dots in the resistor represent the level of resistance in the resistor. In the Control Panel, buttons mute sound or reset sim.</p>
   <!-- Dynamic List for necessary sim state information. -->
+  <h3>State of Sim (optional h3)</h3>
   <p>Right now,</p>
   <ul>
     <li>voltage, <strong>V</strong> is <em class="string-parameter">[[4.5]] volts</em></li>
@@ -28,7 +50,7 @@
   <p>With these values,</p> 
   <ul>
     <li><strong>Letter V</strong> is <em class="string-parameter">[[much larger]]</em> than <strong>letter I</strong> and <em class="string-parameter">[[comparable to]]</em> <strong>letter R</strong>.</li>
-	<li><em class="string-parameter">[[Small]]</em> arrows show amount of current flowing clockwise through circuit.</li>
+	<li><em class="string-parameter">[[Small]]</em> arrows represent amount of current flowing clockwise through circuit.</li>
 </ul>
     <!-- Static interaction hints. Seperate paragrpah or part of list??? -->
     <p>Look for voltage and resistance sliders to play.</p> 
@@ -40,32 +62,38 @@
 <section id="play-area" aria-labelledby="pa-label">
 	<h2 id="pa-label">Play Area</h2>
     <div id="equation-widget">
-		<h3 id="label-equation">The Equation</h3>
+		<h3 id="label-equation">Ohm's Law Equation</h3>
         <p>Voltage, <strong>V</strong>, is equal to Current, <strong>I</strong>, times Resistance, <strong>R</strong>.</p>
     
         <!-- Dynamic proportional description of Ohm's Law -->
 		<p><strong>Letter V</strong> is <em class="string-parameter">[[much larger than]]</em> <strong>letter I</strong> and <em class="string-parameter">[[comparable to]]</em> <strong>letter R</strong>.</p>
+	</div>
 	
 	<!-- Circuit -->
 	<div id="circuit-widget">
 		<h3 id="label-circuit">The Circuit</h3>
+		<p>Connects a resistor to a series of batteries with a pair of wires.</p>
+		<!-- Dynamic description of circuit -->
 		<ul>
-			<li><em class="string-parameter">[[Small]] arrows</em> pointing clockwise show a flowing current in the wire of <em class="string-parameter">[[5.0]] millamps</em>.</li> 
-			<li>Wire connects <em class="string-parameter">[[exactly]] [[3]] batteries</em> totalling <em class="string-parameter">[[4.5]] volts</em>, and runs through resistor with <em class="string-parameter">[[a good many]] dots</em> representing resistance.</li> 
+			<li><em class="string-parameter">[[Small]] arrows</em> pointing clockwise represent a current of [[5.0]] millamps.</li>
+			<li><em class="string-parameter">[[exactly]] [[3]] batteries</em> show [[4.5]] volts. </li>
+			<li><em class="string-parameter">[[a good many]] dots</em> in resistor represent resistance.</li>
 		</ul>
 	</div>
 	
 	<!-- Sliders for Voltage and Resistance -->
 	<fieldset id="silder-widget" role="form" aria-labelledby="label-silders">
 	  <legend id="label-silders">Slider Controls</legend>
+	  <!-- On-demand help text. -->
 		<p>Change sliders to explore changes in equation and circuit.</p>
 		
 		<ul>
 			<li><label for="v-slider">V, voltage</label>
-				<input id="v-slider" name="v-slider" type="range" min="0.1" max="9.0" step="0.1" role="slider"></li>
+				<input id="v-slider" name="v-slider" type="range" role="slider" min="0.1" max="9.0" step="0.1" aria-valuemin="0.1" aria-valuemax="0.9" aria-valuenow="4.5" aria-valuetext="4.5 volts">
+			</li>
 				
 			<li><label for="r-slider">R, resistance</label>
-				<input id="r-slider" name="r-slider" type="range" min="10" max="1000" step="5" role="slider"></li>
+				<input id="r-slider" name="r-slider" type="range" role="slider" min="10" max="1000" step="5" aria-valuemin="10" aria-valuemax="1000" aria-valuenow="500" aria-valuetext="500 ohms"></li>
 		</ul>
 	</fieldset>
 
