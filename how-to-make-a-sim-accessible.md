@@ -24,7 +24,7 @@ options like normal into the `Parent.call()` or `mutate()` function calls.
       * `focusHighlight`: Sets the focus highlight for the node, see `setFocusHighlight()`
       * `accessibleLabel`: Set the label content for the node, see `setAccessibleLabel()`
       * `accessibleDescription`: Set the description content for the node, see `setAccessibleDescription()`
-      * `accessibleHidden`: Sets wheter or not the node's DOM element is hidden in the parallel DOM
+      * `accessibleVisible`: Sets whether or not the node's DOM element is visible in the parallel DOM
       * `focusable`: Sets whether or not the node can receive keyboard focus
       * `useAriaLabel`: Sets whether or not the label will use the 'aria-label' attribute, see `setUseAriaLabel()`
       * `ariaRole`: Sets the ARIA role for the DOM element, see `setAriaRole()` for documentation
