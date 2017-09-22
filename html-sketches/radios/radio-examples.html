@@ -11,11 +11,10 @@
 	<h1>Radio Examples Simplified</h1>
 
 	<h2>Heading &amp; List</h2>
-	<p>Here a <code>div</code> with role group wraps a heading and list element. Input and label elements are wrapped in list item elements.</p>
+	<p>Here is a heading and list element. Input and label elements are wrapped in list item elements.</p>
 	
-	<div role="group" aria-labelledby="rg1-head">
 		<h3 id="rg1-head">Choose a Radio</h3>
-		<ul>
+		<ul aria-labelledby="rg1-head">
 			<li><input id="r1" type="radio" tabindex="0" checked>
 				<label for="r1">Choice 1</label>
 			</li>
@@ -26,12 +25,11 @@
 				<label for="r3">Choice 3</label>
 			</li>
 		</ul>
-	</div>
 	
 	<pre>
-&lt;div role="group" aria-labelledby="rg1-head"&gt;
+
 &lt;h3 id="rg1-head"&gt;Choose a Radio&lt;/h3&gt;
-&lt;ul&gt;
+&lt;ul aria-labelledby="rg1-head"&gt;
   &lt;li&gt;
     &lt;input id="r1" type="radio" tabindex="0" checked&gt;
     &lt;label for="r1"&gt;Choice 1&lt;/label&gt;
@@ -45,15 +43,14 @@
     &lt;label for="r3"&gt;Choice 3&lt;/label&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
-&lt;/div&gt;
+
 	</pre>
 	
-		<h2>Un-ordered list with Radiogroup Role</h2>
-		<p>Here a <code>div</code> with role group wraps a heading and list element. Input and label elements are wrapped in list item elements.</p>
+		<h2>Heading &amp; List</h2>
+		<p>Same as above, but an explicit <code>group</code> role on the un-ordered list element.</p>
 	
-		<div>
 			<h3 id="rg2-head">Choose a Radio</h3>
-			<ul role="radiogroup" aria-labelledby="rg2-head">
+			<ul role="group" aria-labelledby="rg2-head">
 				<li><input id="r4" type="radio" tabindex="0" checked>
 					<label for="r4">Choice 1</label>
 				</li>
@@ -64,20 +61,39 @@
 					<label for="r6">Choice 3</label>
 				</li>
 			</ul>
-		</div>
 	
 		<pre>
 			Code to add here.
 		</pre>
-
+		
+		<h2>Heading &amp; List with Radiogroup Role</h2>
+		<p>Same as above, but an explicit <code>radiogroup</code> role on the un-ordered list element.</p>
+	
+			<h3 id="rg3-head">Choose a Radio</h3>
+			<ul role="radiogroup" aria-labelledby="rg3-head">
+				<li><input id="r7" type="radio" tabindex="0" checked>
+					<label for="r7">Choice 1</label>
+				</li>
+				<li><input id="r8" type="radio" tabindex="-1">
+					<label for="r8">Choice 2</label>
+				</li>
+				<li><input id="r9" type="radio" tabindex="-1">
+					<label for="r9">Choice 3</label>
+				</li>
+			</ul>
+	
+		<pre>
+			Code to add here.
+		</pre>
+		
 		<h2>Radiogroup Role Example 1</h2>
 		<p>Here a <code>div</code> with <code>role=radiogroup</code> wraps three <code>div</code> elements containing native HTML <code>input</code> and <code>label</code> elements.</p>
 	
 		<div>
 			<h3 id="rg3-head">Choose a Radio</h3>
 			<div role="radiogroup" aria-labelledby="rg3-head">
-				<div><input id="r7" type="radio" tabindex="0" checked>
-					<label for="r7">Choice 1</label>
+				<div><input id="r10" type="radio" tabindex="0" checked>
+					<label for="r10">Choice 1</label>
 				</div>
 				<div><input id="r8" type="radio" tabindex="-1">
 					<label for="r8">Choice 2</label>
