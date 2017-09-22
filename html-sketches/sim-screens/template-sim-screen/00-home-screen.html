@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		 <!-- Meta Tags --> 
+		<meta charset="UTF-8">
+		<!-- Name of Sim and Name of Project --> 
+		<title>Build an Atom: PhET Interactive Simulations</title>
+		
+		<!--  js and css for this example. -->
+		<!-- <link rel="stylesheet" type="text/css" href="assets/toolbar.css"> -->
+			                                        
+	</head>
+	
+	<body>
+		<h1>Build an Atom</h1> 
+		<p>Come explore with <em>Build an Atom</em>. It has three screens.</p>	
+		<!-- Path to sim screens -->
+		  <nav aria-label="Sim Screens">
+			<ol>
+		  	  <li><button aria-roledescription="Sim Screen" aria-describedby="screen01-description">Atom</button>
+			   	<p id="screen01-description">Explore what makes up an atom.</p></li>
+		  	  <li><button aria-roledescription="Sim Screen" aria-describedby="screen02-description">Symbol</button>
+			  	<p id="screen02-description">Investigate atoms and their atomic symbols.</p></li>
+		  	  <li><button aria-roledescription="Sim Screen" aria-describedby="screen03-description">Game</button>
+			  	<p id="screen03-description">Test your knowledge of atoms and atomic symbols.</p></li>
+		  	</ol>
+		  </nav>
+		
+	    <!-- PhET Menu button activates PhET Menu -->
+	    <div class="menu-wrapper" aria-label="Sim tools and links">
+	      <button
+	            aria-haspopup="true"
+	            aria-controls="phet-menu">PhET Menu</button>
+	      <ul role="menu" id="phet-menu">
+	        <li role="menuitem">
+	          View Options
+	        </li>
+	        <li role="menuitem">
+	          Check for Updates
+	        </li>
+	        <li role="menuitem">
+	          Take Screenshot
+	        </li>
+	        <li role="menuitem">
+	          Full Screen
+	        </li>
+	        <li role="menuitem">
+	          <a href="https://phet.colorado.edu/files/troubleshooting/?BIG-LONG-LINK">Report Problem</a>
+	   	    </li>
+	   	    <li role="menuitem">
+	   	      About this Sim
+	   	    </li>
+	   	    <li role="menuitem">
+	   	      <a href="http://phet.colorado.edu/">PhET Website</a>
+	   	    </li>
+	   	  </ul>
+	  </div><!-- end menu-wrapper -->
+
+<!-- Javascript from Pickering Menu Button-->
+<script>
+(function() {
+	// get the button and menu nodes
+	var button = document.querySelector('[aria-label="Sim tools and links"] button');
+	var menu = button.nextElementSibling;
+
+	// set initial (closed menu) states
+	button.setAttribute('aria-expanded', 'false');
+	button.hidden = false;
+	menu.hidden = true;
+	button.addEventListener('click', function() {
+
+	// toggle menu visibility
+	var expanded = this.getAttribute('aria-expanded') ==='true';
+	this.setAttribute('aria-expanded', String(!expanded));
+	menu.hidden = expanded;
+  });
+})();
+</script>
+</html>
