@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Combobox Examples</title>
+  <!-- Style Sheets -->
+
+</head>
+<body>
+	<h1>Combobox</h1>
+	<h2>Design Notes</h2>
+	<p>See Level Access article on <a href="https://www.levelaccess.com/differences-aria-1-0-1-1-changes-rolecombobox/">combox role changes</a> for more details.</p>
+	<p><a href="http://whatsock.com/training/matrices/#combobox">http://whatsock.com/training/matrices/#combobox</a></p>
+	<ul>
+		<li>role=”combobox” in ARIA 1.1 is now a composite widget, meaning that it supports child element roles including active element roles embedded within it</li>
+	</ul>
+	
+	<h2>Example 1</h2>
+	<h3>Simple HTML <code>select</code> element with <code>option</code> elements</h3>
+	<p>The HTML design pattern works fine in Voice Over on Safari. The HTML <code>size</code> attribute can be used to make a designated number of options persist visually. This is undesirable in the case of most PhET pop-up select boxes (i.e., pop-up menus/comboboxes).</p>
+	
+	<p>Functionally, both the Up and Down Arrow keys activate the collpased list of options. We may want to consider adjusteing the visual prompts which only indicates the Up Arrow. Also in the visual, selected item is not visually indicated. We may want to add a visual checkmark, or the mouse-hover styling</p>
+	
+	<label for="solute-options">Solute:</label>
+	<select id="solute-options" name="select">
+		<option value="1">Drink mix</option>
+		<option value="2">Colbalt (II) nitrate</option>
+		<option value="3">Colbalt Chloride</option>
+		<option value="4">Potassium dichromate</option>
+		<option value="5">Gold (III) chloride</option>
+		<option value="6">Potassium chromate</option>
+		<option value="7">Nickel (II) chloride</option>
+		<option value="8">Copper sulfate</option>
+		<option value="9">Potassium permanganate</option>
+		<option value="10">Potassium dichromate</option>
+	</select>
+	
+	<h4>Code Sample</h4>
+	<pre>
+&lt;label for="solute-options"&gt;Solute:&lt;/label&gt;
+&lt;select id="solute-options" name="select"&gt;
+  &lt;option value="1"&gt;Drink mix&lt;/option&gt;
+  &lt;option value="2"&gt;Colbalt (II) nitrate&lt;/option&gt;
+  &lt;option value="3"&gt;Colbalt Chloride&lt;/option>
+  &lt;option value="4"&gt;Potassium dichromate&lt;/option&gt;
+  &lt;option value="5"&gt;Gold (III) chloride&lt;/option&gt;
+  &lt;option value="6"&gt;Potassium chromate&lt;/option&gt;
+  &lt;option value="7"&gt;Nickel (II) chloride&lt;/option&gt;
+  &lt;option value="8"&gt;Copper sulfate&lt;/option&gt;
+  &lt;option value="9"&gt;Potassium permanganate&lt;/option&gt;
+  &lt;option value="10">Potassium dichromate&lt;/option&gt;
+&lt;/select&gt;
+	</pre>
+	
+	<h4>Visual Examples</h4>
+	
+	<p>Combobox is focused with the Tab key. Not sure if we need the check on the collapsed combobox.</p>
+	<img src="molarity-combobox-focused.jpg" alt="Molary combobox with focused and checked color.">
+	
+	<p>Selected item has focus when combobox is opened (Up Arrow or Down Arrow)</p>
+	<img src="molarity-selected-item-focused.jpg" alt="Molary combobox selected item focused.">
+	
+	<p>Focus highlight moves with Arrow keys, and the selected item stays checked until Enter key pressed. Combobox closes when the the item is selected witht eh Enter key.</p>
+	<img src="molarity-unselected-item-focused.jpg" alt="Molary combobox unselected item focused.">
+	
+	
+	<h2>Example 2</h2>
+	<h3>ARIA 1.0 Design Pattern</h3>
+	<p>ARIA 1.1 design pattern is not yet supported. Both seem very complicated to me. And since our PDOM is visually hidden, I think HTML solution above is better for us.</p>
+	
+	<p>The three attributes on the focusable HTML input element with <code>role="combobox"</code>:</p>
+	<ul>
+		<li><code>aria-expanded</code></li>
+		<li><code>aria-controls</code></li>
+		<li><code>aria-activedescendant</code></li>
+	</ul> 
+ 
+	<input id="solute-comboxbox" tabindex="0" aria-label="Solute" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="owned-solute-listbox" aria-activedescendent="" readonly>
+	<ul role="listbox" id="owned-solute-listbox">
+		<li role="option" id="solute-option-01">Drink mix</li>
+		<li role="option" id="solute-option-02">Colbalt (II) nitrate</li>
+		<li role="option" id="solute-option-03">Colbalt Chloride</li>
+		<li role="option" id="solute-option-04">Potassium dichromate</li>
+		<li role="option" id="solute-option-05">Gold (III) chloride</li>
+		<li role="option" id="solute-option-06">Potassium chromate</li>
+		<li role="option" id="solute-option-07">Nickel (II) chloride</li>
+		<li role="option" id="solute-option-08">Copper sulfate</li>
+		<li role="option" id="solute-option-09">Potassium permanganate</li>
+		<li role="option" id="solute-option-10">Potassium dichromate</li>
+	</ul>
+	
+</body>
+</html>		
