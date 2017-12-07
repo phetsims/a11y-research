@@ -10,9 +10,6 @@
 	<h1>Combobox</h1>
 	
 	<h2>Example 1: HTML <code>select</code> and <code>option</code> elements</h2>
-	<p>The HTML design pattern with <code>select</code> element with <code>option</code> elements works fine in Voice Over on Safari. The HTML <code>size</code> attribute can be used to make a designated number of options persist visually; however, this is undesirable in this case, and likely for most of PhET's interactive sim elements of this type (i.e., pop-up menus/comboboxes).</p>
-	
-	<p>Functionally, both the Up and Down Arrow keys activate (pop-up) the collpased list of options. We may want to consider adjusting the visual prompts which only indicates the Up Arrow. Also in the visual, a selected item is not visually indicated. We may want to add a visual checkmark (or some visual cue) to visually indicate which item is currently selected.</p>
 	
 	<h3>Working <code>select</code> box</h3>
 	
@@ -47,33 +44,8 @@
 &lt;/select&gt;
 	</pre>
 	
-	<h3>Visual Examples with focus highlights</h3>
-	
-	<ol>
-		<li>Combobox gains focus with the Tab key (or other method). Not sure if we need the checkmark on the selected item when the combobox is collapsed.
-	<img src="molarity-combobox-focused.jpg" alt="Molary combobox with focused and checked color."></li>
-	
-	<li>Up Arrow or Down Arrow opens the list of solutes. The selected item has focus when the combobox is opened. A visual checkmark has been added for emphasis.
-	<img src="molarity-selected-item-focused.jpg" alt="Molary combobox selected item focused."></li>
-	
-	<li>Focus highlight moves with Up and Down Arrow keys, and the selected item stays checked until a new selection is made by pressing the Enter key. Combobox closes when a new item is selected with the Enter key. Escape key also closes the list of options with making a change.
-	<img src="molarity-unselected-item-focused.jpg" alt="Molary combobox unselected item focused."></li>
-</ol>
-	
-	
 	<h2>Example 2: ARIA 1.0 Design Pattern</h2>
-
-	<p>The ARIA 1.1 design pattern is not yet supported. Both the 1.1 and 1.0 design patterns seem very complicated to me. And since our PDOM is visually hidden, I think the HTML solution in Example 1, above, is better for us.</p>
-	
-	<p>In ARIA 1.1, the <code>role=”combobox”</code> is now a composite widget, meaning that it supports child element roles including active element roles embedded within it. However, the design pattern is too new to use.</p>
-	
-	<p>In the ARIA 1.0 design pattern example below, there are three attributes on the focusable HTML input element that has the <code>role="combobox"</code> that have to be maintained dynamically. These are:</p>
-	<ul>
-		<li><code>aria-expanded</code></li>
-		<li><code>aria-controls</code></li>
-		<li><code>aria-activedescendant</code> (Also, this attribute might not be allowed on the input element)</li>
-	</ul>
-	<p>I think in our case the widget is readonly, as it is not editable, but placing the HTML5 <code>readonly</code> attribute on the input element removes the element from the Tab order. The code below is a non-working example. See <a href="http://whatsock.com/tsg/Coding%20Arena/ARIA%20Comboboxes/ARIA%20Comboboxes%20(Simulated,%20Readonly)/demo.htm">Whatsock for a working example</a>. This is the pattern I tried to follow.</p>
+ See <a href="http://whatsock.com/tsg/Coding%20Arena/ARIA%20Comboboxes/ARIA%20Comboboxes%20(Simulated,%20Readonly)/demo.htm">Whatsock for a working example</a>. This is the pattern I tried to follow.</p>
  
  <h3>Non-working <code>combobox</code> widget</h3>
 	<input id="solute-comboxbox" tabindex="0" aria-label="Solute" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="owned-solute-listbox" aria-activedescendent="" readonly>
