@@ -5,14 +5,16 @@
   <title>Combobox Examples</title>
   <!-- Style Sheets -->
   <style>
-	  .hide-me {
-		  margin-left: -1000em;
-	  }
+  .hide-me {
+	  position: relative;
+  }
 
-	  option:focus{
-		  display: block;
-		  margin-left: -1000em;  
-	  }
+.hide-me select,
+.hide-me label {
+	  position: absolute;
+	  left: -999em;  
+  }
+	  
 	  
   </style>
 
@@ -25,7 +27,7 @@
 	<h3>Working <code>select</code> box</h3>
 
 			<label for="solute-options">Solute:</label>
-				<select id="solute-options" name="solute-options" size="1">
+				<select id="solute-options" name="solute-options">
 						<option value="1">Drink mix</option>
 						<option value="2">Colbalt (II) nitrate</option>
 						<option value="3">Colbalt Chloride</option>
@@ -41,21 +43,21 @@
 			
 	<h3>Hidden <code>select</code> box</h3>
 
-		<div class="hide-me">
-			<label for="solute-options">Solute:</label>
-				<select id="solute-options" name="solute-options" size="1">
-						<option value="1">Drink mix</option>
-						<option value="2">Colbalt (II) nitrate</option>
-						<option value="3">Colbalt Chloride</option>
-						<option value="4">Potassium dichromate</option>
-						<option value="5">Gold (III) chloride</option>
-						<option value="6">Potassium chromate</option>
-						<option value="7">Nickel (II) chloride</option>
-						<option value="8">Copper sulfate</option>
-						<option value="9">Potassium permanganate</option>
-						<option value="10">Potassium dichromate</option>
-				</select>
-			</div>
+<div class="hide-me">
+  <label for="solute-options">Solute:</label>
+  <select id="solute-options" name="solute-options" size="10">
+    <option value="1">Drink mix</option>
+    <option value="2">Cobalt (II) nitrate</option>
+    <option value="3">Cobalt Chloride</option>
+    <option value="4">Potassium dichromate</option>
+    <option value="5">Gold (III) chloride</option>
+    <option value="6">Potassium chromate</option>
+    <option value="7">Nickel (II) chloride</option>
+    <option value="8">Copper sulfate</option>
+    <option value="9">Potassium permanganate</option>
+    <option value="10">Potassium dichromate</option>
+  </select>
+</div>
 	
 	<h3>Code for <code>select</code> box</h3>
 	<pre>
