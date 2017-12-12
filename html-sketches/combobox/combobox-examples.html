@@ -26,7 +26,7 @@
 	
 	<h3>Working <code>select</code> box</h3>
 
-			<label for="solute-options">Solute:</label>
+			<label for="solute-options">Solute 1:</label>
 				<select id="solute-options" name="solute-options">
 						<option value="1">Drink mix</option>
 						<option value="2">Colbalt (II) nitrate</option>
@@ -44,7 +44,7 @@
 	<h3>Hidden <code>select</code> box</h3>
 
 <div class="hide-me">
-  <label for="solute-options">Solute:</label>
+  <label for="solute-options">Hidden solutes:</label>
   <select id="solute-options" name="solute-options" size="10">
     <option value="1">Drink mix</option>
     <option value="2">Cobalt (II) nitrate</option>
@@ -61,11 +61,11 @@
 	
 	<h3>Code for <code>select</code> box</h3>
 	<pre>
-&lt;label for="solute-options"&gt;Solute:&lt;/label&gt;
+&lt;label for="solute-options"&gt;Hidden solutes:&lt;/label&gt;
 &lt;select id="solute-options" name="solute-options"&gt;
   &lt;option value="1"&gt;Drink mix&lt;/option&gt;
-  &lt;option value="2"&gt;Colbalt (II) nitrate&lt;/option&gt;
-  &lt;option value="3"&gt;Colbalt Chloride&lt;/option>
+  &lt;option value="2"&gt;Cobalt (II) nitrate&lt;/option&gt;
+  &lt;option value="3"&gt;Cobalt Chloride&lt;/option>
   &lt;option value="4"&gt;Potassium dichromate&lt;/option&gt;
   &lt;option value="5"&gt;Gold (III) chloride&lt;/option&gt;
   &lt;option value="6"&gt;Potassium chromate&lt;/option&gt;
@@ -80,11 +80,11 @@
  See <a href="http://whatsock.com/tsg/Coding%20Arena/ARIA%20Comboboxes/ARIA%20Comboboxes%20(Simulated,%20Readonly)/demo.htm">Whatsock for a working example</a>. This is the pattern I tried to follow.</p>
  
  <h3>Non-working <code>combobox</code> widget</h3>
-	<input id="solute-comboxbox" tabindex="0" aria-label="Solute" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="owned-solute-listbox" aria-activedescendent="" readonly>
+	<input id="solute-comboxbox" tabindex="0" aria-label="Solute 2" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="owned-solute-listbox" aria-activedescendent="" readonly>
 	<ul role="listbox" id="owned-solute-listbox">
 		<li role="option" id="solute-option-01">Drink mix</li>
-		<li role="option" id="solute-option-02">Colbalt (II) nitrate</li>
-		<li role="option" id="solute-option-03">Colbalt Chloride</li>
+		<li role="option" id="solute-option-02">Cobalt (II) nitrate</li>
+		<li role="option" id="solute-option-03">Cobalt Chloride</li>
 		<li role="option" id="solute-option-04">Potassium dichromate</li>
 		<li role="option" id="solute-option-05">Gold (III) chloride</li>
 		<li role="option" id="solute-option-06">Potassium chromate</li>
@@ -101,8 +101,8 @@ role="combobox" aria-expanded="false" aria-autocomplete="list"
 aria-controls="owned-solute-listbox" aria-activedescendent="" readonly&gt;
 &lt;ul role="listbox" id="owned-solute-listbox"&gt;
   &lt;li role="option" id="solute-option-01"&gt;Drink mix&lt;/li&gt;
-  &lt;li role="option" id="solute-option-02"&gt;Colbalt (II) nitrate&lt;/li&gt;
-  &lt;li role="option" id="solute-option-03"&gt;Colbalt Chloride&lt;/li&gt;
+  &lt;li role="option" id="solute-option-02"&gt;Cobalt (II) nitrate&lt;/li&gt;
+  &lt;li role="option" id="solute-option-03"&gt;Cobalt Chloride&lt;/li&gt;
   &lt;li role="option" id="solute-option-04"&gt;Potassium dichromate&lt;/li&gt;
   &lt;li role="option" id="solute-option-05"&gt;Gold (III) chloride&lt;/li&gt;
   &lt;li role="option" id="solute-option-06"&gt;Potassium chromate&lt;/li&gt;
@@ -112,6 +112,25 @@ aria-controls="owned-solute-listbox" aria-activedescendent="" readonly&gt;
   &lt;li role="option" id="solute-option-10"&gt;Potassium dichromate&lt;/li&gt;
 &lt;/ul&gt;		
 	</pre>
+	
+	
+	<h2>Example 3: Listbox Design Pattern</h2>
+	<label for="listbox1">Solute 3:</label>
+	<div role="listbox" tabindex="0" id="listbox1" onclick="return listItemClick(event);" 
+	  onkeydown="return listItemKeyEvent(event);" onkeypress="return listItemKeyEvent(event);" 
+	  onfocus="this.className='focus';" onblur="this.className='blur';" aria-activedescendant="listbox1-2">
+	  <div role="option" id="listbox1-1">Drink mix</div>
+	  <div role="option" id="listbox1-2" class="selected">Cobalt (II) nitrate</div>
+	  <div role="option" id="listbox1-3">Cobalt Chloride</div>
+	  <div role="option" id="listbox1-4">Potassium dichromate</div>
+	  <div role="option" id="listbox1-5">Gold (III) chloride</div>
+	  <div role="option" id="listbox1-6">Potassium chromate</div>
+	  <div role="option" id="listbox1-7">Nickel (II) chloride</div>
+	  <div role="option" id="listbox1-8">Copper sulfate</div>
+	  <div role="option" id="listbox1-9">Potassium permanganate</div>
+	  <div role="option" id="listbox1-10">Potassium dichromate</div>
+	</div>
+	
 	
 </body>
 </html>		
