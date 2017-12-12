@@ -26,8 +26,8 @@
 	
 	<h3>Working <code>select</code> box</h3>
 
-			<label for="solute-options">Solute 1:</label>
-				<select id="solute-options" name="solute-options">
+			<label for="solute1-options">Solute 1:</label>
+				<select id="solute1-options" name="solute1-options">
 						<option value="1">Drink mix</option>
 						<option value="2">Colbalt (II) nitrate</option>
 						<option value="3">Colbalt Chloride</option>
@@ -44,8 +44,8 @@
 	<h3>Hidden <code>select</code> box</h3>
 
 <div class="hide-me">
-  <label for="solute-options">Hidden solutes:</label>
-  <select id="solute-options" name="solute-options" size="10">
+  <label for="solute2-options">Hidden solutes:</label>
+  <select id="solute2-options" name="solute2-options" size="10">
     <option value="1">Drink mix</option>
     <option value="2">Cobalt (II) nitrate</option>
     <option value="3">Cobalt Chloride</option>
@@ -80,7 +80,7 @@
  See <a href="http://whatsock.com/tsg/Coding%20Arena/ARIA%20Comboboxes/ARIA%20Comboboxes%20(Simulated,%20Readonly)/demo.htm">Whatsock for a working example</a>. This is the pattern I tried to follow.</p>
  
  <h3>Non-working <code>combobox</code> widget</h3>
-	<input id="solute-comboxbox" tabindex="0" aria-label="Solute 2" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="owned-solute-listbox" aria-activedescendent="" readonly>
+	<input id="solute2-comboxbox" tabindex="0" aria-label="Solute 2" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="owned-solute-listbox" aria-activedescendent="" readonly>
 	<ul role="listbox" id="owned-solute-listbox">
 		<li role="option" id="solute-option-01">Drink mix</li>
 		<li role="option" id="solute-option-02">Cobalt (II) nitrate</li>
@@ -115,10 +115,9 @@ aria-controls="owned-solute-listbox" aria-activedescendent="" readonly&gt;
 	
 	
 	<h2>Example 3: Listbox Design Pattern</h2>
-	<label for="listbox1">Solute 3:</label>
 	<div role="listbox" tabindex="0" id="listbox1" onclick="return listItemClick(event);" 
 	  onkeydown="return listItemKeyEvent(event);" onkeypress="return listItemKeyEvent(event);" 
-	  onfocus="this.className='focus';" onblur="this.className='blur';" aria-activedescendant="listbox1-2">
+	  onfocus="this.className='focus';" onblur="this.className='blur';" aria-activedescendant="listbox1-2" aria-label="Solute 3">
 	  <div role="option" id="listbox1-1">Drink mix</div>
 	  <div role="option" id="listbox1-2" class="selected">Cobalt (II) nitrate</div>
 	  <div role="option" id="listbox1-3">Cobalt Chloride</div>
