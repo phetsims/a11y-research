@@ -115,6 +115,7 @@ aria-controls="owned-solute-listbox" aria-activedescendent="" readonly&gt;
 	
 	
 	<h2>Example 3: Listbox Design Pattern</h2>
+	<p>Code from <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_listbox_role">MDN Listbox Example</a>. This example as-is does not read out the label for the listbox, and only annouces the role upon leaving the listbox. Keyboard design pattern is not programmed in, either.</p>
 	<div role="listbox" tabindex="0" id="listbox1" onclick="return listItemClick(event);" 
 	  onkeydown="return listItemKeyEvent(event);" onkeypress="return listItemKeyEvent(event);" 
 	  onfocus="this.className='focus';" onblur="this.className='blur';" aria-activedescendant="listbox1-2" aria-label="Solute 3">
