@@ -77,10 +77,10 @@
 	</pre>
 	
 	<h2>Example 2: ARIA 1.0 Design Pattern</h2>
- See <a href="http://whatsock.com/tsg/Coding%20Arena/ARIA%20Comboboxes/ARIA%20Comboboxes%20(Simulated,%20Readonly)/demo.htm">Whatsock for a working example</a>. This is the pattern I tried to follow.</p>
+ <p>See <a href="http://whatsock.com/tsg/Coding%20Arena/ARIA%20Comboboxes/ARIA%20Comboboxes%20(Simulated,%20Readonly)/demo.htm">Whatsock for a working example</a>. This is the pattern I tried to follow.</p>
  
  <h3>Non-working <code>combobox</code> widget</h3>
-	<input id="solute2-comboxbox" tabindex="0" aria-label="Solute 2" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="owned-solute-listbox" aria-activedescendent="" readonly>
+	<input id="solute2-comboxbox" tabindex="0" aria-label="Solute 2" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="owned-solute-listbox" readonly>
 	<ul role="listbox" id="owned-solute-listbox">
 		<li role="option" id="solute-option-01">Drink mix</li>
 		<li role="option" id="solute-option-02">Cobalt (II) nitrate</li>
@@ -116,11 +116,12 @@ aria-controls="owned-solute-listbox" aria-activedescendent="" readonly&gt;
 	
 	<h2>Example 3: Listbox Design Pattern</h2>
 	<p>Code from <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_listbox_role">MDN Listbox Example</a>. This example as-is does not read out the label for the listbox, and only annouces the role upon leaving the listbox. Keyboard design pattern is not programmed in, either.</p>
+	<div id="label-listbox1">Solute 3</div>
 	<div role="listbox" tabindex="0" id="listbox1" onclick="return listItemClick(event);" 
 	  onkeydown="return listItemKeyEvent(event);" onkeypress="return listItemKeyEvent(event);" 
-	  onfocus="this.className='focus';" onblur="this.className='blur';" aria-activedescendant="listbox1-2" aria-label="Solute 3">
+	  onfocus="this.className='focus';" onblur="this.className='blur';" aria-activedescendant="listbox1-2" aria-labelledby="label-listbox1">
 	  <div role="option" id="listbox1-1">Drink mix</div>
-	  <div role="option" id="listbox1-2" class="selected">Cobalt (II) nitrate</div>
+	  <div role="option" id="listbox1-2" class="selected" aria-selected="true">Cobalt (II) nitrate</div>
 	  <div role="option" id="listbox1-3">Cobalt Chloride</div>
 	  <div role="option" id="listbox1-4">Potassium dichromate</div>
 	  <div role="option" id="listbox1-5">Gold (III) chloride</div>
@@ -130,6 +131,24 @@ aria-controls="owned-solute-listbox" aria-activedescendent="" readonly&gt;
 	  <div role="option" id="listbox1-9">Potassium permanganate</div>
 	  <div role="option" id="listbox1-10">Potassium dichromate</div>
 	</div>
+	
+	<h2>Example 4: Listbox as an un-ordered list</h2>
+	<p>Code from <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_listbox_role">MDN Listbox Example</a>. This example as-is does not read out the label for the listbox, and only annouces the role upon leaving the listbox. Keyboard design pattern is not programmed in, either.</p>
+	<h3 id="label-listbox4">Solute 4</h3>
+	<ul role="listbox" tabindex="0" id="listbox4" onclick="return listItemClick(event);" 
+	  onkeydown="return listItemKeyEvent(event);" onkeypress="return listItemKeyEvent(event);" 
+	  onfocus="this.className='focus';" onblur="this.className='blur';" aria-activedescendant="listbox4-4" aria-labelledby="label-listbox4" style="list-style:none;">
+	  <li role="option" id="listbox4-1">Drink mix</li>
+	  <li role="option" id="listbox4-2">Cobalt (II) nitrate</li>
+	  <li role="option" id="listbox4-3">Cobalt Chloride</li>
+	  <li role="option" id="listbox4-4" class="selected" aria-selected="true">Potassium dichromate</li>
+	  <li role="option" id="listbox4-5">Gold (III) chloride</li>
+	  <li role="option" id="listbox4-6">Potassium chromate</li>
+	  <li role="option" id="listbox4-7">Nickel (II) chloride</li>
+	  <li role="option" id="listbox4-8">Copper sulfate</li>
+	  <li role="option" id="listbox4-9">Potassium permanganate</li>
+	  <li role="option" id="listbox4-10">Potassium dichromate</li>
+	</ul>
 	
 	
 </body>
