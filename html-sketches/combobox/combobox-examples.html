@@ -25,7 +25,7 @@
 	<h2>Example 1: HTML <code>select</code> and <code>option</code> elements</h2>
 	
 	<h3>Working <code>select</code> box</h3>
-	<p>The <code>select</code> element is identified as having pop-up menu, and it cannot be positioned off screen.</p>
+	<p>The <code>select</code> element is identified as having pop-up menu, and the popped-up menu (i.e., the box of options) cannot be positioned off screen.</p>
 
 			<label for="solute1-options">Solute 1:</label>
 				<select id="solute1-options" name="solute1-options">
@@ -117,7 +117,7 @@ aria-controls="owned-solute-listbox" aria-activedescendent="" readonly&gt;
 	
 	
 	<h2>Example 3: Listbox Design Pattern</h2>
-	<p>Code from <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_listbox_role">MDN Listbox Example</a>. This example as-is does not read out the label for the listbox, and only annouces the role upon leaving the listbox. Keyboard design pattern is not programmed in, either.</p>
+	<p>Code from <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_listbox_role">MDN Listbox Example</a>. This example as-is does not read out the label, "Solute 3", as the listbox's label. The listbox always seems to be annouced upon leaving the listbox, but not always upon entering it. The full Keyboard design pattern is not programmed in, either.</p>
 	<div id="label-listbox1">Solute 3</div>
 	<div role="listbox" tabindex="0" id="listbox1" onclick="return listItemClick(event);" 
 	  onkeydown="return listItemKeyEvent(event);" onkeypress="return listItemKeyEvent(event);" 
@@ -135,7 +135,7 @@ aria-controls="owned-solute-listbox" aria-activedescendent="" readonly&gt;
 	</div>
 	
 	<h2>Example 4: Listbox as an un-ordered list</h2>
-	<p>Code from <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_listbox_role">MDN Listbox Example</a>. This example as-is does not read out the label for the listbox, and only annouces the role upon leaving the listbox. Keyboard design pattern is not programmed in, either.</p>
+	<p>Same code from <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_listbox_role">MDN Listbox Example</a>, but using in this example, I'm using a heading and list structure. This example as-is does not read out the <code>h3</code> heading "Solute 4" as the label for the listbox. The listbox always seems to be annouced upon leaving the listbox, but not always upon entering it. The full Keyboard design pattern is not programmed in here, either.</p>
 	<h3 id="label-listbox4">Solute 4</h3>
 	<ul role="listbox" tabindex="0" id="listbox4" onclick="return listItemClick(event);" 
 	  onkeydown="return listItemKeyEvent(event);" onkeypress="return listItemKeyEvent(event);" 
