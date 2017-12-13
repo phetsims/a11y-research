@@ -25,6 +25,7 @@
 	<h2>Example 1: HTML <code>select</code> and <code>option</code> elements</h2>
 	
 	<h3>Working <code>select</code> box</h3>
+	<p>The <code>select</code> element is identified as having pop-up menu, and it cannot be positioned off screen.</p>
 
 			<label for="solute1-options">Solute 1:</label>
 				<select id="solute1-options" name="solute1-options">
@@ -41,7 +42,7 @@
 				</select>
 
 			
-	<h3>Hidden <code>select</code> box</h3>
+	<h3>Working Hidden <code>select</code> box</h3>
 
 <div class="hide-me">
   <label for="solute2-options">Hidden solutes:</label>
@@ -60,7 +61,7 @@
 </div>
 	
 	<h3>Code for hidden <code>select</code> box</h3>
-	<p>The size attribute turns the options box into a listbox.</p>
+	<p>With the size attribute, the box of options stays open, seems to behave like it has the ARIA role <code>listbox</code>, and can be successfully positioned off screen.</p>
 	<pre>
 &lt;label for="solute-options"&gt;Hidden solutes:&lt;/label&gt;
 &lt;select id="solute-options" name="solute-options" size="10"&gt;
