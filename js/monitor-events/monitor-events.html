@@ -1,0 +1,54 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Event Monitor</title>
+</head>
+
+<body>
+
+  <!--HTML elements to test here -->
+  <label for="solute2-options">Hidden solutes:</label>
+  <select id="select-box" name="solute2-options" size="10">
+    <option value="1">Drink mix</option>
+    <option value="2">Cobalt (II) nitrate</option>
+    <option value="3">Cobalt Chloride</option>
+    <option value="4">Potassium dichromate</option>
+    <option value="5">Gold (III) chloride</option>
+    <option value="6">Potassium chromate</option>
+    <option value="7">Nickel (II) chloride</option>
+    <option value="8">Copper sulfate</option>
+    <option value="9">Potassium permanganate</option>
+    <option value="10">Potassium dichromate</option>
+  </select>
+
+  <script>
+    var EventMonitor = {
+      // add events as necessary
+      events:[ 'focus', 'blur', 'reset', 'submit', 'keydown', 'keypress', 'keyup', 'click', 'input', 'change' ],
+
+     /**
+      * Monitor all events on the DOM element by adding listeners that print the event to each event listed in
+      * EventMonitor.events
+      */
+      monitorEvents: function( domElement ) {
+        if ( domElement ) {
+          for ( var i = 0;  i < EventMonitor.events.length; i++ ) {
+            domElement.addEventListener( EventMonitor.events[ i ], function( event ) {
+              console.log( event.type, event );
+            } );
+          }
+        }
+        else {
+          console.error( 'element not found', domElement );
+        }
+      }
+    };
+
+    // monitor events here
+    EventMonitor.monitorEvents( document.getElementById( 'select-box' ) );
+  </script>
+
+</body>
+</html>
