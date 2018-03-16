@@ -21,13 +21,14 @@
 		<section id="scene-summary">
 			<h2>Atom Screen: Scene Summary</h2>
 				<p>Summarized content here.</p>
-				<p>If you need to, check out the <a href="#keyboard-shortcuts">keyboard shortcuts</a> for this sim.</p>
+				<p>If needed, check out the keyboard shortcuts under Sim Resources.</p>
 		</section>
 		
 		<section id="play-area" aria-label="Play Area">
-			<h2>My Atom</h2>
-			<p>My Atom and other essential interactive objects are found in the <em>Play Area</em>.</p>
-			<p>In this sim, an <code>aria-label</code> labels the <em>Play Area</em> region.</p>	
+			<h2>Play Area</h2>
+			<h3>My Atom</h3>
+			<p>"My Atom" and other essential interactive objects are found in the <em>Play Area</em>.</p>
+			<p>Design note: To reduce the number of heading levels for this sim, the <em>Play Area</em> heading content could be placed in an <code>aria-label</code> attribute, and "My Atom" could be the first heading in the Play Area.</p>	
 		</section>
 		
 		<section id="control-panel" aria-labelledby="cp-label">
@@ -38,23 +39,23 @@
 		      <button id="sim-reset" type="reset">Reset All</button>
 		    </div>	
 		</section>
-<!-- Bottom Navigation Bar Region -->			
-	<div id="bottom-bar" role="region" aria-labelledby="navbar-label">
-		<h2 id="navbar-label">Sim Screens, Resources, and Tools.</h2>
-		<nav aria-label="Sim Screens">
+		<nav aria-labelledby="screen-nav-label">
+			<h2 id="screen-nav-label">Sim Screens</h2> 
 			<!-- aria-selected="true" will need to be added dynamically to selected buttons -->
 		  <ol>
-	  	    <li><button aria-roledescription="Sim Screen">Atom</button>
+  			<li><button>Home Screen</button>
+  				<p id="screen00-description">Go to Home Screen.</p></li>
+	  	    <li><button>Atom Screen</button>
 			 	<p id="screen01-description">Explore what makes up an atom.</p></li>
-	  	    <li><button aria-roledescription="Sim Screen">Symbol</button>
-				<p id="screen02-description">Investigate atoms and thier atomic symbols.</p></li>
-	  	    <li><button aria-roledescription="Sim Screen">Game</button>
+	  	    <li><button>Symbol Screen</button>
+				<p id="screen02-description">Investigate atoms and their atomic symbols.</p></li>
+	  	    <li><button>Game Screen</button>
 				<p id="screen03-description">Test your knowledge of atoms and atomic symbols.</p></li>
-			<li><button aria-roledescription="Home Screen">Home</button>
-				<p id="screen03-description">Go to Home Screen.</p></li>
 	  	  </ol>
-		</nav>	   
-		 
+		</nav>
+<!-- Sim Resources Bar Region -->			
+	<div id="resource-bar" role="region" aria-labelledby="resource-bar-label">
+		<h2 id="resource-bar-label">Sim Resources</h2>   
 		<!-- Keyboard Shortcuts widget--> 
 		<div id="keyboar-shortcuts-widget">
 			<button id="keyboard-shortcuts">Keyboard Shortcuts</button>
@@ -62,7 +63,7 @@
 		</div>
 		   
 		<!-- PhET Menu button widget -->
-			    <div class="menu-wrapper" aria-label="Sim tools and links">
+			    <div class="menu-wrapper" aria-label="Teacher tools and links">
 			      <button
 			            aria-haspopup="true"
 			            aria-controls="phet-menu">PhET Menu</button>
