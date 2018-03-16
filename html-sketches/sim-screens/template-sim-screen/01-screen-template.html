@@ -17,42 +17,48 @@
 			<!-- Sim Screen 1 goes here! --> 
 			<h1>Name of Sim</h1> 
 		</header>
-		
+		<!-- Scene Summary region -->
 		<section id="scene-summary">
 			<h2><em>Screen One Name</em> Screen: Scene Summary</h2>
 				<p>Summarized content here.</p>
-				<p>If you need to, check out the <a href="#keyboard-shortcuts">keyboard shortcuts</a> for this sim.</p>
+				<p>If needed, check out keyboard shortcuts for this sim under Sim Resources.</p>
 		</section>
 		
+		<!-- Play Area region -->
 		<section id="play-area" aria-labelledby="pa-label">
 			<h2 id="pa-label">Play Area</h2>
 			<p>Objects essential for exploration go in the Play Area.</p>	
 		</section>
 		
+		<!-- Control Panel region -->
 		<section id="control-panel" aria-labelledby="cp-label">
 			<h2 id="cp-label">Control Panel</h2>
-			<p>Less essential controls, often different settings and resets go in the <em>Control Panel</em>. The control panel <code>h2 heading</code> labels the control panel region with <code>aria-labelledby</code></p>
+			<p>Less essential controls, often different settings and resets go in the <em>Control Panel</em>. The control panel <code>h2 heading</code> labels the control panel region with <code>aria-labelledby</code>.</p>
 
 		    <div id="sim-reset-widget">
 		      <button id="sim-reset" type="reset">Reset All</button>
 		    </div>	
 		</section>
-<!-- Bottom Navigation Bar Region -->			
-	<div id="bottom-bar" role="region" aria-labelledby="navbar-label">
-		<h2 id="navbar-label">Sim Screens, Resources, and Tools.</h2>
-		<nav aria-label="Sim Screens">
+		
+		<!-- Sim Screens navigation landmark region -->
+		<nav aria-labelledby="screen-nav-label">
+			<h2 id="screen-nav-label">Sim Screens</h2> 
 			<!-- aria-selected="true" will need to be added dynamically to selected buttons -->
 		  <ol>
-  			<li><button aria-roledescription="Home Screen">Home</button>
+  			<li><button>Home</button>
   				<p id="screen00-description">Go to Home Screen.</p></li>
-	  	    <li><button aria-roledescription="Sim Screen">Screen One</button>
+	  	    <li><button>NAME 1 Screen</button>
 			 	<p id="screen01-description">Explore <em>X in screen one</em>.</p></li>
-	  	    <li><button aria-roledescription="Sim Screen">Screen Two</button>
+	  	    <li><button>NAME 2 Screen</button>
 				<p id="screen02-description">Investigate <em>Y in screen two</em>.</p></li>
-	  	    <li><button aria-roledescription="Sim Screen">Screen Three</button>
+	  	    <li><button>NAME 3 Screen</button>
 				<p id="screen03-description">Test your knowledge of <em>X an Y in screen three</em>.</p></li>
 	  	  </ol>
-		</nav>	   
+		</nav>
+		
+	<!-- Sim Resources bar region -->			
+	<div id="resource-bar" role="region" aria-labelledby="resource-bar-label">
+		<h2 id="resource-bar-label">Sim Resources</h2> 	   
 		 
 		<!-- Keyboard Shortcuts widget--> 
 		<div id="keyboar-shortcuts-widget">
@@ -61,35 +67,35 @@
 		</div>
 		   
 		<!-- PhET Menu button widget -->
-			    <div class="menu-wrapper" aria-label="Sim tools and links">
-			      <button
-			            aria-haspopup="true"
-			            aria-controls="phet-menu">PhET Menu</button>
-			      <ul role="menu" id="phet-menu">
-			        <li role="menuitem">
-			          View Options
-			        </li>
-			        <li role="menuitem">
-			          Check for Updates
-			        </li>
-			        <li role="menuitem">
-			          Take Screenshot
-			        </li>
-			        <li role="menuitem">
-			          Full Screen
-			        </li>
-			        <li role="menuitem">
-			          <a href="https://phet.colorado.edu/files/troubleshooting/?BIG-LONG-LINK">Report Problem</a>
-			   	    </li>
-			   	    <li role="menuitem">
-			   	      About this Sim
-			   	    </li>
-			   	    <li role="menuitem">
-			   	      <a href="http://phet.colorado.edu/">PhET Website</a>
-			   	    </li>
-			   	  </ul>
-			  </div><!-- end menu-wrapper -->
-</div> <!-- end bottom bar region -->
+		<div class="menu-wrapper" aria-label="Teacher tools and links">
+		  <button
+		        aria-haspopup="true"
+		        aria-controls="phet-menu">PhET Menu</button>
+		  <ul role="menu" id="phet-menu">
+		    <li role="menuitem">
+		      View Options
+		    </li>
+		    <li role="menuitem">
+		      Check for Updates
+		    </li>
+		    <li role="menuitem">
+		      Take Screenshot
+		    </li>
+		    <li role="menuitem">
+		      Full Screen
+		    </li>
+		    <li role="menuitem">
+		      <a href="https://phet.colorado.edu/files/troubleshooting/?BIG-LONG-LINK">Report Problem</a>
+		    </li>
+		    <li role="menuitem">
+		      About this Sim
+		    </li>
+		    <li role="menuitem">
+		      <a href="http://phet.colorado.edu/">PhET Website</a>
+		    </li>
+		  </ul>
+		</div><!-- end menu-wrapper -->
+</div> <!-- end Sim Resources bar region -->
 		<!-- Javascript from Pickering Menu Button-->
 		<script>
 		(function() {
