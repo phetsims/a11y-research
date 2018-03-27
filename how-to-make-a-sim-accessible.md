@@ -18,7 +18,7 @@ options like normal into the `Parent.call()` or `mutate()` function calls.
       * `tagName`: Sets the tag name for the DOM element representing this node in the parallel DOM
       * `inputType`: Sets the input type for the representative DOM element, only relevant if tagname is 'input'
       * `inputValue`: Sets the input value for the representative DOM element, only relevant if tagname is 'input'
-      * `parentContainerTagName`: Sets the tag name for an element that contains this node's DOM element and its peers
+      * `containerTagName`: Sets the tag name for an element that contains this node's DOM element and its peers
       * `labelTagName`: Sets the tag name for the DOM element labelling this node, usually a paragraph
       * `descriptionTagName`: Sets the tag name for the DOM element describing this node, usually a paragraph
       * `focusHighlight`: Sets the focus highlight for the node, see `setFocusHighlight()`

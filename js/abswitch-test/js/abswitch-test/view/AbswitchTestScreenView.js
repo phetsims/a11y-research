@@ -95,7 +95,7 @@ define( function( require ) {
     // a11y
     checkboxSwitch.tagName = 'input';
     checkboxSwitch.inputType = 'checkbox';
-    checkboxSwitch.parentContainerTagName = 'div';
+    checkboxSwitch.containerTagName = 'div';
     checkboxSwitch.labelTagName = 'label';
     checkboxSwitch.accessibleLabel = 'Add circle';
     checkboxSwitch.addAccessibleInputListener( {
@@ -150,7 +150,7 @@ define( function( require ) {
     radioLabelA.inputType = 'radio';
     radioLabelA.labelTagName = 'label';
     radioLabelA.accessibleLabel = 'Circle';
-    radioLabelA.parentContainerTagName = 'div';
+    radioLabelA.containerTagName = 'div';
     radioLabelA.setAccessibleAttribute( 'name', 'radioButtonGroupMember' );
     radioLabelA.addAccessibleInputListener( {
       change: function( event ) {
@@ -170,7 +170,7 @@ define( function( require ) {
     radioLabelB.inputType = 'radio';
     radioLabelB.labelTagName = 'label';
     radioLabelB.accessibleLabel = 'Square';
-    radioLabelB.parentContainerTagName = 'div';
+    radioLabelB.containerTagName = 'div';
     radioLabelB.setAccessibleAttribute( 'name', 'radioButtonGroupMember' );
     radioLabelB.addAccessibleInputListener( {
       change: function( event ) {
