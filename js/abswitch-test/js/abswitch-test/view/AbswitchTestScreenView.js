@@ -123,7 +123,7 @@ define( function( require ) {
     var parent = new Node( {
       tagName: 'div',
       labelTagName: 'h3',
-      accessibleLabel: 'Circle or Square',
+      innerContent: 'Circle or Square',
       prependLabels: true
     } );
     radioButtonParent.addChild( parent );
