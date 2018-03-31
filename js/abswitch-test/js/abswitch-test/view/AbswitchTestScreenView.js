@@ -144,7 +144,7 @@ define( function( require ) {
     radioSwitch.tagName = 'fieldset';
     radioSwitch.groupFocusHighlight = true;
     radioSwitch.setAriaLabelledByNode( parent );
-    parent.setAriaLabelContent( AccessiblePeer.LABEL );
+    parent.setAriaLabelContent( AccessiblePeer.LABEL_SIBLING );
 
     radioLabelA.tagName = 'input';
     radioLabelA.inputType = 'radio';
