@@ -55,18 +55,18 @@ define( function( require ) {
 
     // a11y
     buttonSwitch.tagName = 'button';
-    buttonSwitch.accessibleLabel = 'Circle or Square A B Switch, Circle selected';
+    buttonSwitch.innerContent = 'Circle or Square A B Switch, Circle selected';
     buttonSwitch.addAccessibleInputListener( {
       click: function() {
         buttonProperty.set( !buttonProperty.get() );
 
         if ( buttonProperty.get() ) {
           utteranceQueue.addToBack( 'Square selected' );
-          buttonSwitch.accessibleLabel = 'Circle or Square A B Switch, Square selected';
+          buttonSwitch.innerContent = 'Circle or Square A B Switch, Square selected';
         }
         else {
           utteranceQueue.addToBack( 'Circle selected' );
-          buttonSwitch.accessibleLabel = 'Circle or Square A B Switch, Circle selected';
+          buttonSwitch.innerContent = 'Circle or Square A B Switch, Circle selected';
         }
       }
     } );
@@ -97,7 +97,7 @@ define( function( require ) {
     checkboxSwitch.inputType = 'checkbox';
     checkboxSwitch.containerTagName = 'div';
     checkboxSwitch.labelTagName = 'label';
-    checkboxSwitch.accessibleLabel = 'Add circle';
+    checkboxSwitch.labelContent = 'Add circle';
     checkboxSwitch.addAccessibleInputListener( {
       change: function() {
         checkboxProperty.set( !checkboxProperty.get() );
@@ -149,7 +149,7 @@ define( function( require ) {
     radioLabelA.tagName = 'input';
     radioLabelA.inputType = 'radio';
     radioLabelA.labelTagName = 'label';
-    radioLabelA.accessibleLabel = 'Circle';
+    radioLabelA.labelContent = 'Circle';
     radioLabelA.containerTagName = 'div';
     radioLabelA.setAccessibleAttribute( 'name', 'radioButtonGroupMember' );
     radioLabelA.addAccessibleInputListener( {
@@ -169,7 +169,7 @@ define( function( require ) {
     radioLabelB.tagName = 'input';
     radioLabelB.inputType = 'radio';
     radioLabelB.labelTagName = 'label';
-    radioLabelB.accessibleLabel = 'Square';
+    radioLabelB.labelContent = 'Square';
     radioLabelB.containerTagName = 'div';
     radioLabelB.setAccessibleAttribute( 'name', 'radioButtonGroupMember' );
     radioLabelB.addAccessibleInputListener( {

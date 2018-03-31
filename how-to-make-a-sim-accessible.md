@@ -22,7 +22,7 @@ options like normal into the `Parent.call()` or `mutate()` function calls.
       * `labelTagName`: Sets the tag name for the DOM element labelling this node, usually a paragraph
       * `descriptionTagName`: Sets the tag name for the DOM element describing this node, usually a paragraph
       * `focusHighlight`: Sets the focus highlight for the node, see `setFocusHighlight()`
-      * `accessibleLabel`: Set the label content for the node, see `setAccessibleLabel()`
+      * `labelContent`: Set the label content for the node, see `setLabelContent()`
       * `accessibleDescription`: Set the description content for the node, see `setAccessibleDescription()`
       * `accessibleVisible`: Sets whether or not the node's DOM element is visible in the parallel DOM
       * `focusable`: Sets whether or not the node can receive keyboard focus
