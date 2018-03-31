@@ -23,7 +23,7 @@ options like normal into the `Parent.call()` or `mutate()` function calls.
       * `descriptionTagName`: Sets the tag name for the DOM element describing this node, usually a paragraph
       * `focusHighlight`: Sets the focus highlight for the node, see `setFocusHighlight()`
       * `labelContent`: Set the label content for the node, see `setLabelContent()`
-      * `accessibleDescription`: Set the description content for the node, see `setAccessibleDescription()`
+      * `descriptionContent`: Set the description content for the node, see `setDescriptionContent()`
       * `accessibleVisible`: Sets whether or not the node's DOM element is visible in the parallel DOM
       * `focusable`: Sets whether or not the node can receive keyboard focus
       * `useAriaLabel`: Sets whether or not the label will use the 'aria-label' attribute, see `setUseAriaLabel()`
