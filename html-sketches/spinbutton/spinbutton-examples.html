@@ -27,12 +27,25 @@
 	<h1>Spinbutton Examples</h1>
 	
 	<h2>Using <code>div</code> element</h2>
+	<p>The <code>div</code> example is valid HTML.</p>
 	
 	<div class="spinbutton form-element" role="spinbutton" aria-valuemin="1" aria-valuemax="10" aria-valuenow="4" aria-valuetext="billion kilograms" tabindex="0">Mass 1</div>
+	<pre>
+&lt;div&gt; class="spinbutton form-element" tabindex="0" role="spinbutton"
+aria-valuemin="1" aria-valuemax="10" aria-valuenow="4" 
+aria-valuetext="billion kilograms">Mass 1&lt;/div&gt;
+	</pre>
 	
 	<h2>Using <code>button</code> element</h2>
+	<p>Putting  <code>role=spinbutton</code> and using the a<code>ria-min,-max,-now, and -text</code> attributes is not valid HTML.</p>
 	
 	<button role="spinbutton" aria-valuemin="1" aria-valuemax="10" aria-valuenow="4" aria-valuetext="billion kiliograms">Mass 1</button>
+	
+		<pre>
+&lt;button&gt; role="spinbutton"
+aria-valuemin="1" aria-valuemax="10" aria-valuenow="4" 
+aria-valuetext="billion kilograms">Mass 1&lt;/buttonv&gt;
+		</pre>
 
 	
 </body>
