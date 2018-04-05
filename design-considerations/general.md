@@ -30,6 +30,7 @@ In your consideratons, please indicate:
 > If needed, checkout the Keyboard Shortcuts for this sim under Sim Resources.
 
 - If needed, checkout the Keyboard Shortcuts under Sim Resources. This sim has custom shortcuts.
+- If needed, checkout the Keyboard Shortcuts under Sim Resources. This sim has special shortcuts.
 - If needed, checkout the Keyboard Shortcuts under Sim Resources. This sim has a custom interaction.
 
 ## Scene Summary Heading & Region
