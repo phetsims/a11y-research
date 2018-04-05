@@ -19,7 +19,7 @@ In your consideratons, please indicate:
 
 # General Design Considerations
 ## Cue for Keyboard Shortcuts dialog
-- **General Consideration:** When a sim constains custom interactions should there be a stronger cue to check out the keyboard shortcuts dialog?
+- **General Consideration:** When a sim contains custom interactions should there be a stronger cue to check out the keyboard shortcuts dialog?
 - **Sim Example:** Balloons and Static Electricity (BASE)
 - **Sim Consideration:** Considering how beneficial the custom keyboard shortcuts, specifically the Jump Keys (JW, JS, JN, JC) are for non-visual users, should the cue in the Scene Summary be stronger?
 - **Interview Data for BASE:** 
