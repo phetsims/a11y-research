@@ -50,7 +50,7 @@ In BASE, the general cue at the end of the Scenee Summary is
 A second more spcific cue coe directly after teh Grab balloon button at the end of teh Balloon's dynamic description.
 > Look for grab button to play.
 
-- **Interview Data:** In general, these cues have not gotten in the way, and have likely cued prodictive explorations. In one recent interaview, however, a user tried to interact with the "Grab balloon to play" interaction cue as if it were a button. tThey user had no indication that it was a button, but tried a butto interaction (Space or Enter key) just to test if perhaps the text was interactive. When this same user got to the Grab balloon button, their comment was, "oh, there is a grab button."
+- **Interview Data:** In general, these cues have not gotten in the way, and have likely cued productive explorations. In one recent interaview, however, a user tried to interact with the "Grab balloon to play" interaction cue as if it were a button. tThey user had no indication that it was a button, but tried a butto interaction (Space or Enter key) just to test if perhaps the text was interactive. When this same user got to the Grab balloon button, their comment was, "oh, there is a grab button."
 
 ### Design Suggestion
 - Replace the general Scene Summary interaction cue with the more specific, "Look for grab button to play." Or more spcifically, "Look for grab balloon button to play." With this more specific interaction cue in the Scene Sumary, a cue at the object level should be unecessary. 
