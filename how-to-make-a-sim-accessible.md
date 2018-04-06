@@ -2,37 +2,114 @@
 
 # How to Make a Sim Accessible
 
-## Overall Code structure
+## Understand the Goal
+  * Many years in the making
+  * Fluid process, lot's changing (?)
 
-* `Accessibility.js` is a mixin that is added to Node.js, so all we have to do is pass in a11y specific
+## Understanding the pDOM
+The traditional renderings of PhET sims (svg, canvas, webgl) hold very little semantic data as to what is inside the
+rendered graphic. They are a single, graphical element in the html. The pDOM ( parallel DOM (document object model))
+pulls semantic data from the `Scenery` scene graph and adds it to an separate html structure that is accessible to
+assistive technologies. When we say pDOM, think an html manifestation of the graphical `Node` content in the phetsim.
+
+This html acts as just another modality to the phet model. You can interact with it to control the simulation, and you
+can get information out of it, as the pDOM is updated in real time in response to changes in the model.
+
+## Overall Code structure
+Note: a11y is a synonym for accessibility.
+
+* `Accessibility.js` is a trait that is added to `Node.js`, so all we have to do is pass in a11y specific
 options like normal into the `Parent.call()` or `mutate()` function calls.
-* `_domElement` is the main 'node' if you will for the parallel DOM. It get assigned listeners similar to items in the 
- scene graph and can be updated by the sim.
+
+* The DAG features of the a11y side of Scenery are handled parallel to `Node`s in Scenery. Each `Node` with the
+`Accessibility` trait added to its prototype has N `AccessibleInstance`s based on the number of times it has been added
+to the scene graph. The pDOM elements of each `Node` are created and handled with `AccessiblePeer`. There is a 1x1
+relationship of `AccessibleInstance` and `AccessiblePeer`.
+
+## Basic Example - adding a11y features to a `Node`
+The primary way that developers will interact with a11y is through options passed through to `Node.js`. First off, each
+`Node` that wants content in the pDOM will need an html element in the pDOM to represent it. To do this, use the
+`tagName` option:
+```
+var a11yNode = new Node( {
+  tagName: 'p'
+}
+```
+The above code snippet will create a node that is a `<p>` tag in the pDOM. To give content to this `<p>`, use the
+`innerContent` option.
+
+```
+a11yNode.innerContent = 'I am a p tag in the pDOM!';
+```
+
+Just like other Node options, you can pass them into an options object, `mutate` call, and by using getters/setters.
+Now the pDOM will look like:
+```
+<p>I am a p tag in the pDOM</p>
+```
+
+
+## Each Node can have more than one `HTMLElements` in the pDOM
+  * `labelTagName`, `labelContent`
+  * `containerTagName`
+  * Terminology of pDOM elements (parent and siblings of the primary sibling)
+
 
 ## Keyboard Navigation
 
-+ Decide what members of the sim need to be tab navigable, for each do the following
-  * Choose an html element that fits.
-  * Add accessible content:
-    + extending options in the type's constructor. This is a list of options, for more see `Accessibility.js`:
-      * `tagName`: Sets the tag name for the DOM element representing this node in the parallel DOM
-      * `inputType`: Sets the input type for the representative DOM element, only relevant if tagname is 'input'
-      * `inputValue`: Sets the input value for the representative DOM element, only relevant if tagname is 'input'
-      * `containerTagName`: Sets the tag name for an element that contains this node's DOM element and its peers
-      * `labelTagName`: Sets the tag name for the DOM element labelling this node, usually a paragraph
-      * `descriptionTagName`: Sets the tag name for the DOM element describing this node, usually a paragraph
-      * `focusHighlight`: Sets the focus highlight for the node, see `setFocusHighlight()`
-      * `labelContent`: Set the label content for the node, see `setLabelContent()`
-      * `descriptionContent`: Set the description content for the node, see `setDescriptionContent()`
-      * `accessibleVisible`: Sets whether or not the node's DOM element is visible in the parallel DOM
-      * `focusable`: Sets whether or not the node can receive keyboard focus
-      * `useAriaLabel`: Sets whether or not the label will use the 'aria-label' attribute, see `setUseAriaLabel()`
-      * `ariaRole`: Sets the ARIA role for the DOM element, see `setAriaRole()` for documentation
-      * `ariaDescribedByElement`: Sets a description relationship for this node's DOM element by id, see `setAriaDescribedByElement()`
-      * `ariaLabelledByElement`: Sets a label relationship with another element in the DOM by id, see `setAriaLabelledByElement()`
-      * `prependLabels`: Sets whether we want to prepend labels above the node's HTML element, see `setPrependLabels()` 
-    + Add the listeners for the keyboard that are already set up for the mouse.
-        * `this.addAccessibleInputListener( { [event]: function(){}});` 
-        * This [event] should reflect the event from the `tagName` html element that was passed in the options.
-  * Use `this.accessibleOrder = []` to set the ordering of tab navigation. The first element in the array
-  is prioritized first and all elements that are not included in the array are appended last.
+### Inputs
+  * `inputType`, `inputValue`, `accessibleChecked`
+### Focusability
+  * `focusable: true` to make any interactive focusable with keyboard nav
+  * `accessibleVisible`, `accessibleContentDisplayed`?
+
+#### Setting you own focus highlight
+  * `focusHighlight: {Node}`
+  * `focusHighlightLayerable: true` (node must be in the scene graph and set visibility to false)
+
+#### Group Focus
+  * `groupFocusHighlight` TODO: this isn't set in stone yet I think)
+
+### Input Listeners
+  * `this.addAccessibleInputListener()`
+
+## Descriptions
+
+### Static Descriptions
+  * understand the goal. Anyone should be able to come to a phetsim and understand the basic structure?
+  * [Working document](https://docs.google.com/document/d/1OOpxVDwYc49axUcU2A6T_SO2ppt0z4mNJTNC4jDHr-4/edit#)
+  * understand [Accessible Name](https://developer.paciellogroup.com/blog/2017/04/what-is-an-accessible-name/)
+      * `ariaLabel`
+      * `aria-labelledby`/`describedby`????
+  * This is where you are piecing together all of the individual nodes.
+  * More complex options come up
+    * `appendLabel`, `appendDescription`
+    * `accessibleOrder`
+
+
+### Interactive Alerts
+  * Talk about `UtteranceQueue` (AriaHerald?)
+
+
+## Handling a11y specific strings
+  * Not YET translatable, but they will be, so please treat usages as similarly to strings of the `strings!` plugin as
+  possible so that it is easier to transfer them over to translatable strings, think means:
+    * Name a11y strings without `String` at the end of the key
+    * declare all a11y strings at the top of the file (like their own module)
+    * have `var`s that end in `String` when declaring strings
+    * string keys should hold an object with a "`value`" key that stores the a11y string.
+  * Create an `{{SIM}}A11yStrings.js` file.
+
+
+## In Conclusion
+
+Please discuss questions or problems with @jessegreenberg, @zepumph, or @mbarlow12 and update this document accordingly
+to help those who follow in your footsteps!
+
+### Resources for further understanding:
+* [Screen Reader Support for a Complex Interactive Science Simulation](https://drive.google.com/file/d/0B44Uycdx6JGdRFpXcDJqZl9BUk0/view)
+* [Description Strategies to Make an Interactive Science Simulation Accessible
+](http://scholarworks.csun.edu/handle/10211.3/190214)
+
+
+### Happy a11y development!
