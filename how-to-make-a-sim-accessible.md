@@ -30,7 +30,7 @@ relationship of `AccessibleInstance` and `AccessiblePeer`.
 The primary way that developers will interact with a11y is through options passed through to `Node.js`. First off, each
 `Node` that wants content in the pDOM will need an html element in the pDOM to represent it. To do this, use the
 `tagName` option:
-```
+```js
 var a11yNode = new Node( {
   tagName: 'p'
 }
@@ -38,13 +38,13 @@ var a11yNode = new Node( {
 The above code snippet will create a node that is a `<p>` tag in the pDOM. To give content to this `<p>`, use the
 `innerContent` option.
 
-```
+```js
 a11yNode.innerContent = 'I am a p tag in the pDOM!';
 ```
 
 Just like other Node options, you can pass them into an options object, `mutate` call, and by using getters/setters.
 Now the pDOM will look like:
-```
+```html
 <p>I am a p tag in the pDOM</p>
 ```
 
