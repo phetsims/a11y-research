@@ -78,6 +78,7 @@ Now the pDOM will look like:
 ### Static Descriptions
   * understand the goal. Anyone should be able to come to a phetsim and understand the basic structure?
   * [Working document](https://docs.google.com/document/d/1OOpxVDwYc49axUcU2A6T_SO2ppt0z4mNJTNC4jDHr-4/edit#)
+  * When adding options to nodes, separate acessibility specific options in their own block, header them with an `// a11y` comment
   * understand [Accessible Name](https://developer.paciellogroup.com/blog/2017/04/what-is-an-accessible-name/)
       * `ariaLabel`
       * `aria-labelledby`/`describedby`????
