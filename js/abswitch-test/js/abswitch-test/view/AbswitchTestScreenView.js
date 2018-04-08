@@ -119,12 +119,12 @@ define( function( require ) {
     // label for the radio option
     var radioLabel = new Text( 'ABSwitch as a radio button group', { font: font } );
     radioButtonParent.addChild( radioLabel );
-    
+
+    // a11y
     var parent = new Node( {
       tagName: 'div',
       labelTagName: 'h3',
-      innerContent: 'Circle or Square',
-      prependLabels: true
+      innerContent: 'Circle or Square'
     } );
     radioButtonParent.addChild( parent );
 
