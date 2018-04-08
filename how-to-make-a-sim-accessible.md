@@ -30,7 +30,7 @@ relationship of `AccessibleInstance` and `AccessiblePeer`.
 The primary way that developers will interact with a11y is through options passed through to `Node.js`. First off, each
 `Node` that wants content in the pDOM will need an html element in the pDOM to represent it. To do this, use the
 `tagName` option:
-```
+```js
 var a11yNode = new Node( {
   tagName: 'p'
 }
@@ -38,13 +38,13 @@ var a11yNode = new Node( {
 The above code snippet will create a node that is a `<p>` tag in the pDOM. To give content to this `<p>`, use the
 `innerContent` option.
 
-```
+```js
 a11yNode.innerContent = 'I am a p tag in the pDOM!';
 ```
 
 Just like other Node options, you can pass them into an options object, `mutate` call, and by using getters/setters.
 Now the pDOM will look like:
-```
+```html
 <p>I am a p tag in the pDOM</p>
 ```
 
@@ -78,6 +78,7 @@ Now the pDOM will look like:
 ### Static Descriptions
   * understand the goal. Anyone should be able to come to a phetsim and understand the basic structure?
   * [Working document](https://docs.google.com/document/d/1OOpxVDwYc49axUcU2A6T_SO2ppt0z4mNJTNC4jDHr-4/edit#)
+  * When adding options to nodes, separate acessibility specific options in their own block, header them with an `// a11y` comment
   * understand [Accessible Name](https://developer.paciellogroup.com/blog/2017/04/what-is-an-accessible-name/)
       * `ariaLabel`
       * `aria-labelledby`/`describedby`????
