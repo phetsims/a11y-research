@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkbox Examples</title>
+
+  <!-- Style Sheets -->
+  
+</head>
+<body>
+	<h1>Checkbox Examples</h1>
+
+	<h2>Question</h2>
+	<p>Why (or when) does teh label text repeat?</p>
+	
+	<h3>BASE's Checkbox</h3>
+	<p>Label text repeats.</p>
+		<div tabindex="-1" id="container-421-482-716-792-783-766">
+		    <input id="421-482-716-792-783-766" tabindex="0" type="checkbox">
+		    <label tabindex="-1" id="label-421-482-716-792-783-766" for="421-482-716-792-783-766">Two-Balloon Experiments</label>
+		    <p tabindex="-1" id="description-421-482-716-792-783-766">Play with two balloons or just one.</p>
+		</div>
+	
+	<pre>
+    &lt;div tabindex="-1" id="container-421-482-716-792-783-766"&gt;
+      &lt;input id="421-482-716-792-783-766" tabindex="0" type="checkbox" style="width: 1px;"&gt;
+      &lt;label tabindex="-1" id="label-421-482-716-792-783-766" for="421-482-716-792-783-766">Two-Balloon Experiments&lt;/label&gt;
+      &lt;p tabindex="-1" id="description-421-482-716-792-783-766">Play with two balloons or just one.&lt;/p&gt;
+    &lt;/div&gt;
+	</pre>
+    
+	<h3>Removed ID on wrapper <code>div</code></h3>
+	<p>Label text repeats.</p>
+		<div>
+		    <input id="eg-02" tabindex="0" type="checkbox">
+		    <label tabindex="-1" id="label-eg-02" for="eg-02">Two-Balloon Experiments</label>
+		    <p tabindex="-1" id="description-eg-02">Play with two balloons or just one.</p>
+		</div>
+	
+	<pre>
+	&lt;div tabindex="-1"&gt;
+	  &lt;input id="eg-02" tabindex="0" type="checkbox"&gt;
+	  &lt;label tabindex="-1" id="label-eg-02" for="eg-02">Two-Balloon Experiments&lt;/label&gt;
+	  &lt;p tabindex="-1" id="description-eg-02">Play with two balloons or just one.&lt;/p&gt;
+	&lt;/div&gt;
+	</pre>
+	
+	<h3>Using <code>aria-label</code></h3>
+	<p><code>aria-label</code> text does not repeat!</p>
+		<div>
+		    <input id="eg-03" tabindex="0" type="checkbox" aria-label="Two-Balloon Experiments">
+		    <p tabindex="-1" id="description-eg-03">Play with two balloons or just one.</p>
+		</div>
+	
+	<pre>
+	&lt;div tabindex="-1"&gt;
+	  &lt;input id="eg-03" tabindex="0" type="checkbox" aria-label="Two-Balloon Experiments"&gt;
+	  &lt;p tabindex="-1" id="description-eg-03">Play with two balloons or just one.&lt;/p&gt;
+	&lt;/div&gt;
+	</pre>	
+	
+	<h3>Removing for attribute (a big A11y No-No!)</h3>
+	<p>Label text does not repeat!</p>
+		<div>
+		    <input id="eg-04" tabindex="0" type="checkbox">
+		    <label tabindex="-1" id="label-eg-04">Two-Balloon Experiments</label>
+		    <p tabindex="-1" id="description-eg-04">Play with two balloons or just one.</p>
+		</div>
+	
+	<pre>
+	&lt;div tabindex="-1"&gt;
+	  &lt;input id="eg-04" tabindex="0" type="checkbox"&gt;
+	  &lt;label tabindex="-1" id="label-eg-04" for="eg-02">Two-Balloon Experiments&lt;/label&gt;
+	  &lt;p tabindex="-1" id="description-eg-04">Play with two balloons or just one.&lt;/p&gt;
+	&lt;/div&gt;
+	</pre>	
+		
+</body>
+<!-- Javascripts go here! -->
+</html>
