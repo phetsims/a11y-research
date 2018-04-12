@@ -76,11 +76,12 @@ Now the pDOM will look like:
 ## Descriptions
 
 ### Static Descriptions
-  * understand the goal. Anyone should be able to come to a phetsim and understand the basic structure?
+  * Understand the goal. Anyone should be able to come to a phetsim and understand the basic structure?
   * [Working document](https://docs.google.com/document/d/1OOpxVDwYc49axUcU2A6T_SO2ppt0z4mNJTNC4jDHr-4/edit#)
   * When adding options to nodes, separate acessibility specific options in their own block, header them with an `// a11y` comment
-  * understand [Accessible Name](https://developer.paciellogroup.com/blog/2017/04/what-is-an-accessible-name/)
-      * `ariaLabel`
+  * Understand [Accessible Name](https://developer.paciellogroup.com/blog/2017/04/what-is-an-accessible-name/)
+      * `label`: provides the accessible name for an interactive _input type_ (e.g., `input type="checkbox") that does not have inner content. A `label` is preferred when the sim interaction has a visible text-based _label_ on screen. A `label` element can only be used with (associated with) _labelable elements_ like typical interactive HTML elements ([http://w3c.github.io/html/sec-forms.html#labelable-element](http://w3c.github.io/html/sec-forms.html#labelable-element)). It cannot, for example, be associated with a `div` with `role=checkbox`.  When a visible text-based label does not exist on screen, other labeling options can be considered. 
+	  * `aria-label`: is an aria attribute that can provide an accessible name when an element is using a native html role.
       * `aria-labelledby`/`describedby`????
   * This is where you are piecing together all of the individual nodes.
   * More complex options come up
