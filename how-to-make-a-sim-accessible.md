@@ -80,9 +80,12 @@ Now the pDOM will look like:
   * [Working document](https://docs.google.com/document/d/1OOpxVDwYc49axUcU2A6T_SO2ppt0z4mNJTNC4jDHr-4/edit#)
   * When adding options to nodes, separate acessibility specific options in their own block, header them with an `// a11y` comment
   * Understand [Accessible Name](https://developer.paciellogroup.com/blog/2017/04/what-is-an-accessible-name/)
-      * `label`: provides the accessible name for an interactive _input type_ (e.g., `input type="checkbox") that does not have inner content. A `label` is preferred when the sim interaction has a visible text-based _label_ on screen. A `label` element can only be used with (associated with) _labelable elements_ like typical interactive HTML elements ([http://w3c.github.io/html/sec-forms.html#labelable-element](http://w3c.github.io/html/sec-forms.html#labelable-element)). It cannot, for example, be associated with a `div` with `role=checkbox`.  When a visible text-based label does not exist on screen, other labeling options can be considered. 
-	  * `aria-label`: is an aria attribute that can provide an accessible name when an element is using a native html role.
-      * `aria-labelledby`/`describedby`????
+  The short article above describes very simply and briefly the different ways an element gets an accessible name.
+      * element's content: `<button>my button</button>`. The inner text within the button's opening and closing tags is the button element's accessible name.
+      * `label` element: a `label` element can be associated with an interactive _input type_ (e.g., `input type="checkbox") that does not have inner content in order to provide the input with an accessible name. A `label` is preferred naming method when the sim interaction has visible text-based identifying it on screen. A `label` element can only associated with _labelable elements_ like typical interactive HTML elements ([http://w3c.github.io/html/sec-forms.html#labelable-element](http://w3c.github.io/html/sec-forms.html#labelable-element)). It cannot, for example, be associated with a `div` with `role=checkbox`.  When a visible text-based label does not exist on screen, other labeling options can be considered. 
+	  * `aria-label`: is an aria attribute that can provide an accessible name.
+      * `aria-labelledby`: aria-labelledby can be used to associate an HTML element other than the label element to another element and the leements do not have to be right beside eachother. In a PhET Sim one might want to associate a heading element with an region or group of related elements. For example, an H2 heading is associated with the Play Area region through an aria-labelledby attribute, and thus provides the region with an accessible name that can be provided to assistive technology.
+	  * `describedby`????: a description that can be associated with another element to provide more context. It does not provide an element's accessible name??
   * This is where you are piecing together all of the individual nodes.
   * More complex options come up
     * `appendLabel`, `appendDescription`
