@@ -36,7 +36,7 @@
     <!-- Begin slides. Just make elements with a class of slide. -->
     <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-01">
 	  	<div class="vcenter">
-				<h1 id="slide-title-01" style="font-size: 2.5em;">Parallel DOM Architecture for Interactive Science Simulations</h1>
+				<h1 id="slide-title-01" style="font-size: 2.5em;">Parallel DOM Architecture for <br>Interactive Science Simulations</h1>
 				<br>
 				<img src="img/_logo-phet.png" alt="PhET Interactive Simulations Project" style="width:300px;">
 				<h2 style="color: #001B70; padding: 0; margin: 0; font-size:1.5em">Jesse Greenberg &amp; Taliesin L. Smith</h2>
@@ -53,40 +53,45 @@
 		
 		<div class="panel" style="width:40%;">
 		  <ul>
+			<li>Designed to engage students in exploration &amp; experimentation</li>
 		  	<li>Started in 2002</li>
 		  	<li>170 science &amp; math simulations</li>
+			<li>50 sims now built in HTML5</li>
 		  	<li>Run 100 Million+ times/year</li>
-			<li>87 languages</li>
-			<li>Flexible &amp; exploratory</li>
-			<li>Used with a diverse age range</li>
-			<li><strong>Free of cost</strong> &amp; openly licensed</li>
+			<li>Translated into 87 languages</li>
+			<li>Free, flexible, exploratory learning tools</li>
 		  </ul>
 		</div>
     </section>
 	
 	<section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-03">
-      <h2 id="slide-title-03">PhET Design Supports Experimentation</h2>
-		<figure class="panel panel-left" style="width:50%;">
-    		<img src="img/" alt="Ohm's Law">
-			<img src="img/" alt="John Travoltage">
-			<img src="img/" alt="Balloons and Static Electricity">
+      <h2 id="slide-title-03">PhET Design Invites Exploration</h2>
+		<figure class="panel span-two">
+    		<img src="img/sim-OL.png" alt="Ohm's Law" style="width:90%;">
+		</figure>
+		
+		<figure class="panel span-two">
+			<img src="img/sim-JT.png" alt="John Travoltage" style="width:90%;">
+		</figure>
+		
+		<figure class="panel span-two">
+			<img src="img/sim-BASE-01.png" alt="Balloons and Static Electricity" style="width:90%;">
     	</figure>
 		
-		<div class="panel" style="width:40%;">
+		<div style="clear:both; float:none;">
 		  <ul>
-			 <li>game-like &amp; fun with playful visuals</li>
-		  	<li>simple &amp; inviting with salient places for interaction</li>
-			<li>instant real-time feedback during interaction</li>
+			<li>game-like &amp; playful</li>
+		  	<li>fun &amp; inviting</li>
+			<li>instant real-time feedback</li>
 		  </ul>
-		  
-		  <p class="big">Making these important learning tools accessible to more students will have a big impact!</p>
+		  <p class="big"><strong>Making these important learning tools accessible to more students will have a big impact!</strong></p>
 		</div>
     </section>
 	
 	<section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-04">
       <h2 id="slide-title-04">Custom Scene Graph - Scenery</h2>
 		<figure class="panel panel-left" style="width:50%;">
-    		<img src="img/" alt="{{Fig: Scenery data structure}}">
+    		<img src="img/scenery-graphical-mode.jpg" alt="Scenery's tree-like data structure">
     	</figure>
 		
 		<div class="panel" style="width:40%;">
@@ -103,15 +108,10 @@
 	
 	<section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-05">
       <h2 id="slide-title-05">Accessibility Challenges</h2>
-		<figure class="panel panel-left" style="width:50%;">
-    		<img src="img/" alt="{{Fig: A11y Challenges}}">
-    	</figure>
-		
-		<div class="panel" style="width:40%;">
 		<h3>Scenery's Challenges</h3>
 		  <ul>
 			 <li>Provides no semantic structure</li>
-			 <li>Employes multiple graphics renderers</li>
+			 <li>Employs multiple graphics renderers</li>
 			 <li>Everything is drawn on the screen, even text</li>
 		  </ul>
 		<h3>Design Challenges</h3>
@@ -121,17 +121,16 @@
 			 <li>Wide range of interactive sim objects</li>	 
 		  </ul>
 		  
-		  <p class="big">Need a robust accessible solution, agnostic to graphical renderer!</p>
-		</div>
+		  <p class="big"><strong>Needed a robust accessible solution, agnostic to graphical renderer!</strong></p>
     </section>
 	
 	<section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-06">
       <h2 id="slide-title-06">Innovative Parallel DOM</h2>
 		<figure class="panel panel-left" style="width:50%;">
-    		<img src="img/" alt="{{Fig: Scenery data structure - added HTML mode}}">
+    		<img src="img/scenery-parallel-modes.jpg" alt="Scenery's data structure with parallel HTML representation">
     	</figure>
 		
-		<div class="panel" style="width:40%;">
+		<div class="panel panel-right" style="width:40%;">
 		<h3>PDOM = HTML Tree</h3>
 		  <ul>
 			 <li>Data nodes rendered as HTML elements</li>
@@ -150,11 +149,6 @@
 	
 	<section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-07">
       <h2 id="slide-title-07">Benefits for Students</h2>
-		<figure class="panel panel-left" style="width:50%;">
-    		<img src="img/" alt="{{Fig: Not sure yet}}">
-    	</figure>
-		
-		<div class="panel" style="width:40%;">
 		<h3>Interactive Science Simulations</h3> 
 		<ul>
 			<li>Support student learning  (D’Angelo et 2014)</li>
@@ -168,41 +162,33 @@
 			<li>Individual exploration &amp; experimentation</li>
 			<li>Collaboration with peers using the same learning tool</li>
 		</ul>
-		</div>
     </section>
 	
     <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-08">
-      <h2 id="slide-title-08">Interactive Science Simulations</h2>
-   		<div class="panel panel-left" style="width: 50%;">
- 			<ul>
- 			 <li>Are more readily available</li>
- 			 <li>Do not require special equipment</li>
-			 <li>Create a safe lab-like exploratory experience</li>
-			 <li>Support student learning <small>(D’Angelo et 2014)</small></li>
-			 <li>Allow students to experiment &amp; discover</li>
-			 <li>Help students to <strong>think</strong> about science</li>
-		 	</ul>
-			<p><small class="credit">Images courtesy <a href="https://www.facebook.com/PhETSims/">PhET's facebook page</a>.</small></p>
-		</div>
-   		<figure class="panel panel-right">	
-			<img src="img/_fb-class-use.jpg" alt="PhET Interactive Simulations being used in a classroom with desktop computers." style="width:250px;">
-		 	<img src="img/_fb-international-use.jpg" alt="PhET Interactive Sim being used in foreign country and language." style="width:250px;">
-			<img src="img/_fb-kids-fun.jpg" alt="PhET Interactive Simulations being used by small kids for fun on the couch." style="width:250px;">
-		</figure>
+      <h2 id="slide-title-08">Demonstration will include</h2>
+	<figure class="panel span-two">
+		<img src="img/sim-OL.png" alt="Ohm's Law" style="width:90%;">
+	</figure>
+	
+	<figure class="panel span-two">
+		<img src="img/sim-JT.png" alt="John Travoltage" style="width:90%;">
+	</figure>
+	
+	<figure class="panel span-two">
+		<img src="img/sim-BASE-01.png" alt="Balloons and Static Electricity" style="width:90%;">
+	</figure>
+	<div style="clear:both; float:none;">
+	  <ul>
+		<li>Interactive exploration via keyboard</li>
+	  	<li>Sim content exploration with keyboard &amp; screen reader software</li>
+		<li>Timely alerts of what is happening during interaction with screen reader software</li>
+	  </ul>
+	  <p class="big"><strong>More inclusive sims to support individual students &amp; collaboration with peers!</strong></p>
+	</div>
     </section>
 	
     <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-09">
-      <h2 id="slide-title-09">Demonstration will include</h2>
-	<figure class="panel panel-left" style="width:50%;">
-  		<img src="img/" alt="Ohm's Law">
-		<img src="img/" alt="John Travoltage">
-		<img src="img/" alt="Balloons and Static Electricity">
-  	</figure>	
-    </section>
-	
-
-    <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-10">
-      <h2 id="slide-title-10">Resources &amp; Funders</h2>
+      <h2 id="slide-title-09">Resources &amp; Funders</h2>
 		<div class="panel panel-left">
 			<h3>Resources</h3>
 	 		  	<ul>
