@@ -94,11 +94,11 @@
       <h2 id="slide-title-05">Scenery's Challenges</h2>
 		<div class="panel panel-left">
 			  <ul>
-				  <li>Draws everything on the screen, providing zero semantics</li>
-				  <li>Uses multiple graphics renderers, each with their own unique way accessibility of embedding accessibility information</li>
+				  <li>Draws everything, providing zero semantic information</li>
+				  <li>Uses multiple graphics renderers, each of which has their own way of embedding accessibility information</li>
 		
 				  <li>Complicates design &amp; implementation</li>
-				  <li>Little benefit as support for these techniques varies greatly</li> 
+				  <li>Offers little benefit as support for these techniques, varies greatly as well</li> 
 			  </ul>
 		</div>
 		<figure class="panel panel-right">
@@ -107,21 +107,23 @@
     </section>
 	
 	<section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-06">
-      <h2 id="slide-title-06">Scenery: Parallel DOM</h2>
+      <h2 id="slide-title-06">Enhanced Scenery: Parallel DOM</h2>
 		<figure class="panel panel-left" style="width:50%;">
     		<img src="img/scenery-parallel-modes.jpg" alt="Scenery's data structure with parallel HTML representation">
     	</figure>
 		
 		<div class="panel panel-right" style="width:40%;">
-		<h3>Level playing field</h3>
 		<ul> 
-			<li>Visual mode &amp; accessible mode handled at the same level</li>
-			<li>Agnostic to graphics renderer</li>
+			<li>Add accessibility information to the scene graph</li>
+			<li>Scenery now renders nodes from the scene graph in HTML (and ARIA)</li>
 		</ul>
-		<h3>Generalizable solution</h3>
-		<ul>
+		
+		<h3>Accessibile mode</h3>
+		<ul> 
+			<li>Same level as the visual mode</li>
+			<li>Agnostic to graphics renderer</li>
 			<li>Can be used for all of PhET's HTML5 sims</li>
-			<li>Any scene graph that uses multiple renderers</li>
+			<li>Other projects that use a scene graph may benefit from a PDOM</li>
 		</ul>	  
 		</div>
     </section>
