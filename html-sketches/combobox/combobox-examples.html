@@ -80,10 +80,11 @@
 	
 	<h2>Example 2: ARIA 1.0 Design Pattern</h2>
  <p>See <a href="http://whatsock.com/tsg/Coding%20Arena/ARIA%20Comboboxes/ARIA%20Comboboxes%20(Simulated,%20Readonly)/demo.htm">Whatsock for a working example</a>. This is the pattern I tried to follow.</p>
+ <p><strong>Note: </strong>Behaviour not prgrammed in.</p>
  
  <h3>Non-working <code>combobox</code> widget</h3>
 	<input id="solute2-comboxbox" tabindex="0" aria-label="Solute 2" type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="owned-solute-listbox" readonly>
-	<ul role="listbox" id="owned-solute-listbox">
+	<ul role="listbox" id="owned-solute-listbox" aria-labelledby="solute2-comboxbox solute-option-01">
 		<li role="option" id="solute-option-01">Drink mix</li>
 		<li role="option" id="solute-option-02">Cobalt (II) nitrate</li>
 		<li role="option" id="solute-option-03">Cobalt Chloride</li>
@@ -100,8 +101,8 @@
 	<pre>
 &lt;input id="solute-comboxbox" tabindex="0" aria-label="Solute" type="text" 
 role="combobox" aria-expanded="false" aria-autocomplete="list" 
-aria-controls="owned-solute-listbox" aria-activedescendent="" readonly&gt;
-&lt;ul role="listbox" id="owned-solute-listbox"&gt;
+aria-controls="owned-solute-listbox" aria-activedescendent="solute-option-02" readonly&gt;
+&lt;ul role="listbox" id="owned-solute-listbox" aria-labelledby="solute2-comboxbox solute-option-01"&gt;
   &lt;li role="option" id="solute-option-01"&gt;Drink mix&lt;/li&gt;
   &lt;li role="option" id="solute-option-02"&gt;Cobalt (II) nitrate&lt;/li&gt;
   &lt;li role="option" id="solute-option-03"&gt;Cobalt Chloride&lt;/li&gt;
@@ -117,11 +118,13 @@ aria-controls="owned-solute-listbox" aria-activedescendent="" readonly&gt;
 	
 	
 	<h2>Example 3: Listbox Design Pattern</h2>
-	<p>Code from <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_listbox_role">MDN Listbox Example</a>. This example as-is does not read out the label, "Solute 3", as the listbox's label. The listbox always seems to be annouced upon leaving the listbox, but not always upon entering it. The full Keyboard design pattern is not programmed in, either.</p>
+	<p>Code from <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_listbox_role">MDN Listbox Example</a>. This example as-is does not read out the label, "Solute 3", as the listbox's label on focus. The listbox always seems to be annouced upon leaving the listbox, but not always upon entering it. The full Keyboard design pattern is not programmed in, either.</p>
+	<p><strong>Note:</strong> Added second <code>aria-labelledby</code> and now both</p>
+	
 	<div id="label-listbox1">Solute 3</div>
 	<div role="listbox" tabindex="0" id="listbox1" onclick="return listItemClick(event);" 
 	  onkeydown="return listItemKeyEvent(event);" onkeypress="return listItemKeyEvent(event);" 
-	  onfocus="this.className='focus';" onblur="this.className='blur';" aria-activedescendant="listbox1-2" aria-labelledby="label-listbox1">
+	  onfocus="this.className='focus';" onblur="this.className='blur';" aria-activedescendant="listbox1-2" aria-labelledby="label-listbox1 listbox1-2">
 	  <div role="option" id="listbox1-1">Drink mix</div>
 	  <div role="option" id="listbox1-2" class="selected" aria-selected="true">Cobalt (II) nitrate</div>
 	  <div role="option" id="listbox1-3">Cobalt Chloride</div>
@@ -139,7 +142,7 @@ aria-controls="owned-solute-listbox" aria-activedescendent="" readonly&gt;
 	<h3 id="label-listbox4">Solute 4</h3>
 	<ul role="listbox" tabindex="0" id="listbox4" onclick="return listItemClick(event);" 
 	  onkeydown="return listItemKeyEvent(event);" onkeypress="return listItemKeyEvent(event);" 
-	  onfocus="this.className='focus';" onblur="this.className='blur';" aria-activedescendant="listbox4-4" aria-labelledby="label-listbox4" style="list-style:none;">
+	  onfocus="this.className='focus';" onblur="this.className='blur';" aria-activedescendant="listbox4-4" aria-labelledby="label-listbox4 listbox4-4" style="list-style:none;">
 	  <li role="option" id="listbox4-1">Drink mix</li>
 	  <li role="option" id="listbox4-2">Cobalt (II) nitrate</li>
 	  <li role="option" id="listbox4-3">Cobalt Chloride</li>
@@ -152,6 +155,49 @@ aria-controls="owned-solute-listbox" aria-activedescendent="" readonly&gt;
 	  <li role="option" id="listbox4-10">Potassium dichromate</li>
 	</ul>
 	
+		<h3>Code for Example 4 <code>listbox</code> widget</h3>
+		<pre>
+	&lt;h3 id="label-listbox4">Solute 4&lt;/h3&gt;descendent="" readonly&gt;
+	
+	&lt;ul role="listbox" tabindex="0" id="listbox4" 
+	    onclick="return listItemClick(event);" 
+	    onkeydown="return listItemKeyEvent(event);" 
+	    onkeypress="return listItemKeyEvent(event);" 
+	    onfocus="this.className='focus';" onblur="this.className='blur';"
+	    aria-activedescendant="listbox4-4" 
+	    aria-labelledby="label-listbox4 listbox4-4" 
+	    style="list-style:none;"&gt;
+	  &lt;li role="option" id="listbox4-1"&gt;Drink mix&lt;/li&gt;
+	  &lt;li role="option" id="listbox4-2"&gt;Cobalt (II) nitrate&lt;/li&gt;
+	  &lt;li role="option" id="listbox4-3"&gt;Cobalt Chloride&lt;/li&gt;
+	  &lt;li role="option" id="listbox4-4" class="selected" aria-selected="true"&gt;Potassium dichromate&lt;/li&gt;
+	  &lt;li role="option" id="listbox4-5"&gt;Gold (III) chloride&lt;/li&gt;
+	  &lt;li role="option" id="listbox4-6"&gt;Potassium chromate&lt;/li&gt;
+	  &lt;li role="option" id="listbox4-7"&gt;Nickel (II) chloride&lt;/li&gt;
+	  &lt;li role="option" id="listbox4-8"&gt;Copper sulfate&lt;/li&gt;
+	  &lt;li role="option" id="listbox4-9"&gt;Potassium permanganate&lt;/li&gt;
+	  &lt;li role="option" id="listbox4-10"&gt;Potassium dichromate&lt;/li&gt;
+	&lt;/ul&gt;		
+		</pre>
+
+<h2>Example 5: Button with dynamic inner content &amp; Listbox as an un-ordered list</h2>
+<p>Adpated from <a href="https://www.w3.org/TR/wai-aria-practices/examples/listbox/listbox-collapsible.html">collapsible listbox example</a></p>
+	<div tabindex="-1" id="container-4-59-414-303-307">
+	<span id="listbox5-static-label">Solute</span>
+	  <button id="listbox5-dynamic-label" tabindex="0" aria-haspopup="listbox" aria-labelledby="listbox5-static-label listbox5-dynamic-label">Drink Mix</button>
+	</div>
+	<ul role="listbox" tabindex="0" id="listbox5" aria-activedescendant="listbox5-1" aria-labelledby="listbox5-static-label" style="list-style:none;">
+	  <li role="option" id="listbox5-1" class="selected" aria-selected="true">Drink mix</li>
+	  <li role="option" id="listbox5-2">Cobalt (II) nitrate</li>
+	  <li role="option" id="listbox5-3">Cobalt Chloride</li>
+	  <li role="option" id="listbox5-4">Potassium dichromate</li>
+	  <li role="option" id="listbox5-5">Gold (III) chloride</li>
+	  <li role="option" id="listbox5-6">Potassium chromate</li>
+	  <li role="option" id="listbox5-7">Nickel (II) chloride</li>
+	  <li role="option" id="listbox5-8">Copper sulfate</li>
+	  <li role="option" id="listbox5-9">Potassium permanganate</li>
+	  <li role="option" id="listbox5-10">Potassium dichromate</li>
+	</ul>
 	
 </body>
 </html>		
