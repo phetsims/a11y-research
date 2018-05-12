@@ -11,16 +11,22 @@
 	<h1>Checkbox Examples</h1>
 
 	<h2>Question</h2>
-	<p>Why (or when) does teh label text repeat?</p>
+	<p>When does the checkbox name repeat?</p>
 	
-	<h3>BASE's Checkbox</h3>
-	<p>Label text repeats.</p>
+	<h3>Checkbox with explicit <code>label</code></h3>
+	<ul>
+		<li>Checkbox name repeats.</li>
+		<li>Currently, checkboxes are rendered like this in Scenery.</li>
+	</ul>
+	
+	<h4>Working example</h4>
 		<div tabindex="-1" id="container-421-482-716-792-783-766">
 		    <input id="421-482-716-792-783-766" tabindex="0" type="checkbox">
 		    <label tabindex="-1" id="label-421-482-716-792-783-766" for="421-482-716-792-783-766">Two-Balloon Experiments</label>
 		    <p tabindex="-1" id="description-421-482-716-792-783-766">Play with two balloons or just one.</p>
 		</div>
 	
+	<h4>Markup</h4>
 	<pre>
     &lt;div tabindex="-1" id="container-421-482-716-792-783-766"&gt;
       &lt;input id="421-482-716-792-783-766" tabindex="0" type="checkbox" style="width: 1px;"&gt;
@@ -28,30 +34,21 @@
       &lt;p tabindex="-1" id="description-421-482-716-792-783-766">Play with two balloons or just one.&lt;/p&gt;
     &lt;/div&gt;
 	</pre>
-    
-	<h3>Removed ID on wrapper <code>div</code></h3>
-	<p>Label text repeats.</p>
-		<div>
-		    <input id="eg-02" tabindex="0" type="checkbox">
-		    <label tabindex="-1" id="label-eg-02" for="eg-02">Two-Balloon Experiments</label>
-		    <p tabindex="-1" id="description-eg-02">Play with two balloons or just one.</p>
-		</div>
+ 
 	
-	<pre>
-	&lt;div tabindex="-1"&gt;
-	  &lt;input id="eg-02" tabindex="0" type="checkbox"&gt;
-	  &lt;label tabindex="-1" id="label-eg-02" for="eg-02">Two-Balloon Experiments&lt;/label&gt;
-	  &lt;p tabindex="-1" id="description-eg-02">Play with two balloons or just one.&lt;/p&gt;
-	&lt;/div&gt;
-	</pre>
+	<h3>Checkbox with <code>aria-label</code></h3>
+	<ul>
+		<li>No repetition of checkbox name.</li>
+		<li>Possible absrtaction: render all checkboxes without visual labels using <code>aria-label</code>.</li>
+	</ul>
 	
-	<h3>Using <code>aria-label</code></h3>
-	<p><code>aria-label</code> text does not repeat!</p>
-		<div>
-		    <input id="eg-03" tabindex="0" type="checkbox" aria-label="Two-Balloon Experiments">
-		    <p tabindex="-1" id="description-eg-03">Play with two balloons or just one.</p>
-		</div>
+	<h4>Working example</h4>
+	<div>
+	    <input id="eg-03" tabindex="0" type="checkbox" aria-label="Two-Balloon Experiments">
+	    <p tabindex="-1" id="description-eg-03">Play with two balloons or just one.</p>
+	</div>
 	
+	<h4>Markup</h4>
 	<pre>
 	&lt;div tabindex="-1"&gt;
 	  &lt;input id="eg-03" tabindex="0" type="checkbox" aria-label="Two-Balloon Experiments"&gt;
@@ -59,29 +56,19 @@
 	&lt;/div&gt;
 	</pre>	
 	
-	<h3>Removing for attribute (a big A11y No-No!)</h3>
-	<p>Label text does not repeat!</p>
-		<div>
-		    <input id="eg-04" tabindex="0" type="checkbox">
-		    <label tabindex="-1" id="label-eg-04">Two-Balloon Experiments</label>
-		    <p tabindex="-1" id="description-eg-04">Play with two balloons or just one.</p>
-		</div>
+	<h3>Nested Checkbox</h3>
+	<ul>
+		<li>No repetition of checkbox name.</li>
+		<li>Currently, not possible to nest an <code>input</code> within a <code>label</code> element in Scenery.</li>
+	</ul>
 	
-	<pre>
-	&lt;div tabindex="-1"&gt;
-	  &lt;input id="eg-04" tabindex="0" type="checkbox"&gt;
-	  &lt;label tabindex="-1" id="label-eg-04" for="eg-02">Two-Balloon Experiments&lt;/label&gt;
-	  &lt;p tabindex="-1" id="description-eg-04">Play with two balloons or just one.&lt;/p&gt;
-	&lt;/div&gt;
-	</pre>
-	
-	<h3>Nested <code>input</code> inside <code>label</containerde> with <code>for</code> attribute</h3>
-	<p>Label text does not repeat when the <code>input</code> is nested inside the <code>label</code>. It does not repeat even if the <code>for</code> attribute remains.</p>
+	<h4>Working example</h4>
 		<div>
 		    <label tabindex="-1" id="label-eg-05" for="eg-05">Two-Balloon Experiments<input id="eg-05" tabindex="0" type="checkbox"></label>
 		    <p tabindex="-1" id="description-eg-05">Play with two balloons or just one.</p>
 		</div>
 	
+	<h4>Markup</h4>
 	<pre>
 	&lt;div&gt;
 	    &lt;label tabindex="-1" id="label-eg-05" for="eg-05">Two-Balloon Experiments&lt;input id="eg-05" tabindex="0" type="checkbox"&gt;&lt;/label&gt;
