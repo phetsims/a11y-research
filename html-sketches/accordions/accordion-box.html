@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Accordion Examples</title>
+  <!-- Style Sheets -->
+  <style>
+	  
+  </style>
+
+</head>
+<body>
+	<h1>Accordion Box</h1>
+	
+	<p>Adapted from <a href="">A11y Style Guide</a></p>
+	
+	<p>ToDo:</p>
+		<ul>
+			<li>Need javascription to make accordion work.</li>
+			<li>Need to simplify wrappers.</li>
+		</ul>
+	
+	<section class="accordion-section">
+	  <div class="accordion" role="presentation">
+	    <div class="js-accordion__panel">
+	      <h3 class="accordion__heading">
+	      <button class="accordion__trigger" aria-controls="accordion__content_1" aria-expanded="false" tabindex="0" id="accordion__title_1" aria-selected="false">Accordion Heading 1</button>
+	      </h3>
+	      <div class="accordion__content" id="accordion__content_1" aria-hidden="true" aria-labelledby="accordion__title_1">
+	        <p>Accordion content for box 1.</p>
+	      </div>
+	    </div>
+	    <div class="js-accordion__panel">
+	      <h3 class="accordion__heading">
+	      <button class="accordion__trigger" aria-controls="accordion__content_2" aria-expanded="false" tabindex="0" id="accordion__title_2" aria-selected="false">Accordion Heading 2</button>
+	      </h3>
+	      <div class="accordion__content" id="accordion__content_2" role="region" aria-hidden="true" aria-labelledby="accordion__title_2">
+	        <p>Accordion content for box 2.</p>
+	      </div>
+	    </div>
+	</section>
+	
+	
+</body>
+<!-- Javascript -->
+
+</html>		
