@@ -5,21 +5,40 @@
   <title>Accordion Examples</title>
   <!-- Style Sheets -->
   <style>
-	  
+
   </style>
 
 </head>
 <body>
 	<h1>Accordion Box</h1>
 	
-	<p>Adapted from <a href="">A11y Style Guide</a></p>
+	<h2>Supporting Accessible Resources</h2>
+	<ul>
+		<li><a ref="http://heydonworks.com/practical_aria_examples/#progressive-collapsibles">http://heydonworks.com/practical_aria_examples/#progressive-collapsibles</a></li>
+		<li><a href="http://a11y-style-guide.com/style-guide/section-navigation.html#kssref-navigation-accordion">http://a11y-style-guide.com/style-guide/section-navigation.html#kssref-navigation-accordion</a></li>
+	</ul>
 	
-	<p>ToDo:</p>
-		<ul>
-			<li>Need javascription to make accordion work.</li>
-			<li>Need to simplify wrappers.</li>
-		</ul>
-	
+
+	<h2>Heydon Works Example</h3>
+
+		<h3>
+		   <button aria-expanded="false" aria-controls="collapsible-1">Factors</button>
+		</h3>
+		<div id="collapsible-1" aria-hidden="true">
+		   <p>Box content.</p>
+		   <p>Content.</p>
+		</div>
+	  <h3>
+	     <button aria-expanded="false" aria-controls="collapsible-2">Product</button>
+	  </h3>
+	  <div id="collapsible-2" aria-hidden="true">
+	     <p>Box content.</p>
+	     <p>Content.</p>
+	  </div>
+
+		
+	<!-->
+	<h3>A11y Style Guide Example</h3>
 	<section class="accordion-section">
 	  <div class="accordion" role="presentation">
 	    <div class="js-accordion__panel">
@@ -39,9 +58,38 @@
 	      </div>
 	    </div>
 	</section>
-	
+-->	
 	
 </body>
 <!-- Javascript -->
+<!-- From Heydonworks.com http://heydonworks.com/practical_aria_examples/js/a11y.js -->
+<script>
+$('.collapsible h3').each(function() {
 
+  var $this = $(this);
+
+  // create unique id for a11y relationship
+
+  var id = 'collapsible-' + $this.index();
+
+  // wrap the content and make it focusable
+
+  $this.nextUntil('h3').wrapAll('<div id="'+ id +'" aria-hidden="true">');
+  var panel = $this.next();
+
+  // Add the button inside the <h3> so both the heading and button semanics are read
+
+  $this.wrapInner('<button aria-expanded="false" aria-controls="'+ id +'">');
+  var button = $this.children('button');
+
+  // Toggle the state properties
+
+  button.on('click', function() {
+    var state = $(this).attr('aria-expanded') === 'false' ? true : false;
+    $(this).attr('aria-expanded', state);
+    panel.attr('aria-hidden', !state);
+  });
+
+});
+</script>
 </html>		
