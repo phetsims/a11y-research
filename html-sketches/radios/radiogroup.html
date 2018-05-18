@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Radio Examples</title>
+  <!-- Style Sheets -->
+  <style>
+  /*ul.rgroup {list-style: none;}	*/  
+  input:focus {
+	  border: 3px solid hotpink;
+	  outline: 3px solid hotpink;
+	  }	
+  </style>
+  
+</head>
+<body>
+	<h1>Radiogroup Examples</h1>
+
+	<h2>Example 1</h2>
+	<ul>
+		<li>Structure: heading, un-ordered list</li>
+		<li>Elements: <code>h3</code>, <code>ul</code>, <code>li</code>, <code>input type="radio"</code>, <code>label</code></li>
+		<li>Naming: heading associated to list with <code>aria-labelledby</code></li>
+		<li>Explicit roles: <code>radiogroup</code> role on un-ordered list element</li>
+	</ul>
+	
+	 <p>Question: Do I get a count? NO!</p>
+	
+		<div>
+			<h3 id="rg1-heading">Charge Settings</h3>
+				<ul class="rgroup" aria-labelledby="rg1-heading" role="radiogroup" tabindex="0">
+					<li><input id="r1-1" type="radio" checked>
+						<label for="r1-1">Show all charges</label>
+					</li>
+					<li><input id="r1-2" type="radio">
+						<label for="r1-2">Show no charges</label>
+					</li>
+					<li><input id="r1-3" type="radio">
+						<label for="r1-3">Show charge differences</label>
+					</li>
+				</ul>
+		</div>
+		
+	<h2>Example 2</h2>
+	<ul>
+		<li>Structure: heading, un-ordered list</li>
+		<li>Elements: <code>h3</code>, <code>ul</code>, <code>li</code>, <code>input type="radio"</code>, <code>label</code></li>
+		<li>Naming: heading associated to list with <code>aria-labelledby</code></li>
+		<li>Explicit roles: no elxplicit roles or labels</li>
+	</ul>
+	
+	 <p>Question: Do I get a count? Yes!</p>
+		<div>
+			<h3 id="rgroup-heading">Charge Settings</h3>
+			<p>Choose how you see or hear charge information.</p>
+			<ul>
+				<li><input id="rbutton2-01" type="radio" checked>
+					<label for="rbutton2-01">Show all charges</label>
+				</li>
+				<li><input id="rubbtuon2-02" type="radio">
+					<label for="rbutton2-02">Show no charges</label>
+				</li>
+				<li><input id="rbutton2-03" type="radio">
+					<label for="rbutton2-03">Show charge differences</label>
+				</li>
+			</ul>
+		</div>
+
+   <h2>Example 4: Fieldset with list</h2>
+   <ul>
+     <li>Structure: <code>fieldset</code>, <code>legend</code>, un-ordered list</li>
+     <li>Elements: <code>fieldset</code>, <code>legend</code>, <code>ul</code>, <code>li</code>, <code>input type="radio"</code>, <code>label</code></li>
+     <li>Naming: <code>legend</code> auto-names <code>fieldset</code></li>
+     <li>Explicit roles: <code>radiogroup</code> role on <code>fieldset</code> element</li>
+   </ul>
+   
+   <p>Question: Do I get a count? YES!</p>
+
+   	<fieldset role="radiogroup" tabindex="0">
+   		<legend>Charge Settings</legend>
+   		  <ul>
+   		  	<li><input id="r4-1" type="radio" checked>
+   		  		<label for="r4-1">Show all charges</label>
+   		  	</li>
+   		  	<li><input id="r4-2" type="radio">
+   		  		<label for="r4-2">Show no charges</label>
+   		  	</li>
+   		  	<li><input id="r4-3" type="radio">
+   		  		<label for="r4-3">Show charge differences</label>
+   		  	</li>
+   		  </ul>
+   	</fieldset>
+
+
+	<h2>Example 5: Fieldset without list</h2>
+    <ul>
+      <li>Structure: <code>fieldset</code>, <code>legend</code></li>
+      <li>Elements: <code>fieldset</code>, <code>legend</code>, <code>div</code> wrappers, <code>input type="radio"</code>, <code>label</code></li>
+      <li>Naming: <code>legend</code> auto-names <code>fieldset</code></li>
+      <li>Explicit roles: <code>radiogroup</code> role on <code>fieldset</code> element</li>
+    </ul>
+	
+	<p>Question: Do I get a count? NO!</p>
+		
+	<fieldset role="radiogroup" tabindex="0">
+		<legend>Charge Settings</legend>
+		  	<div>
+				<input id="r5-1" type="radio" checked>
+		  		<label for="r5-1">Show all charges</label>
+			</div>
+		  	<div>
+				<input id="r5-2" type="radio">
+		  		<label for="r5-2">Show no charges</label>
+			</div>
+		  	<div>
+				<input id="r5-3" type="radio">
+		  		<label for="r5-3">Show charge differences</label>
+			</div>
+	</fieldset>
+
+	
+		
+	<h2>Example 7: div wrappers, no list</h2>
+	<ul>
+		<li>Structure: heading, div wrapper, no list</li>
+		<li>Elements: <code>h3</code>, <code>ul</code>, <code>li</code>, <code>input type="radio"</code>, <code>label</code></li>
+		<li>Naming: heading associated to list with <code>aria-labelledby</code></li>
+		<li>Explicit roles: <code>radiogroup</code> role on un-ordered list element</li>
+	</ul>
+	
+	<div>
+		<h3 id="rg7-heading">Charge Settings</h3>
+		<div role="radiogroup" aria-labelledby="rg7-heading" tabindex="0">
+			<div><input id="r7-1" type="radio" tabindex="0" checked>
+				<label for="r7-1">Show all charges</label>
+			</div>
+			<div><input id="r7-2" type="radio">
+				<label for="r7-2">Show no charges</label>
+			</div>
+			<div><input id="r7-3" type="radio">
+				<label for="r7-3">Show charge differences</label>
+			</div>
+		</div>
+	</div>
+		
+		<h2>Example 9: Area Model Scene Selection Radios</h2>
+		
+		<div id="container-r9">
+		  <h3 id="r9-heading">Area Grid Size</h3>
+		    <ul id="group-r9" role="radiogroup" aria-labelledby="r9-heading" tabindex="0">
+		      <li id="container-r9-1">
+		        <input id="r9-1" type="radio" checked>
+		        <label id="label-r9-1" for="r9-1">10 by 10</label>
+		      </li>
+		      <li id="container-r9-2">
+		        <input id="r9-2" type="radio">
+		        <label id="label-r9-2" for="r9-2">12 by 12</label>
+		      </li>
+		    </ul>
+		</div>
+		
+		<h2>Example 10: Area Model Scene Selection Radios</h2>
+		
+		<fieldset id="container-r10" role="radiogroup" tabindex="0">
+		  <h3 id="r10-heading">Area Grid Size</h3>
+		    <ul id="group-r10">
+		      <li id="container-r10-1">
+		        <input id="r10-1" type="radio" checked>
+		        <label id="label-r10-1" for="r10-1">10 by 10</label>
+		      </li>
+		      <li id="container-r10-2">
+		        <input id="r10-2" type="radio">
+		        <label id="label-r10-2" for="r10-2">12 by 12</label>
+		      </li>
+		    </ul>
+		</fieldset>
+	
+</body>
+<!-- Javascripts go here! -->
+
+</html>
