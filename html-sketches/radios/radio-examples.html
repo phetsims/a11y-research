@@ -3,151 +3,193 @@
 <head>
   <meta charset="UTF-8">
   <title>Radio Examples</title>
-
   <!-- Style Sheets -->
+  <style>
+  /*ul.rgroup {list-style: none;}	*/  
+  input:focus {
+	  border: 3px solid hotpink;
+	  outline: 3px solid hotpink;
+	  }	
+  </style>
   
 </head>
 <body>
-	<h1>Radio Examples Simplified</h1>
+	<h1>Radiogroup Examples</h1>
 
-	<h2>Heading &amp; List</h2>
-	<p>Here is a heading and list element. Input and label elements are wrapped in list item elements.</p>
+	<h2>Example 1</h2>
+	<ul>
+		<li>Structure: heading, un-ordered list</li>
+		<li>Elements: <code>h3</code>, <code>ul</code>, <code>li</code>, <code>input type="radio"</code>, <code>label</code></li>
+		<li>Naming: heading associated to list with <code>aria-labelledby</code></li>
+		<li>Explicit roles: <code>radiogroup</code> role on un-ordered list element</li>
+	</ul>
 	
-		<h3 id="rg1-head">Choose a Radio</h3>
-		<ul aria-labelledby="rg1-head">
-			<li><input id="r1" type="radio" tabindex="0" checked>
-				<label for="r1">Choice 1</label>
+		<div>
+			<h3 id="rg1-heading">Charge Settings</h3>
+				<ul class="rgroup" aria-labelledby="rg1-heading" role="radiogroup" tabindex="0">
+					<li><input id="r1-1" type="radio" checked>
+						<label for="r1-1">Show all charges</label>
+					</li>
+					<li><input id="r1-2" type="radio">
+						<label for="r1-2">Show no charges</label>
+					</li>
+					<li><input id="r1-3" type="radio">
+						<label for="r1-3">Show charge differences</label>
+					</li>
+				</ul>
+		</div>
+
+	<h2>Example 2 Nested inputs (not possible in Scenery)</h2>
+	<ul>
+		<li>Structure: heading, un-ordered list, and <strong>input elements wrap the input elements</strong></li>
+		<li>Elements: <code>h3</code>, <code>ul</code>, <code>li</code>, <code>input type="radio"</code>, <code>label</code></li>
+		<li>Naming: heading associated to list with <code>aria-labelledby</code></li>
+		<li>Explicit roles: <code>radiogroup</code> role on un-ordered list element</li>
+	</ul>
+	
+		<h3 id="rg2-heading">Charge Settings</h3>
+		<ul class="rgroup" aria-labelledby="rg2-heading" role="radiogroup" tabindex="0">
+			<li>
+				<label><input id="r2-1" type="radio" tabindex="0" checked> Show all charges</label>
 			</li>
-			<li><input id="r2" type="radio" tabindex="-1">
-				<label for="r2">Choice 2</label>
+			<li>
+				<label><input id="r2-2" type="radio"> Show no charges</label>
 			</li>
-			<li><input id="r3" type="radio" tabindex="-1">
-				<label for="r3">Choice 3</label>
+			<li>
+				<label><input id="r2-3" type="radio"> Show charge differences</label>
 			</li>
 		</ul>
 	
-	<pre>
+	<h2>Example 3: Role group</h2>
+	<ul>
+		<li>Structure: heading, un-ordered list</li>
+		<li>Elements: <code>h3</code>, <code>ul</code>, <code>li</code>, <code>input type="radio"</code>, <code>label</code></li>
+		<li>Naming: heading associated to list with <code>aria-labelledby</code></li>
+		<li>Explicit roles: <code>group</code> role on un-ordered list element</li>
+	</ul>
+	
+	<h3 id="rg3-heading">Charge Settings</h3>
+	<ul class="rgroup" role="group" aria-labelledby="rg3-heading" tabindex="0">
+		<li><input id="r3-1" type="radio" tabindex="0" checked>
+			<label for="r3-1">Show all charges</label>
+		</li>
+		<li><input id="r3-2" type="radio">
+			<label for="r3-2">Show no charges</label>
+		</li>
+		<li><input id="r3-3" type="radio">
+			<label for="r3-3">Show charge differences</label>
+		</li>
+	</ul>
+	
+	<p>Question: Can I use arrow keys?</p>
+	
 
-&lt;h3 id="rg1-head"&gt;Choose a Radio&lt;/h3&gt;
-&lt;ul aria-labelledby="rg1-head"&gt;
-  &lt;li&gt;
-    &lt;input id="r1" type="radio" tabindex="0" checked&gt;
-    &lt;label for="r1"&gt;Choice 1&lt;/label&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;input id="r2" type="radio" tabindex="-1"&gt;
-    &lt;label for="r2"&gt;Choice 2&lt;/label&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;input id="r3" type="radio" tabindex="-1"&gt;
-    &lt;label for="r3"&gt;Choice 3&lt;/label&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+   <h2>Example 4: Fieldset with list</h2>
+   <ul>
+     <li>Structure: <code>fieldset</code>, <code>legend</code>, un-ordered list</li>
+     <li>Elements: <code>fieldset</code>, <code>legend</code>, <code>ul</code>, <code>li</code>, <code>input type="radio"</code>, <code>label</code></li>
+     <li>Naming: <code>legend</code> auto-names <code>fieldset</code></li>
+     <li>Explicit roles: <code>radiogroup</code> role on <code>fieldset</code> element</li>
+   </ul>
+   
+   <p>Question: Do I get a count?</p>
 
-	</pre>
-	
-		<h2>Heading &amp; List</h2>
-		<p>Example with an explicit <code>group</code> role on the un-ordered list element.</p>
-	
-			<h3 id="rg2-head">Choose a Radio</h3>
-			<ul role="group" aria-labelledby="rg2-head">
-				<li><input id="r4" type="radio" tabindex="0" checked>
-					<label for="r4">Choice 1</label>
-				</li>
-				<li><input id="r5" type="radio" tabindex="-1">
-					<label for="r5">Choice 2</label>
-				</li>
-				<li><input id="r6" type="radio" tabindex="-1">
-					<label for="r6">Choice 3</label>
-				</li>
-			</ul>
-	
-		<pre>
-			Code to add here.
-		</pre>
+   	<fieldset role="radiogroup" tabindex="0">
+   		<legend>Charge Settings</legend>
+   		  <ul>
+   		  	<li><input id="r4-1" type="radio" checked>
+   		  		<label for="r4-1">Show all charges</label>
+   		  	</li>
+   		  	<li><input id="r4-2" type="radio">
+   		  		<label for="r4-2">Show no charges</label>
+   		  	</li>
+   		  	<li><input id="r4-3" type="radio">
+   		  		<label for="r4-3">Show charge differences</label>
+   		  	</li>
+   		  </ul>
+   	</fieldset>
 
-		<h2>Fieldset, legend, &amp; List</h2>
-	
-			<fieldset>
-				<legend>Choose a Radio</legend>
-				  <ul>
-				  	<li><input id="r7" type="radio" tabindex="0" checked>
-				  		<label for="r7">Choice 1</label>
-				  	</li>
-				  	<li><input id="r8" type="radio" tabindex="-1">
-				  		<label for="r8">Choice 2</label>
-				  	</li>
-				  	<li><input id="r9" type="radio" tabindex="-1">
-				  		<label for="r9">Choice 3</label>
-				  	</li>
-				  </ul>
-			</fieldset>
-	
-		<pre>
-			Code to add here.
-		</pre>
 
-		<h2>Fieldset, legend, &amp; no list</h2>
-		<p>Same as above, but not list element.</p>
-			<fieldset>
-				<legend>Choose a Radio</legend>
-				  	<p><input id="r10" type="radio" tabindex="0" checked>
-				  		<label for="r10">Choice 1</label>
-					</p>
-				  	<p><input id="r11" type="radio" tabindex="-1">
-				  		<label for="r11">Choice 2</label>
-					</p>
-				  	<p><input id="r12" type="radio" tabindex="-1">
-				  		<label for="r12">Choice 3</label>
-					</p>
-			</fieldset>
+	<h2>Example 5: Fieldset without list</h2>
+    <ul>
+      <li>Structure: <code>fieldset</code>, <code>legend</code></li>
+      <li>Elements: <code>fieldset</code>, <code>legend</code>, <code>div</code> wrappers, <code>input type="radio"</code>, <code>label</code></li>
+      <li>Naming: <code>legend</code> auto-names <code>fieldset</code></li>
+      <li>Explicit roles: <code>radiogroup</code> role on <code>fieldset</code> element</li>
+    </ul>
+	<fieldset role="radiogroup" tabindex="0">
+		<legend>Charge Settings</legend>
+		  	<div>
+				<input id="r5-1" type="radio" checked>
+		  		<label for="r5-1">Show all charges</label>
+			</div>
+		  	<div>
+				<input id="r5-2" type="radio">
+		  		<label for="r5-2">Show no charges</label>
+			</div>
+		  	<div>
+				<input id="r5-3" type="radio">
+		  		<label for="r5-3">Show charge differences</label>
+			</div>
+	</fieldset>
+
 	
-		<pre>
-			Code to add here.
-		</pre>
 		
-		<h2>Heading &amp; List with Radiogroup Role</h2>
-		<p>Example with an explicit <code>radiogroup</code> role on the un-ordered list element.</p>
+	<h2>Example 7</h2>
+	<ul>
+		<li>Structure: heading, div wrapper, no list</li>
+		<li>Elements: <code>h3</code>, <code>ul</code>, <code>li</code>, <code>input type="radio"</code>, <code>label</code></li>
+		<li>Naming: heading associated to list with <code>aria-labelledby</code></li>
+		<li>Explicit roles: <code>radiogroup</code> role on un-ordered list element</li>
+	</ul>
 	
-			<h3 id="rg5-head">Choose a Radio</h3>
-			<ul role="radiogroup" aria-labelledby="rg5-head">
-				<li><input id="r13" type="radio" tabindex="0" checked>
-					<label for="r13">Choice 1</label>
-				</li>
-				<li><input id="r14" type="radio" tabindex="-1">
-					<label for="r14">Choice 2</label>
-				</li>
-				<li><input id="r15" type="radio" tabindex="-1">
-					<label for="r15">Choice 3</label>
-				</li>
-			</ul>
-	
-		<pre>
-			Code to add here.
-		</pre>
-		
-		<h2>Radiogroup Role and no list</h2>
-		<p>Example where a <code>div</code> with <code>role=radiogroup</code> wraps three <code>div</code> elements containing native HTML <code>input</code> and <code>label</code> elements.</p>
-	
-		<div>
-			<h3 id="rg6-head">Choose a Radio</h3>
-			<div role="radiogroup" aria-labelledby="rg6-head">
-				<div><input id="r16" type="radio" tabindex="0" checked>
-					<label for="r16">Choice 1</label>
-				</div>
-				<div><input id="r17" type="radio" tabindex="-1">
-					<label for="r17">Choice 2</label>
-				</div>
-				<div><input id="r18" type="radio" tabindex="-1">
-					<label for="r18">Choice 3</label>
-				</div>
+	<div>
+		<h3 id="rg7-heading">Charge Settings</h3>
+		<div role="radiogroup" aria-labelledby="rg7-heading" tabindex="0">
+			<div><input id="r7-1" type="radio" tabindex="0" checked>
+				<label for="r7-1">Show all charges</label>
+			</div>
+			<div><input id="r7-2" type="radio">
+				<label for="r7-2">Show no charges</label>
+			</div>
+			<div><input id="r7-3" type="radio">
+				<label for="r7-3">Show charge differences</label>
 			</div>
 		</div>
+	</div>
 	
-		<pre>
-			Code to add here.
-		</pre>
+	
+	<h2>Example 8</h2>	
+	<div>
+	<h3 id="rg8-heading">Charge Settings</h3> 
+	  <ul class="rgroup" role="radiogroup" aria-labelledby="rg8-heading" tabindex="0"> 
+	    <li><input id="r8-1" type="radio" tabindex="0" checked><label for="r8-1">Show all charges</label></li>
+	    <li><input id="r8-2" type="radio"><label for="r8-2">Show no charges2</label></li>
+	    <li><input id="r8-3" type="radio"><label for="r8-3">Show charge differences</label></li>
+	  </ul>
+	
+	<p>Alternatively, optional descriptive help text could go here!</p>
+	</div>
 		
+		<h2>Example 9: Area Model Scene Selection Radios</h2>
+		
+		<div id="container-r9">
+		  <h3 id="r9-heading">Board size</h3>
+		    <ul id="group-r9" role="radiogroup" aria-labelledby="r9-heading" tabindex="0">
+		      <li id="container-r9-1">
+		        <input id="r9-1" type="radio" checked>
+		        <label id="label-r9-1" for="r9-1">10 by 10 board</label>
+		      </li>
+		      <li id="container-r9-2">
+		        <input id="r9-2" type="radio">
+		        <label id="label-r9-2" for="r9-2">12 by 12 board</label>
+		      </li>
+		    </ul>
+			<!-- option on-deamnd help text -->
+			<p id="description-r9">Explore area with different sized boards.</p>
+		</div>
+	
 </body>
 <!-- Javascripts go here! -->
+
 </html>
