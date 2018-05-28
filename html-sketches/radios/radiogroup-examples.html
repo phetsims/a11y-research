@@ -16,16 +16,20 @@
 <body>
 	<h1>Radiogroup Examples</h1>
 
-	<h2>Example 1</h2>
+	<h2>Example 1: <code>aria-labelledby</code> &amp; role <code>radiogroup</code> on <code>ul</code></h2>
 	
-	 <p>Question: Do I get: item name, item state, radiogroup name, radiogroup role, and count?</p>
+	  <p><strong>Do I hear:</strong> button name, button state, group name, group role (radiogroup/list), and count?</p>
 	 <ul>
-		 <li>VoiceOver &amp; Safari: Yes, Yes, Yes, Yes, No</li>
-		 <li>ChromeVox &amp; Chrom: Yes, Yes, Yes, Yes - accurate count with list semantics as well</li>
+		 <li>VoiceOver &amp; Safari: Yes, Yes, Yes, Yes (radiogroup), No - no count
+		 <p><q>Show all charges, selected, radio button, Charge Settings, radiogroup</q></p>
+		 </li>
+		 <li>ChromeVox &amp; Chrome: Yes, Yes, Yes, Yes (radiogroup and list), Yes.
+		 <p><q>Charge Settings, radiogroup with 3 items, Show all charges, radio button, selected</q></p>
+		 </li>
 		 <li>NVDA &amp; FF: </li>
 		 <li>JAWS &amp; FF: </li>
 	</ul>
-	
+	<h3>BASE</h3>
 		<div>
 			<h3 id="rg1-heading">Charge Settings</h3>
 				<ul class="rgroup" aria-labelledby="rg1-heading" role="radiogroup">
@@ -41,12 +45,31 @@
 				</ul>
 		</div>
 		
-	<h2>Example 2</h2>
+		<h3>Area Model</h3>
+		<div>
+		  <h3 id="r9-heading">Area Grid Size</h3>
+		    <ul class="rgroup" role="radiogroup" aria-labelledby="r9-heading">
+		      <li id="container-r9-1">
+		        <input id="r9-1" type="radio" checked tabindex="0">
+		        <label id="label-r9-1" for="r9-1">10 by 10</label>
+		      </li>
+		      <li id="container-r9-2">
+		        <input id="r9-2" type="radio">
+		        <label id="label-r9-2" for="r9-2">12 by 12</label>
+		      </li>
+		    </ul>
+		</div>
+		
+	<h2>Example 2: No <code>aria-labelledby</code> &amp; no explicit role</h2>
 	
-	 <p>Question: Do I get: item name, item state, radiogroup name, radiogroup role, and count?</p>
+	 <p><strong>Do I hear:</strong> button name, button state, group name, group role (radiogroup/list), and count?</p>
 	 <ul>
-		 <li>VoiceOver &amp; Safari: Yes, Yes, No, No, Yes - accurate count</li>
-		 <li>ChromeVox &amp; Chrom: Yes, Yes, No, No, Yes - accurate count</li>
+		 <li>VoiceOver &amp; Safari: Yes, Yes, No, Yes (list), Yes - accurate count
+		 <p><q>Show all charges, selected, radiobutton list 3 items</q></p>
+		 </li>
+		 <li>ChromeVox &amp; Chrom: Yes, Yes, No, Yes (list), Yes - accurate count
+			 <p><q>List with 3 items, list item, Show all charges, radio button, selected</q></p>
+			 </li>
 		 <li>NVDA &amp; FF: </li>
 		 <li>JAWS &amp; FF: </li>
 	</ul>
@@ -67,11 +90,13 @@
 			</ul>
 		</div>
 
-   <h2>Example 4: Fieldset with list</h2>
- <p>Question: Do I get: item name, item state, radiogroup name, radiogroup role, and count?</p>
+   <h2>Example 4: <code>fieldset</code> &amp; <code>legend</code> with <code>ul</code> (BEST)</h2>
+   <p><strong>Do I hear:</strong> button name, button state, group name, group role (radiogroup/list), and count?</p>
  <ul>
-	 <li>VoiceOver &amp; Safari: Yes, Yes, Yes, No, Yes - accurate count with list semantics</li>
-	 <li>ChromeVox &amp; Chrom: Yes, Yes, Yes, Yes - accurate count with list semantics</li>
+	 <li>VoiceOver &amp; Safari: Yes, Yes, Yes, Yes (list), Yes - accurate count
+	 <p><q>Show all charges, selected, radio button, Charge Settings list 3 items</q></p></li>
+	 <li>ChromeVox &amp; Chrome: Yes, Yes, Yes, Yes (radiogroup and list), Yes.
+		 <p><q>Charge Settings, Radio button group, list with 3 itesm, list item, Show all charges, radio button, selected</q></p></li>
 	 <li>NVDA &amp; FF: </li>
 	 <li>JAWS &amp; FF: </li>
 </ul>
@@ -79,6 +104,7 @@
 
    	<fieldset role="radiogroup">
    		<legend>Charge Settings</legend>
+		<p>Choose how you see or hear charge information.</p>
    		  <ul>
    		  	<li><input id="r4-1" type="radio" checked tabindex="0">
    		  		<label for="r4-1">Show all charges</label>
@@ -93,11 +119,15 @@
    	</fieldset>
 
 
-	<h2>Example 5: Fieldset without list</h2>
- <p>Question: Do I get: item name, item state, radiogroup name, radiogroup role, and count?</p>
+<h2>Example 5: <code>fieldset</code> &amp; <code>legend</code>, but no <code>ul</code></h2>
+ <p><strong>Do I hear:</strong> button name, button state, group name, group role (radiogroup/list), and count?</p>
  <ul>
-	 <li>VoiceOver &amp; Safari: Yes, Yes, YesX2, Yes, No</li>
-	 <li>ChromeVox &amp; Chrom: Yes, Yes, Yes, Yes, No - no count</li>
+	 <li>VoiceOver &amp; Safari: Yes, Yes, Yes X2, Yes (radiogroup), No - no count.
+	 <p><q>Show all charges, selected, radio button, Charge Settings, Charge Settings, radiogroup</q></p>
+	 </li>
+	 <li>ChromeVox &amp; Chrome: Yes, Yes, Yes, Yes, No - no count
+		 <p><q>Charge Settings, radio buttong roup, Show all charges, radio button, selected</q></p>
+		 </li>
 	 <li>NVDA &amp; FF: </li>
 	 <li>JAWS &amp; FF: </li>
 </ul>
@@ -117,19 +147,21 @@
 			</div>
 	</fieldset>
 
-	
 		
-	<h2>Example 7: div wrappers, no list</h2>
-	 <p>Question: Do I get: item name, item state, radiogroup name, radiogroup role, and count?</p>
+	<h2>Example 7: <code>aria-labelledby</code> &amp; role <code>radiogroup</code> on <code>div</code> button wrapper, i.e., no <code>ul</code></h2>
+	 <p><strong>Do I hear:</strong> button name, button state, group name, group role (radiogroup/list), and count?</p>
 	 <ul>
-		 <li>VoiceOver &amp; Safari: Yes, Yes, Yes, Yes, No - no count</li>
-		 <li>ChromeVox &amp; Chrom: Yes, Yes, Yes, Yes, No - no count</li>
+		 <li>VoiceOver &amp; Safari: Yes, Yes, Yes, Yes (radiogroup), No - no count
+		 <p><q>Show all charges, selected, radio button, Charge Settings, radiogroup</q></p>
+		 </li>
+		 <li>ChromeVox &amp; Chrome: Yes, Yes, Yes, Yes, No - no count
+			 <p><q>Charge Settings, radio buttong roup, Show all charges, radio button, selected</q></p>
+			 </li>
 		 <li>NVDA &amp; FF: </li>
 		 <li>JAWS &amp; FF: </li>
 	</ul>
-	<div>
+	<div role="radiogroup" aria-labelledby="rg7-heading">
 		<h3 id="rg7-heading">Charge Settings</h3>
-		<div role="radiogroup" aria-labelledby="rg7-heading">
 			<div><input id="r7-1" type="radio" tabindex="0" checked>
 				<label for="r7-1">Show all charges</label>
 			</div>
@@ -139,37 +171,21 @@
 			<div><input id="r7-3" type="radio">
 				<label for="r7-3">Show charge differences</label>
 			</div>
-		</div>
 	</div>
 		
-	<h2>Example 9: Area Model Scene Selection Radios</h2>
-	 <p>Question: Do I get: item name, item state, radiogroup name, radiogroup role, and count?</p>
-	 <ul>
-		 <li>VoiceOver &amp; Safari: Yes, Yes, Yes, Yes, No - no count</li>
-		 <li>ChromeVox &amp; Chrom: Yes, Yes, Yes, Yes, Yes - accurate count with list semantics</li>
-		 <li>NVDA &amp; FF: </li>
-		 <li>JAWS &amp; FF: </li>
-	</ul>
 		
-		<div id="container-r9">
-		  <h3 id="r9-heading">Area Grid Size</h3>
-		    <ul id="group-r9" role="radiogroup" aria-labelledby="r9-heading">
-		      <li id="container-r9-1">
-		        <input id="r9-1" type="radio" checked tabindex="0">
-		        <label id="label-r9-1" for="r9-1">10 by 10</label>
-		      </li>
-		      <li id="container-r9-2">
-		        <input id="r9-2" type="radio">
-		        <label id="label-r9-2" for="r9-2">12 by 12</label>
-		      </li>
-		    </ul>
-		</div>
-		
-	<h2>Example 10: Area Model Scene Selection Radios</h2>
-	 <p>Question: Do I get: item name, item state, radiogroup name, radiogroup role, and count?</p>
+	<h2>Example 10: <code>fieldset</code> with role <code>radiogroup</code>, <code>h3</code> &amp; <code>ul</code></h2>
+	 <p><strong>Do I hear:</strong> button name, button state, group name, group role (radiogroup/list), and count?</p>
 	 <ul>
-		 <li>VoiceOver &amp; Safari: Yes, Yes, No, No, Yes - accurate count</li>
-		 <li>ChromeVox &amp; Chrom: Yes, Yes, Yes, Yes, Yes - accurate count with list semantics</li>
+		 <li>VoiceOver &amp; Safari: Yes, Yes, No, Yes (list), Yes - accurate count.
+		 <p><q>10 by 10, selected, radio button, list 2 items</q></p>
+		 
+		 <p>Add <code>aria-labelledby</code> to <code>fieldset</code><p>
+		 <p><q>10 by 10, selected, radio button, Area Grid Size list 3 items</q></p>
+		 </li>
+		 <li>ChromeVox &amp; Chrome: Yes, Yes, No, Yes, Yes - accurate count.
+			 <p><q>Radio button group, list with 2 items, list item, 10 by 10, radio button, selected</q></p>
+			 </li>
 		 <li>NVDA &amp; FF: </li>
 		 <li>JAWS &amp; FF: </li>
 	</ul>
@@ -188,11 +204,13 @@
 		    </ul>
 		</fieldset>
 		
-	<h2>Example 11 (BEST OPTION)</h2>
-	 <p>Question: Do I get: item name, item state, radiogroup name, radiogroup role, and count?</p>
+	<h2>Example 11 - <code>aria-labelledby</code> on both parent <code>div</code> and <code>ul</code> parent (BEST OPTION)</h2>
+	 <p><strong>Do I hear:</strong> button name, button state, group name, group role (radiogroup/list), and count?</p>
 	 <ul>
-		 <li>VoiceOver &amp; Safari: Yes, Yes, Yes for list, No, Yes - accurate count (radio button list Charge Setting 3 items)</li>
-		 <li>ChromeVox &amp; Chrom: Yes, Yes, Yes, Yes, Yes- accurate count with list semantics</li>
+		 <li>VoiceOver &amp; Safari: Yes, Yes, Yes, Yes for list, Yes - accurate count.
+			 <p><q>Show all charges, selected, radio button list Charge Settings 3 items</q></p></li>
+		 <li>ChromeVox &amp; Chrome: Yes, Yes, Yes, Yes for radiogroup and list, Yes - accurate count.
+			 <p><q>Charge Settings, radio button group, list with 3 items, list item, Show all charges, radio button selected</q></p></li>
 		 <li>NVDA &amp; FF: </li>
 		 <li>JAWS &amp; FF: </li>
 	 </ul>
@@ -200,7 +218,7 @@
 		<div aria-labelledby="rg11-heading" role="radiogroup">
 			<h3 id="rg11-heading">Charge Settings</h3>
 				<ul class="rgroup" aria-labelledby="rg11-heading">
-					<li><input id="r11-1" type="radio" checked tabindex="0">
+					<li><input id="r11-1" type="radio" tabindex="0" checked>
 						<label for="r11-1">Show all charges</label>
 					</li>
 					<li><input id="r11-2" type="radio">
@@ -211,7 +229,133 @@
 					</li>
 				</ul>
 		</div>
+		
+	<h2>Example 12: <code>radiogroup</code> on parent <code>div</code>, but <code>aria-labelledby</code> on <code>ul</code></h2>
+	 <p><strong>Do I hear:</strong> button name, button state, group name, group role (radiogroup/list), and count?</p>
+	 <ul>
+		 <li>VoiceOver &amp; Safari: Yes, Yes, Yes, Yes (list), Yes - accurate count.
+		    <p><q>Show all charges, selected, radio button list Charge Settings 3 items</q></p></li>
+		 <li>ChromeVox &amp; Chrome: Yes, Yes, No, Yes for radiogroup and list, Yes - accurate count.
+			 <p><q>Radio button group, list with 3 items, list item, Show all charges, radio button selected</q></p></li>
+		 <li>NVDA &amp; FF: </li>
+		 <li>JAWS &amp; FF: </li>
+	 </ul>
 	
+		<div role="radiogroup">
+			<h3 id="rg12-heading">Charge Settings</h3>
+				<ul class="rgroup"  aria-labelledby="rg12-heading">
+					<li><input id="r12-1" type="radio" checked tabindex="0">
+						<label for="r12-1">Show all charges</label>
+					</li>
+					<li><input id="r12-2" type="radio">
+						<label for="r12-2">Show no charges</label>
+					</li>
+					<li><input id="r12-3" type="radio">
+						<label for="r12-3">Show charge differences</label>
+					</li>
+				</ul>
+		</div>
+	<h2>Example 13: <code>radiogroup</code> &amp; <code>aria-labelledby</code> on parent <code>div</code>, &amp; nothing explicit on <code>ul</code></h2>
+	 <p><strong>Do I hear:</strong> button name, button state, group name, group role (radiogroup/list), and count?</p>
+	 <ul>
+		 <li>VoiceOver &amp; Safari: Different from example 11: Yes, Yes, No, Yes for list, Yes - accurate. 
+			 <p><q>Show all charges, selected, radio button list 3 items</q></p></li>
+		 <li>ChromeVox &amp; Chrome: Yes, Yes, Yes, Yes (radiogroup and list), Yes - accurate count.
+			 <p><q>Charge Settings, Radio button group, list with 3 items, list item, Show all charges, radio button selected</q></p></li>
+		 <li>NVDA &amp; FF: </li>
+		 <li>JAWS &amp; FF: </li>
+	 </ul>
+	
+		<div role="radiogroup" aria-labelledby="rg13-heading">
+			<h3 id="rg13-heading">Charge Settings</h3>
+				<ul class="rgroup">
+					<li><input id="r13-1" type="radio" checked tabindex="0">
+						<label for="r13-1">Show all charges</label>
+					</li>
+					<li><input id="r13-2" type="radio">
+						<label for="r13-2">Show no charges</label>
+					</li>
+					<li><input id="r13-3" type="radio">
+						<label for="r13-3">Show charge differences</label>
+					</li>
+				</ul>
+		</div>	
+	<h2>Example 14: <code>radiogroup</code> &amp; <code>aria-label</code> on parent <code>div</code> &amp; no <code>h3</code></h2>
+	 <p><strong>Do I hear:</strong> button name, button state, group name, group role (radiogroup/list), and count?</p>
+	 <ul>
+		 <li>VoiceOver &amp; Safari: Different from example 11: Yes, Yes, No, Yes for list, Yes - accurate. 
+			 <p><q>Show all charges, selected, radio button list 3 items</q></p></li>
+		 <li>ChromeVox &amp; Chrome: Yes, Yes, Yes, Yes (radiogroup and list), Yes - accurate count.
+			 <p><q>Charge Settings, Radio button group, list with 3 items, list item, Show all charges, radio button selected</q></p></li>
+		 <li>NVDA &amp; FF: </li>
+		 <li>JAWS &amp; FF: </li>
+	 </ul>
+	 <p>Note: <code>aria-controls="rgroup-14"</code> on radiogroup parent has no effect in VO and CVox effect when aria-label is on the radiogroup parent.</p>
+	
+		<div role="radiogroup" aria-label="Charge Settings">
+		  <ul class="rgroup" id="rgroup-14">
+		  	<li><input id="r14-1" type="radio" checked tabindex="0">
+		  		<label for="r14-1">Show all charges</label>
+		  	</li>
+		  	<li><input id="r14-2" type="radio">
+		  		<label for="r14-2">Show no charges</label>
+		  	</li>
+		  	<li><input id="r14-3" type="radio">
+		  		<label for="r14-3">Show charge differences</label>
+		  	</li>
+		  </ul>
+		</div>	
+		
+	<h2>Example 15: added <code>aria-controls</code>, <code>radiogroup</code> on parent <code>div</code>, no <code>h3</code>, but <code>aria-label</code> on <code>ul</code></h2>
+	 <p><strong>Do I hear:</strong> button name, button state, group name, group role (radiogroup/list), and count?</p>
+	 <ul>
+		 <li>VoiceOver &amp; Safari: Different from example 11: Yes, Yes, Yes, Yes for list, Yes - accurate.
+			 <p><q>Show all charges, selected, radio button list Charge Settings 3 items</q></p></li>
+		 <li>ChromeVox &amp; Chrome: Yes, Yes, No, Yes (radiogroup and list), Yes - accurate count.
+			 <p><q>Radio button group, list with 3 items, list item, Show all charges, radio button selected</q></p></li>
+		 <li>NVDA &amp; FF: </li>
+		 <li>JAWS &amp; FF: </li>
+	 </ul>
+	
+		<div role="radiogroup" aria-controls="rgroup-15">
+		  <ul class="rgroup" id="rgroup-15" aria-label="Charge Settings">
+		  	<li><input id="r15-1" type="radio" checked tabindex="0">
+		  		<label for="r15-1">Show all charges</label>
+		  	</li>
+		  	<li><input id="r15-2" type="radio">
+		  		<label for="r15-2">Show no charges</label>
+		  	</li>
+		  	<li><input id="r15-3" type="radio">
+		  		<label for="r15-3">Show charge differences</label>
+		  	</li>
+		  </ul>
+		</div>
+	<h2>Example 16: <code>fieldset</code> with <code>radiogroup</code> and <code>aria-labelledby</code>, <code>h3</code> and <code>ul</code></h2>
+	
+ <p><strong>Do I hear:</strong> button name, button state, group name, group role (radiogroup/list), and count?</p>
+ <ul>
+	 <li>VoiceOver &amp; Safari: Different from example 11: Yes, Yes, Yes, Yes for list, Yes - accurate.
+		 <p><q>Show all charges, selected, radio button, Charge Settings list 3 items</q></p></li>
+	 <li>ChromeVox &amp; Chrome: Yes, Yes, No, Yes (radiogroup and list), Yes - accurate count.
+		 <p><q>Charge Settings, Radio button group, list with 3 items, list item, Show all charges, radio button selected</q></p></li>
+	 <li>NVDA &amp; FF: </li>
+	 <li>JAWS &amp; FF: </li>
+ </ul>
+	<fieldset role="radiogroup" aria-labelledby="rg16-heading">
+      <h3 id="rg16-heading">Charge Settings</h3>
+      <p>Choose how you see or hear charge information.</p>
+      <ul>
+		<li><input id="r16-1" type="radio" tabindex="0" checked>
+			<label for="r16-1">Show all charges</label>
+		</li>
+		<li><input id="r16-2" type="radio">
+			<label for="r16-2">Show no charges</label>
+		</li>
+		<li><input id="r16-3" type="radio">
+			<label for="r16-3">Show charge differences</label>
+		</li>
+	</ul>
+   </fieldset>
 </body>
 <!-- Javascripts go here! -->
 
