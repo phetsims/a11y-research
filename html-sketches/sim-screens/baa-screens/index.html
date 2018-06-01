@@ -26,54 +26,63 @@
 		  	</ol>
 		  </nav>
 		
-	    <!-- PhET Menu button activates PhET Menu -->
-	    <div class="menu-wrapper" aria-label="Teacher tools and links">
-	      <button
-	            aria-haspopup="true"
-	            aria-controls="phet-menu">PhET Menu</button>
-	      <ul role="menu" id="phet-menu">
-	        <li role="menuitem">
-	          View Options
-	        </li>
-	        <li role="menuitem">
-	          Check for Updates
-	        </li>
-	        <li role="menuitem">
-	          Take Screenshot
-	        </li>
-	        <li role="menuitem">
-	          Full Screen
-	        </li>
-	        <li role="menuitem">
-	          <a href="https://phet.colorado.edu/files/troubleshooting/?BIG-LONG-LINK">Report Problem</a>
-	   	    </li>
-	   	    <li role="menuitem">
-	   	      About this Sim
-	   	    </li>
-	   	    <li role="menuitem">
-	   	      <a href="http://phet.colorado.edu/">PhET Website</a>
-	   	    </li>
-	   	  </ul>
-	  </div><!-- end menu-wrapper -->
+	   <!-- Sim Resources Bar Region -->			
+	   	<div id="resource-bar" role="region" aria-labelledby="resource-bar-label">
+	   		<h2 id="resource-bar-label">Sim Resources</h2>   
+	   		<!-- Keyboard Shortcuts widget--> 
+	   		<div id="keyboar-shortcuts-widget">
+	   			<button id="keyboard-shortcuts">Keyboard Shortcuts</button>
+	   			<p>Tips on how to use this sim with a keyboard.</p>
+	   		</div>
+		   
+	   		<!-- PhET Menu button widget -->
+	   			    <div class="menu-wrapper" aria-label="Teacher tools and links">
+	   			      <button
+	   			            aria-haspopup="true"
+	   			            aria-controls="phet-menu">PhET Menu</button>
+	   			      <ul role="menu" id="phet-menu">
+	   			        <li role="menuitem">
+	   			          View Options
+	   			        </li>
+	   			        <li role="menuitem">
+	   			          Check for Updates
+	   			        </li>
+	   			        <li role="menuitem">
+	   			          Take Screenshot
+	   			        </li>
+	   			        <li role="menuitem">
+	   			          Full Screen
+	   			        </li>
+	   			        <li role="menuitem">
+	   			          <a href="https://phet.colorado.edu/files/troubleshooting/?BIG-LONG-LINK">Report Problem</a>
+	   			   	    </li>
+	   			   	    <li role="menuitem">
+	   			   	      About this Sim
+	   			   	    </li>
+	   			   	    <li role="menuitem">
+	   			   	      <a href="http://phet.colorado.edu/">PhET Website</a>
+	   			   	    </li>
+	   			   	  </ul>
+	   			  </div><!-- end menu-wrapper -->
+	   </div> <!-- end bottom bar region -->
+	   		<!-- Javascript from Pickering Menu Button-->
+	   		<script>
+	   		(function() {
+	   			// get the button and menu nodes
+	   			var button = document.querySelector('[aria-label="Sim tools and links"] button');
+	   			var menu = button.nextElementSibling;
 
-<!-- Javascript from Pickering Menu Button-->
-<script>
-(function() {
-	// get the button and menu nodes
-	var button = document.querySelector('[aria-label="Sim tools and links"] button');
-	var menu = button.nextElementSibling;
+	   			// set initial (closed menu) states
+	   			button.setAttribute('aria-expanded', 'false');
+	   			button.hidden = false;
+	   			menu.hidden = true;
+	   			button.addEventListener('click', function() {
 
-	// set initial (closed menu) states
-	button.setAttribute('aria-expanded', 'false');
-	button.hidden = false;
-	menu.hidden = true;
-	button.addEventListener('click', function() {
-
-	// toggle menu visibility
-	var expanded = this.getAttribute('aria-expanded') ==='true';
-	this.setAttribute('aria-expanded', String(!expanded));
-	menu.hidden = expanded;
-  });
-})();
-</script>
-</html>
+	   			// toggle menu visibility
+	   			var expanded = this.getAttribute('aria-expanded') ==='true';
+	   			this.setAttribute('aria-expanded', String(!expanded));
+	   			menu.hidden = expanded;
+	   		  });
+	   		})();
+	   		</script>
+	   		</html>
