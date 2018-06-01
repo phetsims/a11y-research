@@ -4,7 +4,7 @@
 		 <!-- Meta Tags --> 
 		<meta charset="UTF-8">
 		<!-- Name of Sim and Name of Project --> 
-		<title>Name of Sim: PhET Interactive Simulations</title>
+		<title>{{Name of Sim}}, PhET Interactive Simulations</title>
 		
 		<!--  js and css for this example. -->
 		<!-- <link rel="stylesheet" type="text/css" href="assets/toolbar.css"> -->
@@ -13,54 +13,63 @@
 	
 	<body>
 		<h1>Name of Sim</h1> 
-		<p>Come explore with <em>Name of Simulation</em>. It has <em>three</em> screens.</p>	
+		<p>Come explore with {{NAME of Simulation}}. It has {{three}} screens.</p>	
 		<!-- Path to sim screens -->
 		  <nav aria-label="Sim Screens">
 			<ol>
-		  	  <li><button aria-describedby="screen01-description">NAME 1 Screen</button>
-			   	<p id="screen01-description">Explore <em>X in screen one</em>.</p></li>
-		  	  <li><button aria-describedby="screen02-description">NAME 2 Screen</button>
-			  	<p id="screen02-description">Investigate <em>Y in screen two</em>.</p></li>
-		  	  <li><button aria-describedby="screen03-description">NAME 3 Screen</button>
-			  	<p id="screen03-description">Test your knowledge of <em>X and Y in screen three</em>.</p></li>
+		  	  <li><button aria-describedby="screen01-description">{{NAME 1}} Screen</button>
+			   	<p id="screen01-description">Explore {{X}} in {{screen one}}.</p></li>
+		  	  <li><button aria-describedby="screen02-description">{{NAME 2}} Screen</button>
+			  	<p id="screen02-description">Investigate {{Y}} in {{screen two}}.</p></li>
+		  	  <li><button aria-describedby="screen03-description">{{NAME 3}} Screen</button>
+			  	<p id="screen03-description">Test your knowledge of {{X}} and {{Y}} in {{screen three}}.</p></li>
 		  	</ol>
 		  </nav>
 		
-	    <!-- PhET Menu button activates PhET Menu -->
-	    <div class="menu-wrapper" aria-label="Teacher tools and links">
-	      <button
-	            aria-haspopup="true"
-	            aria-controls="phet-menu">PhET Menu</button>
-	      <ul role="menu" id="phet-menu">
-	        <li role="menuitem">
-	          View Options
-	        </li>
-	        <li role="menuitem">
-	          Check for Updates
-	        </li>
-	        <li role="menuitem">
-	          Take Screenshot
-	        </li>
-	        <li role="menuitem">
-	          Full Screen
-	        </li>
-	        <li role="menuitem">
-	          <a href="https://phet.colorado.edu/files/troubleshooting/?BIG-LONG-LINK">Report Problem</a>
-	   	    </li>
-	   	    <li role="menuitem">
-	   	      About this Sim
-	   	    </li>
-	   	    <li role="menuitem">
-	   	      <a href="http://phet.colorado.edu/">PhET Website</a>
-	   	    </li>
-	   	  </ul>
-	  </div><!-- end menu-wrapper -->
+		<div id="resource-bar" role="region" aria-labelledby="resource-bar-label">
+			<h2 id="resource-bar-label">Sim Resources</h2> 	   
+		 
+			<!-- Keyboard Shortcuts widget--> 
+			<div id="keyboar-shortcuts-widget">
+				<button id="keyboard-shortcuts">Keyboard Shortcuts</button>
+				<p>Tips on how to use this sim with a keyboard.</p>
+			</div>
+		   
+			<!-- PhET Menu button widget -->
+			<div class="menu-wrapper" aria-label="Teacher tools and links">
+			  <button
+			        aria-haspopup="true"
+			        aria-controls="phet-menu">PhET Menu</button>
+			  <ul role="menu" id="phet-menu">
+			    <li role="menuitem">
+			      View Options
+			    </li>
+			    <li role="menuitem">
+			      Check for Updates
+			    </li>
+			    <li role="menuitem">
+			      Take Screenshot
+			    </li>
+			    <li role="menuitem">
+			      Full Screen
+			    </li>
+			    <li role="menuitem">
+			      <a href="https://phet.colorado.edu/files/troubleshooting/?BIG-LONG-LINK">Report Problem</a>
+			    </li>
+			    <li role="menuitem">
+			      About this Sim
+			    </li>
+			    <li role="menuitem">
+			      <a href="http://phet.colorado.edu/">PhET Website</a>
+			    </li>
+			  </ul>
+			</div><!-- end menu-wrapper -->
 
 <!-- Javascript from Pickering Menu Button-->
 <script>
 (function() {
 	// get the button and menu nodes
-	var button = document.querySelector('[aria-label="Sim tools and links"] button');
+	var button = document.querySelector('[aria-label="Teacher tools and links"] button');
 	var menu = button.nextElementSibling;
 
 	// set initial (closed menu) states
