@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <title>Slider Test</title>
+   <style>
+   input[role="slider"]:focus {outline: 3px solid hotpink;}
+   p:focus, ul:focus, h1:focus, li:focus, label:focus {outline: 3px solid hotpink;}
+	</style>
+ </head>
+ <body>
+	 <h1 tabindex="-1">Example sliders</h1>
+	 <p tabindex="-1">Test help text.</p>
+   <ul tabindex="-1">
+     <li tabindex="-1">
+		<label for="slider-1">Slider One</label>
+       <input type="range" role="slider" id="slider-1" tabindex="0" aria-valuemax="10" aria-valuemin="1" aria-valuenow="5">
+	   
+     </li>
+     <li tabindex="-1">
+		<label for="slider-2">Slider Two</label>
+       <input aria-label="Slider Two" type="range" role="slider" id="slider-2" tabindex="0" aria-valuemax="10" aria-valuemin="1" aria-valuenow="5">
+     </li>
+     <li tabindex="-1">
+		 <label for="slider-3">Slider Three</label>
+       <input aria-label="Slider Three" type="range" role="slider" id="slider-3" tabindex="0" aria-valuemax="10" aria-valuemin="1" aria-valuenow="5">
+     </li>
+   </ul>
+ </body>
+</html>
