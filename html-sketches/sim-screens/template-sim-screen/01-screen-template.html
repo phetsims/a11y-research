@@ -8,7 +8,7 @@
 	</head>
 	
 	<body>
-		<article>
+	  <article>
 		<h1>{{ScreenName01}}, {{SimName}}</h1> 
 		  <!-- Screen specific intro with Screen Parameters -->
 		  <p>The interactive {{ScreenName01}} Screen changes as you play with it. It has a Play Area and a Control Area. The Play Area {{DESCRIPTION OF PLAY AREA FOR SCREEN 01}}. The Control Area has {{DESCRIPTION OF CONTROL AREA FOR SCREEN 01,}} and a reset button to reset the sim.</p>
@@ -22,7 +22,7 @@
 		
 		<!-- Play Area region -->
 		<section id="playArea" aria-labelledby="labelPlayArea">
-			<h2 id="playArea-label">Play Area</h2>
+			<h2 id="labelPlayArea">Play Area</h2>
 			<p>Objects and interactions essential for exploration go in the <em>Play Area</em>.</p>	
 		</section>
 		
@@ -33,10 +33,11 @@
 
 		      <button id="sim-reset" type="reset">Reset All</button>	
 		</section>
-	<article>
+	 </article>
+	
 		<!-- Sim Screens navigation landmark region -->
 		<nav aria-labelledby="labelSimScreens">
-			<h2 id="labelSimScreen">Sim Screens</h2> 
+			<h2 id="labelSimScreens">Sim Screens</h2> 
 			<!-- aria-selected="true" will need to be added dynamically to selected buttons -->
 		  <ol>
   			<li><button>Home</button>
