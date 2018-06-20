@@ -17,19 +17,19 @@
 		 <p>If needed, check out keyboard shortcuts under Sim Resources.</p>
 		 
 		 <!-- Screen Specific Interaction Hint -->
-		 <p>Look for particle buckets to play.</p>
+		 <p>{{Screen-specific interaction hint}}.</p>
 		   
 		
 		<!-- Play Area region -->
-		<section id="play-area" aria-labelledby="labelPlayArea">
-			<h2 id="play-area-label">Play Area</h2>
-			<p>Objects essential for exploration go in the Play Area.</p>	
+		<section id="playArea" aria-labelledby="labelPlayArea">
+			<h2 id="playArea-label">Play Area</h2>
+			<p>Objects and interactions essential for exploration go in the <em>Play Area</em>.</p>	
 		</section>
 		
 		<!-- Control Area region -->
-		<section id="control-area" aria-labelledby="labelControlArea">
+		<section id="controlArea" aria-labelledby="labelControlArea">
 			<h2 id="labelControlArea">Control Area</h2>
-			<p>Less essential controls, often different settings and resets go in the <em>Control Panel</em>. The control panel <code>h2 heading</code> labels the control panel region with <code>aria-labelledby</code>.</p>
+			<p>Less essential controls, often different settings and resets go in the <em>Control Area</em>.</p>
 
 		      <button id="sim-reset" type="reset">Reset All</button>	
 		</section>
@@ -40,30 +40,30 @@
 			<!-- aria-selected="true" will need to be added dynamically to selected buttons -->
 		  <ol>
   			<li><button>Home</button>
-  				<p id="screen00-description">Go to Home Screen.</p></li>
-	  	    <li><button>NAME 1 Screen</button>
-			 	<p id="screen01-description">{{Explore X in screen one}}.</p></li>
-	  	    <li><button>NAME 2 Screen</button>
-				<p id="screen02-description">{{Investigate Y in screen two}}.</p></li>
-	  	    <li><button>NAME 3 Screen</button>
-				<p id="screen03-description">{{Test your knowledge of X an Y in screen three}}.</p></li>
+  				<p id="descriptionScreen00">Go to Home Screen.</p></li>
+	  	    <li><button>{{ScreenName01}} Screen</button>
+			 	<p id="descriptionscreen01">{{Explore X in screen one}}.</p></li>
+	  	    <li><button>{{ScreenName02}} Screen</button>
+				<p id="descriptionscreen02">{{Investigate Y in screen two}}.</p></li>
+	  	    <li><button>{{ScreenName03}} Screen</button>
+				<p id="descriptionscreen03">{{Test your knowledge of X an Y in screen three}}.</p></li>
 	  	  </ol>
 		</nav>
 		
 	<!-- Sim Resources region -->			
-	<div id="resource-bar" role="region" aria-labelledby="resource-bar-label">
-		<h2 id="resource-bar-label">Sim Resources</h2> 	   
+	<section id="simResources" aria-labelledby="labelSimResources">
+		<h2 id="labelSimResources">Sim Resources</h2> 	   
 		 
 		<!-- Keyboard Shortcuts widget--> 
-		<div id="keyboar-shortcuts-widget">
-			<button id="keyboard-shortcuts">Keyboard Shortcuts</button>
+		<div id="keyboardShortcutsWidget">
+			<button id="keyboardShortcuts">Keyboard Shortcuts</button>
 			<p>Tips on how to use this sim with a keyboard.</p>
 		</div>
 		   
 		<!-- PhET Menu button widget -->
-		<div class="menu-wrapper" aria-label="Teacher tools and links">
-		  <button aria-haspopup="true" aria-controls="phet-menu">PhET Menu</button>
-		  <ul role="menu" id="phet-menu">
+		<div class="menuWrapper" aria-label="Teacher tools and links">
+		  <button aria-haspopup="true" aria-controls="phetMenu">PhET Menu</button>
+		  <ul role="menu" id="phetMenu">
 		    <li role="menuitem">View Options</li>
 		    <li role="menuitem">Check for Updates</li>
 		    <li role="menuitem">Take Screenshot</li>
@@ -73,8 +73,9 @@
 		    <li role="menuitem"><a href="http://phet.colorado.edu/">PhET Website</a></li>
 		  </ul>
 		</div><!-- end menu-wrapper -->
-</div> <!-- end Sim Resources region -->
-		<!-- Javascript from Pickering Menu Button-->
+  </section> <!-- end Sim Resources region -->
+
+<!-- Javascript from Pickering Menu Button-->
 <script>
 (function() {
 	// get the button and menu nodes
@@ -94,4 +95,5 @@
   });
 })();
 </script>
-		</html>
+</body>
+</html>
