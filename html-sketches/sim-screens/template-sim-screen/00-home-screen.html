@@ -5,63 +5,42 @@
 		<meta charset="UTF-8">
 		<!-- Name of Sim and Name of Project --> 
 		<title>{{Name of Sim}}, PhET Interactive Simulations</title>
-		
-		<!--  js and css for this example. -->
-		<!-- <link rel="stylesheet" type="text/css" href="assets/toolbar.css"> -->
+
 			                                        
 	</head>
 	
 	<body>
-		<h1>Name of Sim</h1> 
-		<p>Come explore with {{NAME of Simulation}}. It has {{three}} screens.</p>	
+		<h1>{{SimName}}</h1> 
+		<p>{{Come explore with}} {{SimName}}. It has {{three}} interactive screens.</p>	
 		<!-- Path to sim screens -->
-		  <nav aria-label="Sim Screens">
+		  <nav aria-labelledby="labelSimScreens">
+			<h2>Sim Screens</h2>
 			<ol>
-		  	  <li><button aria-describedby="screen01-description">{{NAME 1}} Screen</button>
-			   	<p id="screen01-description">Explore {{X}} in {{screen one}}.</p></li>
-		  	  <li><button aria-describedby="screen02-description">{{NAME 2}} Screen</button>
-			  	<p id="screen02-description">Investigate {{Y}} in {{screen two}}.</p></li>
-		  	  <li><button aria-describedby="screen03-description">{{NAME 3}} Screen</button>
-			  	<p id="screen03-description">Test your knowledge of {{X}} and {{Y}} in {{screen three}}.</p></li>
+		  	  <li><button aria-describedby="screen01-description">{{ScreenName01}} Screen</button>
+			   	<p id="screen01-description">{{Explore X in screen one}}.</p></li>
+		  	  <li><button aria-describedby="screen02-description">{{ScreenName02}} Screen</button>
+			  	<p id="screen02-description">{{Investigate Y in screen two}}.</p></li>
+		  	  <li><button aria-describedby="screen03-description">{{ScreenName03}} Screen</button>
+			  	<p id="screen03-description">{{Test your knowledge of X and Y in screen three.</p></li>
 		  	</ol>
 		  </nav>
 		
-		<div id="resource-bar" role="region" aria-labelledby="resource-bar-label">
-			<h2 id="resource-bar-label">Sim Resources</h2> 	   
+		<div id="resource-bar" role="region" aria-labelledby="labelSimResources">
+			<h2 id="labelSimResources">Sim Resources</h2> 	   
 		 
-			<!-- Keyboard Shortcuts widget--> 
-			<div id="keyboar-shortcuts-widget">
-				<button id="keyboard-shortcuts">Keyboard Shortcuts</button>
-				<p>Tips on how to use this sim with a keyboard.</p>
-			</div>
+			<!-- Keyboard Shortcuts widget hidden on Home Screen --> 
 		   
 			<!-- PhET Menu button widget -->
 			<div class="menu-wrapper" aria-label="Teacher tools and links">
-			  <button
-			        aria-haspopup="true"
-			        aria-controls="phet-menu">PhET Menu</button>
+			  <button aria-haspopup="true" aria-controls="phet-menu">PhET Menu</button>
 			  <ul role="menu" id="phet-menu">
-			    <li role="menuitem">
-			      View Options
-			    </li>
-			    <li role="menuitem">
-			      Check for Updates
-			    </li>
-			    <li role="menuitem">
-			      Take Screenshot
-			    </li>
-			    <li role="menuitem">
-			      Full Screen
-			    </li>
-			    <li role="menuitem">
-			      <a href="https://phet.colorado.edu/files/troubleshooting/?BIG-LONG-LINK">Report Problem</a>
-			    </li>
-			    <li role="menuitem">
-			      About this Sim
-			    </li>
-			    <li role="menuitem">
-			      <a href="http://phet.colorado.edu/">PhET Website</a>
-			    </li>
+			    <li role="menuitem">View Options</li>
+			    <li role="menuitem">Check for Updates</li>
+			    <li role="menuitem">Take Screenshot</li>
+			    <li role="menuitem">Full Screen</li>
+			    <li role="menuitem"><a href="https://phet.colorado.edu/files/troubleshooting/?BIG-LONG-LINK">Report Problem</a></li>
+			    <li role="menuitem">About this Sim</li>
+			    <li role="menuitem"><a href="http://phet.colorado.edu/">PhET Website</a></li>
 			  </ul>
 			</div><!-- end menu-wrapper -->
 
