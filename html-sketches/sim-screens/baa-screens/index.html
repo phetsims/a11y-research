@@ -1,88 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		 <!-- Meta Tags --> 
-		<meta charset="UTF-8">
-		<!-- Name of Sim and Name of Project --> 
-		<title>Build an Atom: PhET Interactive Simulations</title>
-		
-		<!--  js and css for this example. -->
-		<!-- <link rel="stylesheet" type="text/css" href="assets/toolbar.css"> -->
-			                                        
-	</head>
+  <head>
+  	 <!-- Meta Tags --> 
+  	<meta charset="UTF-8">
+  	<!-- Name of Sim and Name of Project --> 
+  	<title>Build an Atom: PhET Interactive Simulations</title>
+  		                                        
+  </head>
 	
-	<body>
-		<h1>Build an Atom</h1> 
-		<p>Come explore with <em>Build an Atom</em>. It has three screens.</p>	
-		<!-- Path to sim screens -->
-		  <nav aria-label="Sim Screens">
-			<ol>
-		  	  <li><button aria-describedby="screen01-description">Atom Screen</button>
-			   	<p id="screen01-description">Explore what makes up an atom.</p></li>
-		  	  <li><button aria-describedby="screen02-description">Symbol Screen</button>
-			  	<p id="screen02-description">Investigate atoms and their atomic symbols.</p></li>
-		  	  <li><button aria-describedby="screen03-description">Game Screen</button>
-			  	<p id="screen03-description">Test your knowledge of atoms and atomic symbols.</p></li>
-		  	</ol>
-		  </nav>
+  <body>
+    <!-- Home Screen -->
+    <h1>Build an Atom</h1> 
+    <p>{{Come explore with}} {{Build an Atom}}. It has {{three}} interactive screens.</p>	
+    <!-- Sim Screen buttons and their descriptions -->
+    <nav aria-labelledby="labelSimScreensHomeScreen">
+      <h2 id="labelSimScreensHomeScreen">Sim Screens</h2>
+      <ol>
+        <li><button aria-describedby="descriptionScreen01HomeScreen">{{Atom}} Screen</button>
+      	  <p id="descriptionScreen01HomeScreen">{{Explore what makes up an atom}}.</p></li>
+        <li><button aria-describedby="descriptionScreen02HomeScreen">{{Symbol}} Screen</button>
+      	  <p id="descriptionScreen02HomeScreen">{{Investigate atoms and their atomic symbols}}.</p></li>
+        <li><button aria-describedby="descriptionScreen03HomeScreen">{{Game}} Screen</button>
+      	  <p id="descriptionScreen03HomeScreen">{{Test your knowledge of atoms and their atomic symbols}}.</p></li>
+      </ol>
+	</nav>
 		
-	   <!-- Sim Resources Bar Region -->			
-	   	<div id="resource-bar" role="region" aria-labelledby="resource-bar-label">
-	   		<h2 id="resource-bar-label">Sim Resources</h2>   
-	   		<!-- Keyboard Shortcuts widget--> 
-	   		<div id="keyboar-shortcuts-widget">
-	   			<button id="keyboard-shortcuts">Keyboard Shortcuts</button>
-	   			<p>Tips on how to use this sim with a keyboard.</p>
-	   		</div>
-		   
-	   		<!-- PhET Menu button widget -->
-	   			    <div class="menu-wrapper" aria-label="Teacher tools and links">
-	   			      <button
-	   			            aria-haspopup="true"
-	   			            aria-controls="phet-menu">PhET Menu</button>
-	   			      <ul role="menu" id="phet-menu">
-	   			        <li role="menuitem">
-	   			          View Options
-	   			        </li>
-	   			        <li role="menuitem">
-	   			          Check for Updates
-	   			        </li>
-	   			        <li role="menuitem">
-	   			          Take Screenshot
-	   			        </li>
-	   			        <li role="menuitem">
-	   			          Full Screen
-	   			        </li>
-	   			        <li role="menuitem">
-	   			          <a href="https://phet.colorado.edu/files/troubleshooting/?BIG-LONG-LINK">Report Problem</a>
-	   			   	    </li>
-	   			   	    <li role="menuitem">
-	   			   	      About this Sim
-	   			   	    </li>
-	   			   	    <li role="menuitem">
-	   			   	      <a href="http://phet.colorado.edu/">PhET Website</a>
-	   			   	    </li>
-	   			   	  </ul>
-	   			  </div><!-- end menu-wrapper -->
-	   </div> <!-- end bottom bar region -->
-	   		<!-- Javascript from Pickering Menu Button-->
-	   		<script>
-	   		(function() {
-	   			// get the button and menu nodes
-	   			var button = document.querySelector('[aria-label="Sim tools and links"] button');
-	   			var menu = button.nextElementSibling;
+	<!-- Sim Resources for Home Screen -->			
+	<section id="resource-bar" aria-labelledby="resource-bar-label">
+	  <h2 id="resource-bar-label">Sim Resources</h2>   
+	  <!-- Keyboard Shortcuts widget hidden on Home Screen --> 
+	  
+	  <!-- PhET Menu button widget -->
+	   <div class="menu-wrapper" aria-label="Teacher tools and links">
+	     <button aria-haspopup="true" aria-controls="phet-menu-home-screen">PhET Menu</button>
+	     <ul role="menu" id="phet-menu-home-screen">
+	       <li role="menuitem">View Options</li>
+	       <li role="menuitem">Check for Updates</li>
+	       <li role="menuitem">Take Screenshot</li>
+	       <li role="menuitem">Full Screen</li>
+	       <li role="menuitem"><a href="https://phet.colorado.edu/files/troubleshooting/?BIG-LONG-LINK">Report Problem</a></li>
+	       <li role="menuitem">About this Sim</li>
+	       <li role="menuitem"><a href="http://phet.colorado.edu/">PhET Website</a></li>
+	     </ul>
+	   </div><!-- end menu-wrapper -->
+	</section> <!-- end Sim Resources for Home Screen -->
+<hr>
+<!-- Sim Screen 01 -->	
+<article>
+  <h1>Atom Screen, Build an Atom</h1>
+   <!-- Screen specific intro with Screen Parameters -->
+   <p>The interactive {{Atom Screen}} changes as you play with it. It has a Play Area and a Control Area. The Play Area {{has a model of an atom called My Atom, three buckets of particles, and three detail panels that track important things about the atom}}. The Control Area has {{radio buttons to switch the Atom model, checkboxes to adjust what inforamtion is shown,}} and a reset button to reset the sim.</p>
+   
+   <!-- Screen Specific Interaction Hint -->
+   <p>Look for particle buckets to play.</p>
+   
+   <!-- Common Keyboard Shortcuts Hint -->
+   <p>If needed, check out keyboard shortcuts under Sim Resources.</p>
+  
+  <h2>Play Area</h2>
+    <!-- Stuff in the Play Area -->
+  <h2>Control Area</h2>
+    <!-- Stuff in the Controls Area -->
+</article> 
 
-	   			// set initial (closed menu) states
-	   			button.setAttribute('aria-expanded', 'false');
-	   			button.hidden = false;
-	   			menu.hidden = true;
-	   			button.addEventListener('click', function() {
+<hr>
+<!-- Sim Screen 02 -->
+<article>
+  <h1>Symbol Screen, Build an Atom</h1>
+     <!-- Screen specific intro with Screen Parameters -->
+     <p>The interactive {{Symbol Screen}} changes as you play with it. It has a Play Area and a Control Area. The Play Area has {{DESCRIPTION OF PLAY AREA}}. The Control Area has {{DESCRIPTION OF CONTROL AREA,}} and a reset button to reset the sim.</p>
+     
+	 <!-- Screen Specific Interaction Hint -->
+     <p>{{HINT FOR SYMBOL SCREEN}}.</p>
+     
+	 <!-- Common Keyboard Shortcuts Hint -->
+     <p>If needed, check out keyboard shortcuts under Sim Resources.</p>
+    
+	<h2>Play Area</h2>
+      <!-- Stuff in the Play Area -->
+    
+	<h2>Control Area</h2>
+      <!-- Stuff in the Control Area -->
+</article>
 
-	   			// toggle menu visibility
-	   			var expanded = this.getAttribute('aria-expanded') ==='true';
-	   			this.setAttribute('aria-expanded', String(!expanded));
-	   			menu.hidden = expanded;
-	   		  });
-	   		})();
-	   		</script>
-	   		</html>
+<hr>
+<!-- Sim Screen 03 -->
+<article>
+  <h1>Game Screen, Build an Atom</h1>
+     <!-- Screen specific intro with Screen Parameters -->
+     <p>The interactive {{Game Screen}}, there is {{DESCRIPTION OF GAME SCREEN}}.</p>
+     
+	 <!-- Screen Specific Interaction Hint -->
+     <p>{{HINT FOR a GAME SCREEN}}</p>
+     
+	 <!-- Common Keyboard Shortcuts Hint -->
+     <p>If needed, check out keyboard shortcuts under Sim Resources.</p>
+      <!-- Structure relevant to a Game Screen, not sure about this yet.-->
+</article>
+
+<hr>
+<!-- Navigation landmark section for Sim Screens, that includes all relevant screen buttons -->
+<nav aria-labelledby="labelSimScreens">
+  <h2 id="labelSimScreens">Sim Screens</h2>
+	 <!-- All relevant screen buttons without aria-describedby. -->
+	 <ol>
+	   <li><button>{{Atom}} Screen</button>
+		   <p id="descriptionScreen01">{{Explore what makes up an atom}}.</p></li>
+	   <li><button>{{Symbol}} Screen</button>
+		   <p id="descriptionScreen02">{{Investigate atoms and their atomic symbols}}.</p></li>
+	   <li><button>{{Game}} Screen</button>
+		   <p id="descriptionScreen03">{{Test your knowledge of atoms and their atomic symbols}}.</p></li>
+	 </ol>
+</nav>
+
+<!-- Section for Sim Resources, that includes all relevant buttons -->
+<section aria-labelledby="lableSimRsources">
+  <h2 id="lableSimRsources">Sim Resources</h2>
+  <!-- Mute Sound, Keyboard Shortcuts, PhET Menu  -->
+  <!-- Keyboard Shortcuts widget--> 
+  <div id="keyboar-shortcuts-widget">
+    <button id="keyboard-shortcuts">Keyboard Shortcuts</button>
+    <p>Tips on how to use this sim with a keyboard.</p>
+  </div>
+  
+  <!-- PhET Menu button widget -->
+   <div class="menu-wrapper" aria-label="Teacher tools and links">
+     <button aria-haspopup="true" aria-controls="phet-menu">PhET Menu</button>
+     <ul role="menu" id="phet-menu">
+       <li role="menuitem">View Options</li>
+       <li role="menuitem">Check for Updates</li>
+       <li role="menuitem">Take Screenshot</li>
+       <li role="menuitem">Full Screen</li>
+       <li role="menuitem"><a href="https://phet.colorado.edu/files/troubleshooting/?BIG-LONG-LINK">Report Problem</a></li>
+       <li role="menuitem">About this Sim</li>
+       <li role="menuitem"><a href="http://phet.colorado.edu/">PhET Website</a></li>
+     </ul>
+   </div><!-- end menu-wrapper -->
+</section>
+<!-- End Section for Sim Resources, that includes all relevant buttons -->	
+</body>	
+	
+</html>
