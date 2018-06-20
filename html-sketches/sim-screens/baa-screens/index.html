@@ -26,14 +26,14 @@
 	</nav>
 		
 	<!-- Sim Resources for Home Screen -->			
-	<section id="resource-bar" aria-labelledby="resource-bar-label">
-	  <h2 id="resource-bar-label">Sim Resources</h2>   
+	<section id="simResources" aria-labelledby="labelSimResourcesHomeScreen">
+	  <h2 id="labelSimResourcesHomeScreen">Sim Resources</h2>   
 	  <!-- Keyboard Shortcuts widget hidden on Home Screen --> 
 	  
 	  <!-- PhET Menu button widget -->
-	   <div class="menu-wrapper" aria-label="Teacher tools and links">
-	     <button aria-haspopup="true" aria-controls="phet-menu-home-screen">PhET Menu</button>
-	     <ul role="menu" id="phet-menu-home-screen">
+	   <div class="menuWrapperHomeScreen" aria-label="Teacher tools and links">
+	     <button aria-haspopup="true" aria-controls="phetMenuHomeScreen">PhET Menu</button>
+	     <ul role="menu" id="phetMenuHomeScreen">
 	       <li role="menuitem">View Options</li>
 	       <li role="menuitem">Check for Updates</li>
 	       <li role="menuitem">Take Screenshot</li>
@@ -59,8 +59,11 @@
   
   <h2>Play Area</h2>
     <!-- Stuff in the Play Area -->
+	<p>Objects and interactions essential for exploration go in the <em>Play Area</em>.</p>	
+	
   <h2>Control Area</h2>
     <!-- Stuff in the Controls Area -->
+	<p>Less essential controls, often different settings and resets go in the <em>Control Area</em>.</p>
 </article> 
 
 <hr>
@@ -78,9 +81,11 @@
     
 	<h2>Play Area</h2>
       <!-- Stuff in the Play Area -->
+	  <p>Objects and interactions essential for exploration go in the <em>Play Area</em>.</p>	
     
 	<h2>Control Area</h2>
       <!-- Stuff in the Control Area -->
+	  <p>Less essential controls, often different settings and resets go in the <em>Control Area</em>.</p>
 </article>
 
 <hr>
@@ -95,7 +100,9 @@
      
 	 <!-- Common Keyboard Shortcuts Hint -->
      <p>If needed, check out keyboard shortcuts under Sim Resources.</p>
+	 
       <!-- Structure relevant to a Game Screen, not sure about this yet.-->
+	  <p>Structure of Game Screen to be determined.</p>	
 </article>
 
 <hr>
@@ -118,15 +125,15 @@
   <h2 id="lableSimRsources">Sim Resources</h2>
   <!-- Mute Sound, Keyboard Shortcuts, PhET Menu  -->
   <!-- Keyboard Shortcuts widget--> 
-  <div id="keyboar-shortcuts-widget">
-    <button id="keyboard-shortcuts">Keyboard Shortcuts</button>
+  <div id="keyboarShortcutsWidget">
+    <button id="keyboardShortcuts">Keyboard Shortcuts</button>
     <p>Tips on how to use this sim with a keyboard.</p>
   </div>
   
   <!-- PhET Menu button widget -->
-   <div class="menu-wrapper" aria-label="Teacher tools and links">
-     <button aria-haspopup="true" aria-controls="phet-menu">PhET Menu</button>
-     <ul role="menu" id="phet-menu">
+   <div class="menuWrapper" aria-label="Teacher tools and links">
+     <button aria-haspopup="true" aria-controls="phetMenu">PhET Menu</button>
+     <ul role="menu" id="phetMenu">
        <li role="menuitem">View Options</li>
        <li role="menuitem">Check for Updates</li>
        <li role="menuitem">Take Screenshot</li>
@@ -138,6 +145,26 @@
    </div><!-- end menu-wrapper -->
 </section>
 <!-- End Section for Sim Resources, that includes all relevant buttons -->	
-</body>	
-	
+
+<!-- Javascript from Pickering Menu Button-->
+<script>
+(function() {
+	// get the button and menu nodes
+	var button = document.querySelector('[aria-label="Teacher tools and links"] button');
+	var menu = button.nextElementSibling;
+
+	// set initial (closed menu) states
+	button.setAttribute('aria-expanded', 'false');
+	button.hidden = false;
+	menu.hidden = true;
+	button.addEventListener('click', function() {
+
+	// toggle menu visibility
+	var expanded = this.getAttribute('aria-expanded') ==='true';
+	this.setAttribute('aria-expanded', String(!expanded));
+	menu.hidden = expanded;
+  });
+})();
+</script>
+</body>		
 </html>
