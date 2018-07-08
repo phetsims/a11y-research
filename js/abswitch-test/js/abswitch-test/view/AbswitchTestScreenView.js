@@ -40,7 +40,7 @@ define( function( require ) {
     // label for the button
     var buttonLabel = new Text( 'ABSwitch as custom component, extra content with aria-live', { font: font } );
     buttonParentNode.addChild( buttonLabel );
-    
+
     var buttonProperty = new Property( false );
     var buttonLabelA = new Node( {
       children: [ new Circle( 20, { fill: 'red' } ) ]
@@ -79,7 +79,7 @@ define( function( require ) {
     // label for the checkbox
     var checkboxLabel = new Text( 'ABSwitch as an on/off checkbox, extra content with aria-live', { font: font } );
     checkboxParentNode.addChild( checkboxLabel );
-    
+
     var checkboxProperty = new Property( false );
     var checkboxLabelA = new Node( {
       children: [ new Circle( 20, { stroke: 'red' } ) ]
@@ -134,17 +134,22 @@ define( function( require ) {
       children: [ new Circle( 20, { fill: 'red' } ) ]
     } );
     var radioLabelB = new Node( {
-      children: [ new Rectangle(0, 0, 40, 40, { fill: 'green' } ) ]
+      children: [ new Rectangle( 0, 0, 40, 40, { fill: 'green' } ) ]
     } );
-    var radioSwitch = new ABSwitch( radioButtonProperty, false, radioLabelA, true,  radioLabelB );
+    var radioSwitch = new ABSwitch( radioButtonProperty, false, radioLabelA, true, radioLabelB );
     radioLabel.centerBottom = radioSwitch.centerTop.minusXY( 0, radioLabel.height );
     parent.addChild( radioSwitch );
 
     // a11y
     radioSwitch.tagName = 'fieldset';
     radioSwitch.groupFocusHighlight = true;
-    radioSwitch.setAriaLabelledByNode( parent );
-    parent.setAriaLabelContent( AccessiblePeer.LABEL_SIBLING );
+
+    // the switch should be aria-labelledby the parent's label sibling
+    radioSwitch.addAriaLabelledbyAssociation( {
+      thisElementName: AccessiblePeer.PRIMARY_SIBLING,
+      otherNode: parent,
+      otherElementName: AccessiblePeer.LABEL_SIBLING
+    } );
 
     radioLabelA.tagName = 'input';
     radioLabelA.inputType = 'radio';
@@ -186,7 +191,7 @@ define( function( require ) {
         buttonProperty.reset();
         abswitchTestModel.reset();
       },
-      right:  this.layoutBounds.maxX - 10,
+      right: this.layoutBounds.maxX - 10,
       bottom: this.layoutBounds.maxY - 10
     } );
     this.addChild( resetAllButton );
