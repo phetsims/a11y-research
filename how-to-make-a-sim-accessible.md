@@ -10,14 +10,14 @@
 Assitive technology accesses an Accessibility Tree (need link to a good article) in order to get accessibility 
 information that it can pass along to users of the assitive technology. For web pages and web applications the 
 Document Object Model (DOM) is what provides the Accessibility Tree with the information that users need.
-## Understanding the pDOM
+## Understanding the PDOM
 The traditional renderings of PhET sims (svg, canvas, webgl) hold very little semantic data as to what is inside the
-rendered graphic. They are a single, graphical element in the html. The pDOM ( parallel DOM (document object model))
+rendered graphic. They are a single, graphical element in the html. The PDOM ( parallel DOM (document object model))
 pulls semantic data from the `Scenery` scene graph and adds it to an separate html structure that is accessible to
-assistive technologies. When we say pDOM, think an html manifestation of the graphical `Node` content in the phetsim.
+assistive technologies. When we say PDOM, think an html manifestation of the graphical `Node` content in the phetsim.
 
 This html acts as just another modality to the phet model. You can interact with it to control the simulation, and you
-can get information out of it, as the pDOM is updated in real time in response to changes in the model.
+can get information out of it, as the PDOM is updated in real time in response to changes in the model.
 
 ## Overall Code structure
 Note: a11y is a synonym for accessibility.
@@ -27,36 +27,36 @@ options like normal into the `Parent.call()` or `mutate()` function calls.
 
 * The DAG features of the a11y side of Scenery are handled parallel to `Node`s in Scenery. Each `Node` with the
 `Accessibility` trait added to its prototype has N `AccessibleInstance`s based on the number of times it has been added
-to the scene graph. The pDOM elements of each `Node` are created and handled with `AccessiblePeer`. There is a 1x1
+to the scene graph. The PDOM elements of each `Node` are created and handled with `AccessiblePeer`. There is a 1x1
 relationship of `AccessibleInstance` and `AccessiblePeer`.
 
 ## Basic Example - adding a11y features to a `Node`
 The primary way that developers will interact with a11y is through options passed through to `Node.js`. First off, each
-`Node` that wants content in the pDOM will need an html element in the pDOM to represent it. To do this, use the
+`Node` that wants content in the PDOM will need an html element in the PDOM to represent it. To do this, use the
 `tagName` option:
 ```js
 var a11yNode = new Node( {
   tagName: 'p'
 }
 ```
-The above code snippet will create a node that is a `<p>` tag in the pDOM. To give content to this `<p>`, use the
+The above code snippet will create a node that is a `<p>` tag in the PDOM. To give content to this `<p>`, use the
 `innerContent` option.
 
 ```js
-a11yNode.innerContent = 'I am a p tag in the pDOM!';
+a11yNode.innerContent = 'I am a p tag in the PDOM!';
 ```
 
 Just like other Node options, you can pass them into an options object, `mutate` call, and by using getters/setters.
-Now the pDOM will look like:
+Now the PDOM will look like:
 ```html
-<p>I am a p tag in the pDOM</p>
+<p>I am a p tag in the PDOM</p>
 ```
 
 
-## Each Node can have more than one `HTMLElements` in the pDOM
+## Each Node can have more than one `HTMLElements` in the PDOM
   * `labelTagName`, `labelContent`
   * `containerTagName`
-  * Terminology of pDOM elements (parent and siblings of the primary sibling)
+  * Terminology of PDOM elements (parent and siblings of the primary sibling)
 
 
 ## Keyboard Navigation
