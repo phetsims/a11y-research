@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=1024, user-scalable=yes">
 
-  <title>CSUN 2018 Presentation: Providing alternative input for complex interactive learning resources</title>
+  <title>AERBVI 2018 Presentation: Accessible interactive simulations for physics education</title>
 
   <!-- Required stylesheet -->
   <link rel="stylesheet" media="screen" href="../deck/core/deck.core.css">
@@ -35,56 +35,67 @@
 
     <!-- Begin slides. Just make elements with a class of slide. -->
 
-    <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-01">
+    <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-00">
 	  	<div class="vcenter">
-				<h1 id="slide-title-01" style="font-size: 2.5em;">Providing alternative input for complex interactive learning resources</h1>
+				<h1 id="slide-title-00" style="font-size: 2.5em;">Accessible interactive simulations for physics education</h1>
 				<br>
 				<img src="img/_logo-phet.png" alt="PhET Interactive Simulations Project" style="width:300px;">
-				<h2 style="color: #001B70; padding: 0; margin: 0; font-size:1.5em">Taliesin Smith</h2>
-				<p>Emily B. Moore, Jesse Greenberg, Michael Kauzmann, &amp; Michael Barlow</p>
-				<p><small>CSUN, March 21, 2018</small></p> 
+				<h2 style="color: #001B70; padding: 0; margin: 0; font-size:1.5em">Emily B. Moore &amp; Taliesin L. Smith</h2>
+				<p><small>AERBVI, July 27, 2018</small></p> 
 		</div>  				
     </section>
 	
-	<section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-02">
-      <h2 id="slide-title-02">Overview</h2>
-	  <ul>
-		  <li>Introduce PhET Interactive Simulations &amp; Sim Design</li>
-		  <li>Inclusive Approach &amp; PDOM Architecture:	  
-			  <ul>
-		  		<li>Align with standards</li>
-		  	  	<li>Design for simplicity &amp; flexibility</li>
-		  	  	<li>Minimize maintenance &amp; overall complexity</li>
-			</ul>
-			</li>
-			<li>Our challenges &amp; solutions for alternative input</li>
-		  <li>Questions &amp; discussion</li>
-	  </ul>
-    </section>
-	
-    <section class="slide" aria-roledescription="slide-title-03">
-      <h2 id="slide-title-03">Introductions</h2>
+    <section class="slide" aria-roledescription="slide-title-01">
+      <h2 id="slide-title-01">Introductions</h2>
 	  	<div class="panel panel-left">
 	  		<ul>
-				<li>Emily B. Moore: <a href="mailto:emily.more@colorado.edu">emily.moore@colorado.edu</a></li>
-				<li>Jesse Greenberg</li>
-				<li>Michael Kauzmann</li>
-				<li>Taliesin L. Smith: <a href="mailto:Taliesin.Smith@colorado.edu">taliesin.smith@colorado.edu</a></li>
+				<li><strong>Emily B. Moore</strong><br>
+					Director of Research and Accessibility 
+					<a href="mailto:emily.more@colorado.edu">emily.moore@colorado.edu</a><br>
+				
+				</li>
+				<li><strong>Taliesin L. Smith</strong><br>
+					Inclusive Design Researcher, and lead for accessible design 
+					<a href="mailto:Taliesin.Smith@colorado.edu">taliesin.smith@colorado.edu</a><br>
+				</li>
 			</ul>
 			
+			<p>Add pictures of me and Emily! Or perhaps our A11y Team!</p>
 	  	</div>
     	<figure class="panel panel-right">	
 			<a href="https://phet.colorado.edu/"><img src="img/_logo-phet.png" alt="PhET Interactive Simulations Project" style="width:250px;margin:0;padding:0 0 0 2em;"></a>		
 	    	  <ul>
 	    		<li>Accessibility Research: <a href="https://phet.colorado.edu/en/accessibility">phet.colorado.edu/en/accessibility</a> </li>
-	    		<li>GitHub: <a href="https://github.com/phetsims">@phetsims</a> 
+	    		<li>GitHub: <a href="https://github.com/phetsims">@phetsims</a></li>
+				<li>GitHub: <a href="https://github.com/phetsims/a11y-research/presentations/aerbvi-2018/index.html">AERBVI 2010 Presentation</a></li>
 	    	  </ul>
-			    
     	</figure>  
     </section>
+	
+	<section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-02">
+      <h2 id="slide-title-02">Overview</h2>
+	  <ul>
+		  <li>What is a PhET Simulation?</li>
+		  <li>Some ways Teachers use PhET Sims.</li>
+		  <li>Accessibility research &amp; design</li>
+		  <li>Demonstrate accessible simulations (highlighting accessible design features)</li>
+		  <li>Where to find sims &amp; teaching resources</li>
+		  <li>What's coming</li>
+		  <li>Questions &amp; discussion (we are really interested in your feedback)</li>
+	  </ul>
+    </section>
+	
+	<section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-03">
+      <h2 id="slide-title-03">Learning Objectives</h2>
+	  <ul>
+		  <li>Describe 3 ways interactive science simulations are used in traditional classrooms</li>
+		  <li>Describe two of the accessibility features the PhET project has incorporated into accessible PhET simulations, and how these may be beneficial to students with visual impairments</li>
+		  <li>Find, access, and explore an accessible PhET simulation.</li>
+	  </ul>
+    </section>
 
-    <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-04">
-      <h2 id="slide-title-04">Experimentation</h2>
+   <!--<section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-04">
+      <h2 id="slide-title-04">Exploration &amp; Experimentation</h2>
   		<div class="panel panel-left">
 			<figure>
   				  <h3>Labs &amp; demonstrations</h3>
@@ -105,9 +116,9 @@
  		</div>
 		<div style="clear:both;"></div>
 		<p class="credit"><small>Courtesy of Allison Shelley/The Verbatim Agency for American Education: Images of Teachers and Students in Action. For more information about acceptable uses and licensing terms visit <a href="https://creativecommons.org/licenses/by-nc/4.0/">https://creativecommons.org/licenses/by-nc/4.0/</a>.</small></p>
-    </section>
+    </section>-->
 	
-    <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-05">
+    <!--<section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-05">
       <h2 id="slide-title-05">Interactive Science Simulations</h2>
    		<div class="panel panel-left" style="width: 50%;">
  			<ul>
@@ -125,17 +136,17 @@
 		 	<img src="img/_fb-international-use.jpg" alt="PhET Interactive Sim being used in foreign country and language." style="width:250px;">
 			<img src="img/_fb-kids-fun.jpg" alt="PhET Interactive Simulations being used by small kids for fun on the couch." style="width:250px;">
 		</figure>
-    </section>
+    </section>-->
 	
 	<section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-06">
-      <h2 id="slide-title-06">PhET Interactive Simulations</h2>
+      <h2 id="slide-title-06">What is a PhET Interactive Simulations</h2>
 		<figure class="panel panel-left" style="width:50%;">
     		<img src="img/phet-sims.png" alt="Several New HTML5 PhET Simulations.">
     	</figure>
 		
 		<div class="panel" style="width:40%;">
 		  <ul>
-		  	<li>Started in 2002</li>
+		  	<li>Designing sims since 2002</li>
 		  	<li>170 science &amp; math simulations</li>
 		  	<li>Run 100 Million+ times/year</li>
 			<li>87 languages</li>
