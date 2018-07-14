@@ -8,7 +8,15 @@ li li {
 }  */
 ul.norm li {
 	font-size: 80%;
-} 
+}
+ul.horizontal-list {
+	padding-left: 0;
+	margin: 0;
+}
+ul.horizontal-list li {
+	display: inline-block;
+	padding-left: 0.50em;
+}
 blockquote {
 	font-size: 100%;
 }
