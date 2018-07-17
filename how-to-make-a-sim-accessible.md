@@ -65,7 +65,7 @@ Now the PDOM will look like:
   * `inputType`, `inputValue`, `accessibleChecked`
 ### Focusability
   * `focusable: true` to make any interactive focusable with keyboard nav
-  * `accessibleVisible`, `accessibleContentDisplayed`?
+  * `accessibleVisible`?
 
 #### Setting you own focus highlight
   * `focusHighlight: {Node}`
