@@ -45,6 +45,7 @@ figure img.persona {
 }
 cite, .credit {
 	font-size: 50%;
+	line-height: inherit;
 	color: #888;
 }
 
