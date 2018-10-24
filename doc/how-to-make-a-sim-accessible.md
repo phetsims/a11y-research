@@ -110,7 +110,7 @@ Now the PDOM will look like:
 
 
 ### Interactive Alerts
-  * Talk about `UtteranceQueue` (AriaHerald?)
+  * Talk about `UtteranceQueue` (ariaHerald?)
 
 
 ## Handling a11y specific strings
