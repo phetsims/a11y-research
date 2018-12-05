@@ -75,7 +75,7 @@ Now the PDOM will look like:
   * `groupFocusHighlight` TODO: this isn't set in stone yet I think)
 
 ### Input Listeners
-  * `this.addAccessibleInputListener()`
+  * `this.addInputListener()`
 
 ## Descriptions
 

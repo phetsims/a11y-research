@@ -56,7 +56,7 @@ define( function( require ) {
     // a11y
     buttonSwitch.tagName = 'button';
     buttonSwitch.innerContent = 'Circle or Square A B Switch, Circle selected';
-    buttonSwitch.addAccessibleInputListener( {
+    buttonSwitch.addInputListener( {
       click: function() {
         buttonProperty.set( !buttonProperty.get() );
 
@@ -98,7 +98,7 @@ define( function( require ) {
     checkboxSwitch.containerTagName = 'div';
     checkboxSwitch.labelTagName = 'label';
     checkboxSwitch.labelContent = 'Add circle';
-    checkboxSwitch.addAccessibleInputListener( {
+    checkboxSwitch.addInputListener( {
       change: function() {
         checkboxProperty.set( !checkboxProperty.get() );
 
@@ -157,7 +157,7 @@ define( function( require ) {
     radioLabelA.labelContent = 'Circle';
     radioLabelA.containerTagName = 'div';
     radioLabelA.setAccessibleAttribute( 'name', 'radioButtonGroupMember' );
-    radioLabelA.addAccessibleInputListener( {
+    radioLabelA.addInputListener( {
       change: function( event ) {
         radioButtonProperty.set( false );
         radioLabelA.accessibleChecked = true;
@@ -177,7 +177,7 @@ define( function( require ) {
     radioLabelB.labelContent = 'Square';
     radioLabelB.containerTagName = 'div';
     radioLabelB.setAccessibleAttribute( 'name', 'radioButtonGroupMember' );
-    radioLabelB.addAccessibleInputListener( {
+    radioLabelB.addInputListener( {
       change: function( event ) {
         radioButtonProperty.set( true );
         radioLabelB.accessibleChecked = true;
