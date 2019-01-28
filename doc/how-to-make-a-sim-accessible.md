@@ -76,6 +76,8 @@ Now the PDOM will look like:
 
 ### Input Listeners
   * `this.addInputListener()`
+  * Scenery listeners' callbacks (like PressListener.press) that were already present could fire on
+  alternative interaction, make sure this doesn't break your code.
 
 ## Descriptions
 
