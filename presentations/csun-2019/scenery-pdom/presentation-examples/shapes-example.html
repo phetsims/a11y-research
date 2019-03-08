@@ -26,6 +26,7 @@
   document.body.appendChild( display.domElement );
   display.initializeEvents();
 
+  // draw a filled in arc
   const arcNode = new scenery.Path( kite.Shape.arc( 0, 0, 200, 0, 3, false ).close(), {
     centerX: 200,
     centerY: 300,
@@ -39,7 +40,7 @@
   arcNode.tagName = 'h2';
   arcNode.accessibleName = 'I am a piece of watermelon without any seeds.';
 
-  // regular polygon
+  // draw a regular polygon
   const polygonNode = new scenery.Path( kite.Shape.regularPolygon( 6, 100 ), { // sides, radius
     fill: '#ff0',
     stroke: '#000',
