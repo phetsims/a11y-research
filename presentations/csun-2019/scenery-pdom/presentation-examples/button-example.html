@@ -29,6 +29,11 @@
     display.initializeEvents();
     document.body.appendChild( display.domElement );
 
+    display.updateOnRequestAnimationFrame();
+
+    const roundedButton = new RoundedButton( 500, 100 );
+    this.addChild( roundedButton );
+
     // Add our text
     const rectangle = new scenery.Path( kite.Shape.roundedRectangleWithRadii( 5, 5, 500, 100, {
       topLeft: 10,
@@ -67,10 +72,6 @@
         }, 100 );
       }
     } );
-
-    display.updateOnRequestAnimationFrame();
-
-    display.updateDisplay();
 </script>
 </body>
 </html>
