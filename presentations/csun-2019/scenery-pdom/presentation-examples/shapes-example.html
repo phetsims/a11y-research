@@ -28,30 +28,34 @@
 
   // draw a filled in arc
   const arcNode = new scenery.Path( kite.Shape.arc( 0, 0, 200, 0, 3, false ).close(), {
-    centerX: 200,
-    centerY: 300,
-    rotation: Math.PI / 16,
     stroke: 'black',
     fill: 'magenta'
   } );
   scene.addChild( arcNode );
 
+  // position and rotation for the arc
+  arcNode.setCenterX( 250 );
+  arcNode.setCenterY( 300 );
+  arcNode.setRotation( Math.PI / 16 );
+
   // accessible content for the arc node
-  arcNode.tagName = 'h2';
-  arcNode.accessibleName = 'I am a piece of watermelon without any seeds.';
+  arcNode.setTagName( 'h2' );
+  arcNode.setAccessibleName( 'I am a piece of watermelon without any seeds.' );
 
   // draw a regular polygon
   const polygonNode = new scenery.Path( kite.Shape.regularPolygon( 6, 100 ), { // sides, radius
     fill: '#ff0',
-    stroke: '#000',
-    x: 150,
-    y: 150
+    stroke: '#000'
   } );
+  scene.addChild( polygonNode );
+
+  // position in the display
+  polygonNode.setX( 150 );
+  polygonNode.setY( 150 );
 
   // accessible content for the polygon
-  polygonNode.tagName = 'p';
-  polygonNode.accessibleName = 'A yellow polygon with six sides.';
-  scene.addChild( polygonNode );
+  polygonNode.setTagName( 'p' );
+  polygonNode.setAccessibleName( 'A yellow polygon with six sides.' );
 
   display.updateDisplay();
 </script>
