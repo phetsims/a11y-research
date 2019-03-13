@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Using Scenery and the Parallel DOM to support accessible web applications</title>
+
+    <style>
+      code {
+        font-size: 18pt;
+        background-color: #ddd;
+      }
+
+      .slide {
+        width: 70%;
+        font-size: 24pt;
+
+        margin: 1.6em 0em 0.2em;
+        padding: 0.6em;
+        background-color: #eee;
+        display: block;
+        border: 1px solid #000;
+        overflow: auto;
+      }
+
+      .centered, h1, img {
+        text-align: center;
+      }
+
+      .slide-count {
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="slide" aria-roledescription="slide">
+      <h1 class="slide-title">Using Scenery and the Parallel DOM to support accessible web applications</h1>
+      <ul>
+        <li>Jesse Greenberg (<a href="mailto:jesse.greenberg@colorado.edu.edu">jesse.greenberg@colorado.edu</a>)</li>
+        <li>Michael Kauzmann (<a href="mailto:michael.kauzmann@colorado.edu">michael.kauzmann@colorado.edu</a>)</li>
+        <li>Taliesin Smith (<a href="mailto:taliesin.smith@colorado.edu">taliesin.smith@colorado.edu</a>)</li>
+        <li>Emily Moore (<a href="mailto:emily.moore@colorado.edu">emily.moore@colorado.edu</a>)</li>
+      </ul>
+    </section>
+    <section class="slide" aria-roledescription="slide">
+      <h1 class="centered">PhET Interactive Simulations</h1>
+      <img class="centered" src="./presentation-slides_files/_logo-phet.png" alt="Logo for PhET Interactive Simulations, PhET spelled with blue and yellow letters with a paper airplane flying through the h.">
+      <ul>
+        <li>Over 170 Physics and Science simulations</li>
+        <li>Free and openly licensed</li>
+        <li>Over 100 million runs per year, in 87 languages</li>
+        <li>Simulations are interactive and exploratory</li>
+        <li><a href="https://phet.colorado.edu/sims/html/balloons-and-static-electricity/latest/balloons-and-static-electricity_en.html">Example: Balloons and Static Electricity</a></li>
+      </ul>
+    </section>
+    <section class="slide" aria-roledescription="slide">
+      <h1>Implementation  Overview: Scenery</h1>
+      <ul>
+        <li>Render graphics with custom scene graph</li>
+        <li>Uses a combination of Canvas, SVG, WebGL
+          <ul>
+            <li>Not accessible out of the box or in combination</li>
+          </ul>
+        </li>
+        <li>Solution:
+          <ul>
+            <li>Parallel DOM (PDOM)</li>
+            <li>Invisible HTML, rendered by our infrastructure</li>
+            <li>Provides standards based accessibility features</li>
+          </ul>
+      </li></ul>
+    </section>
+    <section class="slide" aria-roledescription="slide">
+      <h1>Resources and Funders</h1>
+      <h3>Resources</h3>
+      <ul>
+        <li><a href="http://phet.colorado.edu/">PhET Website</a></li>
+        <li><a href="https://phet.colorado.edu/en/about/accessibility">PhET Accessibility Research</a></li>
+        <li><a href="http://bit.ly/phet-w4a-2018">Slide Deck</a></li>
+      </ul>
+      <h3>Funders</h3>
+      <ul>
+        <li>The National Science Foundation (DRL-1503439 and DRL-1621363)</li>
+        <li>The Hewlett Foundation</li>
+        <li>University of Colorado</li>
+      </ul>
+      <h3>Contact Us</h3>
+      <ul>
+        <li><a href="mailto:jesse.greenberg@colorado.edu">jesse.greenberg@colorado.edu</a></li>
+        <li><a href="mailto:taliesin.smith@colorado.edu">taliesin.smith@colorado.edu</a></li>
+      </ul>
+      <h3>Get Involved!</h3>
+      <ul>
+        <li>Twitter: @PhETSims</li>
+        <li>github: <a href="https://github.com/phetsims">@phetsims</a></li>
+        <li>Facebook: @PhETSims</li>
+        <li><a href="https://phet.colorado.edu/blog">phet.colorado.edu/blog</a></li>
+      </ul>
+    </section>
+  
+
+</body></html>
