@@ -29,8 +29,9 @@
         super();
 
         // visual representation
+        const faceNode = new GaugeDialFace( radius );
         const needleNode = new GaugeNeedle( radius );
-        this.addChild( new GaugeDialFace( radius ) );
+        this.addChild( faceNode );
         this.addChild( needleNode );
 
         // accessible representation

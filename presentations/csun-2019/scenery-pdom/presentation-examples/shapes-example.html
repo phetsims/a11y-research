@@ -27,7 +27,8 @@
   display.initializeEvents();
 
   // draw a filled in arc
-  const arcNode = new scenery.Path( kite.Shape.arc( 0, 0, 200, 0, 3, false ).close(), {
+  const arcShape = kite.Shape.arc( 0, 0, 200, 0, 3, false ).close();
+  const arcNode = new scenery.Path( arcShape, {
     stroke: 'black',
     fill: 'magenta'
   } );
