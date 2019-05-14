@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Aria Live Example</title>
+  </head>
+  <body>
+    <h1>Aria Live Example</h1>
+    <p>I should be embedded in an iframe</p>
+
+    <p aria-live="polite" id="alerter"></p>
+
+    <button id="button">Create Alert</button>
+  </body>
+
+  <script type="text/javascript">
+    const button = document.getElementById( 'button' );
+    const alerter = document.getElementById( 'alerter' );
+
+    let i = 0;
+    button.addEventListener( 'click', () => {
+      alerter.textContent = "New alert " + ++i;
+    } );
+  </script>
+</html>
