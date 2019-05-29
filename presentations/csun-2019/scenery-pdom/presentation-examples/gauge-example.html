@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport"
+        content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <title>Scenery Gauge Example</title>
+
+  <!-- jQuery and lodash are dependencies of scenery -->
+  <script src="./lib/jquery-3.3.1.min.js"></script>
+  <script src="./lib/lodash-4.17.11.js"></script>
+  <script src="./lib/scenery.min.js"></script>
+</head>
+<body>
+
+  <script type="text/javascript">
+    class GaugeNode extends scenery.Node {
+
+      /**
+       * Draws a Gauge of specified radius. Shape is formed by connecting many
+       * polygons in the shape of a circle.
+       *
+       * @param {number} radius
+       */
+      constructor( radius ) {
+        super();
+
+        // visual representation
+        const faceNode = new GaugeDialFace( radius );
+        const needleNode = new GaugeNeedle( radius );
+        this.addChild( faceNode );
+        this.addChild( needleNode );
+
+        // accessible representation
+        // this is represented as a meter in the PDOM
+        this.setTagName( 'meter' );
+
+        // using roledescription because meter element shares role "progressbar"
+        this.setAccessibleAttribute( 'aria-roledescription', 'Gauge Meter' );
+
+        // when the value changes, update the visible radout, position the needle, and
+        // update the accessible label
+        valueProperty.link( value => {
+
+          // set the accessible label for the PDOM
+          const formattedValue = Math.round( value * 100 );
+          this.setAriaLabel( `${formattedValue} out of 100` );
+
+          // rotate the visual needle
+          needleNode.rotateAround( new dot.Vector2( 0, 0 ), ( value * Math.PI ) - needleNode.getRotation() );
+        } );
+      }
+    }
+
+    /**
+     * Creates the dial face for a gauge by combining a number of polygon "slices" to form the radial shape.
+     */
+    class GaugeDialFace extends scenery.Node {
+      constructor( radius ) {
+        super();
+
+        // slices colors are interpolated from orange to green
+        const startColor = new scenery.Color( 255, 100, 0 );
+        const endColor = new scenery.Color( 0, 255, 140 );
+
+        const innerRadius = radius / 3;
+        const numSlices = 40;
+        const sliceAngle = Math.PI / numSlices;
+        for ( let i = 0; i < numSlices; i++ ) {
+          const startAngle = Math.PI + i * sliceAngle;
+          const endAngle = startAngle + sliceAngle;
+          
+          const sliceShape = new kite.Shape();
+          sliceShape.moveTo( innerRadius * Math.cos( startAngle ), innerRadius * Math.sin( startAngle ) );
+          sliceShape.lineTo( radius * Math.cos( startAngle ), radius * Math.sin( startAngle ) );
+          sliceShape.lineTo( radius * Math.cos( endAngle ), radius * Math.sin( endAngle ) );
+          sliceShape.lineTo( innerRadius * Math.cos( endAngle ), innerRadius * Math.sin( endAngle ) );
+
+          this.addChild( new scenery.Path( sliceShape, {
+            fill: scenery.Color.interpolateRGBA( startColor, endColor, i / numSlices )
+          } ) );
+        }
+      }
+    }
+
+    /**
+     * A needle for the Gauge, a little shorter than the radius so that the needle is totally within the gauge.
+     * Initial orientation has the needle pointing to the left.
+     */
+    class GaugeNeedle extends scenery.Rectangle {
+      constructor( radius ) {
+        super( -radius + 10, 0, radius, 5, {
+          fill: 'black'
+        } );
+      }
+    }
+
+
+    class UpdateNeedleButton extends scenery.Rectangle {
+
+      /**
+       * An interactive button that will update the gauge needle position when clicked.
+       */
+      constructor( listener ) {
+
+        // visible label for the button
+        const content = new scenery.Text( 'Move Needle', { fontSize: 24 } );
+
+        // button surrounds content, with rounded corners
+        super( 0, 0, content.width * 1.3, content.height * 1.2, 8, 8, {
+          fill: 'lightblue',
+          cursor: 'pointer' 
+        } );
+
+        content.center = this.center;
+        this.addChild( content );
+
+        // the rectangle is a button for a11y
+        this.setTagName( 'button' );
+        this.setAccessibleName( content.text );
+
+        // listen for down events from a pointer, and click events from an assistive device
+        this.addInputListener( {
+          click: listener,
+          down: listener
+        } );
+      }
+    }
+
+    // set up the display
+    const scene = new scenery.Node();
+    const display = new scenery.Display( scene, {
+      width: 900,
+      height: 600
+    } );
+    document.body.appendChild( display.domElement );
+    display.initializeEvents();
+
+    // axon is available through scenery and provides observable properties
+    const valueProperty = new axon.Property( 0 );
+
+    const gaugeNode = new GaugeNode( 275 );
+    gaugeNode.setCenter( new dot.Vector2( 450, 300 ) );
+    scene.addChild( gaugeNode );
+
+    const updateButton = new UpdateNeedleButton( () => {
+      valueProperty.set( Math.random() );
+    } );
+    updateButton.centerTop = gaugeNode.centerBottom.plusXY( 0, 15 );
+    scene.addChild( updateButton );
+
+    // constant refresh
+    display.updateOnRequestAnimationFrame();
+  </script>
+  </body>
+</html>

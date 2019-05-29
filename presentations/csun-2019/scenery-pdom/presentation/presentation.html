@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Using Scenery and the Parallel DOM to support accessible web applications</title>
+
+    <style>
+      code {
+        font-size: 18pt;
+        background-color: #ddd;
+      }
+
+      .slide {
+        width: 70%;
+        font-size: 24pt;
+
+        margin: 1.6em 0em 0.2em;
+        padding: 0.6em;
+        background-color: #eee;
+        display: block;
+        border: 1px solid #000;
+        overflow: auto;
+      }
+
+      .diagram {
+        max-width: 60%
+      }
+
+      .centered, h1, img {
+        text-align: center;
+      }
+
+      .slide-count {
+        text-align: right;
+      }
+
+      /*available for assistive devices, but not visual*/
+      .hidden-html {
+        position: absolute;
+        opacity: 0;
+        display: hidden;
+        height: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="slide" aria-roledescription="slide">
+      <h1 class="slide-title">Using Scenery and the Parallel DOM to support accessible web applications</h1>
+      <ul>
+        <li>Jesse Greenberg (<a href="mailto:jesse.greenberg@colorado.edu.edu">jesse.greenberg@colorado.edu</a>)</li>
+        <li>Michael Kauzmann (<a href="mailto:michael.kauzmann@colorado.edu">michael.kauzmann@colorado.edu</a>)</li>
+        <li>Taliesin Smith (<a href="mailto:taliesin.smith@colorado.edu">taliesin.smith@colorado.edu</a>)</li>
+        <li>Emily Moore (<a href="mailto:emily.moore@colorado.edu">emily.moore@colorado.edu</a>)</li>
+      </ul>
+    </section>
+    <section class="slide" aria-roledescription="slide">
+      <h1 class="slide-title">Presentation Overview</h1>
+      <ul>
+        <li>Scenery: A library developed by PhET for interactive web graphics.</li>
+        <li>Capabilities of Scenery for graphics and accessibility</li>
+        <li>Demonstrate Scenery usage in PhET simulations</li>
+        <li>Demonstrate using Scenery for other graphics</li>
+      </ul>
+    </section>
+    <section class="slide" aria-roledescription="slide">
+      <h1 class="centered">PhET Interactive Simulations</h1>
+      <img class="centered" src="images/logo-phet.png" alt="Logo for PhET Interactive Simulations, PhET spelled with blue and yellow letters with a paper airplane flying through the h.">
+      <ul>
+        <li>Over 170 Physics and Science simulations</li>
+        <li>Free and openly licensed</li>
+        <li>Over 100 million runs per year, in 87 languages</li>
+        <li>Simulations are interactive and exploratory</li>
+        <li><a href="https://phet.colorado.edu/sims/html/friction/latest/friction_en.html">Example: Friction</a></li>
+      </ul>
+    </section>
+    <section class="slide" aria-roledescription="slide">
+      <h1 class="slide-title">PhET Implementation Overview</h1>
+      <ul>
+        <li>Uses model view controller paradigm</li>
+        <li>Model code for physics, state, and physical calculations</li>
+        <li>View code for presenting model information to the user</li>
+        <li>
+          Entire UI uses HTML5 renderers (Canvas, SVG, WebGL)
+          <ul>
+            <li>Planets, circuits, balloons, particles</li>
+            <li>Buttons, links, sliders, menus</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <section class="slide" aria-roledescription="slide">
+      <h1 class="slide-title">Why custom render entire interface?</h1>
+      <ul>
+        <li>More control over visual rendering</li>
+        <li>Improved platform consistency</li>
+        <li>Better performance</li>
+        <li>Better for developing a project of scaling that uses custom graphics</li>
+      </ul>
+    </section>
+    <section class="slide" aria-roledescription="slide">
+      <h1 class="slide-title">The View: Scenery</h1>
+      <ul>
+        <li>Open source graphics library for HTML5, by PhET</li>
+        <li>Scenery is a scene graph implementation</li>
+        <li>Scene graph is a "tree" like data structure for what is displayed on screen</li>
+        <li>Items in the tree are called "Nodes" and have parent-child relations with other nodes in the graph</li>
+      </ul>
+    </section>
+    <section class="slide" aria-roledescription="slide">
+      <h1 class="slide-title">The View: Scenery</h1>
+      <ul>
+        <li>
+          "Nodes" have graphical information
+          <ul>
+            <li>Image data</li>
+            <li>Shape with fill and stroke</li>
+            <li>Transformation (translation, rotation, scale)</li>
+          </ul>
+        </li>
+        <li>Scenery converts scene graph into visual display</li>
+      </ul>
+    </section>
+    <section class="slide" aria-roledescription="slide">
+      <img class="centered diagram" src="images/graph-graphics-diagram.PNG" alt="A diagram representing a scene graph data structure. The diagram 
+      is a tree-like hierarchy. At the root of the tree is a box labelled 'Play Area'. Out of this node are two arrows: one pointing to a child node
+      labelled 'Physics Book' and the other pointing to a node labelled 'Chemistry Book'. From each of these books are a number of arrows each pointing to
+      child nodes labelled 'Atom'. Beneath this diagram is an arrow pointing to the rendered image, which shows a physics book and a chemistry book made of
+      atoms in a play area.">
+    </section>
+    <section class="slide" aria-roledescription="slide">
+      <h1 class="slide-title">The View: Scenery</h1>
+      <ul>
+        <li>Scenery supports HTML Canvas, SVG, and WebGL</li>
+        <li>All three of these renderers can be used in a single application</li>
+        <li>Example: <a href="http://localhost:8080/scenery/tests/playground.html">Scenery Playground</a>
+          <p>(This example can be run locally after pulling <a href="https://github.com/phetsims/scenery">Scenery</a>)</p>
+        </li>
+      </ul>
+    </section>
+    <section class="slide" aria-roledescription="slide">
+      <h1 class="slide-title">Accessibility in traditional Web Graphics</h1>
+      <ul>
+        <li>
+          Canvas:
+          <ul>
+            <li>Sub DOM inside canvas</li>
+            <li>addHitRegion, removeHitRegion, drawFocusIfNeeded</li>
+          </ul>
+        </li>
+        <li>WebGL: Sub DOM inside Canvas</li>
+        <li>SVG: Native markup (title, desc), ARIA enhanced SVG</li>
+      </ul>
+    </section>
+    <section class="slide" aria-roledescription="slide">
+      <h1 class="slide-title">Issues with these approaches</h1>
+      <ul>
+        <li>Recommendation for each renderer is different</li>
+        <li>Supporting each traditional approach triples cost</li>
+        <li>Experimental technologies have limited support and cannot be used in production code</li>
+      </ul>
+    </section>
+    <section class="slide" aria-roledescription="slide">
+      <h1 class="slide-title">The Parallel DOM</h1>
+      <ul>
+        <li>Parallel HTML tree in addition to graphics</li>
+        <li>Accessible representation for what is displayed</li>
+        <li>Independent of other scenery graphics rendering</li>
+        <li>Visually hidden, available for assistive technologies</li>
+        <li>Leverages HTML and ARIA for best of web accessibility</li>
+      </ul>
+    </section>
+    <section class="slide" aria-roledescription="slide">
+      <h1 class="slide-title">The Parallel DOM: How it works</h1>
+      <ul>
+        <li>
+          Add accessibility information to nodes in scene graph
+          <ul>
+            <li>Tag Name</li>
+            <li>Accessible name</li>
+            <li>Role</li>
+            <li>Descriptive Content</li>
+          </ul>
+        </li>
+        <li>Scenery renders HTML tree from scene graph information</li>
+      </ul>
+    </section>
+    <section class="slide" aria-roledescription="slide">
+      <img class="centered diagram" src="images/graph-graphics-pdom-diagram.PNG" alt="A diagram representing a scene graph data structure. The diagram 
+      is a tree-like hierarchy. At the root of the tree is a box labelled 'Play Area'. Out of this node are two arrows: one pointing to a child node
+      labelled 'Physics Book' and the other pointing to a node labelled 'Chemistry Book'. From each of these books are a number of arrows each pointing to
+      child nodes labelled 'Atom'. Beneath this diagram are two arrows. The first pionts to a rendered image, which shows a physics book and a chemistry book made of
+      atoms in a play area. The second  arrow points to a graphic showing the rendered PDOM, containing the HTML in the following block.">
+      <div class="hidden-html">
+        <h2>Play Area</h2>
+        <p>In zoomed in view of where books meet, surface temperature thermometer is cool and 
+        atoms jiggle a tiny bit.</p>
+        <h3>Zoomed in Chemistry Book</h3>
+        <button>Grabbed Zoomed in Chemistry Book</button>
+        <p>Resting lightly on top of Physics Book. Atoms jiggle a tiny bit.</p>
+        <h3>Zoomed in Physics Book</h3>
+        <p>Below Chemistry Book. Atoms jiggle a tiny bit.</p>
+      </div>
+    </section>
+    <section class="slide" aria-roledescription="slide">
+      <h1 class="slide-title">Parallel DOM Features</h1>
+      <ul>
+        <li>Design accessible HTML for any web graphic</li>
+        <li>Highly dynamic descriptions with graphics</li>
+        <li>
+          All benefits of accessible HTML
+          <ul>
+            <li>Users are comfortable navigating semantic HTML</li>
+            <li>Interact with content at their own pace</li>
+            <li>Many navigation strategies to read DOM content</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <section class="slide" aria-roledescription="slide">
+      <h1 class="slide-title">Parallel DOM Features</h1>
+      <ul>
+        <li>Leverage built in DOM interaction from native HTML</li>
+        <li>Keyboard navigation</li>
+        <li>Alternative input (when possible)</li>
+        <li>Example: <a href="http://localhost:8080/scenery/tests/playground.html">Scenery Playground</a><br>
+          <p>(This example can be run locally after pulling <a href="https://github.com/phetsims/scenery">Scenery</a>)</p>
+        </li>
+      </ul>
+    </section>
+    <section class="slide" aria-roledescription="slide">
+      <h1 class="slide-title">Demonstration of PDOM</h1>
+      <ul>
+        <li>Friction (with visualization of accessible content)</li>
+        <li>Friction (with embedded content only)</li>
+      </ul>
+    </section>
+    <section class="slide" aria-roledescription="slide">
+      <h1 class="slide-title">Using Scenery for other web graphics</h1>
+      <ul>
+        <li>Scenery is free and open source!</li>
+        <li>Not recommended as a replacement for native HTML apps</li>
+        <li>It is a powerful tool for graphics interactives, and games where accessibility is built into the framework</li>
+      </ul>
+    </section>
+    <section class="slide" aria-roledescription="slide">
+      <h1 class="slide-title">Other Scenery examples</h1>
+      <ul>
+        <li><a href="https://phet-dev.colorado.edu/html/jg-tests/csun-2019/shapes-example.html">Accessible Scenery Shapes</a></li>
+        <li><a href="https://phet-dev.colorado.edu/html/jg-tests/csun-2019/gauge-example.html">Accessible Scenery Gauge Meter</a></li>
+      </ul>
+    </section>
+    <section class="slide" aria-roledescription="slide">
+      <h1 class="slide-title">Conclusions</h1>
+      <ul>
+        <li>Web content is becoming increasingly graphical and interactive</li>
+        <li>PhET developed Scenery, a free and open source library that can produce state of the art web graphics</li>
+        <li>Scenery supports state of the art web accessibility</li>
+        <li>Scenery and its accessibility support has been used extensively by PhET</li>
+        <li>We encourage anyone to use this free, open resource in development of interactives and graphics!</li>
+      </ul>      
+    </section>
+    <section class="slide" aria-roledescription="slide">
+      <h1>Resources and Funders</h1>
+      <h3>Resources</h3>
+      <ul>
+        <li><a href="https://github.com/phetsims/scenery">Scenery Repository</a></li>
+        <li><a href="http://phetsims.github.io/scenery/">Scenery Documentation</a></li>
+        <li><a href="http://phet.colorado.edu/">PhET Website</a></li>
+        <li><a href="https://phet.colorado.edu/en/about/accessibility">PhET Accessibility Research</a></li>
+        <li><a href="http://bit.ly/phet-w4a-2018">This slide deck</a></li>
+      </ul>
+      <h3>Funders</h3>
+      <ul>
+        <li>The National Science Foundation (DRL-1503439, DRL-1621363, DRL-1814220)</li>
+        <li>The Hewlett Foundation</li>
+        <li>University of Colorado</li>
+      </ul>
+      <h3>Contact Us</h3>
+      <ul>
+        <li><a href="mailto:jesse.greenberg@colorado.edu">jesse.greenberg@colorado.edu</a></li>
+        <li><a href="mailto:michael.kauzmann@colorado.edu">michael.kauzmann@colorado.edu</a></li>
+        <li><a href="mailto:taliesin.smith@colorado.edu">taliesin.smith@colorado.edu</a></li>
+        <li><a href="mailto:emily.moore@colorado.edu">emily.moore@colorado.edu</a></li>
+      </ul>
+      <h3>Get Involved!</h3>
+      <ul>
+        <li>Twitter: @PhETSims</li>
+        <li>github: <a href="https://github.com/phetsims">@phetsims</a></li>
+        <li>Facebook: @PhETSims</li>
+        <li><a href="https://phet.colorado.edu/blog">phet.colorado.edu/blog</a></li>
+      </ul>
+    </section>
+  
+
+</body></html>

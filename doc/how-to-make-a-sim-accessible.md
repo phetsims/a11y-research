@@ -75,7 +75,9 @@ Now the PDOM will look like:
   * `groupFocusHighlight` TODO: this isn't set in stone yet I think)
 
 ### Input Listeners
-  * `this.addAccessibleInputListener()`
+  * `this.addInputListener()`
+  * Scenery listeners' callbacks (like PressListener.press) that were already present could fire on
+  alternative interaction, make sure this doesn't break your code.
 
 ## Descriptions
 
@@ -110,7 +112,7 @@ Now the PDOM will look like:
 
 
 ### Interactive Alerts
-  * Talk about `UtteranceQueue` (AriaHerald?)
+  * Talk about `UtteranceQueue` (ariaHerald?)
 
 
 ## Handling a11y specific strings

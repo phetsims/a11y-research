@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport"
+        content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <title>Scenery Gauge Example</title>
+
+  <!-- jQuery and lodash are dependencies -->
+  <script src="./lib/jquery-3.3.1.min.js"></script>
+  <script src="./lib/lodash-4.17.11.js"></script>
+  <script src="./lib/scenery.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <div id="accessibility-scene" class="exampleScene" style="width: 600px; height: 200px;"></div>
+</div>
+<script type="text/javascript">
+    var scene = new scenery.Node();
+    var display = new scenery.Display( scene, {
+      width: 600,
+      height: 200
+    } );
+    display.initializeEvents();
+    document.body.appendChild( display.domElement );
+
+    display.updateOnRequestAnimationFrame();
+
+    const roundedButton = new RoundedButton( 500, 100 );
+    this.addChild( roundedButton );
+
+    // Add our text
+    const rectangle = new scenery.Path( kite.Shape.roundedRectangleWithRadii( 5, 5, 500, 100, {
+      topLeft: 10,
+      topRight: 10,
+      bottomLeft: 10,
+      bottomRight: 10
+    } ), {
+      stroke: 'black',
+      fill: 'dodgerblue',
+      cursor: 'pointer',
+
+      tagName: 'button',
+      accessibleName: 'Go Sports!'
+    } );
+
+    scene.addChild( rectangle );
+    rectangle.addChild( new scenery.Text( 'Go Sports.', {
+      font: '36px sans-serif',
+      center: rectangle.center
+    } ) );
+
+    rectangle.addInputListener( {
+      down: () => {
+        rectangle.fill = 'yellow';
+      },
+      up: () => {
+        rectangle.fill = 'dodgerblue';
+      },
+
+      // Add a listener that fires when the button in the PDOM is clicked
+      click: () => {
+        rectangle.fill = 'yellow';
+
+        setTimeout( () => {
+          rectangle.fill = 'dodgerblue';
+        }, 100 );
+      }
+    } );
+</script>
+</body>
+</html>

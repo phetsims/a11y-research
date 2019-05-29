@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport"
+        content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <title>Scenery Shapes Example</title>
+
+  <!-- jQuery and lodash are dependencies of scenery -->
+  <script src="./lib/jquery-3.3.1.min.js"></script>
+  <script src="./lib/lodash-4.17.11.js"></script>
+  <script src="./lib/scenery.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+
+  // set up the display
+  const scene = new scenery.Node();
+  const display = new scenery.Display( scene, {
+    width: 900,
+    height: 600
+  } );
+  document.body.appendChild( display.domElement );
+  display.initializeEvents();
+
+  // draw a filled in arc
+  const arcShape = kite.Shape.arc( 0, 0, 200, 0, 3, false ).close();
+  const arcNode = new scenery.Path( arcShape, {
+    stroke: 'black',
+    fill: 'magenta'
+  } );
+  scene.addChild( arcNode );
+
+  // position and rotation for the arc
+  arcNode.setCenterX( 250 );
+  arcNode.setCenterY( 300 );
+  arcNode.setRotation( Math.PI / 16 );
+
+  // accessible content for the arc node
+  arcNode.setTagName( 'h2' );
+  arcNode.setAccessibleName( 'I am a piece of watermelon without any seeds.' );
+
+  // draw a regular polygon
+  const polygonNode = new scenery.Path( kite.Shape.regularPolygon( 6, 100 ), { // sides, radius
+    fill: '#ff0',
+    stroke: '#000'
+  } );
+  scene.addChild( polygonNode );
+
+  // position in the display
+  polygonNode.setX( 150 );
+  polygonNode.setY( 150 );
+
+  // accessible content for the polygon
+  polygonNode.setTagName( 'p' );
+  polygonNode.setAccessibleName( 'A yellow polygon with six sides.' );
+
+  display.updateDisplay();
+</script>
+</body>
+</html>
