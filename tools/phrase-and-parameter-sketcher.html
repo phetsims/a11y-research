@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Phrase and Parameter Sketcher</h1>
+<h2>The Idea</h2>
+<p>I’m wondering if a wizarding tool could be created that allowed a designer to build and play with a phrase and any number of parameters within the phrase?<p>
+
+<p>The tool might allow the designer to:</p>
+<ol>
+	<li>Create a base phrase</li>
+	<li>Identify any number of parameter-blocks for phrase.</li>
+	<li>Name the parameter-blocks</li>
+	<li>Place named parameter-blocks within the phrase at any location.</li>
+	<li>Populate each parameter-block with a list of parameters (min 2).</li>
+	<li>Play with the phrase and the created parameters</li>
+	<li>Export the phrase and the list of parameters into somethign useful (maybe some markdown) that could be embedded in design doc (or into json code)?</li>
+</ol>
+
+
+<h2>Step 1: Choose a sim to load in to the iframe</h2>
+<p>Not required, but it might be nice to be able to embed the sim into the tool.</p> 
+<iframe id="iframe" allowfullscreen="" scrolling="no" title="Interact with Molarity" src="molarity_en.html?brand=phet&amp;ea&amp;a11y&amp;postMessageOnLoad&amp;postMessageOnError&amp;accessibility"></iframe>
+
+<h2>Step 2: Choose a structure for the description</h2>
+<p>Ideally, a designer could choose between a few simple structures in which to house the description (e.g. a paragraph, or a list, option to add a heading)</p>
+ 
+ <h2>Step 3: Build the parameterized description</h2>
+ <p>Based on the structure chosen in Step 2, build the parameterized description in a paragraph or list.</p>
+<h3>Example Dynamic State of Sim (Molarity)</h3>
+<p>Currently, beaker
+<select>
+  <option value="is full">is full</option>
+  <option value="is nearly full">is nearly full</option>
+  <option value="is over half full">is over half full</option>
+  <option value="is half full">is half full</option>
+  <option value="is under half full">is under half full</option>
+  <option value="is nearly empty">is nearly empty</option>
+  <option value="has lowest amount">has lowest amount</option>
+</select>
+of a <select>
+  <option value="red">red</option>
+  <option value="red">red</option>
+  <option value="pink">pink</option>
+  <option value="orange">orange</option>
+  <option value="gold">gold</option>
+  <option value="yellow">yellow</option>
+  <option value="green">green</option>
+  <option value="blue">blue</option>
+  <option value="purple">purple</option>
+  <option value="clear">clear</option>
+</select>
+solution containing
+<select>
+  <option value="max amount of">max amount of</option>
+  <option value="a lot of">a lot of</option>
+  <option value="a bunch of">a bunch of</option>
+  <option value="some">some</option>
+  <option value="some">a low amount of</option>
+  <option value="a little">a little</option>
+  <option value="no">no</option>
+</select>
+<select>
+  <option value="drink mix">drink mix</option>
+  <option value="cobalt(II) nitrate">cobalt(II) nitrate</option>
+  <option value="cobalt(II) chloride">cobalt(II) chloride</option>
+  <option value="potassium dichromate">potassium dichromate</option>
+  <option value="gold(III) chloride">gold(III) chloride</option>
+  <option value="potassium chromate">potassium chromate</option>
+  <option value="nickel(II) chloride">nickel(II) chloride</option>
+  <option value="copper(II) sulfate">copper(II) sulfate</option>
+  <option value="potassium permanganate">potassium permanganate</option>
+  <option value="pure water">pure water</option>
+</select> solute. Solution
+<select>
+  <option value="has max concentration">has max concentration</option>
+  <option value="is highly concentrated">is highly concentrated</option>
+  <option value="is very concentrated">is very concentrated</option>
+  <option value="is not very concentrated">is not very concentrated</option>
+  <option value="is slightly concentrated">is slightly concentrated</option>
+  <option value="has low concentration">has low concentration</option>
+  <option value="has zero concentration">has zero concentration</option>
+</select>
+and
+<select>
+  <option value="is not saturated">is not saturated</option>
+  <option value="is saturated">is saturated</option>
+</select>.</p>
+
+
+</body>
+</html>
