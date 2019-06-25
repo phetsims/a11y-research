@@ -7,19 +7,28 @@
     select {
       margin: 0px 5px; /* a bit of width */
     }
+
+    #content {
+      margin: 50px
+    }
   </style>
 </head>
 <body>
 
-<input id="sentenceInput"/>
-<br>
-<br>
-<br>
-<div id="vars"></div>
-<br>
-<br>
-<br>
-<div id="outputSentence"></div>
+<div id="content">
+  <h3>Dynamic Phrase Manipulator</h3>
+  <label for="sentenceInput">Input description sentence here:</label>
+  <br>
+  <textarea rows="10" cols="60" id="sentenceInput"></textarea>
+  <br>
+  <br>
+  <br>
+  <div id="vars"></div>
+  <br>
+  <br>
+  <br>
+  <div id="outputSentence"></div>
+</div>
 </body>
 <script type="application/javascript">
 
@@ -56,8 +65,9 @@
 
       const area = document.createElement( 'textarea' );
       const submit = document.createElement( 'button' );
-      submit.innerText = `Add options for "${this.name}"`;
+      submit.innerText = `Add options for "${this.name}", separated by a new line.`;
       submit.addEventListener( 'click', () => {
+        this.options = [];
         area.value.split( '\n' ).forEach( option => { this.addOption( option )} );
       } );
 
@@ -111,12 +121,27 @@
 
 
     onInput( string ) {
-      this.vars = [];
+      const newVars = [];
       findAll( TEMPLATE_VAR_REGEX, string ).forEach( variableOutput => {
+        const variableName = variableOutput[ 1 ];
 
-        // For `ohhi{{fdsa}}` output looks like `["{{fdsa}}", "fdsa", index: 4, groups: undefined]`
-        this.vars.push( new TemplateVariable( variableOutput[ 1 ], variableOutput.index ) );
+        let alreadyExists = false;
+        this.vars.forEach( templateVar => {
+          if ( templateVar.name === variableName ) {
+            alreadyExists = true;
+            newVars.push( templateVar );
+          }
+        } );
+
+        // if it didn't already exist, then let's create a new one
+        if ( !alreadyExists ) {
+
+          // For `ohhi{{fdsa}}` output looks like `["{{fdsa}}", "fdsa", index: 4, groups: undefined]`
+          newVars.push( new TemplateVariable( variableName, variableOutput.index ) );
+
+        }
       } );
+      this.vars = newVars;
       this.updateVarUI();
       this.updateOutputPhrase( string );
     }
