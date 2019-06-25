@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Phrase Builder</title>
+  <style>
+    select {
+      margin: 0px 5px; /* a bit of width */
+    }
+  </style>
+</head>
+<body>
+
+<input id="sentenceInput"/>
+<br>
+<br>
+<br>
+<div id="vars"></div>
+<br>
+<br>
+<br>
+<div id="outputSentence"></div>
+</body>
+<script type="application/javascript">
+
+  const TEMPLATE_VAR_REGEX = /\{\{(\w*)}\}/;
+
+
+  class TemplateVariable {
+    constructor( name, index ) {
+      this.name = name;
+      this.index = index;
+      this.options = [];
+      this.select = document.createElement( 'select' );
+
+      this.ui = this.createVarUI();
+    }
+
+    updateSelectBox() {
+      this.select.innerHTML = '';
+      this.options.forEach( optionName => {
+        const option = document.createElement( 'option' );
+        option.innerText = optionName;
+        this.select.appendChild( option );
+      } )
+    }
+
+    addOption( optionName ) {
+      this.options.push( optionName );
+      this.updateSelectBox();
+    }
+
+
+    createVarUI() {
+      const div = document.createElement( 'div' );
+
+      const area = document.createElement( 'textarea' );
+      const submit = document.createElement( 'button' );
+      submit.innerText = `Add options for "${this.name}"`;
+      submit.addEventListener( 'click', () => {
+        area.value.split( '\n' ).forEach( option => { this.addOption( option )} );
+      } );
+
+      div.appendChild( area );
+      div.appendChild( submit );
+      return div;
+    }
+
+  }
+
+  class PhraseBuilder {
+    constructor( input, varDiv, output ) {
+      this.vars = []; // {TemplateVariable[]}
+      this.input = input;
+      this.varUI = varDiv;
+      this.outputSentence = output;
+
+      input.addEventListener( 'input', () => {
+        this.onInput( input.value );
+      } );
+    }
+
+
+    appendSpanText( div, string ) {
+      const p = document.createElement( 'span' );
+      p.innerText = string;
+      div.appendChild( p );
+    }
+
+    updateOutputPhrase( string ) {
+      this.outputSentence.innerHTML = '';
+
+      let currentIndex = 0;
+      this.vars.forEach( templateVar => {
+        const toAppend = string.slice( currentIndex, templateVar.index );
+        this.appendSpanText( this.outputSentence, toAppend );
+        this.outputSentence.appendChild( templateVar.select );
+        currentIndex = templateVar.index + templateVar.name.length + 4; // 4 for the curly braces `{{}}`
+      } );
+
+      this.appendSpanText( this.outputSentence, string.slice( currentIndex, ) );
+    };
+
+    updateVarUI() {
+      this.varUI.innerHTML = '';
+      this.vars.forEach( templateVar => {
+        this.varUI.appendChild( templateVar.ui );
+      } );
+
+    }
+
+
+    onInput( string ) {
+      this.vars = [];
+      findAll( TEMPLATE_VAR_REGEX, string ).forEach( variableOutput => {
+
+        // For `ohhi{{fdsa}}` output looks like `["{{fdsa}}", "fdsa", index: 4, groups: undefined]`
+        this.vars.push( new TemplateVariable( variableOutput[ 1 ], variableOutput.index ) );
+      } );
+      this.updateVarUI();
+      this.updateOutputPhrase( string );
+    }
+
+  }
+
+  const phraseBuilder = new PhraseBuilder(
+    document.getElementById( 'sentenceInput' ),
+    document.getElementById( 'vars' ),
+    document.getElementById( 'outputSentence' )
+  );
+
+
+  /**
+   * copied from https://stackoverflow.com/questions/6323417/how-do-i-retrieve-all-matches-for-a-regular-expression-in-javascript
+   * @param {regex}regexPattern
+   * @param {string} sourceString
+   * @returns {Array.<Object>} - all the matches, each is an output of RegExp.exec (with index property too)
+   */
+  function findAll( regexPattern, sourceString ) {
+    let output = [];
+    let match;
+
+    // make sure the pattern has the global flag
+    let regexPatternWithGlobal = RegExp( regexPattern, "g" );
+    while ( match = regexPatternWithGlobal.exec( sourceString ) ) {
+
+      // get rid of the string copy
+      delete match.input;
+
+      // store the match data
+      output.push( match )
+    }
+    return output
+  }
+
+</script>
+</html>
