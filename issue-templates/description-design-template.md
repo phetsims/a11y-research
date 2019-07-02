@@ -140,7 +140,7 @@ Link to design doc
 
 **Check Credits**
 - [ ] Verify A11y team has been added
-  - Team: add Emily Moore, Taliesin Smith
+  - Team: add Emily B. Moore, Taliesin Smith
   - Software Development: add John Blanco, Michael Kauzmann
   - Sound Design: Ashton Morris after Graphics Arts
 
