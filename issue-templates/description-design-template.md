@@ -20,6 +20,7 @@ Check active features and add dates
 - [ ] Main Sim Design do reviewed for learning goals
 - [ ] Teaching materials reviewed
 - [ ] Reviewed model properties with Developer
+- [ ] Identify any visual "Hollywooding" (i.e., places where visuals are not directly linked to model)
 
 # Determine Structure of PDOM
 - [ ] Identify dynamic objects that warrant their own name and description in the Play Area
