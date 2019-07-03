@@ -1,8 +1,4 @@
-
-
-Some changes to labels (m1 to be mass 1 and m2 to be mass 2) and content (simplification of some language) is required for this sim.
-
-This issue helps tracks the big picture progress of the design and implementation of description and alternative input.
+This checklist will help track the big picture progress of the design and implementation of description and alternative input.
 
 # A11y Features 
 Check active features and add dates
