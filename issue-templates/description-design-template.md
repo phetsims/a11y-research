@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 This issue helps tracks the big picture progress of the description design and description implementation, implementation of alternative input. Sound and adaptive features are incorporated only at a high-level here.
->>>>>>> 4fc719e267028b746804f0be80fbcc1c2ae21a2a
 
 # A11y Features 
 Checked features are being worked on for this sim
@@ -19,10 +17,8 @@ Checked features are being worked on for this sim
 # A11y Design Prep
 - [ ] Main Sim Design reviewed for learning goals
 - [ ] Teaching materials reviewed
-<<<<<<< HEAD
 - [ ] Reviewed model properties with Main Developer or A11y Developer
 - [ ] Identify visual enhancements that deviate from model (e.g. "hollywooding")
->>>>>>> 4fc719e267028b746804f0be80fbcc1c2ae21a2a
 
 # Determine Structure of PDOM
 - [ ] Identified dynamic objects that warrant their own name and description in the Play Area
@@ -136,8 +132,6 @@ Checked features are being worked on for this sim
 
 **Check Credits**
 - [ ] Verify A11y team has been added
-<<<<<<< HEAD
->>>>>>> 4fc719e267028b746804f0be80fbcc1c2ae21a2a
 
 **Once Evaluation begins**
 - [ ] Ensure interviews are recorded to this sim's interview spreadsheet
@@ -147,6 +141,5 @@ Checked features are being worked on for this sim
 - [ ] List out main design challenges (if any and if necessary)
 - [ ] List out lessons learned from this sim (e.g., found focus issues for iOS)
 - [ ] Suggest improvements to THIS issue template
-
 
 **List of significant changes to Checklist (by date)**
