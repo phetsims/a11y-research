@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Phrase Builder</title>
+  <style>
+    select {
+      margin: 0px 5px; /* a bit of width */
+    }
+
+    #content {
+      margin: 50px
+    }
+  </style>
+</head>
+<body>
+
+<div id="content">
+  <h3>Dynamic Phrase Manipulator</h3>
+  <label for="sentenceInput">Input description sentence here:</label>
+  <br>
+  <textarea rows="10" cols="60" id="sentenceInput"></textarea>
+  <br>
+  <br>
+  <br>
+  <div id="vars"></div>
+  <br>
+  <br>
+  <br>
+  <div id="outputSentence"></div>
+</div>
+</body>
+<script src="TemplateVariable.js"></script>
+<script src="PhraseBuilder.js"></script>
+<script type="application/javascript">
+
+  window.PhraseBuilder.create(
+    document.getElementById( 'sentenceInput' ),
+    document.getElementById( 'vars' ),
+    document.getElementById( 'outputSentence' )
+  );
+
+</script>
+</html>
