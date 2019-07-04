@@ -129,6 +129,7 @@ Checked features are being worked on for this sim
 
 # Other A11y ToDo's
 **Other Features & Items (e.g., Mobile A11y features?)**
+- [ ] List items as needed
 
 **Check Credits**
 - [ ] Verify A11y team has been added
