@@ -1,7 +1,7 @@
 This issue helps tracks the big picture progress of the description design and description implementation, implementation of alternative input. Sound and adaptive features are incorporated only at a high-level here.
 
 # A11y Features 
-Checked features are being worked on for this sim
+**Checked features are being worked on for this sim**
 - [ ] Keyboard Navigation -  (Started: ) (Completed: )
 - [ ] Simple Description (Started: ) (Completed: )
 - [ ] Full Description - (Started: ) (Completed: )
@@ -118,7 +118,9 @@ Checked features are being worked on for this sim
 
 ### Complex Context Responses (often aria-live regions)
 **Name Context Responses and details as needed**
+
 (e.g., GFLB: Responses described force changes specific to changing distance or changing mass; Molarity: Responses described changes to solution concentration specific to Solute Amount changes, Solution Volume changes, and Solute changes)
+
 **Add or remove context details as needed**
 **CONTEXT Response 1: OBJECT 1 Increase**
   - [ ] Shared name (between designer and developer) for the context
