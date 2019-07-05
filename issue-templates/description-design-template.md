@@ -28,7 +28,7 @@ This issue helps tracks the big picture progress of the description design, desc
   - [ ] There are no new interaction types in this sim
 
 ## [State Descriptions](url to section design doc)
-**Checked items are drafted & ready for implementation**
+**Checked items drafted & ready for implementation**
 ### Static State Descriptions
 - [ ] Static screen summary
 - [ ] Initial sim-specific interaction hint (place in own paragraph)
@@ -38,7 +38,7 @@ This issue helps tracks the big picture progress of the description design, desc
 - [ ] Help text for interactive elements 
 
 ### [Dynamic State Descriptions](url to section design doc)
-**Checked items are completd in design document**
+**Checked items completd in design document**
 - [ ] PDOM section of Design Doc contains 1 clear example of each dynamic description
 - [ ] MOre examples and possible edge cases have been explored for:
     - [ ] Dynamic screen summary (i.e., brief state-of-the-sim)
@@ -47,7 +47,7 @@ This issue helps tracks the big picture progress of the description design, desc
     - [ ] Special case parameters or phrases identified (dynamic screen summary, dynamic states)
 
 ## Responsive Descriptions
-**Checked items are drafted & ready for implementation**
+**Checked items drafted & ready for implementation**
 ### [Object Responses](url to section design doc)
 **[Parameters, Scales & Ranges](link to section in design doc)**
 - Tables (or lists) outlining dynamic parameters (scales & ranges) for each sim concept created
