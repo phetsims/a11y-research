@@ -6,6 +6,8 @@ This issue helps tracks the big picture progress of the description design, desc
 - [ ] Simple Description (Started: ) (Completed: )
 - [ ] Full Description - (Started: ) (Completed: )
 - [ ] Sonification - (Started: ) (Completed: )
+  - [ ] Estimated date for incorporating sound into the main sim repo: ()
+  - [ ] Created issue for sound incorporation
 - [ ] Mobile Accessibility - (Started: ) (Completed: )
 
 # A11y Design
