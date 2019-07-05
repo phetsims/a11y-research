@@ -1,4 +1,4 @@
-This issue helps tracks the big picture progress of the description design and description implementation, implementation of alternative input. Sound and adaptive features are incorporated only at a high-level here.
+This issue helps tracks the big picture progress of the description design, description implementation, and implementation of alternative input. Sound and adaptive features are incorporated only at a high-level here, though could be added as we move forward and learn more.
 
 # A11y Features 
 **Checked features are being worked on for this sim**
@@ -20,56 +20,60 @@ This issue helps tracks the big picture progress of the description design and d
 - [ ] Reviewed model properties with Main Developer or A11y Developer
 - [ ] Identify visual enhancements that deviate from model (e.g. "hollywooding")
 
-# Determine Structure of PDOM
-- [ ] Identified dynamic objects that warrant their own name and description in the Play Area
-- [ ] Identified all interactive objects and their PhET types (e.g., sliders, buttons, etc.)
-- [ ] Identified new interaction types (i.e., new a11y types) in this sims, or check:
+# Parallel DOM (PDOM)
+**Checked items have PDOM structures identified & determined**
+- [ ] Dynamic objects that warrant their own name and description in the Play Area
+- [ ] All interactive objects and their PhET types (e.g., sliders, buttons, etc.)
+- [ ] New interaction types (i.e., new a11y types) in this sims, or check:
   - [ ] There are no new interaction types in this sim
 
-# State Descriptions
-## Drafted & ready for implementation
+## [State Descriptions](url to section design doc)
+**Checked items are drafted & ready for implementation**
 ### Static State Descriptions
-- [ ] Static screen summary ready
-- [ ] Initial sim-specific interaction hint ready
-- [ ] Headings for objects/groups in Play Area determined
-- [ ] Labels for interactive elements ready
-- [ ] Heading outline & Focus Order determined 
-- [ ] Help text for interactive elements ready 
+- [ ] Static screen summary
+- [ ] Initial sim-specific interaction hint (place in own paragraph)
+- [ ] Headings for objects/groups in Play Area
+- [ ] Labels for interactive elements
+- [ ] Heading outline & Focus Order 
+- [ ] Help text for interactive elements 
 
-### Dynamic State Descriptions
-- [ ] PDOM section of Design Doc contains 1 example of each dynamic description
-- [ ] Examples for any edges cases are linked to for:
+### [Dynamic State Descriptions](url to section design doc)
+**Checked items are completd in design document**
+- [ ] PDOM section of Design Doc contains 1 clear example of each dynamic description
+- [ ] MOre examples and possible edge cases have been explored for:
     - [ ] Dynamic screen summary (i.e., brief state-of-the-sim)
 	- [ ] Dynamic states for identified dynamic objects (can add list to this issue)
 - [ ] Dynamic parameters (scales and ranges) for dynamic objects ready
     - [ ] Special case parameters or phrases identified (dynamic screen summary, dynamic states)
 
-# State Descriptions
-## Drafted & ready for implementation 
-### Object Responses
+## Responsive Descriptions
+**Checked items are drafted & ready for implementation**
+### [Object Responses](url to section design doc)
 **[Parameters, Scales & Ranges](link to section in design doc)**
 - Tables (or lists) outlining dynamic parameters (scales & ranges) for each sim concept created
   - [ ] Scale determined for __CONCEPT 1__ : __OBJECT 1__ 
   - [ ] Scale determined for __CONCEPT 2__ : __OBJECT 2__
 
-### Complex Context Responses
+### [Complex Context Responses](url to section design doc)
 **[Complex Context Responses - By Interaction](link to design doc)**
 - List out different objects/concepts as needed
   - [ ] Context responses for __OBJECT 1__ 
   - [ ] Context responses for __OBJECT 2__ 
 
-### Simple Context Responses (Sim options)
-**[Simple Context Responses - Sim Options](link to section in design doc)**
-  - [ ] Context responses for items in Control Area ready
+### [Simple Context Responses (Sim options)](url to section design doc)
+**Checked items ready for implementation**
+  - [ ] Context responses for items in Control Area
+  - [ ] Common code responses (e.g., Reset All, Mute Sound) verified
   
-## Description Design Testing
-**[Sample Interaction](link to design doc)**
+## [Description Design Testing](url to section design doc)
 - [ ] Brief cognitive walkthrough document's of sim's main interaction (highly reccommended) 
 
 # A11y Implementation
+**Checked items verified by designer**
 ## State Descriptions
 ### Static State Descriptions (Screen Summary)
 - [ ] H1 for sim title
+- [ ] Tab order correct
 - [ ] Sim Regions & H2 Headings (Play Area, Control Area, Sim Resources)
 - [ ] Static part of screen summary
 - [ ] Initial sim-specific interaction hint provided in own paragraph
@@ -77,7 +81,7 @@ This issue helps tracks the big picture progress of the description design and d
 
 ### Static State Descriptions (Play Area)
 - [ ] Sim-specific H3's for sim objects (or none for this sim)
-- [ ] Interactions are accessible (i.e., names, keyboard accessible)
+- [ ] Interactions are accessible (i.e., have accessible names, keyboard accessible)
 - [ ] Help text for interactive objects
 
 ### Static Descriptions (Control Area) 
@@ -130,6 +134,12 @@ This issue helps tracks the big picture progress of the description design and d
   - [ ] Checking/unchecking alerts, verified
 
 # Other A11y ToDo's
+**Make a website issues to add/update URL to working prototype on the website's [Accessible Sims page](https://phet.colorado.edu/en/accessibility/prototypes)**
+- [ ] Once there is a working prototype
+- [ ] At Dev Testing
+- [ ] At RC Testing
+- [ ] At publication
+
 **Other Features & Items (e.g., Mobile A11y features?)**
 - [ ] List items as needed
 
