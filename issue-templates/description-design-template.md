@@ -2,13 +2,14 @@ This issue helps tracks the big picture progress of the description design, desc
 
 # A11y Features 
 **Checked features are being worked on for this sim**
-- [ ] Keyboard Navigation -  (Started: ) (Completed: )
+- [ ] Alternative Input -  (Started: ) (Completed: )
+  - [ ] Mobile A11y included
 - [ ] Simple Description (Started: ) (Completed: )
 - [ ] Full Description - (Started: ) (Completed: )
 - [ ] Sonification - (Started: ) (Completed: )
   - [ ] Estimated date for incorporating sound into the main sim repo: ()
   - [ ] Created issue for sound incorporation
-- [ ] Mobile Accessibility - (Started: ) (Completed: )
+
 
 # A11y Design
 - [ ] Multimodal Features folder created in PhET Sim Design folder. Sub-folders (Desciption and Sound) created as needed. A11y Design Main design doc created in Description sub-folder (Date: )
@@ -157,4 +158,4 @@ This issue helps tracks the big picture progress of the description design, desc
 - [ ] List out lessons learned from this sim (e.g., found focus issues for iOS)
 - [ ] Suggest improvements to THIS issue template
 
-**List of significant changes to Checklist (by date)**
+**Housekeeping notes (e.g., significant changes to Checklist (optional)**
