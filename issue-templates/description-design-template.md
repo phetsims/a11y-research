@@ -43,10 +43,10 @@ This issue helps tracks the big picture progress of the description design, desc
 ### [Dynamic State Descriptions](url to section design doc)
 **Checked items completd in design document**
 - [ ] PDOM section of Design Doc contains 1 clear example of each dynamic description
-- [ ] MOre examples and possible edge cases have been explored for:
+- [ ] More examples and possible edge cases have been explored for:
     - [ ] Dynamic screen summary (i.e., brief state-of-the-sim)
-	- [ ] Dynamic states for identified dynamic objects (can add list to this issue)
-- [ ] Dynamic parameters (scales and ranges) for dynamic objects ready
+    - [ ] Dynamic states for identified dynamic objects (can add list to this issue)
+- [ ] Dynamic parameters (scales and approximate ranges) for dynamic objects ready
     - [ ] Special case parameters or phrases identified (dynamic screen summary, dynamic states)
 
 ## Responsive Descriptions
