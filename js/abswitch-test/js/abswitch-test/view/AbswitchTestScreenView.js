@@ -3,24 +3,24 @@
 /**
  * @author Jesse Greenberg
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var inherit = require( 'PHET_CORE/inherit' );
-  var ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
-  var ScreenView = require( 'JOIST/ScreenView' );
-  var ABSwitch = require( 'SUN/ABSwitch' );
-  var AccessiblePeer = require( 'SCENERY/accessibility/AccessiblePeer' );
-  var abswitchTest = require( 'ABSWITCH_TEST/abswitchTest' );
-  var Property = require( 'AXON/Property' );
-  var Circle = require( 'SCENERY/nodes/Circle' );
-  var Rectangle = require( 'SCENERY/nodes/Rectangle' );
-  var Node = require( 'SCENERY/nodes/Node' );
-  var utteranceQueue = require( 'SCENERY_PHET/accessibility/utteranceQueue' );
-  var Text = require( 'SCENERY/nodes/Text' );
-  var VBox = require( 'SCENERY/nodes/VBox' );
-  var PhetFont = require( 'SCENERY_PHET/PhetFont' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const ResetAllButton = require( 'SCENERY_PHET/buttons/ResetAllButton' );
+  const ScreenView = require( 'JOIST/ScreenView' );
+  const ABSwitch = require( 'SUN/ABSwitch' );
+  const AccessiblePeer = require( 'SCENERY/accessibility/AccessiblePeer' );
+  const abswitchTest = require( 'ABSWITCH_TEST/abswitchTest' );
+  const Property = require( 'AXON/Property' );
+  const Circle = require( 'SCENERY/nodes/Circle' );
+  const Rectangle = require( 'SCENERY/nodes/Rectangle' );
+  const Node = require( 'SCENERY/nodes/Node' );
+  const utteranceQueue = require( 'SCENERY_PHET/accessibility/utteranceQueue' );
+  const Text = require( 'SCENERY/nodes/Text' );
+  const VBox = require( 'SCENERY/nodes/VBox' );
+  const PhetFont = require( 'SCENERY_PHET/PhetFont' );
 
   /**
    * @param {AbswitchTestModel} abswitchTestModel

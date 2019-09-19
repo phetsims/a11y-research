@@ -3,16 +3,16 @@
 /**
  * @author Jesse Greenberg
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var inherit = require( 'PHET_CORE/inherit' );
-  var Property = require( 'AXON/Property' );
-  var Screen = require( 'JOIST/Screen' );
-  var abswitchTest = require( 'ABSWITCH_TEST/abswitchTest' );
-  var AbswitchTestModel = require( 'ABSWITCH_TEST/abswitch-test/model/AbswitchTestModel' );
-  var AbswitchTestScreenView = require( 'ABSWITCH_TEST/abswitch-test/view/AbswitchTestScreenView' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const Property = require( 'AXON/Property' );
+  const Screen = require( 'JOIST/Screen' );
+  const abswitchTest = require( 'ABSWITCH_TEST/abswitchTest' );
+  const AbswitchTestModel = require( 'ABSWITCH_TEST/abswitch-test/model/AbswitchTestModel' );
+  const AbswitchTestScreenView = require( 'ABSWITCH_TEST/abswitch-test/view/AbswitchTestScreenView' );
 
   /**
    * @constructor

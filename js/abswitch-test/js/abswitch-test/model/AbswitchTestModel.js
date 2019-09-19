@@ -3,12 +3,12 @@
 /**
  * @author Jesse Greenberg
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var inherit = require( 'PHET_CORE/inherit' );
-  var abswitchTest = require( 'ABSWITCH_TEST/abswitchTest' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const abswitchTest = require( 'ABSWITCH_TEST/abswitchTest' );
 
   /**
    * @constructor

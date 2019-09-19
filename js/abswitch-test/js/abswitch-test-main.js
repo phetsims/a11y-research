@@ -5,16 +5,16 @@
  *
  * @author Jesse Greenberg
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var Sim = require( 'JOIST/Sim' );
-  var SimLauncher = require( 'JOIST/SimLauncher' );
-  var AbswitchTestScreen = require( 'ABSWITCH_TEST/abswitch-test/AbswitchTestScreen' );
+  const Sim = require( 'JOIST/Sim' );
+  const SimLauncher = require( 'JOIST/SimLauncher' );
+  const AbswitchTestScreen = require( 'ABSWITCH_TEST/abswitch-test/AbswitchTestScreen' );
 
   // strings
-  var abswitchTestTitleString = require( 'string!ABSWITCH_TEST/abswitch-test.title' );
+  const abswitchTestTitleString = require( 'string!ABSWITCH_TEST/abswitch-test.title' );
 
   var simOptions = {
     credits: {
