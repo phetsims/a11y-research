@@ -14,20 +14,25 @@ This issue helps tracks the big picture progress of the description design, desc
 # A11y Design
 - [ ] Multimodal Features folder created in PhET Sim Design folder. Sub-folders (Desciption and Sound) created as needed. A11y Design Main design doc created in Description sub-folder (Date: )
    - **Note** Folder/File naming convention: {{Sim}}: Mulitmodal Features/Description/{{Sim Name}} A11y Design Main
-- [ ] Link to [Sim A11y Design Main]()
+- [ ] Link to [Sim Interactive Descriptions]()
 - [ ] This is a multi-screen sim! (If so, you may need to add links for each screen)  
 
 # A11y Design Prep
 - [ ] Main Sim Design reviewed for learning goals
 - [ ] Teaching materials reviewed
-- [ ] Reviewed model properties with Main Developer or A11y Developer
+- [ ] Reviewed model properties with Responsible Developer or A11y Developer
 - [ ] Identify visual enhancements that deviate from model (e.g. "hollywooding")
 
-# Parallel DOM (PDOM)
+# Interactive Descriptions
+
+<details>
+<summary>Interactive Descriptions</summary>
+
+## PDOM 
 **Checked items have PDOM structures identified & determined**
 - [ ] Dynamic objects that warrant their own name and description in the Play Area
 - [ ] All interactive objects and their PhET types (e.g., sliders, buttons, etc.)
-- [ ] New interaction types (i.e., new a11y types) in this sims, or check:
+- [ ] New interaction types (i.e., new PDOM components or patterns) in this sims, or check:
   - [ ] There are no new interaction types in this sim
 
 ## [State Descriptions](url to section design doc)
@@ -70,8 +75,10 @@ This issue helps tracks the big picture progress of the description design, desc
   
 ## [Description Design Testing](url to section design doc)
 - [ ] Brief cognitive walkthrough document's of sim's main interaction (highly reccommended) 
+</details>
 
-# A11y Implementation
+
+# Interactive Descriptions - Implementation
 **Checked items verified by designer**
 ## State Descriptions
 ### Static State Descriptions (Screen Summary)
@@ -153,7 +160,7 @@ This issue helps tracks the big picture progress of the description design, desc
 - [ ] Ensure interviews are recorded to this sim's interview spreadsheet
 
 **During QA or just after publication**
-- [ ] Clean and polish up A11y design doc
+- [ ] Clean and polish up Interactive Description design doc
 - [ ] List out main design challenges (if any and if necessary)
 - [ ] List out lessons learned from this sim (e.g., found focus issues for iOS)
 - [ ] Suggest improvements to THIS issue template
