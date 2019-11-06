@@ -17,8 +17,7 @@ define( require => {
   const Circle = require( 'SCENERY/nodes/Circle' );
   const Rectangle = require( 'SCENERY/nodes/Rectangle' );
   const Node = require( 'SCENERY/nodes/Node' );
-  const utteranceQueue = require( 'UTTERANCE_QUEUE/utteranceQueue' );
-  const Text = require( 'SCENERY/nodes/Text' );
+const Text = require( 'SCENERY/nodes/Text' );
   const VBox = require( 'SCENERY/nodes/VBox' );
   const PhetFont = require( 'SCENERY_PHET/PhetFont' );
 
@@ -29,6 +28,8 @@ define( require => {
   function AbswitchTestScreenView( abswitchTestModel ) {
 
     ScreenView.call( this );
+
+    const utteranceQueue = phet.joist.sim.display.utteranceQueue;
 
     var font = new PhetFont( 20 );
 
