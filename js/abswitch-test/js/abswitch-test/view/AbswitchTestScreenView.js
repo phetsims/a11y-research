@@ -29,7 +29,7 @@ const Text = require( 'SCENERY/nodes/Text' );
 
     ScreenView.call( this );
 
-    const utteranceQueue = phet.joist.sim.display.utteranceQueue;
+    const utteranceQueue = phet.joist.sim.utteranceQueue;
 
     var font = new PhetFont( 20 );
 
