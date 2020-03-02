@@ -1,5 +1,5 @@
 This issue helps tracks the big picture progress of the description design, description implementation, and implementation of alternative input. Sound and adaptive features are incorporated only at a high-level here, though could be added as we move forward and learn more.
-
+ 
 # A11y Features 
 **Checked features are being worked on for this sim**
 - [ ] Alternative Input -  (Started: ) (Completed: )
@@ -144,16 +144,22 @@ This issue helps tracks the big picture progress of the description design, desc
   - [ ] Checking/unchecking alerts, verified
 
 # Other A11y ToDo's
-**Make a website issues to add/update URL to working prototype on the website's [Accessible Sims page](https://phet.colorado.edu/en/accessibility/prototypes)**
-- [ ] Once there is a working prototype
-- [ ] At Dev Testing
-- [ ] At RC Testing
-- [ ] At publication
+**Maintain [Accessible Sims page](https://phet.colorado.edu/en/accessibility/prototypes)**
+- [ ] Use website admin page (or create issue) to add sim to to A11y Sims page once there is a working prototype
+- [ ] Update link to prototype from time to time
+  - [ ] At Dev Testing
+  - [ ] At RC Testing
+  - [ ] At publication
+
+**Accessory Materials**
+- [ ] Create issue to update Teacher tips
+- [ ] Create issue to create Sound feature videos
 
 **Other Features & Items (e.g., Mobile A11y features?)**
 - [ ] List items as needed
 
 **Check Credits**
+- [ ] Verify A11y team has been added
 - [ ] Verify A11y team has been added
 
 **Once Evaluation begins**
