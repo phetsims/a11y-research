@@ -30,15 +30,13 @@
   <div id="outputSentence"></div>
 </div>
 </body>
-<script src="TemplateVariable.js"></script>
-<script src="PhraseBuilder.js"></script>
-<script type="application/javascript">
+<script type="module">
+  import PhraseBuilder from './PhraseBuilder.js';
 
-  window.PhraseBuilder.create(
+  PhraseBuilder.create(
     document.getElementById( 'sentenceInput' ),
     document.getElementById( 'vars' ),
     document.getElementById( 'outputSentence' )
   );
-
 </script>
 </html>
