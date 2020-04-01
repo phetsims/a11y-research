@@ -28,15 +28,12 @@ class TemplateVariable {
 
     // @private
     this.optionAddingArea = document.createElement( 'textarea' );
-    const submit = document.createElement( 'button' );
-    submit.innerText = `Add options for "${this.name}", separated by a new line.`;
-    submit.addEventListener( 'click', () => {
+    this.optionAddingArea.addEventListener( 'input', () => {
       this.options = [];
-      this.optionAddingArea.value.split( '\n' ).forEach( option => this.addOption( option ) );
+      this.setOptions( this.optionAddingArea.value.split( '\n' ).filter( option => option !== '' ) );
     } );
 
     this.ui.appendChild( this.optionAddingArea );
-    this.ui.appendChild( submit );
   }
 
   /**
@@ -60,9 +57,7 @@ class TemplateVariable {
    */
   static deserialize( serializedTemplateVar ) {
     const variable = new TemplateVariable( serializedTemplateVar.name, serializedTemplateVar.index );
-    serializedTemplateVar.options.forEach( option => {
-      variable.addOption( option );
-    } );
+    variable.setOptions( serializedTemplateVar.options );
     variable.optionAddingArea.value = variable.options.join( '\n' );
     variable.updateSelectBox();
     variable.select.value = serializedTemplateVar.selectedOption;
@@ -83,12 +78,12 @@ class TemplateVariable {
   }
 
   /**
-   * Add a dynamic option to this templated var
+   * Set all the options and repopulate the select box
    * @private
-   * @param {number} optionName
+   * @param {string[]} optionName
    */
-  addOption( optionName ) {
-    this.options.push( optionName );
+  setOptions( options ) {
+    this.options = options.slice();
     this.updateSelectBox();
   }
 }
