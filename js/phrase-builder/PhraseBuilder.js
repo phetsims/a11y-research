@@ -34,6 +34,11 @@ class PhraseBuilder {
     this.input.addEventListener( 'input', () => {
       this.onInput( this.input.value );
     } );
+
+    // autosave on each new input change from the input sentence, variable UIs, or output sentence (select box change)
+    container.addEventListener( 'input', () => {
+      this.save( AUTO );
+    } );
   }
 
   /**
@@ -132,7 +137,7 @@ class PhraseBuilder {
     this.vars = newVars;
     this.updateUI( string );
 
-    // autosave on each new input
+    // autosave on each new input from the input sentence
     this.save( AUTO );
   }
 
