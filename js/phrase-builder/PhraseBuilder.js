@@ -1,14 +1,18 @@
-// Copyright 2019, University of Colorado Boulder
+// Copyright 2019-2020, University of Colorado Boulder
 
 import TemplateVariable from './TemplateVariable.js';
 
 // constants
 const TEMPLATE_VAR_REGEX = /\{\{(\w*)}\}/;
+const SAVING_KEY_PREFIX = 'phrase-builder-';
+const AUTO = 'auto';
 
 /**
  * This type is responsible for creating a sentence that transforms template vars into select boxes with specific
  * options based on that dynamic variable. It also makes sure that variables are not discarded between changes in the
  * input.
+ *
+ * Constraints: each template var string must be unique
  */
 class PhraseBuilder {
 
@@ -31,6 +35,7 @@ class PhraseBuilder {
   /**
    * Update the output container
    * @param string
+   * @private
    */
   updateOutputPhrase( string ) {
     this.outputSentence.innerHTML = '';
@@ -48,6 +53,7 @@ class PhraseBuilder {
 
   /**
    * update the ui controlling options for each variable
+   * @private
    */
   updateVarUI() {
     this.varUI.innerHTML = '';
@@ -59,13 +65,18 @@ class PhraseBuilder {
   /**
    * On input change in the input sentence
    * @param string
+   * @private
    */
   onInput( string ) {
     const newVars = [];
     findAll( TEMPLATE_VAR_REGEX, string ).forEach( variableOutput => {
+      // For `ohhi{{fdsa}}` output looks like `["{{fdsa}}", "fdsa", index: 4, groups: undefined]`
+
       const variableName = variableOutput[ 1 ];
 
       let alreadyExists = false;
+
+      // TODO: use lodash instead?
       this.vars.forEach( templateVar => {
         if ( templateVar.name === variableName ) {
           alreadyExists = true;
@@ -74,17 +85,65 @@ class PhraseBuilder {
       } );
 
       // if it didn't already exist, then let's create a new one
-      if ( !alreadyExists ) {
-
-        // For `ohhi{{fdsa}}` output looks like `["{{fdsa}}", "fdsa", index: 4, groups: undefined]`
-        newVars.push( new TemplateVariable( variableName, variableOutput.index ) );
-
-      }
+      !alreadyExists && newVars.push( new TemplateVariable( variableName, variableOutput.index ) );
     } );
     this.vars = newVars;
-    this.updateVarUI();
-    this.updateOutputPhrase( string );
+    this.updateUI( string );
+
+    // autosave on each new input
+    this.save( AUTO );
   }
+
+  /**
+   * Update UI elements of the phrase builder
+   * @param {string} inputValue - the value of the input text box
+   */
+  updateUI( inputValue ) {
+    this.updateVarUI();
+    this.updateOutputPhrase( inputValue );
+  }
+
+  /**
+   * @private
+   * @returns {Object}
+   */
+  serialize() {
+    return {
+      input: this.input.value,
+      variables: this.vars.map( variable => variable.serialize() )
+    };
+  }
+
+  /**
+   * @public
+   * Autoload whatever was most recently autosaved
+   */
+  autoload() {
+    this.load( AUTO );
+  }
+
+  /**
+   * @public
+   * @param {string} name - the name of the phrase builder instance to load
+   */
+  load( name ) {
+    const storedPhraseBuilder = window.localStorage.getItem( `${SAVING_KEY_PREFIX}${name}` );
+    if ( storedPhraseBuilder ) {
+      const serializedPhraseBuilder = JSON.parse( storedPhraseBuilder );
+      this.input.value = serializedPhraseBuilder.input;
+      this.vars = serializedPhraseBuilder.variables.map( variable => TemplateVariable.deserialize( variable ) );
+      this.updateUI( this.input.value );
+    }
+  }
+
+  /**
+   * Save this phrase builder instance under the name provided
+   * @param {string} name
+   */
+  save( name ) {
+    window.localStorage.setItem( `${SAVING_KEY_PREFIX}${name}`, JSON.stringify( this.serialize() ) );
+  }
+
 
   /**
    * Creator method
@@ -92,6 +151,7 @@ class PhraseBuilder {
    * @param {HTMLElement} varDiv - container for the variable uis
    * @param {HTMLElement} output - container for the output sentence
    * @returns {PhraseBuilder}
+   * @public
    */
   static create( input, varDiv, output ) {
     return new PhraseBuilder( input, varDiv, output );

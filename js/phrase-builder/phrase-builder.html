@@ -33,10 +33,14 @@
 <script type="module">
   import PhraseBuilder from './PhraseBuilder.js';
 
-  PhraseBuilder.create(
+  const phraseBuilder = PhraseBuilder.create(
     document.getElementById( 'sentenceInput' ),
     document.getElementById( 'vars' ),
     document.getElementById( 'outputSentence' )
   );
+
+  window.addEventListener( 'load', () => {
+    phraseBuilder.autoload();
+  } );
 </script>
 </html>
