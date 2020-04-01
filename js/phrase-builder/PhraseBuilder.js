@@ -7,6 +7,10 @@ const TEMPLATE_VAR_REGEX = /\{\{(\w*)}\}/;
 const SAVING_KEY_PREFIX = 'phrase-builder-';
 const AUTO = 'auto';
 
+function appendBR( element ) {
+  element.appendChild( document.createElement( 'br' ) );
+}
+
 /**
  * This type is responsible for creating a sentence that transforms template vars into select boxes with specific
  * options based on that dynamic variable. It also makes sure that variables are not discarded between changes in the
@@ -17,19 +21,57 @@ const AUTO = 'auto';
 class PhraseBuilder {
 
   /**
-   * @param {HTMLElement} input - the input element to monitor for sentence changes
-   * @param {HTMLElement} varDiv - container for the variable uis
-   * @param {HTMLElement} output - container for the output sentence
+   * @param {HTMLElement} container - the container for the phrase builder html
    */
-  constructor( input, varDiv, output ) {
+  constructor( container ) {
     this.vars = []; // {TemplateVariable[]}
-    this.input = input;
-    this.varUI = varDiv;
-    this.outputSentence = output;
+    this.input = document.createElement( 'textarea' );
+    this.varUI = document.createElement( 'div' );
+    this.outputSentence = document.createElement( 'div' );
 
-    input.addEventListener( 'input', () => {
-      this.onInput( input.value );
+    this.populateContainerHTML( container );
+
+    this.input.addEventListener( 'input', () => {
+      this.onInput( this.input.value );
     } );
+  }
+
+  /**
+   * Responsible for creating the expected HTML for the phrase builder. Elements created in the constructor are used,
+   * elsewhere, but their HTML presence is edited and created here.
+   * @param {HTMLElement} container
+   */
+  populateContainerHTML( container ) {
+
+    const inputLabel = document.createElement( 'label' );
+    inputLabel.innerHTML = '<strong>Input raw sentence with template variables:</strong>';
+    this.input.rows = 10;
+    this.input.cols = 60;
+    this.input.id = 'sentenceInput';
+    inputLabel.setAttribute( 'for', this.input.id );
+    container.appendChild( inputLabel );
+    container.appendChild( this.input );
+
+    appendBR( container );
+    appendBR( container );
+    appendBR( container );
+
+    const optionAddingDescriptionP = document.createElement( 'p' );
+    optionAddingDescriptionP.innerText = 'As template variables are added above, text areas will be added below. For ' +
+                                         'each, specify options for each variable separated by a new line.';
+    container.appendChild( optionAddingDescriptionP );
+    container.appendChild( this.varUI );
+
+    appendBR( container );
+    appendBR( container );
+    appendBR( container );
+
+    const outputLabel = document.createElement( 'label' );
+    outputLabel.innerHTML = '<strong>Output sentence:</strong>';
+    this.outputSentence.id = 'sentenceOutput';
+    outputLabel.setAttribute( 'for', this.outputSentence.id );
+    container.appendChild( outputLabel );
+    container.appendChild( this.outputSentence );
   }
 
   /**

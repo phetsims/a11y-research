@@ -17,27 +17,15 @@
 
 <div id="content">
   <h3>Dynamic Phrase Manipulator</h3>
-  <label for="sentenceInput">Input description sentence here:</label>
-  <br>
-  <textarea rows="10" cols="60" id="sentenceInput"></textarea>
-  <br>
-  <br>
-  <br>
-  <div id="vars"></div>
-  <br>
-  <br>
-  <br>
-  <div id="outputSentence"></div>
+  <div id="container"></div>
 </div>
 </body>
 <script type="module">
   import PhraseBuilder from './PhraseBuilder.js';
 
   const phraseBuilder = PhraseBuilder.create(
-    document.getElementById( 'sentenceInput' ),
-    document.getElementById( 'vars' ),
-    document.getElementById( 'outputSentence' )
-  );
+    document.getElementById( 'container' )
+    );
 
   window.addEventListener( 'load', () => {
     phraseBuilder.autoload();

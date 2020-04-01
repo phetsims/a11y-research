@@ -28,12 +28,31 @@ class TemplateVariable {
 
     // @private
     this.optionAddingArea = document.createElement( 'textarea' );
+    this.wireUpVariableUI();
+  }
+
+  /**
+   * Create the UI that will be used to set options for this variable. Some elements are created in the constructor
+   * because they are used by other places. HTML that is otherwise used for display is created, populated, and wired up
+   * by this function.
+   * @private
+   */
+  wireUpVariableUI() {
     this.optionAddingArea.addEventListener( 'input', () => {
       this.options = [];
-      this.setOptions( this.optionAddingArea.value.split( '\n' ).filter( option => option !== '' ) );
+      const inputOptions = this.optionAddingArea.value.split( '\n' );
+      this.optionAddingArea.rows = Math.max( this.optionAddingArea.rows, inputOptions.length );
+      this.setOptions( inputOptions.filter( option => option !== '' ) );
     } );
 
+    this.optionAddingArea.id = 'optionAddingArea-${name}';
+    const uiLabel = document.createElement( 'label' );
+    uiLabel.innerHTML = `<strong>${this.name}:</strong>`;
+    uiLabel.setAttribute( 'for', this.optionAddingArea.id );
+    this.ui.appendChild( uiLabel );
+    this.ui.appendChild( document.createElement( 'br' ) );
     this.ui.appendChild( this.optionAddingArea );
+    this.ui.appendChild( document.createElement( 'br' ) );
   }
 
   /**
