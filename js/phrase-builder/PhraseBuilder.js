@@ -59,7 +59,6 @@ class PhraseBuilder {
 
     appendBR( container );
     appendBR( container );
-    appendBR( container );
 
     const optionAddingDescriptionP = document.createElement( 'p' );
     optionAddingDescriptionP.innerText = 'As template variables are added above, text areas will be added below. For ' +
@@ -67,7 +66,6 @@ class PhraseBuilder {
     container.appendChild( optionAddingDescriptionP );
     container.appendChild( this.varUI );
 
-    appendBR( container );
     appendBR( container );
     appendBR( container );
 

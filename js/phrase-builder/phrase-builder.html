@@ -33,6 +33,17 @@
     Refreshing the page will automatically load the most recently autosaved descriptions.
   </p>
   <div id="container"></div>
+
+  <br>
+  <br>
+  <hr>
+  <h3>Save and load</h3>
+  <p>save and load under a specific name to get it back later.</p>
+  <label>Description Name:</label>
+  <input type="text" id="descriptionName"/>
+
+  <button id="save">Save</button>
+  <button id="load">Load</button>
 </div>
 </body>
 <script type="module">
@@ -44,6 +55,13 @@
 
   window.addEventListener( 'load', () => {
     phraseBuilder.autoload();
+  } );
+  const descriptionNameInput = document.getElementById( 'descriptionName' );
+  document.getElementById( 'save' ).addEventListener( 'click', () => {
+    phraseBuilder.save( descriptionNameInput.value );
+  } );
+  document.getElementById( 'load' ).addEventListener( 'click', () => {
+    phraseBuilder.load( descriptionNameInput.value );
   } );
 </script>
 </html>
