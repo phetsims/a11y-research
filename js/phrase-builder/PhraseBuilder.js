@@ -55,6 +55,7 @@ class PhraseBuilder {
     this.input.id = 'sentenceInput';
     inputLabel.setAttribute( 'for', this.input.id );
     container.appendChild( inputLabel );
+    appendBR( container );
     container.appendChild( this.input );
 
     appendBR( container );
