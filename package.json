@@ -14,6 +14,10 @@
   },
   "eslintConfig": {
     "extends": "../chipper/eslint/sim_eslintrc.js",
-    "ignorePatterns": ["presentations/", "node_modules/", "html-sketches/"]
+    "ignorePatterns": [
+      "presentations/",
+      "node_modules/",
+      "html-sketches/"
+    ]
   }
 }
