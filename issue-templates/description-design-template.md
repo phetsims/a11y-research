@@ -160,8 +160,8 @@ This issue helps tracks the big picture progress of the description design, desc
 - [ ] List items as needed
 
 **Check Credits**
-- [ ] Verify A11y team has been added
-- [ ] Verify A11y team has been added
+- [ ] Verified A11y team additions: (add names here)
+- [ ] Ceate issue with verified a11y team member additions
 
 **Once Evaluation begins**
 - [ ] Ensure interviews are recorded to this sim's interview spreadsheet
