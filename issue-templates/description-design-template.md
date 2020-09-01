@@ -154,6 +154,7 @@ This issue helps tracks the big picture progress of the description design, desc
 **Accessory Materials**
 - [ ] Create issue to update Teacher tips
 - [ ] Create issue to create Sound feature videos
+- [ ] Create issues to document new or improved design patterns
 
 **Other Features & Items (e.g., Mobile A11y features?)**
 - [ ] List items as needed
