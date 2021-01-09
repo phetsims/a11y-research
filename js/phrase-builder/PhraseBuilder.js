@@ -1,5 +1,7 @@
 // Copyright 2019-2020, University of Colorado Boulder
 
+import Emitter from '../../../axon/js/Emitter.js';
+import merge from '../../../phet-core/js/merge.js';
 import TemplateVariable from './TemplateVariable.js';
 
 // constants
@@ -22,13 +24,20 @@ class PhraseBuilder {
 
   /**
    * @param {HTMLElement} container - the container for the phrase builder html
+   * @param {Object} [options]
    */
-  constructor( container ) {
+  constructor( container, options ) {
+
+    options = merge( {
+      withParameterNaming: false // basically a flag to opt into this being a part of the ID design tool.
+    }, options );
+
     this.vars = []; // {TemplateVariable[]}
     this.input = document.createElement( 'textarea' );
     this.varUI = document.createElement( 'div' );
     this.outputSentence = document.createElement( 'div' );
-
+    this.withParameterNaming = options.withParameterNaming;
+    this.name = null;
     this.populateContainerHTML( container );
 
     this.input.addEventListener( 'input', () => {
@@ -39,17 +48,40 @@ class PhraseBuilder {
     container.addEventListener( 'input', () => {
       this.save( AUTO );
     } );
+
+    // @public
+    this.descriptionSentenceCreatedEmitter = new Emitter( {
+      parameters: [ { valueType: Object } ]
+    } );
   }
 
   /**
    * Responsible for creating the expected HTML for the phrase builder. Elements created in the constructor are used,
    * elsewhere, but their HTML presence is edited and created here.
    * @param {HTMLElement} container
+   * @private
    */
   populateContainerHTML( container ) {
 
+    if ( this.withParameterNaming ) {
+
+      const nameInput = document.createElement( 'input' );
+      nameInput.type = 'text';
+      nameInput.id = 'description-name';
+      nameInput.addEventListener( 'input', () => {
+        this.name = nameInput.value;
+      } );
+      const nameLabel = document.createElement( 'label' );
+      nameLabel.innerText = 'Description Name:';
+      nameLabel.setAttribute( 'for', 'description-name' );
+      container.appendChild( nameLabel );
+      container.appendChild( nameInput );
+      container.appendChild( document.createElement( 'br' ) );
+    }
+
     const inputLabel = document.createElement( 'label' );
     inputLabel.innerHTML = '<strong>Input raw sentence with template variables:</strong>';
+    inputLabel.setAttribute( 'for', 'sentenceInput' );
     this.input.rows = 10;
     this.input.cols = 60;
     this.input.id = 'sentenceInput';
@@ -76,6 +108,17 @@ class PhraseBuilder {
     outputLabel.setAttribute( 'for', this.outputSentence.id );
     container.appendChild( outputLabel );
     container.appendChild( this.outputSentence );
+
+    if ( this.withParameterNaming ) {
+
+      const save = document.createElement( 'button' );
+      save.id = 'description-save';
+      save.innerText = 'Create Description';
+      save.addEventListener( 'click', () => {
+        this.descriptionSentenceCreatedEmitter.emit( this.serialize() );
+      } );
+      container.appendChild( save );
+    }
   }
 
   /**
@@ -143,6 +186,7 @@ class PhraseBuilder {
   /**
    * Update UI elements of the phrase builder
    * @param {string} inputValue - the value of the input text box
+   * @private
    */
   updateUI( inputValue ) {
     this.updateVarUI();
@@ -156,7 +200,8 @@ class PhraseBuilder {
   serialize() {
     return {
       input: this.input.value,
-      variables: this.vars.map( variable => variable.serialize() )
+      variables: this.vars.map( variable => variable.serialize() ),
+      name: this.name
     };
   }
 
@@ -185,6 +230,7 @@ class PhraseBuilder {
   /**
    * Save this phrase builder instance under the name provided
    * @param {string} name
+   * @public
    */
   save( name ) {
     window.localStorage.setItem( `${SAVING_KEY_PREFIX}${name}`, JSON.stringify( this.serialize() ) );
