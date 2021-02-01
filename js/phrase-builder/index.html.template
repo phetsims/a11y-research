@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Phrase Builder</title>
+  <style>
+    select {
+      margin: 0px 5px; /* a bit of width */
+    }
+
+    #content {
+      margin: 50px
+    }
+  </style>
+</head>
+<body>
+
+<div id="content">
+  <h3>Dynamic Phrase Manipulator</h3>
+  <p>
+    This phrase creator is designed to support prototyping dynamic descriptions. To use, first input description
+    content in the first text area. Within that area, factor out sections that may have dynamic content (multiple
+    options) into variables annotated like "{{templateVariable}}". Each of these (note two curly braces on each side and
+    no spaces) will be automatically detected, and a ui created for them to input each possible dynamic option for that
+    variable. An example sentence may look like "I like to eat, eat, eat, apples and {{otherFruit}}." In this case, a
+    single variable text box will be added, and each option for "otherFruit" can be added on a new line there.
+  </p>
+  <p>
+    As the input sentence and variable options are populated, the output will display the original sentence, but with
+    each variable filled in with a select box filled with all the dynamic options filled in for that variable.
+  </p>
+  <p>
+    Refreshing the page will automatically load the most recently autosaved descriptions.
+  </p>
+  <div id="container"></div>
+
+  <br>
+  <br>
+  <hr>
+  <h3>Save and load</h3>
+  <p>save and load under a specific name to get it back later.</p>
+  <label>Description Name:</label>
+  <input type="text" id="descriptionName"/>
+
+  <button id="save">Save</button>
+  <button id="load">Load</button>
+</div>
+</body>
+{{PRELOAD_SCRIPTS}}
+{{MAIN_SCRIPT}}
+</html>
