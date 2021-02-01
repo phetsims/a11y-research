@@ -1,0 +1,12 @@
+{
+  "name": "phrase-builder",
+  "version": "1.0.0-dev.1",
+  "license": "MIT",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "devDependencies": {
+    "webpack": "^4.41.4",
+    "webpack-cli": "^3.3.10"
+  }
+}

@@ -49,23 +49,5 @@
 <script src="../../../assert/js/assert.js"></script>
 <script src="../../../sherpa/lib/lodash-4.17.4.min.js"></script>
 <script src="../../../tandem/js/PhetioIDUtils.js"></script>
-<script type="module">
-
-  import PhraseBuilder from './PhraseBuilder.js';
-
-  const phraseBuilder = PhraseBuilder.create(
-    document.getElementById( 'container' )
-  );
-
-  window.addEventListener( 'load', () => {
-    phraseBuilder.autoload();
-  } );
-  const descriptionNameInput = document.getElementById( 'descriptionName' );
-  document.getElementById( 'save' ).addEventListener( 'click', () => {
-    phraseBuilder.save( descriptionNameInput.value );
-  } );
-  document.getElementById( 'load' ).addEventListener( 'click', () => {
-    phraseBuilder.load( descriptionNameInput.value );
-  } );
-</script>
+<script type="module" src="main.js"></script>
 </html>
