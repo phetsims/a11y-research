@@ -14,7 +14,7 @@ This issue helps tracks the big picture progress of the description design, desc
 # A11y Design
 - [ ] Multimodal Features folder created in PhET Sim Design folder. Sub-folders (Desciption and Sound) created as needed. A11y Design Main design doc created in Description sub-folder (Date: )
    - **Note** Folder/File naming convention: {{Sim}}: Mulitmodal Features/Description/{{Sim Name}} A11y Design Main
-- [ ] Link to [Sim Interactive Descriptions]()
+- [ ] Link to [Sim Interactive Description]()
 - [ ] This is a multi-screen sim! (If so, you may need to add links for each screen)  
 
 # A11y Design Prep
@@ -23,10 +23,10 @@ This issue helps tracks the big picture progress of the description design, desc
 - [ ] Reviewed model properties with Responsible Developer or A11y Developer
 - [ ] Identify visual enhancements that deviate from model (e.g. "hollywooding")
 
-# Interactive Descriptions
+# Interactive Description
 
 <details>
-<summary>Interactive Descriptions</summary>
+<summary>Interactive Description</summary>
 
 ## PDOM 
 **Checked items have PDOM structures identified & determined**
@@ -78,7 +78,7 @@ This issue helps tracks the big picture progress of the description design, desc
 </details>
 
 
-# Interactive Descriptions - Implementation
+# Interactive Description - Implementation
 **Checked items verified by designer**
 ## State Descriptions
 ### Static State Descriptions (Screen Summary)
