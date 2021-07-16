@@ -1,23 +1,22 @@
 This issue helps tracks the big picture progress of the description design, description implementation, and implementation of alternative input. Sound and adaptive features are incorporated only at a high-level here, though could be added as we move forward and learn more.
  
-# A11y Features 
-**Checked features are being worked on for this sim**
+# Inclusive Features 
+**Checked features that are being worked on for this sim**
 - [ ] Alternative Input -  (Started: ) (Completed: )
   - [ ] Mobile A11y included
-- [ ] Simple Description (Started: ) (Completed: )
 - [ ] Full Description - (Started: ) (Completed: )
 - [ ] Sonification - (Started: ) (Completed: )
   - [ ] Estimated date for incorporating sound into the main sim repo: ()
   - [ ] Created issue for sound incorporation
+- [ ] Voicing (Started: ) (Completed: )
 
-
-# A11y Design
-- [ ] Multimodal Features folder created in PhET Sim Design folder. Sub-folders (Desciption and Sound) created as needed. A11y Design Main design doc created in Description sub-folder (Date: )
+# Design Tasks
+- [ ] Multimodal Features folder created in PhET Sim Design folder. Sub-folders (Desciption, Sound, Voicing) created as needed. A11y Design Main design doc created in Description sub-folder (Date: )
    - **Note** Folder/File naming convention: {{Sim}}: Mulitmodal Features/Description/{{Sim Name}} A11y Design Main
 - [ ] Link to [Sim Interactive Description]()
 - [ ] This is a multi-screen sim! (If so, you may need to add links for each screen)  
 
-# A11y Design Prep
+# Design Prep for Interactive Description Design
 - [ ] Main Sim Design reviewed for learning goals
 - [ ] Teaching materials reviewed
 - [ ] Reviewed model properties with Responsible Developer or A11y Developer
@@ -46,23 +45,23 @@ This issue helps tracks the big picture progress of the description design, desc
 - [ ] Help text for interactive elements 
 
 ### [Dynamic State Descriptions](url to section design doc)
-**Checked items completd in design document**
+**Checked items completed in design document**
 - [ ] PDOM section of Design Doc contains 1 clear example of each dynamic description
 - [ ] More examples and possible edge cases have been explored for:
     - [ ] Dynamic screen summary (i.e., brief state-of-the-sim)
     - [ ] Dynamic states for identified dynamic objects (can add list to this issue)
 - [ ] Dynamic parameters (scales and approximate ranges) for dynamic objects ready
-    - [ ] Special case parameters or phrases identified (dynamic screen summary, dynamic states)
+    - [ ] Special case parameters or phrases for dynamic state descriptions identified (can add list)
 
 ## Responsive Descriptions
 **Checked items drafted & ready for implementation**
 ### [Object Responses](url to section design doc)
-**[Parameters, Scales & Ranges](link to section in design doc)**
+**[Qualitative Scales & Parameters](link to section in design doc)**
 - Tables (or lists) outlining dynamic parameters (scales & ranges) for each sim concept created
   - [ ] Scale determined for __CONCEPT 1__ : __OBJECT 1__ 
   - [ ] Scale determined for __CONCEPT 2__ : __OBJECT 2__
 
-### [Complex Context Responses](url to section design doc)
+### [Context Responses](url to section design doc)
 **[Complex Context Responses - By Interaction](link to design doc)**
 - List out different objects/concepts as needed
   - [ ] Context responses for __OBJECT 1__ 
@@ -74,7 +73,7 @@ This issue helps tracks the big picture progress of the description design, desc
   - [ ] Common code responses (e.g., Reset All, Mute Sound) verified
   
 ## [Description Design Testing](url to section design doc)
-- [ ] Brief cognitive walkthrough document's of sim's main interaction (highly reccommended) 
+- [ ] Brief cognitive walkthrough document's the sim's main interaction (highly reccommended) 
 </details>
 
 
@@ -104,7 +103,7 @@ This issue helps tracks the big picture progress of the description design, desc
 - [ ] Keyboard Shortcuts dialog completed
     - [ ] Keyboard Shortcuts dialog accessible
 	- [ ] Keyboard Shortcuts button added
-- [ ] Mute Sound button (added when sound is added to main sim repo)
+- [ ] All Audio button (added when sound is added to main sim repo)
 
 ### Dynamic State Descriptions
 **Add or remove details as needed**
@@ -114,7 +113,7 @@ This issue helps tracks the big picture progress of the description design, desc
 - [ ] Punctuation verified
 - [ ] Edge cases verified
 
-**Play Area Object Descriptions**
+**Play Area Dynamic State Descriptions for Objects**
 - [ ] Phrases work with all parameters
 - [ ] Capitalization verified
 - [ ] Punctuation verified
@@ -122,10 +121,11 @@ This issue helps tracks the big picture progress of the description design, desc
 
 ## Responsive Descriptions
 ### Object Responses (often aria-valuetext)
-**Name Objects and details as needed**
-**Add or remove object details as needed**
+**Name interactive objects and details as needed**
+**Add or remove interactive object details as needed**
 **OBJECT Response 1**
-- [ ] Values and ranges verified
+- [ ] Qualitative scales verified
+- [ ] Quantitative scales verified
 - [ ] Increases/decreases verified
 - [ ] Steps verified
 - [ ] Interaction shotcuts verified (e.g., Home/End keys when appropriate)
@@ -164,7 +164,7 @@ This issue helps tracks the big picture progress of the description design, desc
 - [ ] Ceate issue with verified a11y team member additions
 
 **Once Evaluation begins**
-- [ ] Ensure interviews are recorded to this sim's interview spreadsheet
+- [ ] Ensure interviews are recorded to the sim's interview spreadsheet
 
 **During QA or just after publication**
 - [ ] Clean and polish up Interactive Description design doc
