@@ -46,14 +46,14 @@
   <button id="load">Load</button>
 </div>
 </body>
-<script>// Copyright 2013-2020, University of Colorado Boulder
+<script>// Copyright 2013-2021, University of Colorado Boulder
 
 /*
  * @author Jonathan Olson <jonathan.olson@colorado.edu>
  */
 
 ( function() {
-  'use strict';
+  
 
   window.assertions = window.assertions || {};
   window.assertions.assertFunction = window.assertions.assertFunction || function( predicate, message ) {
@@ -62,10 +62,10 @@
       // Log the stack trace to IE.  Just creating an Error is not enough, it has to be caught to get a stack.
       if ( window.navigator && window.navigator.appName === 'Microsoft Internet Explorer' ) {
         try { throw new Error(); }
-        catch( e ) { message = message + ', stack=\n' + e.stack; }
+        catch( e ) { message = `${message}, stack=\n${e.stack}`; }
       }
 
-      const logMessage = message ? 'Assertion failed: ' + message : 'Assertion failed';
+      const logMessage = message ? `Assertion failed: ${message}` : 'Assertion failed';
       console && console.log && console.log( logMessage );
       if ( window.phet && phet.chipper && phet.chipper.queryParameters && phet.chipper.queryParameters.debugger ) {
         debugger; // eslint-disable-line no-debugger
@@ -234,7 +234,7 @@
       var n=this.__index__>=this.__values__.length;return{done:n,value:n?F:this.__values__[this.__index__++]}},On.prototype.plant=function(n){for(var t,r=this;r instanceof Sn;){var e=Pe(r);e.__index__=0,e.__values__=F,t?u.__wrapped__=e:t=e;var u=e,r=r.__wrapped__}return u.__wrapped__=n,t},On.prototype.reverse=function(){var n=this.__wrapped__;return n instanceof Mn?(this.__actions__.length&&(n=new Mn(this)),n=n.reverse(),n.__actions__.push({func:nu,args:[Je],thisArg:F}),new zn(n,this.__chain__)):this.thru(Je);
     },On.prototype.toJSON=On.prototype.valueOf=On.prototype.value=function(){return kr(this.__wrapped__,this.__actions__)},On.prototype.first=On.prototype.head,Ai&&(On.prototype[Ai]=tu),On}();typeof define=="function"&&typeof define.amd=="object"&&define.amd?(Zn._=it, define(function(){return it})):Vn?((Vn.exports=it)._=it,qn._=it):Zn._=it}).call(this);</script>
 
-<script>// Copyright 2017-2020, University of Colorado Boulder
+<script>// Copyright 2017-2021, University of Colorado Boulder
 
 /**
  * Utilities for creating and manipulating the unique identifiers assigned to instrumented PhET-iO instances, aka
@@ -247,7 +247,7 @@
  * @author Sam Reid (PhET Interactive Simulations)
  */
 ( function() {
-  'use strict';
+  
 
   // define the phetio global
   window.phetio = window.phetio || {};
@@ -260,6 +260,7 @@
   const HOME_SCREEN_COMPONENT_NAME = 'homeScreen';
   const MODEL_COMPONENT_NAME = 'model';
   const VIEW_COMPONENT_NAME = 'view';
+  const COLORS_COMPONENT_NAME = 'colors';
   const CONTROLLER_COMPONENT_NAME = 'controller';
 
   /**
@@ -269,7 +270,7 @@
    */
   window.phetio.PhetioIDUtils = {
 
-    // Private Doc: The below jsdoc is public to the phet-io api documentation. Change wisely.
+    // Private Doc: The below jsdoc is public to the PhET-iO API documentation. Change wisely.
     /**
      * Appends a component to an existing phetioID to create a new unique phetioID for the component.
      * @example
@@ -282,13 +283,13 @@
      */
     append: function( phetioID, ...componentNames ) {
       componentNames.forEach( componentName => {
-        assert && assert( componentName.indexOf( SEPARATOR ) === -1, 'separator appears in componentName: ' + componentName );
+        assert && assert( componentName.indexOf( SEPARATOR ) === -1, `separator appears in componentName: ${componentName}` );
         phetioID += SEPARATOR + componentName;
       } );
       return phetioID;
     },
 
-    // Private Doc: The below jsdoc is public to the phet-io api documentation. Change wisely.
+    // Private Doc: The below jsdoc is public to the PhET-iO API documentation. Change wisely.
     /**
      * Given a phetioID for a PhET-iO element, get the part of that ID that pertains to the component (basically the
      * tail piece).
@@ -310,7 +311,7 @@
       }
     },
 
-    // Private Doc: The below jsdoc is public to the phet-io api documentation. Change wisely.
+    // Private Doc: The below jsdoc is public to the PhET-iO API documentation. Change wisely.
     /**
      * Given a phetioID for a PhET-iO element, get the phetioID of the parent component.
      * @example
@@ -325,7 +326,7 @@
       return indexOfLastSeparator === -1 ? null : phetioID.substring( 0, indexOfLastSeparator );
     },
 
-    // Private Doc: The below jsdoc is public to the phet-io api documentation. Change wisely.
+    // Private Doc: The below jsdoc is public to the PhET-iO API documentation. Change wisely.
     /**
      * Given a phetioID for a instrumented object, get a string that can be used to assign an ID to a DOM element
      * @param {string} phetioID - the ID of the PhET-iO element
@@ -333,29 +334,10 @@
      * @public
      */
     getDOMElementID: function( phetioID ) {
-      return 'phetioID:' + phetioID;
+      return `phetioID:${phetioID}`;
     },
 
-    // Private Doc: The below jsdoc is public to the phet-io api documentation. Change wisely.
-    /**
-     * The root sim ID has a nested "general" ID which contains several simulation-level components.  This
-     * method can be used for convenience in accessing its child elements.
-     * @param {Client} Client - the Client type, not a Client instance
-     * @param {string|string[]} componentNames - to append to the general ID stub
-     * @returns {string}
-     * @example
-     * getGeneralID( phetio.Client, 'activeProperty' );
-     * -->  'faradaysLaw.general.activeProperty'
-     *
-     * getGeneralID( phetio.Client, [ 'mySubComponent', 'activeProperty' ] );
-     * -->  'faradaysLaw.general.mySubComponent.activeProperty'
-     * @public
-     */
-    getGeneralID: function( Client, ...componentNames ) {
-      return window.phetio.PhetioIDUtils.append( Client.CAMEL_CASE_SIMULATION_NAME, ...[ GENERAL_COMPONENT_NAME, ...componentNames ] );
-    },
-
-    // Private Doc: The below jsdoc is public to the phet-io api documentation. Change wisely.
+    // Private Doc: The below jsdoc is public to the PhET-iO API documentation. Change wisely.
     /**
      * Get the screen id from the phetioID.
      * @example
@@ -383,7 +365,7 @@
       return null;
     },
 
-    // Private Doc: The below jsdoc is public to the phet-io api documentation. Change wisely.
+    // Private Doc: The below jsdoc is public to the PhET-iO API documentation. Change wisely.
     /**
      * Get the index number from the component name of the component name provided.
      * @param {string} componentName
@@ -398,7 +380,6 @@
         'component name for phetioID should have group element syntax' );
       return parseInt( componentName.split( window.phetio.PhetioIDUtils.GROUP_SEPARATOR )[ 1 ], 10 );
     },
-
 
     /**
      * Returns true if the potential ancestor is indeed an ancestor of the potential descendant, but not the same phetioID
@@ -420,7 +401,7 @@
       return potentialDescendantPhetioID !== potentialAncestorPhetioID;
     },
 
-    // Private Doc: The below jsdoc is public to the phet-io api documentation. Change wisely.
+    // Private Doc: The below jsdoc is public to the PhET-iO API documentation. Change wisely.
     /**
      * The separator used to piece together a phet-io ID.
      * @type {string}
@@ -429,7 +410,7 @@
      */
     SEPARATOR: SEPARATOR,
 
-    // Private Doc: The below jsdoc is public to the phet-io api documentation. Change wisely.
+    // Private Doc: The below jsdoc is public to the PhET-iO API documentation. Change wisely.
     /**
      * The separator used to specify the count of a element in a group.
      * @type {string}
@@ -438,7 +419,7 @@
      */
     GROUP_SEPARATOR: GROUP_SEPARATOR,
 
-    // Private Doc: The below jsdoc is public to the phet-io api documentation. Change wisely.
+    // Private Doc: The below jsdoc is public to the PhET-iO API documentation. Change wisely.
     /**
      * The component name for the id section that holds phet-io elements general to all simulations.
      * @type {string}
@@ -447,7 +428,7 @@
      */
     GENERAL_COMPONENT_NAME: GENERAL_COMPONENT_NAME,
 
-    // Private Doc: The below jsdoc is public to the phet-io api documentation. Change wisely.
+    // Private Doc: The below jsdoc is public to the PhET-iO API documentation. Change wisely.
     /**
      * The component name for the id section that holds simulation specific elements that don't belong in a screen.
      * @type {string}
@@ -456,7 +437,7 @@
      */
     GLOBAL_COMPONENT_NAME: GLOBAL_COMPONENT_NAME,
 
-    // Private Doc: The below jsdoc is public to the phet-io api documentation. Change wisely.
+    // Private Doc: The below jsdoc is public to the PhET-iO API documentation. Change wisely.
     /**
      * The component name for the id section that holds the home screen.
      * @type {string}
@@ -465,7 +446,7 @@
      */
     HOME_SCREEN_COMPONENT_NAME: HOME_SCREEN_COMPONENT_NAME,
 
-    // Private Doc: The below jsdoc is public to the phet-io api documentation. Change wisely.
+    // Private Doc: The below jsdoc is public to the PhET-iO API documentation. Change wisely.
     /**
      * The component name for an id section that holds model specific elements.
      * @type {string}
@@ -474,7 +455,7 @@
      */
     MODEL_COMPONENT_NAME: MODEL_COMPONENT_NAME,
 
-    // Private Doc: The below jsdoc is public to the phet-io api documentation. Change wisely.
+    // Private Doc: The below jsdoc is public to the PhET-iO API documentation. Change wisely.
     /**
      * The component name for an id section that holds view specific elements.
      * @type {string}
@@ -483,14 +464,22 @@
      */
     VIEW_COMPONENT_NAME: VIEW_COMPONENT_NAME,
 
-    // Private Doc: The below jsdoc is public to the phet-io api documentation. Change wisely.
+    // Private Doc: The below jsdoc is public to the PhET-iO API documentation. Change wisely.
     /**
      * The component name for an id section that holds controller specific elements.
      * @type {string}
      * @constant
      * @public
      */
-    CONTROLLER_COMPONENT_NAME: CONTROLLER_COMPONENT_NAME
+    CONTROLLER_COMPONENT_NAME: CONTROLLER_COMPONENT_NAME,
+
+    /**
+     * The component name for a section that holds colors
+     * @type {string}
+     * @constant
+     * @public
+     */
+    COLORS_COMPONENT_NAME: COLORS_COMPONENT_NAME
   };
 } )();</script>
 <script type="module">/******/ (function(modules) { // webpackBootstrap
@@ -674,11 +663,11 @@ module.exports = function(originalModule) {
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// EXTERNAL MODULE: C:/Users/Michael/PhET/git/phet-core/js/isHMR.js
+// EXTERNAL MODULE: C:/Users/Michael/PHET/git/phet-core/js/isHMR.js
 var isHMR = __webpack_require__(0);
 
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/phet-core/js/Namespace.js
-// Copyright 2015-2020, University of Colorado Boulder
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/phet-core/js/Namespace.js
+// Copyright 2015-2021, University of Colorado Boulder
 
 /**
  * @author Jonathan Olson
@@ -696,7 +685,7 @@ class Namespace_Namespace {
     this.name = name; // @public (read-only)
 
     if ( window.phet ) {
-      assert && assert( !window.phet[ name ], 'namespace ' + name + ' already exists' );
+      assert && assert( !window.phet[ name ], `namespace ${name} already exists` );
       window.phet[ name ] = this;
     }
   }
@@ -726,7 +715,7 @@ class Namespace_Namespace {
     // If the key isn't compound (doesn't contain '.'), we can just look it up on this namespace
     if ( key.indexOf( '.' ) < 0 ) {
       if ( !isHMR["a" /* default */] ) {
-        assert && assert( !this[ key ], key + ' is already registered for namespace ' + this.name );
+        assert && assert( !this[ key ], `${key} is already registered for namespace ${this.name}` );
       }
       this[ key ] = value;
     }
@@ -740,7 +729,7 @@ class Namespace_Namespace {
 
         if ( !isHMR["a" /* default */] ) {
           assert && assert( !!parent[ keys[ i ] ],
-            [ this.name ].concat( keys.slice( 0, i + 1 ) ).join( '.' ) + ' needs to be defined to register ' + key );
+            `${[ this.name ].concat( keys.slice( 0, i + 1 ) ).join( '.' )} needs to be defined to register ${key}` );
         }
 
         parent = parent[ keys[ i ] ];
@@ -750,7 +739,7 @@ class Namespace_Namespace {
       const lastKey = keys[ keys.length - 1 ];
 
       if ( !isHMR["a" /* default */] ) {
-        assert && assert( !parent[ lastKey ], key + ' is already registered for namespace ' + this.name );
+        assert && assert( !parent[ lastKey ], `${key} is already registered for namespace ${this.name}` );
       }
 
       parent[ lastKey ] = value;
@@ -761,7 +750,7 @@ class Namespace_Namespace {
 }
 
 /* harmony default export */ var js_Namespace = (Namespace_Namespace);
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/phet-core/js/phetCore.js
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/phet-core/js/phetCore.js
 // Copyright 2013-2020, University of Colorado Boulder
 
 
@@ -773,7 +762,7 @@ const phetCore = new js_Namespace( 'phetCore' );
 phetCore.register( 'Namespace', js_Namespace );
 
 /* harmony default export */ var js_phetCore = (phetCore);
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/phet-core/js/merge.js
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/phet-core/js/merge.js
 // Copyright 2019-2020, University of Colorado Boulder
 
 /**
@@ -850,7 +839,7 @@ function assertIsMergeable( object ) {
 
 js_phetCore.register( 'merge', merge );
 /* harmony default export */ var js_merge = (merge);
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/tandem/js/tandemNamespace.js
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/tandem/js/tandemNamespace.js
 // Copyright 2015-2020, University of Colorado Boulder
 
 /**
@@ -864,14 +853,14 @@ js_phetCore.register( 'merge', merge );
 
 
 /* harmony default export */ var tandemNamespace = (new js_Namespace( 'tandem' ));
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/axon/js/axon.js
-// Copyright 2013-2020, University of Colorado Boulder
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/axon/js/axon.js
+// Copyright 2013-2021, University of Colorado Boulder
 
 
 
 
 /* harmony default export */ var axon = (new js_Namespace( 'axon' ));
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/phet-core/js/Enumeration.js
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/phet-core/js/Enumeration.js
 // Copyright 2018-2020, University of Colorado Boulder
 
 /**
@@ -1058,8 +1047,8 @@ class Enumeration_Enumeration {
 
 js_phetCore.register( 'Enumeration', Enumeration_Enumeration );
 /* harmony default export */ var js_Enumeration = (Enumeration_Enumeration);
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/axon/js/ValidatorDef.js
-// Copyright 2019-2020, University of Colorado Boulder
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/axon/js/ValidatorDef.js
+// Copyright 2019-2021, University of Colorado Boulder
 
 /**
  * The definition file for "validators" used to validate values. This file holds associated logic that validates the
@@ -1129,7 +1118,7 @@ const VALIDATOR_KEYS = [
   'isValidValue',
 
   // This option takes the same types as are supported with `valueType`. This option is to specify the type of the
-  // elements of an array. For this option to valid, `valueType` must be not also be provided. It is assumed that
+  // elements of an array. For this option to valid, `valueType` must either be omitted, or be `Array`. It is assumed that
   // valueType is `Array`.
   'arrayElementType',
 
@@ -1180,8 +1169,8 @@ const ValidatorDef = {
     }
 
     if ( validator.hasOwnProperty( 'arrayElementType' ) ) {
-      if ( validator.hasOwnProperty( 'valueType' ) ) {
-        assert && options.assertions && assert( false, 'valueType is redundant with arrayElementType. valueType is Array.' );
+      if ( validator.hasOwnProperty( 'valueType' ) && validator.valueType !== Array ) {
+        assert && options.assertions && assert( false, 'valueType must be "Array" when specified with arrayElementType.' );
         return false;
       }
       if ( !validateValueOrElementType( validator.arrayElementType, options ) ) {
@@ -1209,7 +1198,7 @@ const ValidatorDef = {
       if ( ValidatorDef.containsValidatorKey( validatorWithoutValidValues ) ) {
         for ( let i = 0; i < validator.validValues.length; i++ ) {
           if ( !ValidatorDef.isValueValid( validator.validValues[ i ], validatorWithoutValidValues ) ) {
-            assert && options.assertions && assert( false, 'Item not valid: ' + validator.validValues[ i ] );
+            assert && options.assertions && assert( false, `Item not valid: ${validator.validValues[ i ]}` );
             return false;
           }
         }
@@ -1218,7 +1207,7 @@ const ValidatorDef = {
 
     if ( validator.hasOwnProperty( 'phetioType' ) ) {
       if ( !( validator.phetioType && validator.phetioType.validator ) ) {
-        assert && options.assertions && assert( false, 'validator needed for phetioType: ' + ( validator.phetioType && validator.phetioType.typeName ) );
+        assert && options.assertions && assert( false, `validator needed for phetioType: ${validator.phetioType && validator.phetioType.typeName}` );
         return false;
       }
       return ValidatorDef.isValidValidator( validator.phetioType.validator, options );
@@ -1227,6 +1216,7 @@ const ValidatorDef = {
   },
 
   /**
+   * Validate that the valueType is of the expected format.
    * @private
    * @param valueType
    * @param {Object} [options] - required, options from isValidValidator
@@ -1281,6 +1271,18 @@ const ValidatorDef = {
   },
 
   /**
+   * @private
+   * @param {string} genericMessage
+   * @param {string} [specificMessage] - provided as an option to this.isValueValid()
+   */
+  formulateAssertionMessage( genericMessage, specificMessage ) {
+    if ( specificMessage ) {
+      genericMessage = `${specificMessage}: ${genericMessage}`;
+    }
+    return genericMessage;
+  },
+
+  /**
    * Determines whether a value is valid (returning a boolean value), and optionally throws an assertion error if the
    * value is not valid.  The reason assertions are (optionally) thrown from this method is so that we can have more
    * specific error messages.
@@ -1302,7 +1304,11 @@ const ValidatorDef = {
       validateValidator: true,
 
       // if true, throw an assertion "instead" of waiting to return a boolean
-      assertions: false
+      assertions: false,
+
+      // {string} - if provided, this will provide supplemental information to the assertion messages in addition to the
+      // validate-key-specific message that will be given.
+      message: null
     }, options );
 
     // Use the same policy for whether to throw assertions when checking the validator itself.
@@ -1318,13 +1324,13 @@ const ValidatorDef = {
 
         // Only one should be valid, so error out if none of them returned valid
         // Hard code assertions false because most will fail, instead have a general assertion here.
-        if ( !_.some( valueType.map( typeInArray => ValidatorDef.isValueValidValueType( value, typeInArray, ASSERTIONS_FALSE ) ) ) ) {
-          assert && options.assertions && assert( false, `value not valid for any valueType in ${valueType}, value: ${value}` );
+        if ( !_.some( valueType.map( typeInArray => ValidatorDef.isValueValidValueType( value, typeInArray, options.message, ASSERTIONS_FALSE ) ) ) ) {
+          assert && options.assertions && assert( false, this.formulateAssertionMessage( `value not valid for any valueType in ${valueType}, value: ${value}`, options.message ) );
           return false;
         }
       }
       else if ( valueType ) {
-        if ( !ValidatorDef.isValueValidValueType( value, valueType, options ) ) {
+        if ( !ValidatorDef.isValueValidValueType( value, valueType, options.message, options ) ) {
           return false;
         }
       }
@@ -1344,8 +1350,8 @@ const ValidatorDef = {
 
         // if the type is an array, then handle it like we did for valueType, with _.some
         if ( Array.isArray( arrayElementType ) ) {
-          if ( !_.some( arrayElementType.map( typeInArray => ValidatorDef.isValueValidValueType( arrayElement, typeInArray, ASSERTIONS_FALSE ) ) ) ) {
-            assert && options.assertions && assert( false, `array element not valid for any arrayElementType in ${arrayElementType}, value: ${arrayElement}` );
+          if ( !_.some( arrayElementType.map( typeInArray => ValidatorDef.isValueValidValueType( arrayElement, typeInArray, options.message, ASSERTIONS_FALSE ) ) ) ) {
+            assert && options.assertions && assert( false, this.formulateAssertionMessage( `array element not valid for any arrayElementType in ${arrayElementType}, value: ${arrayElement}`, options.message ) );
             return false;
           }
           return true;
@@ -1353,7 +1359,7 @@ const ValidatorDef = {
         else {
 
           // if not an array, then just check the array element
-          return ValidatorDef.isValueValidValueType( arrayElement, validator.arrayElementType, options );
+          return ValidatorDef.isValueValidValueType( arrayElement, validator.arrayElementType, options.message, options );
         }
       } ) ) ) {
         return false; // if every element didn't pass, then return false
@@ -1361,18 +1367,18 @@ const ValidatorDef = {
     }
 
     if ( validator.hasOwnProperty( 'validValues' ) && validator.validValues.indexOf( value ) === -1 ) {
-      assert && options.assertions && assert( false, `value not in validValues: ${value}` );
+      assert && options.assertions && assert( false, this.formulateAssertionMessage( `value not in validValues: ${value}`, options.message ) );
       return false;
     }
     if ( validator.hasOwnProperty( 'isValidValue' ) && !validator.isValidValue( value ) ) {
-      assert && options.assertions && assert( false, `value failed isValidValue: ${value}` );
+      assert && options.assertions && assert( false, this.formulateAssertionMessage( `value failed isValidValue: ${value}`, options.message ) );
       return false;
     }
     if ( validator.hasOwnProperty( 'phetioType' ) &&
 
          // Never assert, instead handling it here for the better assertion message.
          !ValidatorDef.isValueValid( value, validator.phetioType.validator, ASSERTIONS_FALSE ) ) {
-      assert && options.assertions && assert( false, `value failed phetioType validator: ${value}` );
+      assert && options.assertions && assert( false, this.formulateAssertionMessage( `value failed phetioType validator: ${value}`, options.message ) );
       return false;
     }
     return true;
@@ -1381,30 +1387,32 @@ const ValidatorDef = {
   /**
    * @param {Object|null} value
    * @param {string|function|null|undefined} valueType - see above definition, Array is not allowed in this method
+   * @param {string} [message] - Optional, more specific message about the context of the failure, to be added to
+   * valueType-specific assertion messages.
    * @param {Object} [options] - not optional, should be passed in from isValidValue
    * @returns {boolean} - whether the value is a validType
    * @throws {Error} assertion error if not valid and options.assertions is true
    * @private
    */
-  isValueValidValueType( value, valueType, options ) {
+  isValueValidValueType( value, valueType, message, options ) {
     if ( typeof valueType === 'string' && typeof value !== valueType ) { // primitive type
-      assert && options.assertions && assert( false, `value should have typeof ${valueType}, value=${value}` );
+      assert && options.assertions && assert( false, this.formulateAssertionMessage( `value should have typeof ${valueType}, value=${value}`, message ) );
       return false;
     }
     else if ( valueType === Array && !Array.isArray( value ) ) {
-      assert && options.assertions && assert( false, `value should have been an array, value=${value}` );
+      assert && options.assertions && assert( false, this.formulateAssertionMessage( `value should have been an array, value=${value}`, message ) );
       return false;
     }
     else if ( valueType instanceof js_Enumeration && !valueType.includes( value ) ) {
-      assert && assert( false, 'value is not a member of Enumeration ' + valueType );
+      assert && assert( false, this.formulateAssertionMessage( `value is not a member of Enumeration ${valueType}`, message ) );
       return false;
     }
     else if ( typeof valueType === 'function' && !( value instanceof valueType ) ) { // constructor
-      assert && options.assertions && assert( false, `value should be instanceof ${valueType.name}, value=${value}` );
+      assert && options.assertions && assert( false, this.formulateAssertionMessage( `value should be instanceof ${valueType.name}, value=${value}`, message ) );
       return false;
     }
     if ( valueType === null && value !== null ) {
-      assert && options.assertions && assert( false, `value should be null, value=${value}` );
+      assert && options.assertions && assert( false, this.formulateAssertionMessage( `value should be null, value=${value}`, message ) );
       return false;
     }
     return true;
@@ -1451,8 +1459,8 @@ ValidatorDef.STRING_WITHOUT_TEMPLATE_VARS_VALIDATOR = {
 
 axon.register( 'ValidatorDef', ValidatorDef );
 /* harmony default export */ var js_ValidatorDef = (ValidatorDef);
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/axon/js/validate.js
-// Copyright 2019-2020, University of Colorado Boulder
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/axon/js/validate.js
+// Copyright 2019-2021, University of Colorado Boulder
 
 /**
  * Throws an assertion error if assertions are enabled and the value is invalid, otherwise returns the value.
@@ -1469,20 +1477,32 @@ axon.register( 'ValidatorDef', ValidatorDef );
  * If assertions are enabled, assert out if the value does not adhere to the validator. No-op without assertions.
  * @param {*} value
  * @param {ValidatorDef} validator
- * @param {Object} [options] - see ValidatorDef.isValueValid()
+ * @param {string} [message] - make this an arg, instead of an option, for convenience. This message will be prepended to
+ * a message in ValidatorDef that specifies which validator key fails, along with the value. It is best to end this
+ * message with no punctuation.
+ * @param {Object} [options] - see ValidatorDef.isValueValid() for options
  * @returns {*} - returns the input value for chaining
  * @public
  */
-const validate = ( value, validator, options ) => {
+const validate = ( value, validator, message, options ) => {
 
-  // Throws an error if not valid
-  assert && js_ValidatorDef.isValueValid( value, validator, js_merge( { assertions: true }, options ) );
+  if ( assert ) {
+    options && assert( !options.hasOwnProperty( message ), 'prefer parameter to options for message' );
+
+    options = js_merge( {
+      assertions: true,
+      message: message // use a parameter and merge it in here for convenience
+    }, options );
+
+    // Throws an error if not valid
+    js_ValidatorDef.isValueValid( value, validator, options );
+  }
 };
 
 
 axon.register( 'validate', validate );
 /* harmony default export */ var js_validate = (validate);
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/phet-core/js/required.js
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/phet-core/js/required.js
 // Copyright 2019-2020, University of Colorado Boulder
 
 /**
@@ -1507,7 +1527,7 @@ function required( entry ) {
 js_phetCore.register( 'required', required );
 
 /* harmony default export */ var js_required = (required);
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/tandem/js/PhetioConstants.js
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/tandem/js/PhetioConstants.js
 // Copyright 2020, University of Colorado Boulder
 
 
@@ -1525,410 +1545,49 @@ const PhetioConstants = {
 
 tandemNamespace.register( 'PhetioConstants', PhetioConstants );
 /* harmony default export */ var js_PhetioConstants = (PhetioConstants);
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/tandem/js/types/IOType.js
-// Copyright 2020, University of Colorado Boulder
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/tandem/js/TandemConstants.js
+// Copyright 2021, University of Colorado Boulder
+
+
 
 /**
- * IO Types form a synthetic type system used to describe PhET-iO Elements. A PhET-iO Element is an instrumented PhetioObject
- * that is interoperable from the "wrapper" frame (outside the sim frame). An IO Type includes documentation, methods,
- * names, serialization, etc.
+ * Factored-out constant values for use in Tandem.
  *
  * @author Sam Reid (PhET Interactive Simulations)
+ * @author Michael Kauzmann (PhET Interactive Simulations)
  */
 
+const OBJECT_IO_TYPE_NAME = 'ObjectIO';
+const EVENT_TYPE_MODEL = 'MODEL';
 
+const TandemConstants = {
+  OBJECT_IO_TYPE_NAME: OBJECT_IO_TYPE_NAME,
+  EVENT_TYPE_MODEL: EVENT_TYPE_MODEL,
 
+  // Default metadata set for an ObjectIO in the PhET-iO API.  These are used as the default options in PhetioObject
+  // and when outputting an API (since values that match the defaults are omitted)
+  PHET_IO_OBJECT_METADATA_DEFAULTS: {
+    phetioTypeName: OBJECT_IO_TYPE_NAME,
+    phetioDocumentation: '',
+    phetioState: true,
+    phetioReadOnly: false,
 
-
-
-
-
-// constants
-const VALIDATE_OPTIONS_FALSE = { validateValidator: false };
-
-// Defined at the bottom of this file
-let ObjectIO = null;
-
-/**
- * Estimate the core type name from a given IO Type name.
- * @param {string} ioTypeName
- * @returns {string}
- * @private
- */
-const getCoreTypeName = ioTypeName => {
-  const index = ioTypeName.indexOf( js_PhetioConstants.IO_TYPE_SUFFIX );
-  assert && assert( index >= 0, 'IO should be in the type name' );
-  return ioTypeName.substring( 0, index );
+    // NOTE: Relies on the details about how Enumerations are serialized (via name), like EventType.phetioType.toStateObject( object.phetioEventType )
+    phetioEventType: EVENT_TYPE_MODEL,
+    phetioHighFrequency: false,
+    phetioPlayback: false,
+    phetioStudioControl: true,
+    phetioDynamicElement: false,
+    phetioIsArchetype: false,
+    phetioFeatured: false,
+    phetioDesigned: false,
+    phetioArchetypePhetioID: null
+  }
 };
 
-class IOType_IOType {
-
-  /**
-   * @param {string} ioTypeName - The name that this IOType will have in the public PhET-iO API. In general, this should
-   *    only be word characters, ending in "IO". Parametric types are a special subset of IOTypes that include their
-   *    parameters in their typeName. If an IOType's parameters are other IO Type(s), then they should be included within
-   *    angle brackets, like "PropertyIO<BooleanIO>". Some other types use a more custom format for displaying their
-   *    parameter types, in this case the parameter section of the type name (immediately following "IO") should begin
-   *    with an open paren, "(". Thus the schema for a typeName could be defined (using regex) as `[A-Z]\w*IO([(<].*){0,1}`.
-   *    Parameterized types should also include a `parameterTypes` field on the IOType.
-   * @param {Object} config
-   */
-  constructor( ioTypeName, config ) {
-
-    // For reference in the config
-    const supertype = config.supertype || ObjectIO;
-
-    config = js_merge( {
-
-      /***** REQUIRED ****/
-
-      // a validator, such as isValidValue | valueType | validValues
-
-      /***** OPTIONAL ****/
-
-      supertype: ObjectIO,
-
-      // {Object<string,MethodObject>} The public methods available for this IO Type. Each method is not just a function,
-      // but a collection of metadata about the method to be able to serialize parameters and return types and provide
-      // better documentation.
-      methods: {},
-
-      // {string[]} The list of events that can be emitted at this level (does not include events from supertypes).
-      events: [],
-
-      // {string[]} The list of metadata keys that this IO Type adds to the metadata for its instances. If anything is
-      // provided here, then corresponding PhetioObjects that use this IOType should override PhetioObject.getMetadata()
-      // to add what keys they need for their specific type. It is HIGHLY recommended that you do not overwrite any
-      // metadata key defined by a parent.
-      metadataKeys: [],
-
-      // {string} IO Types can specify the order that methods appear in the documentation by putting their names in this
-      // list. This list is only for the methods defined at this level in the type hierarchy. After the methodOrder
-      // specified, the methods follow in the order declared in the implementation (which isn't necessarily stable).
-      methodOrder: [],
-
-      // {IOType[]} For parametric types, they must indicate the types of the parameters here. 0 if nonparametric.
-      parameterTypes: [],
-
-      // {string} Documentation that appears in PhET-iO Studio, supports HTML markup.
-      documentation: `IO Type for ${getCoreTypeName( ioTypeName )}`,
-
-      // Functions cannot be sent from one iframe to another, so must be wrapped.  See phetioCommandProcessor.wrapFunction
-      isFunctionType: false,
-
-      /**** STATE ****/
-
-      // {function(coreObject:*):*)} Serialize the core object. Most often this looks like an object literal that holds
-      // data about the PhetioObject instance.
-      toStateObject: supertype && supertype.toStateObject,
-
-      // {function(stateObject:*):*} For Data Type Deserialization. Decodes the object from a state (see toStateObject)
-      // into an instance of the core type.
-      fromStateObject: supertype && supertype.fromStateObject,
-
-      // {function(stateObject:*):Array[*]} For Dynamic Element Deserialization: converts the state object to arguments
-      // for a `create` function in PhetioGroup or other PhetioDynamicElementContainer creation function. Note that
-      // other non-serialized args (not dealt with here) may be supplied as closure variables. This function only needs
-      // to be implemented on IO Types who's core type is phetioDynamicElement: true, such as PhetioDynamicElementContainer
-      // elements.
-      stateToArgsForConstructor: supertype && supertype.stateToArgsForConstructor,
-
-      // {function(coreObject:*,stateObject:*)} For Reference Type Deserialization:  Applies the state (see toStateObject)
-      // value to the instance. When setting PhET-iO state, this function will be called on an instrumented instance to set the
-      // stateObject's value to it.
-      // see https://github.com/phetsims/phet-io/blob/master/doc/phet-io-instrumentation-technical-guide.md#three-types-of-deserialization
-      applyState: supertype && supertype.applyState,
-
-      // For dynamic element containers, see examples in IOTypes for PhetioDynamicElementContainer classes
-      addChildElement: supertype && supertype.addChildElement
-    }, js_required( config ) );
-
-    assert && assert( js_ValidatorDef.containsValidatorKey( config ), 'Validator is required' );
-    assert && assert( Array.isArray( config.events ) );
-    assert && assert( Array.isArray( config.metadataKeys ) );
-
-    // @public (read-only)
-    this.supertype = supertype;
-    this.typeName = ioTypeName;
-    this.documentation = config.documentation;
-    this.methods = config.methods;
-    this.events = config.events;
-    this.metadataKeys = config.metadataKeys;
-    this.methodOrder = config.methodOrder;
-    this.parameterTypes = config.parameterTypes;
-    this.validator = _.pick( config, js_ValidatorDef.VALIDATOR_KEYS );
-    this.toStateObject = coreObject => {
-      js_validate( coreObject, this.validator, VALIDATE_OPTIONS_FALSE );
-      return config.toStateObject( coreObject );
-    };
-    this.fromStateObject = config.fromStateObject;
-    this.stateToArgsForConstructor = config.stateToArgsForConstructor;
-    this.applyState = ( coreObject, stateObject ) => {
-      js_validate( coreObject, this.validator, VALIDATE_OPTIONS_FALSE );
-      config.applyState( coreObject, stateObject );
-    };
-    this.isFunctionType = config.isFunctionType;
-    this.addChildElement = config.addChildElement;
-
-    assert && assert( supertype || this.typeName === 'ObjectIO', 'supertype is required' );
-    assert && assert( !this.typeName.includes( '.' ), 'Dots should not appear in type names' );
-
-    // Validate that parametric types look as expected
-    // TODO: What about EmitterIO<> that has no parameter types?  See https://github.com/phetsims/tandem/issues/217
-    // if ( this.typeName.includes( '<' ) ) {
-    //   assert && assert( this.parameterTypes.length > 0,
-    //     'angle bracket notation is only used for parametric IO Types that have parameter IO Types' );
-    // }
-
-    const splitOnParameters = this.typeName.split( /[<(]/ )[ 0 ];
-    assert && assert( splitOnParameters.endsWith( js_PhetioConstants.IO_TYPE_SUFFIX ), `IO Type name must end with ${js_PhetioConstants.IO_TYPE_SUFFIX}` );
-    assert && assert( this.hasOwnProperty( 'typeName' ), 'this.typeName is required' );
-
-    // assert that each public method adheres to the expected schema
-    Object.values( this.methods ).forEach( methodObject => {
-      if ( typeof methodObject === 'object' ) {
-        assert && assert( Array.isArray( methodObject.parameterTypes ), 'parameter types must be an array: ' + methodObject.parameterTypes );
-        assert && assert( typeof methodObject.implementation === 'function', 'implementation must be of type function: ' + methodObject.implementation );
-        assert && assert( typeof methodObject.documentation === 'string', 'documentation must be of type string: ' + methodObject.documentation );
-        assert && methodObject.invocableForReadOnlyElements && assert( typeof methodObject.invocableForReadOnlyElements === 'boolean',
-          'invocableForReadOnlyElements must be of type boolean: ' + methodObject.invocableForReadOnlyElements );
-      }
-    } );
-    assert && assert( typeof this.documentation === 'string' && this.documentation.length > 0, 'documentation must be provided' );
-
-    this.hasOwnProperty( 'methodOrder' ) && this.methodOrder.forEach( methodName => {
-      assert && assert( this.methods[ methodName ], 'methodName not in public methods: ' + methodName );
-    } );
-
-    // TODO: support API checking, see https://github.com/phetsims/phet-io/issues/1657
-    // if ( this.hasOwnProperty( 'api' ) ) {
-    //   assert && assert( this.api instanceof Object, 'Object expected for api' );
-    //   assert && assert( Object.getPrototypeOf( this.api ) === Object.prototype, 'no extra prototype allowed on API object' );
-    // }
-
-    // Make sure events are not listed again
-    if ( supertype ) {
-      const typeHierarchy = supertype.getTypeHierarchy();
-      assert && this.events && this.events.forEach( event => {
-        assert( !_.some( typeHierarchy, t => t.events.includes( event ) ),
-          'this IOType should not declare event that parent also has: ' + event );
-      } );
-
-      assert && this.metadataKeys && this.metadataKeys.forEach( metadataKey => {
-        assert( !_.some( typeHierarchy, t => t.metadataKeys.includes( metadataKey ) ),
-          'this IOType should not declare  a metadataKey that parent also has: ' + metadataKey );
-      } );
-    }
-    else {
-
-      // The root IOType must supply all 4 state methods.
-      assert && assert( typeof config.toStateObject === 'function', 'toStateObject must be defined' );
-      assert && assert( typeof config.fromStateObject === 'function', 'fromStateObject must be defined' );
-      assert && assert( typeof config.stateToArgsForConstructor === 'function', 'stateToArgsForConstructor must be defined' );
-      assert && assert( typeof config.applyState === 'function', 'applyState must be defined' );
-    }
-  }
-
-  /**
-   * Gets an array of IOTypes of the self type and all the supertype ancestors.
-   * @returns {IOType[]}
-   * @public
-   */
-  getTypeHierarchy() {
-    const array = [];
-    let ioType = this; // eslint-disable-line
-    while ( ioType ) {
-      array.push( ioType );
-      ioType = ioType.supertype;
-    }
-    return array;
-  }
-
-  /**
-   * Convenience method for creating an IOType that forwards its state methods over to be handled by the core type. This
-   * function will gracefully forward any supported deserialization methods, but requires the CoreType to have `toStateObject`.
-   * @public
-   * @param {string} ioTypeName - see IOType constuctor for details
-   * @param {function} CoreType - the PhET "core" type class/constructor associated with this IOType being created
-   * @param {Object} [options]
-   * @returns {IOType}
-   */
-  static fromCoreType( ioTypeName, CoreType, options ) {
-
-    if ( assert && options ) {
-      assert && assert( !options.hasOwnProperty( 'valueType' ), 'fromCoreType sets its own valueType' );
-      assert && assert( !options.hasOwnProperty( 'toStateObject' ), 'fromCoreType sets its own toStateObject' );
-      assert && assert( !options.hasOwnProperty( 'stateToArgsForConstructor' ), 'fromCoreType sets its own stateToArgsForConstructor' );
-      assert && assert( !options.hasOwnProperty( 'applyState' ), 'fromCoreType sets its own applyState' );
-    }
-
-    let coreTypeHasToStateObject = false;
-    let coreTypeHasApplyState = false;
-
-    let proto = CoreType.prototype;
-    while ( proto ) {
-      if ( typeof proto.toStateObject === 'function' ) {
-        coreTypeHasToStateObject = true;
-      }
-      if ( typeof proto.applyState === 'function' ) {
-        coreTypeHasApplyState = true;
-      }
-      proto = Object.getPrototypeOf( proto );
-    }
-
-    assert && assert( coreTypeHasToStateObject, 'toStateObject is required to be on the CoreType' );
-
-    options = js_merge( {
-      valueType: CoreType,
-      toStateObject: coreType => coreType.toStateObject()
-    }, options );
-
-    if ( coreTypeHasApplyState ) {
-      options.applyState = ( coreType, stateObject ) => coreType.applyState( stateObject );
-    }
-    if ( CoreType.fromStateObject ) {
-      options.fromStateObject = CoreType.fromStateObject;
-    }
-    if ( CoreType.stateToArgsForConstructor ) {
-      options.stateToArgsForConstructor = CoreType.stateToArgsForConstructor;
-    }
-
-    return new IOType_IOType( ioTypeName, options );
-  }
-}
-
-ObjectIO = new IOType_IOType( 'ObjectIO', {
-  isValidValue: () => true,
-  supertype: null,
-  documentation: 'The root of the IO Type hierarchy',
-  toStateObject: coreObject => null,
-  fromStateObject: stateObject => null,
-  stateToArgsForConstructor: stateObject => [],
-  applyState: ( coreObject, stateObject ) => { },
-  metadataKeys: [
-    'phetioTypeName',
-    'phetioDocumentation',
-    'phetioState',
-    'phetioReadOnly',
-    'phetioEventType',
-    'phetioHighFrequency',
-    'phetioPlayback',
-    'phetioStudioControl',
-    'phetioDynamicElement',
-    'phetioIsArchetype',
-    'phetioFeatured',
-    'phetioArchetypePhetioID' // though this will only be present for dynamic elements
-  ]
-} );
-
-// @public
-IOType_IOType.ObjectIO = ObjectIO;
-
-/**
- * @typedef {Object} MethodObject
- * @property {string} documentation
- * @property {function()} implementation - the function to execute when this method is called. This function's parameters
- *                                  will be based on `parameterTypes`, and should return the type specified by `returnType`
- * @property {IOType} returnType - the return IO Type of the method
- * @property {IOType[]} parameterTypes - the parameter IO Types for the method
- * @property {boolean} [invocableForReadOnlyElements=true] - by default, all methods are invocable for all elements.
- *    However, for some read-only elements, certain methods should not be invocable. In that case, they are marked as
- *    invocableForReadOnlyElements: false.
- */
-
-tandemNamespace.register( 'IOType', IOType_IOType );
-/* harmony default export */ var types_IOType = (IOType_IOType);
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/tandem/js/types/FunctionIO.js
-// Copyright 2018-2020, University of Colorado Boulder
-
-/**
- * IO Type for JS's built-in function type.
- *
- * @author Sam Reid (PhET Interactive Simulations)
- * @author Andrew Adare (PhET Interactive Simulations)
- */
-
-
-
-
-// {Map.<parameterTypeName:string, IOType>} - cache each parameterized IOType so that it is only created once
-const cache = new Map();
-
-/**
- * Parametric IO Type constructor--given return type and parameter types, this function returns a type wrapped IO Type for
- * that "class" of functions. "Class" here refers to the supported parameter and return IO Types.
- * This caching implementation should be kept in sync with the other parametric IO Type caching implementations.
- * @param {IOType} returnType - IO Type of the return type of the function that can support cross-frame serialization
- * @param {IOType[]} functionParameterTypes - IO Types for the individual arguments of the function.
- */
-const FunctionIO = ( returnType, functionParameterTypes ) => {
-  for ( let i = 0; i < functionParameterTypes.length; i++ ) {
-    assert && assert( functionParameterTypes[ i ], 'parameter type was not truthy' );
-  }
-  assert && assert( returnType, 'return type was not truthy' );
-
-  // REVIEW https://github.com/phetsims/tandem/issues/169 Why is this different than the typeName later in this file?
-  const cacheKey = `${returnType.typeName}.${functionParameterTypes.map( type => type.typeName ).join( ',' )}`;
-
-  if ( !cache.has( cacheKey ) ) {
-
-    // gather a list of argument names for the documentation string
-    let argsString = functionParameterTypes.map( parameterType => parameterType.typeName ).join( ', ' );
-    if ( argsString === '' ) {
-      argsString = 'VoidIO';
-    }
-    const parameterTypesString = functionParameterTypes.map( parameterType => parameterType.typeName ).join( ',' );
-
-    cache.set( cacheKey, new types_IOType( `FunctionIO(${parameterTypesString})=>${returnType.typeName}`, {
-      valueType: 'function',
-
-      isFunctionType: true,
-
-      // These are the parameters to this FunctionIO, not to the function it wraps. That is why it includes the return type.
-      // NOTE: the order is very important, for instance phetioCommandProcessor relies on the parameters being before
-      // the return type.  If we decide this is too brittle, perhaps we should subclass IOType to FunctionIOType, and it
-      // can track its functionParameterTypes separately from the returnType.
-      parameterTypes: functionParameterTypes.concat( [ returnType ] ),
-      documentation: 'Wrapper for the built-in JS function type.<br>' +
-                     '<strong>Arguments:</strong> ' + argsString + '<br>' +
-                     '<strong>Return Type:</strong> ' + returnType.typeName
-    } ) );
-  }
-
-  return cache.get( cacheKey );
-};
-
-tandemNamespace.register( 'FunctionIO', FunctionIO );
-/* harmony default export */ var types_FunctionIO = (FunctionIO);
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/tandem/js/types/VoidIO.js
-// Copyright 2018-2020, University of Colorado Boulder
-
-/**
- * IO Type use to signify a function has no return value.
- *
- * @author Sam Reid (PhET Interactive Simulations)
- * @author Andrew Adare (PhET Interactive Simulations)
- */
-
-
-
-
-/**
- * We sometimes use VoidIO as a workaround to indicate that an argument is passed in the simulation side, but
- * that it shouldn't be leaked to the PhET-iO client.
- *
- * @override
- * @public
- */
-const VoidIO = new types_IOType( 'VoidIO', {
-  isValidValue: () => true,
-  documentation: 'Type for which there is no instance, usually to mark functions without a return value',
-  toStateObject: object => undefined
-} );
-
-tandemNamespace.register( 'VoidIO', VoidIO );
-/* harmony default export */ var types_VoidIO = (VoidIO);
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/phet-core/js/assertMutuallyExclusiveOptions.js
+tandemNamespace.register( 'TandemConstants', TandemConstants );
+/* harmony default export */ var js_TandemConstants = (TandemConstants);
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/phet-core/js/assertMutuallyExclusiveOptions.js
 // Copyright 2019-2020, University of Colorado Boulder
 
 /**
@@ -1967,8 +1626,862 @@ const assertMutuallyExclusiveOptions = function( options, ...sets ) {
 
 js_phetCore.register( 'assertMutuallyExclusiveOptions', assertMutuallyExclusiveOptions );
 /* harmony default export */ var js_assertMutuallyExclusiveOptions = (assertMutuallyExclusiveOptions);
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/axon/js/TinyEmitter.js
-// Copyright 2015-2020, University of Colorado Boulder
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/tandem/js/types/StateSchema.js
+// Copyright 2021, University of Colorado Boulder
+
+/**
+ * Class responsible for storing information about the schema of PhET-iO state. See IOType stateSchema option for usage
+ * and more information.
+ *
+ * There are two types of StateSchema, the first serves a "value", when the state of an IOType is just a value. The second
+ * is a "composite", where the state of an IOType is made from sub-components, each of which have an IOType. Check
+ * which type of StateSchema your instance is with StateSchema.isComposite().
+ *
+ * @author Sam Reid (PhET Interactive Simulations)
+ * @author Michael Kauzmann (PhET Interactive Simulations)
+ */
+
+
+
+
+
+
+
+
+class StateSchema_StateSchema {
+
+  /**
+   * @param {Object} [options]
+   */
+  constructor( options ) {
+
+    // Either create with compositeSchema, or specify a that this state is just a value
+    assert && js_assertMutuallyExclusiveOptions( options, [ 'compositeSchema' ], [ 'displayString', 'validator' ] );
+
+    options = js_merge( {
+      displayString: '',
+      validator: null,
+
+      // {Object.<string,IOType>} - an object literal of keys that correspond to an IOType
+      compositeSchema: null
+    }, options );
+
+    // @public (read-only)
+    this.displayString = options.displayString;
+    this.validator = options.validator;
+
+    // @public (read-only) - "composite" state schemas are treated differently that value state schemas
+    this.compositeSchema = options.compositeSchema;
+
+    assert && this.validateStateSchema( this.compositeSchema );
+  }
+
+
+  /**
+   * Make sure that a composite state schema is of the correct form. Each value in the object should be an IOType
+   * Only useful if assert is called.
+   * @private
+   */
+  validateStateSchema( stateSchema ) {
+    if ( assert && this.isComposite() ) {
+
+      for ( const stateSchemaKey in stateSchema ) {
+        if ( stateSchema.hasOwnProperty( stateSchemaKey ) ) {
+
+          const stateSchemaValue = stateSchema[ stateSchemaKey ];
+
+          if ( stateSchemaKey === '_private' ) {
+            this.validateStateSchema( stateSchemaValue );
+          }
+          else {
+            assert && assert( stateSchemaValue instanceof types_IOType, `${stateSchemaValue} expected to be an IOType` );
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * @public
+   * @param {PhetioObject} coreObject
+   * @param {Object} stateObject
+   */
+  defaultApplyState( coreObject, stateObject ) {
+
+    const applyStateForLevel = ( schema, stateObjectLevel ) => {
+      assert && assert( this.isComposite(), 'defaultApplyState from stateSchema only applies to composite stateSchemas' );
+      for ( const stateKey in schema ) {
+        if ( schema.hasOwnProperty( stateKey ) ) {
+          if ( stateKey === '_private' ) {
+            applyStateForLevel( schema._private, stateObjectLevel._private );
+          }
+          else {
+
+            // The IOType for the key in the composite.
+            const schemaIOType = schema[ stateKey ];
+            assert && assert( stateObjectLevel.hasOwnProperty( stateKey ), `stateObject does not have expected schema key: ${stateKey}` );
+
+            // Using fromStateObject to deserialize sub-component
+            if ( schemaIOType.defaultDeserializationMethod === types_IOType.DeserializationMethod.FROM_STATE_OBJECT ) {
+              coreObject[ stateKey ] = schema[ stateKey ].fromStateObject( stateObjectLevel[ stateKey ] );
+            }
+            else {
+              assert && assert( schemaIOType.defaultDeserializationMethod === types_IOType.DeserializationMethod.APPLY_STATE, 'unexpected deserialization method' );
+
+              // Using applyState to deserialize sub-component
+              schema[ stateKey ].applyState( coreObject[ stateKey ], stateObjectLevel[ stateKey ] );
+            }
+          }
+        }
+      }
+    };
+    applyStateForLevel( this.compositeSchema, stateObject );
+  }
+
+  /**
+   * @public
+   * @param {PhetioObject} coreObject
+   * @returns {Object}
+   */
+  defaultToStateObject( coreObject ) {
+    assert && assert( this.isComposite(), 'defaultToStateObject from stateSchema only applies to composite stateSchemas' );
+
+    const toStateObjectForSchemaLevel = schema => {
+
+      const stateObject = {};
+      for ( const stateKey in schema ) {
+        if ( schema.hasOwnProperty( stateKey ) ) {
+          if ( stateKey === '_private' ) {
+            stateObject._private = toStateObjectForSchemaLevel( schema._private );
+          }
+          else {
+            assert && assert( coreObject.hasOwnProperty( stateKey ),
+              `cannot get state because coreObject does not have expected schema key: ${stateKey}` );
+            stateObject[ stateKey ] = schema[ stateKey ].toStateObject( coreObject[ stateKey ] );
+          }
+        }
+      }
+      return stateObject;
+    };
+    return toStateObjectForSchemaLevel( this.compositeSchema );
+  }
+
+  /**
+   * True if the StateSchema is a composite schema.
+   * @public
+   * @returns {boolean}
+   */
+  isComposite() {
+    return !!this.compositeSchema;
+  }
+
+
+  /**
+   * Check if a given stateObject is as valid as can be determined by this StateSchema. Will return null if valid, but
+   * needs more checking up and down the hierarchy.
+   *
+   * @public
+   * @param {Object} stateObject - the stateObject to validate against
+   * @param {boolean} toAssert - whether or not to assert when invalid
+   * @param {string[]} publicSchemaKeys - to be populated with any public keys this StateSchema is responsible for
+   * @param {string[]} privateSchemaKeys - to be populated with any private keys this StateSchema is responsible for
+   * @returns {boolean|null} boolean if validity can be checked, null if valid, but next in the hierarchy is needed
+   */
+  checkStateObjectValid( stateObject, toAssert, publicSchemaKeys, privateSchemaKeys ) {
+    if ( this.isComposite() ) {
+      const schema = this.compositeSchema;
+
+      let valid = null;
+      const checkLevel = ( schemaLevel, objectLevel, keyList, exclude ) => {
+        Object.keys( schemaLevel ).filter( k => k !== exclude ).forEach( key => {
+
+          const validKey = objectLevel.hasOwnProperty( key );
+          if ( !validKey ) {
+            valid = false;
+          }
+          assert && toAssert && assert( validKey, `${key} in state schema but not in the state object` );
+          schemaLevel[ key ].validateStateObject( objectLevel[ key ] );
+          keyList.push( key );
+        } );
+      };
+
+      checkLevel( schema, stateObject, publicSchemaKeys, '_private' );
+      schema._private && checkLevel( schema._private, stateObject._private, privateSchemaKeys, null );
+      return valid;
+    }
+    else {
+      if ( toAssert ) {
+        js_validate( stateObject, this.validator );
+      }
+      return js_ValidatorDef.isValueValid( stateObject, this.validator );
+    }
+  }
+
+  /**
+   * Get a list of all IOTypes associated with this StateSchema
+   * @public
+   * @returns {IOType[]}
+   */
+  getRelatedTypes() {
+    const relatedTypes = [];
+
+    // to support IOTypes from public and private state
+    const getRelatedStateTypeForLevel = stateSchema => {
+      Object.keys( stateSchema ).forEach( stateSchemaKey => {
+
+        // Support keywords in state like "private"
+        stateSchema[ stateSchemaKey ] instanceof types_IOType && relatedTypes.push( stateSchema[ stateSchemaKey ] );
+      } );
+    };
+
+    if ( this.compositeSchema ) {
+      getRelatedStateTypeForLevel( this.compositeSchema );
+      this.compositeSchema._private && getRelatedStateTypeForLevel( this.compositeSchema._private );
+    }
+    return relatedTypes;
+  }
+
+
+  /**
+   * Returns a unique identified for this stateSchema, or an object of the stateSchemas for each sub-component in the composite
+   * @public (phet-io internal)
+   * @returns {string|Object.<string,string|Object>}
+   */
+  getStateSchemaAPI() {
+    if ( this.isComposite() ) {
+      const stateSchemaAPI = _.mapValues( this.compositeSchema, value => value.typeName );
+      if ( this.compositeSchema._private ) {
+        stateSchemaAPI._private = _.mapValues( this.compositeSchema._private, value => value.typeName );
+      }
+      return stateSchemaAPI;
+    }
+    else {
+      return this.displayString;
+    }
+  }
+
+
+  /**
+   * Factory function for StateSchema instances that represent a single value of state. This is opposed to a composite
+   * schema of sub-components.
+   * @param displayString
+   * @param validator
+   * @public
+   * @returns {StateSchema}
+   */
+  static asValue( displayString, validator ) {
+    return new StateSchema_StateSchema( {
+      validator: validator,
+      displayString: displayString
+    } );
+  }
+}
+
+tandemNamespace.register( 'StateSchema', StateSchema_StateSchema );
+/* harmony default export */ var types_StateSchema = (StateSchema_StateSchema);
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/tandem/js/types/IOType.js
+// Copyright 2020-2021, University of Colorado Boulder
+
+/**
+ * IO Types form a synthetic type system used to describe PhET-iO Elements. A PhET-iO Element is an instrumented PhetioObject
+ * that is interoperable from the "wrapper" frame (outside the sim frame). An IO Type includes documentation, methods,
+ * names, serialization, etc.
+ *
+ * @author Sam Reid (PhET Interactive Simulations)
+ */
+
+
+
+
+
+
+
+
+
+
+
+// constants
+const VALIDATE_OPTIONS_FALSE = { validateValidator: false };
+
+// Defined at the bottom of this file
+let ObjectIO = null;
+
+/**
+ * Estimate the core type name from a given IO Type name.
+ * @param {string} ioTypeName
+ * @returns {string}
+ * @private
+ */
+const getCoreTypeName = ioTypeName => {
+  const index = ioTypeName.indexOf( js_PhetioConstants.IO_TYPE_SUFFIX );
+  assert && assert( index >= 0, 'IO should be in the type name' );
+  return ioTypeName.substring( 0, index );
+};
+
+// Currently, this is only the list of methods that default stateSchema applyState functions support when deserializing
+// componenents
+const DeserializationMethod = js_Enumeration.byKeys( [ 'FROM_STATE_OBJECT', 'APPLY_STATE' ] );
+
+class IOType_IOType {
+
+  /**
+   * @param {string} ioTypeName - The name that this IOType will have in the public PhET-iO API. In general, this should
+   *    only be word characters, ending in "IO". Parametric types are a special subset of IOTypes that include their
+   *    parameters in their typeName. If an IOType's parameters are other IO Type(s), then they should be included within
+   *    angle brackets, like "PropertyIO<BooleanIO>". Some other types use a more custom format for displaying their
+   *    parameter types, in this case the parameter section of the type name (immediately following "IO") should begin
+   *    with an open paren, "(". Thus the schema for a typeName could be defined (using regex) as `[A-Z]\w*IO([(<].*){0,1}`.
+   *    Parameterized types should also include a `parameterTypes` field on the IOType.
+   * @param {Object} config
+   */
+  constructor( ioTypeName, config ) {
+    assert && assert( typeof ioTypeName === 'string', 'ioTypeName should be a string' );
+
+    // For reference in the config
+    const supertype = config.supertype || ObjectIO;
+    const toStateObjectSupplied = !!( config.toStateObject );
+    const applyStateSupplied = !!( config.applyState );
+    const stateSchemaSupplied = !!( config.stateSchema );
+
+    config = js_merge( {
+
+      /***** REQUIRED ****/
+
+      // a validator, such as isValidValue | valueType | validValues
+
+      /***** OPTIONAL ****/
+
+      supertype: ObjectIO,
+
+      // {Object.<string,MethodObject>} The public methods available for this IO Type. Each method is not just a function,
+      // but a collection of metadata about the method to be able to serialize parameters and return types and provide
+      // better documentation.
+      methods: {},
+
+      // {string[]} The list of events that can be emitted at this level (does not include events from supertypes).
+      events: [],
+
+      // {Object} Key/value pairs indicating the defaults for the IO Type metadata. If anything is provided here, then
+      // corresponding PhetioObjects that use this IOType should override PhetioObject.getMetadata() to add what keys
+      // they need for their specific type.  Cannot specify redundant values (that an ancestor already specified).
+      metadataDefaults: {},
+
+      // {Object} Key/value pairs indicating the defaults for the IO Type data. Most likely this will remain PhET-iO internal,
+      // and shouldn't need to be used when creating IOTypes outside of tandem/.
+      dataDefaults: {},
+
+      // {string} IO Types can specify the order that methods appear in the documentation by putting their names in this
+      // list. This list is only for the methods defined at this level in the type hierarchy. After the methodOrder
+      // specified, the methods follow in the order declared in the implementation (which isn't necessarily stable).
+      methodOrder: [],
+
+      // {IOType[]} For parametric types, they must indicate the types of the parameters here. 0 if nonparametric.
+      parameterTypes: [],
+
+      // {string} Documentation that appears in PhET-iO Studio, supports HTML markup.
+      documentation: `IO Type for ${getCoreTypeName( ioTypeName )}`,
+
+      // Functions cannot be sent from one iframe to another, so must be wrapped.  See phetioCommandProcessor.wrapFunction
+      isFunctionType: false,
+
+      /**** STATE ****/
+
+      // {function(coreObject:*):*)} Serialize the core object. Most often this looks like an object literal that holds
+      // data about the PhetioObject instance. This is likely superfluous to just providing a stateSchema of composite
+      // key/IOType values, which will create a default toStateObject based on the schema.
+      toStateObject: supertype && supertype.toStateObject,
+
+      // {function(stateObject:*):*} For Data Type Deserialization. Decodes the object from a state (see toStateObject)
+      // into an instance of the core type.
+      // see https://github.com/phetsims/phet-io/blob/master/doc/phet-io-instrumentation-technical-guide.md#three-types-of-deserialization
+      fromStateObject: supertype && supertype.fromStateObject,
+
+      // {function(stateObject:*):Array[*]} For Dynamic Element Deserialization: converts the state object to arguments
+      // for a `create` function in PhetioGroup or other PhetioDynamicElementContainer creation function. Note that
+      // other non-serialized args (not dealt with here) may be supplied as closure variables. This function only needs
+      // to be implemented on IO Types who's core type is phetioDynamicElement: true, such as PhetioDynamicElementContainer
+      // elements.
+      // see https://github.com/phetsims/phet-io/blob/master/doc/phet-io-instrumentation-technical-guide.md#three-types-of-deserialization
+      stateToArgsForConstructor: supertype && supertype.stateToArgsForConstructor,
+
+      // {function(coreObject:*,stateObject:*)} For Reference Type Deserialization:  Applies the state (see toStateObject)
+      // value to the instance. When setting PhET-iO state, this function will be called on an instrumented instance to set the
+      // stateObject's value to it. StateSchema makes this method often superfluous. A composite stateSchema can be used
+      // to automatically formulate the applyState function. If using stateSchema for the applyState method, make sure that
+      // each compose IOType has the correct defaultDeserializationMethod. Most of the time, composite IOTypes use fromStateObject
+      // to deserialize each sub-component, but in some circumstances, you will want your child to deserialize by also using applyState.
+      // See config.defaultDeserializationMethod to configure this case.
+      // see https://github.com/phetsims/phet-io/blob/master/doc/phet-io-instrumentation-technical-guide.md#three-types-of-deserialization
+      applyState: supertype && supertype.applyState,
+
+      // {Object|StateSchema|function(IOType):Object|function(IOType):StateSchema|null} - the specification for how the
+      // PhET-iO state will look for instances of this type. null specifies that the object is not serialized. A composite
+      // StateSchema can supply a toStateObject and applyState serialization strategy. This default serialization strategy
+      // only applies to this level, and does not recurse to parents. If you need to add serialization from parent levels,
+      // this can be done by manually implementing a custom toStateObject. By default, it will assume that each composite
+      // child of this stateSchema deserializes via "fromStateObject", if instead it uses applyState, please specify that
+      // per IOType with defaultDeserializationMethod.
+      stateSchema: null,
+
+      // {DeserializationMethod} For use when this IOType is pare of a composite stateSchema in another IOType.  When
+      // using serialization methods by supplying only stateSchema, then deserialization
+      // can take a variety of forms, and this will vary based on the IOType. In most cases deserialization of a component
+      // is done via fromStateObject. If not, specify this option so that the stateSchema will be able to know to call
+      // the appropriate deserialization method when deserializing something of this IOType.
+      defaultDeserializationMethod: DeserializationMethod.FROM_STATE_OBJECT,
+
+      // For dynamic element containers, see examples in IOTypes for PhetioDynamicElementContainer classes
+      addChildElement: supertype && supertype.addChildElement
+    }, js_required( config ) );
+
+    assert && assert( js_ValidatorDef.containsValidatorKey( config ), 'Validator is required' );
+    assert && assert( Array.isArray( config.events ) );
+    assert && assert( Object.getPrototypeOf( config.metadataDefaults ) === Object.prototype, 'Extra prototype on metadata keys' );
+    assert && assert( Object.getPrototypeOf( config.dataDefaults ) === Object.prototype, 'Extra prototype on data defaults' );
+    if ( assert && supertype ) {
+      Object.keys( config.metadataDefaults ).forEach( metadataDefaultKey => {
+        assert && supertype.getAllMetadataDefaults().hasOwnProperty( metadataDefaultKey ) &&
+        assert( supertype.getAllMetadataDefaults()[ metadataDefaultKey ] !== config.metadataDefaults[ metadataDefaultKey ],
+          `${metadataDefaultKey} should not have the same default value as the ancestor metadata default.` );
+      } );
+    }
+    assert && assert( config.defaultDeserializationMethod === DeserializationMethod.FROM_STATE_OBJECT ||
+                      config.defaultDeserializationMethod === DeserializationMethod.APPLY_STATE,
+      'StateSchema\'s default serialization only supports fromStateObject or applyState' );
+
+    // @public (read-only)
+    this.supertype = supertype;
+    this.typeName = ioTypeName;
+    this.documentation = config.documentation;
+    this.methods = config.methods;
+    this.events = config.events;
+    this.metadataDefaults = config.metadataDefaults; // just for this level, see getAllMetadataDefaults()
+    this.dataDefaults = config.dataDefaults; // just for this level, see getAllDataDefaults()
+    this.methodOrder = config.methodOrder;
+    this.parameterTypes = config.parameterTypes;
+    this.validator = _.pick( config, js_ValidatorDef.VALIDATOR_KEYS );
+    this.defaultDeserializationMethod = config.defaultDeserializationMethod;
+
+    let stateSchema = config.stateSchema;
+    if ( stateSchema !== null && !( stateSchema instanceof types_StateSchema ) ) {
+      const compositeSchema = typeof stateSchema === 'function' ? stateSchema( this ) : stateSchema;
+      stateSchema = new types_StateSchema( { compositeSchema: compositeSchema } );
+    }
+
+    // @public {StateSchema|null} - The schema for how this IOType is serialized. Just for this level in the IOType hierarchy,
+    // see getAllStateSchema().
+    this.stateSchema = stateSchema;
+
+    // Assert that toStateObject method is provided for value StateSchemas. Do this with the following logic:
+    // 1. It is acceptable to not provide a stateSchema (for IOTypes that aren't stateful)
+    // 2. You must either provide a toStateObject, or have a composite StateSchema. Composite state schemas support default serialization methods.
+    assert && assert( !this.stateSchema || ( toStateObjectSupplied || this.stateSchema.isComposite() ),
+      'toStateObject method must be provided for value StateSchemas' );
+
+    this.toStateObject = coreObject => {
+      js_validate( coreObject, this.validator, 'unexpected parameter to toStateObject', VALIDATE_OPTIONS_FALSE );
+
+
+      let toStateObject;
+
+      // Only do this non-standard toStateObject function if there is a stateSchema but no toStateObject provided
+      if ( !toStateObjectSupplied && stateSchemaSupplied && this.stateSchema.isComposite() ) {
+        toStateObject = this.stateSchema.defaultToStateObject( coreObject );
+      }
+      else {
+        toStateObject = config.toStateObject( coreObject );
+      }
+
+      // Validate, but only if this IOType instance has more to validate than the supertype
+      if ( toStateObjectSupplied || stateSchemaSupplied ) {
+
+        // Only validate the stateObject if it is phetioState:true.
+        // This is an n*m algorithm because for each time toStateObject is called and needs validation, this.validateStateObject
+        // looks all the way up the IOType hierarchy. This is not efficient, but gains us the ability to make sure that
+        // the stateObject doesn't have any superfluous, unexpected keys. The "m" portion is based on how many sub-properties
+        // in a state call `toStateObject`, and the "n" portion is based on how many IOTypes in the hierarchy define a
+        // toStateObject or stateSchema. In the future we could potentially improve performance by having validateStateObject
+        // only check against the schema at this level, but then extra keys in the stateObject would not be caught. From work done in https://github.com/phetsims/phet-io/issues/1774
+        assert && this.validateStateObject( toStateObject );
+      }
+      return toStateObject;
+    };
+    this.fromStateObject = config.fromStateObject;
+    this.stateToArgsForConstructor = config.stateToArgsForConstructor;
+    this.applyState = ( coreObject, stateObject ) => {
+      js_validate( coreObject, this.validator, 'unexpected parameter to applyState', VALIDATE_OPTIONS_FALSE );
+
+      // Validate, but only if this IOType instance has more to validate than the supertype
+      if ( applyStateSupplied || stateSchemaSupplied ) {
+
+        // Validate that the provided stateObject is of the expected schema
+        // NOTE: Cannot use this.validateStateObject because config adopts supertype.applyState, which is bounds to the
+        // parent IO Type. This prevents correct validation because the supertype doesn't know about the subtype schemas.
+        assert && coreObject.phetioType.validateStateObject( stateObject );
+      }
+
+      // Only do this non-standard applyState function from stateSchema if there is a stateSchema but no applyState provided
+      if ( !applyStateSupplied && stateSchemaSupplied && this.stateSchema.isComposite() ) {
+        this.stateSchema.defaultApplyState( coreObject, stateObject );
+      }
+      else {
+        config.applyState( coreObject, stateObject );
+      }
+    };
+
+    this.isFunctionType = config.isFunctionType;
+    this.addChildElement = config.addChildElement;
+
+    assert && assert( supertype || this.typeName === 'ObjectIO', 'supertype is required' );
+    assert && assert( !this.typeName.includes( '.' ), 'Dots should not appear in type names' );
+
+    const splitOnParameters = this.typeName.split( /[<(]/ )[ 0 ];
+    assert && assert( splitOnParameters.endsWith( js_PhetioConstants.IO_TYPE_SUFFIX ), `IO Type name must end with ${js_PhetioConstants.IO_TYPE_SUFFIX}` );
+    assert && assert( this.hasOwnProperty( 'typeName' ), 'this.typeName is required' );
+
+    // assert that each public method adheres to the expected schema
+    Object.values( this.methods ).forEach( methodObject => {
+      if ( typeof methodObject === 'object' ) {
+        assert && assert( Array.isArray( methodObject.parameterTypes ), `parameter types must be an array: ${methodObject.parameterTypes}` );
+        assert && assert( typeof methodObject.implementation === 'function', `implementation must be of type function: ${methodObject.implementation}` );
+        assert && assert( typeof methodObject.documentation === 'string', `documentation must be of type string: ${methodObject.documentation}` );
+        assert && methodObject.invocableForReadOnlyElements && assert( typeof methodObject.invocableForReadOnlyElements === 'boolean',
+          `invocableForReadOnlyElements must be of type boolean: ${methodObject.invocableForReadOnlyElements}` );
+      }
+    } );
+    assert && assert( typeof this.documentation === 'string' && this.documentation.length > 0, 'documentation must be provided' );
+
+    this.hasOwnProperty( 'methodOrder' ) && this.methodOrder.forEach( methodName => {
+      assert && assert( this.methods[ methodName ], `methodName not in public methods: ${methodName}` );
+    } );
+
+    // Make sure events are not listed again
+    if ( supertype ) {
+      const typeHierarchy = supertype.getTypeHierarchy();
+      assert && this.events && this.events.forEach( event => {
+        assert( !_.some( typeHierarchy, t => t.events.includes( event ) ),
+          `this IOType should not declare event that parent also has: ${event}` );
+      } );
+    }
+    else {
+
+      // The root IOType must supply all 4 state methods.
+      assert && assert( typeof config.toStateObject === 'function', 'toStateObject must be defined' );
+      assert && assert( typeof config.fromStateObject === 'function', 'fromStateObject must be defined' );
+      assert && assert( typeof config.stateToArgsForConstructor === 'function', 'stateToArgsForConstructor must be defined' );
+      assert && assert( typeof config.applyState === 'function', 'applyState must be defined' );
+    }
+  }
+
+  /**
+   * Gets an array of IOTypes of the self type and all the supertype ancestors.
+   * @returns {IOType[]}
+   * @public
+   */
+  getTypeHierarchy() {
+    const array = [];
+    let ioType = this; // eslint-disable-line
+    while ( ioType ) {
+      array.push( ioType );
+      ioType = ioType.supertype;
+    }
+    return array;
+  }
+
+  /**
+   * Return all the metadata defaults (for the entire IO Type hierarchy)
+   * @returns {Object}
+   * @public
+   */
+  getAllMetadataDefaults() {
+    return _.merge( {}, this.supertype ? this.supertype.getAllMetadataDefaults() : {}, this.metadataDefaults );
+  }
+
+  /**
+   * Return all the data defaults (for the entire IO Type hierarchy)
+   * @returns {Object}
+   * @public
+   */
+  getAllDataDefaults() {
+    return _.merge( {}, this.supertype ? this.supertype.getAllDataDefaults() : {}, this.dataDefaults );
+  }
+
+  /**
+   * @public
+   * @param {Object} stateObject - the stateObject to validate against
+   * @param {boolean} toAssert=false - whether or not to assert when invalid
+   * @param {string[]} publicSchemaKeys=[]
+   * @param {string[]} privateSchemaKeys=[]
+   * @returns {boolean} if the stateObject is valid or not.
+   */
+  isStateObjectValid( stateObject, toAssert = false, publicSchemaKeys = [], privateSchemaKeys = [] ) {
+
+    // Set to false when invalid
+    let valid = true;
+
+    // make sure the stateObject has everything the schema requires and nothing more
+    if ( this.stateSchema ) {
+      const validSoFar = this.stateSchema.checkStateObjectValid( stateObject, toAssert, publicSchemaKeys, privateSchemaKeys );
+
+      // null as a marker to keep checking up the hierarchy, otherwise we reached our based case because the stateSchema was a value, not a composite
+      if ( validSoFar !== null ) {
+        return validSoFar;
+      }
+    }
+
+    if ( this.supertype && !( this.stateSchema && this.stateSchema.isComposite() ) ) {
+      return valid && this.supertype.isStateObjectValid( stateObject, toAssert, publicSchemaKeys, privateSchemaKeys );
+    }
+
+    // When we reach the root, make sure there isn't anything in the stateObject that isn't described by a schema
+    if ( !this.supertype && stateObject && typeof stateObject !== 'string' && !Array.isArray( stateObject ) ) {
+
+      const check = ( type, key ) => {
+        assert && assert( type === 'public' || type === 'private', `bad type: ${type}` );
+        const keys = type === 'public' ? publicSchemaKeys : privateSchemaKeys;
+        const keyValid = keys.includes( key );
+        if ( !keyValid ) {
+          valid = false;
+        }
+        assert && toAssert && assert( keyValid, `stateObject provided a ${type} key that is not in the schema: ${key}` );
+      };
+
+      // Visit the public state
+      Object.keys( stateObject ).filter( key => key !== '_private' ).forEach( key => check( 'public', key ) );
+
+      // Visit the private state, if any
+      stateObject._private && Object.keys( stateObject._private ).forEach( key => check( 'private', key ) );
+
+      return valid;
+    }
+    return true;
+  }
+
+  /**
+   * Assert if the provided stateObject is not valid to this IOType's stateSchema
+   * @public
+   * @param {Object} stateObject
+   */
+  validateStateObject( stateObject ) {
+    this.isStateObjectValid( stateObject, true );
+  }
+
+  /**
+   * Convenience method for creating an IOType that forwards its "state methods" over to be handled by the core type.
+   * This function assumes that it is creating an IOType that supports serialization and deserialization. This function
+   * will gracefully forward the following items from the core type into options pased to the IOType constructor:
+   *
+   * - STATE_SCHEMA: This is required for stateful phetioTypes for API tracking. Should be static on the CoreType
+   * - toStateObject: It is required that a serialization-supported IOType have a way to serialize, if this method is
+   *                  not provided, then the default serialization gathered from STATE_SCHEMA will be used. Should be
+   *                  on the prototype of the CoreType.
+   * - fromStateObject: if using data-type serialization, this method is used to reconstitute an instance from its
+   *                    serialization object. Should be static on the CoreType
+   * - applyState: if using references-type serialization, this method is used to apply the serialization-object state
+   *                 onto an already existence PhET-iO element instance. Should be on the prototype of the CoreType.
+   *
+   * For more information on how to support serialization and PhET-iO state, please see
+   * https://github.com/phetsims/phet-io/blob/master/doc/phet-io-instrumentation-technical-guide.md#serialization
+   *
+   * @public
+   * @param {string} ioTypeName - see IOType constructor for details
+   * @param {function} CoreType - the PhET "core" type class/constructor associated with this IOType being created.
+   *                              Likely this IOType will be set as the phetioType on the CoreType.
+   * @param {Object} [options]
+   * @returns {IOType}
+   */
+  static fromCoreType( ioTypeName, CoreType, options ) {
+
+    if ( assert && options ) {
+      assert && assert( !options.hasOwnProperty( 'valueType' ), 'fromCoreType sets its own valueType' );
+      assert && assert( !options.hasOwnProperty( 'toStateObject' ), 'fromCoreType sets its own toStateObject' );
+      assert && assert( !options.hasOwnProperty( 'stateToArgsForConstructor' ), 'fromCoreType sets its own stateToArgsForConstructor' );
+      assert && assert( !options.hasOwnProperty( 'applyState' ), 'fromCoreType sets its own applyState' );
+      assert && assert( !options.hasOwnProperty( 'stateSchema' ), 'fromCoreType sets its own stateSchema' );
+    }
+
+    let coreTypeHasToStateObject = false;
+    let coreTypeHasApplyState = false;
+
+    let proto = CoreType.prototype;
+    while ( proto ) {
+      assert && assert( !proto.hasOwnProperty( 'fromStateObject' ),
+        'fromStateObject should be a static on the Class, and not on the prototype.' );
+      assert && assert( !proto.hasOwnProperty( 'STATE_SCHEMA' ),
+        'STATE_SCHEMA should be a static on the Class, and not on the prototype.' );
+
+      if ( typeof proto.toStateObject === 'function' ) {
+        coreTypeHasToStateObject = true;
+      }
+      if ( typeof proto.applyState === 'function' ) {
+        coreTypeHasApplyState = true;
+      }
+      proto = Object.getPrototypeOf( proto );
+    }
+
+    options = js_merge( {
+      valueType: CoreType
+    }, options );
+
+    // Only specify if supplying toStateObject, otherwise stateSchema will handle things for us.
+    if ( coreTypeHasToStateObject ) {
+      options.toStateObject = coreType => coreType.toStateObject();
+    }
+
+    if ( coreTypeHasApplyState ) {
+      options.applyState = ( coreType, stateObject ) => coreType.applyState( stateObject );
+    }
+    if ( CoreType.fromStateObject ) {
+      options.fromStateObject = CoreType.fromStateObject;
+    }
+    if ( CoreType.stateToArgsForConstructor ) {
+      options.stateToArgsForConstructor = CoreType.stateToArgsForConstructor;
+    }
+    if ( CoreType.STATE_SCHEMA ) {
+      options.stateSchema = CoreType.STATE_SCHEMA;
+    }
+
+    return new IOType_IOType( ioTypeName, options );
+  }
+}
+
+// @public - deserialization methods supported by IOType
+IOType_IOType.DeserializationMethod = DeserializationMethod;
+
+// default state value
+const DEFAULT_STATE = null;
+
+ObjectIO = new IOType_IOType( js_TandemConstants.OBJECT_IO_TYPE_NAME, {
+  isValidValue: () => true,
+  supertype: null,
+  documentation: 'The root of the IO Type hierarchy',
+  toStateObject: coreObject => {
+    assert && assert( !coreObject.phetioState,
+      `fell back to root serialization state for ${coreObject.tandem.phetioID}. Potential solutions:
+       * mark the type as phetioState: false
+       * create a custom toStateObject ethod in your IO Type
+       * perhaps you have everything right, but forgot to pass in the IOType via phetioType in the constructor` );
+    return DEFAULT_STATE;
+  },
+  fromStateObject: stateObject => null,
+  stateToArgsForConstructor: stateObject => [],
+  applyState: ( coreObject, stateObject ) => { },
+  metadataDefaults: js_TandemConstants.PHET_IO_OBJECT_METADATA_DEFAULTS,
+  dataDefaults: {
+    initialState: DEFAULT_STATE
+  },
+  stateSchema: null
+} );
+
+// @public
+IOType_IOType.ObjectIO = ObjectIO;
+
+/**
+ * @typedef {Object} MethodObject
+ * @property {string} documentation
+ * @property {function} implementation - the function to execute when this method is called. This function's parameters
+ *                                  will be based on `parameterTypes`, and should return the type specified by `returnType`
+ * @property {IOType} returnType - the return IO Type of the method
+ * @property {IOType[]} parameterTypes - the parameter IO Types for the method
+ * @property {boolean} [invocableForReadOnlyElements=true] - by default, all methods are invocable for all elements.
+ *    However, for some read-only elements, certain methods should not be invocable. In that case, they are marked as
+ *    invocableForReadOnlyElements: false.
+ */
+
+tandemNamespace.register( 'IOType', IOType_IOType );
+/* harmony default export */ var types_IOType = (IOType_IOType);
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/tandem/js/types/FunctionIO.js
+// Copyright 2018-2021, University of Colorado Boulder
+
+/**
+ * IO Type for JS's built-in function type.
+ *
+ * @author Sam Reid (PhET Interactive Simulations)
+ * @author Andrew Adare (PhET Interactive Simulations)
+ */
+
+
+
+
+// {Map.<parameterTypeName:string, IOType>} - cache each parameterized IOType so that it is only created once
+const cache = new Map();
+
+/**
+ * Parametric IO Type constructor--given return type and parameter types, this function returns a type wrapped IO Type for
+ * that "class" of functions. "Class" here refers to the supported parameter and return IO Types.
+ * This caching implementation should be kept in sync with the other parametric IO Type caching implementations.
+ * @param {IOType} returnType - IO Type of the return type of the function that can support cross-frame serialization
+ * @param {IOType[]} functionParameterTypes - IO Types for the individual arguments of the function.
+ */
+const FunctionIO = ( returnType, functionParameterTypes ) => {
+  for ( let i = 0; i < functionParameterTypes.length; i++ ) {
+    assert && assert( functionParameterTypes[ i ], 'parameter type was not truthy' );
+  }
+  assert && assert( returnType, 'return type was not truthy' );
+
+  // REVIEW https://github.com/phetsims/tandem/issues/169 Why is this different than the typeName later in this file?
+  const cacheKey = `${returnType.typeName}.${functionParameterTypes.map( type => type.typeName ).join( ',' )}`;
+
+  if ( !cache.has( cacheKey ) ) {
+
+    // gather a list of argument names for the documentation string
+    let argsString = functionParameterTypes.map( parameterType => parameterType.typeName ).join( ', ' );
+    if ( argsString === '' ) {
+      argsString = 'none';
+    }
+    const parameterTypesString = functionParameterTypes.map( parameterType => parameterType.typeName ).join( ',' );
+
+    cache.set( cacheKey, new types_IOType( `FunctionIO(${parameterTypesString})=>${returnType.typeName}`, {
+      valueType: 'function',
+
+      isFunctionType: true,
+
+      // These are the parameters to this FunctionIO, not to the function it wraps. That is why it includes the return type.
+      // NOTE: the order is very important, for instance phetioCommandProcessor relies on the parameters being before
+      // the return type.  If we decide this is too brittle, perhaps we should subclass IOType to FunctionIOType, and it
+      // can track its functionParameterTypes separately from the returnType.
+      parameterTypes: functionParameterTypes.concat( [ returnType ] ),
+      documentation: `${'Wrapper for the built-in JS function type.<br>' +
+                     '<strong>Arguments:</strong> '}${argsString}<br>` +
+                     `<strong>Return Type:</strong> ${returnType.typeName}`
+    } ) );
+  }
+
+  return cache.get( cacheKey );
+};
+
+tandemNamespace.register( 'FunctionIO', FunctionIO );
+/* harmony default export */ var types_FunctionIO = (FunctionIO);
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/tandem/js/types/VoidIO.js
+// Copyright 2018-2020, University of Colorado Boulder
+
+/**
+ * IO Type use to signify a function has no return value.
+ *
+ * @author Sam Reid (PhET Interactive Simulations)
+ * @author Andrew Adare (PhET Interactive Simulations)
+ */
+
+
+
+
+/**
+ * We sometimes use VoidIO as a workaround to indicate that an argument is passed in the simulation side, but
+ * that it shouldn't be leaked to the PhET-iO client.
+ *
+ * @override
+ * @public
+ */
+const VoidIO = new types_IOType( 'VoidIO', {
+  isValidValue: () => true,
+  documentation: 'Type for which there is no instance, usually to mark functions without a return value',
+  toStateObject: object => undefined
+} );
+
+tandemNamespace.register( 'VoidIO', VoidIO );
+/* harmony default export */ var types_VoidIO = (VoidIO);
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/axon/js/TinyEmitter.js
+// Copyright 2015-2021, University of Colorado Boulder
 
 /**
  * Lightweight event & listener abstraction for a single event type.
@@ -1983,9 +2496,21 @@ js_phetCore.register( 'assertMutuallyExclusiveOptions', assertMutuallyExclusiveO
 const shuffleListeners = _.hasIn( window, 'phet.chipper.queryParameters' ) && phet.chipper.queryParameters.shuffleListeners;
 
 class TinyEmitter {
-  constructor() {
 
-    // @private {Set<function>} - the listeners that will be called on emit
+  /**
+   * @param {function()|null} [onBeforeNotify]
+   */
+  constructor( onBeforeNotify ) {
+
+    if ( onBeforeNotify ) {
+
+      assert && assert( typeof onBeforeNotify === 'function', 'onBeforeNotify should be a function' );
+
+      // @private {function()} - if specified, this will be called before listeners are notified.
+      this.onBeforeNotify = onBeforeNotify;
+    }
+
+    // @private {Set.<function>} - the listeners that will be called on emit
     this.listeners = new Set();
 
     // @private {Object[]} - during emit() keep track of iteration progress and guard listeners if mutated during emit()
@@ -2019,8 +2544,11 @@ class TinyEmitter {
    * Notify listeners
    * @public
    */
-  emit() {
+  emit( ...args ) {
     assert && assert( !this.isDisposed, 'should not be called if disposed' );
+
+    // optional callback, before notifying listeners
+    this.onBeforeNotify && this.onBeforeNotify.apply( null, args );
 
     // Support for a query parameter that shuffles listeners, but bury behind assert so it will be stripped out on build
     // so it won't impact production performance.
@@ -2038,7 +2566,7 @@ class TinyEmitter {
       this.emitContexts.push( emitContext );
 
       for ( const listener of this.listeners ) {
-        listener.apply( null, arguments );
+        listener( ...args );
         emitContext.index++;
 
         // If a listener was added or removed, we cannot continue processing the mutated Set, we must switch to
@@ -2052,7 +2580,7 @@ class TinyEmitter {
       // listeners in order from where we left off.
       if ( emitContext.listenerArray ) {
         for ( let i = emitContext.index; i < emitContext.listenerArray.length; i++ ) {
-          emitContext.listenerArray[ i ].apply( null, arguments );
+          emitContext.listenerArray[ i ]( ...args );
         }
       }
       this.emitContexts.pop();
@@ -2160,12 +2688,21 @@ class TinyEmitter {
   getListenerCount() {
     return this.listeners.size;
   }
+
+  /**
+   * Invokes a callback once for each listener
+   * @param {function} callback - takes the listener as an argument
+   * @public (Property)
+   */
+  forEachListener( callback ) {
+    this.listeners.forEach( callback );
+  }
 }
 
 axon.register( 'TinyEmitter', TinyEmitter );
 /* harmony default export */ var js_TinyEmitter = (TinyEmitter);
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/axon/js/Timer.js
-// Copyright 2019-2020, University of Colorado Boulder
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/axon/js/Timer.js
+// Copyright 2019-2021, University of Colorado Boulder
 
 /**
  * Timer so that other modules can run timing related code through the simulation's requestAnimationFrame. Use its
@@ -2265,18 +2802,18 @@ class Timer_Timer extends js_TinyEmitter {
 
 axon.register( 'Timer', Timer_Timer );
 /* harmony default export */ var js_Timer = (Timer_Timer);
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/axon/js/animationFrameTimer.js
-// Copyright 2020, University of Colorado Boulder
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/axon/js/animationFrameTimer.js
+// Copyright 2020-2021, University of Colorado Boulder
 
 
 
 
 // Like stepTimer but runs every frame whether the sim is active or not.
-const animationFrameTimer = new js_Timer( { parameters: [ { valueType: 'number' } ] } );
+const animationFrameTimer = new js_Timer();
 
 axon.register( 'animationFrameTimer', animationFrameTimer );
 /* harmony default export */ var js_animationFrameTimer = (animationFrameTimer);
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/phet-core/js/arrayRemove.js
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/phet-core/js/arrayRemove.js
 // Copyright 2014-2020, University of Colorado Boulder
 
 /**
@@ -2303,8 +2840,8 @@ function arrayRemove( array, item ) {
 js_phetCore.register( 'arrayRemove', arrayRemove );
 
 /* harmony default export */ var js_arrayRemove = (arrayRemove);
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/phet-core/js/EnumerationIO.js
-// Copyright 2018-2020, University of Colorado Boulder
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/phet-core/js/EnumerationIO.js
+// Copyright 2018-2021, University of Colorado Boulder
 
 /**
  * IO Type for phet-core Enumeration that supports serializing and deserializing values. Cannot be moved to the core
@@ -2312,6 +2849,7 @@ js_phetCore.register( 'arrayRemove', arrayRemove );
  *
  * @author Sam Reid (PhET Interactive Simulations)
  */
+
 
 
 
@@ -2344,7 +2882,10 @@ const EnumerationIO = enumeration => {
         assert && assert( typeof stateObject === 'string', 'unsupported EnumerationIO value type, expected string' );
         assert && assert( enumeration.KEYS.indexOf( stateObject ) >= 0, `Unrecognized value: ${stateObject}` );
         return enumeration[ stateObject ];
-      }
+      },
+      stateSchema: types_StateSchema.asValue( `${valueNames.join( '|' )}`, {
+        isValidValue: v => valueNames.includes( v )
+      } )
     } ) );
   }
 
@@ -2353,14 +2894,15 @@ const EnumerationIO = enumeration => {
 
 js_phetCore.register( 'EnumerationIO', EnumerationIO );
 /* harmony default export */ var js_EnumerationIO = (EnumerationIO);
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/tandem/js/EventType.js
-// Copyright 2019-2020, University of Colorado Boulder
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/tandem/js/EventType.js
+// Copyright 2019-2021, University of Colorado Boulder
 
 /**
  * This characterizes events that may be emitted from PhetioObjects to the PhET-iO data stream.
  *
  * @author Michael Kauzmann (PhET Interactive Simulations)
  */
+
 
 
 
@@ -2373,7 +2915,7 @@ const EventType_EventType = js_Enumeration.byKeys( [
 
   // An event was produced by the simulation model. This could be in response to a user event, or something that happens
   // during the simulation step. Note the separation is not model vs view, but user-driven vs automatic.
-  'MODEL',
+  js_TandemConstants.EVENT_TYPE_MODEL,
 
   // An event was triggered by the PhET-iO wrapper, via PhetioEngineIO.triggerEvent
   'WRAPPER',
@@ -2388,8 +2930,8 @@ const EventType_EventType = js_Enumeration.byKeys( [
 
 tandemNamespace.register( 'EventType', EventType_EventType );
 /* harmony default export */ var js_EventType = (EventType_EventType);
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/tandem/js/Tandem.js
-// Copyright 2015-2020, University of Colorado Boulder
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/tandem/js/Tandem.js
+// Copyright 2015-2021, University of Colorado Boulder
 
 /**
  * Tandem defines a set of trees that are used to assign unique identifiers to PhetioObjects in PhET simulations and
@@ -2422,6 +2964,7 @@ const VALIDATION = PHET_IO_ENABLED && IS_VALIDATION_SPECIFIED && !PRINT_MISSING_
 
 const REQUIRED_TANDEM_NAME = 'requiredTandem';
 const OPTIONAL_TANDEM_NAME = 'optionalTandem';
+const TEST_TANDEM_NAME = 'test';
 
 // used to keep track of missing tandems.  Each element has type {{phetioID:{string}, stack:{string}}
 const missingTandems = {
@@ -2449,6 +2992,7 @@ class Tandem_Tandem {
     assert && assert( parentTandem === null || parentTandem instanceof Tandem_Tandem, 'parentTandem should be null or Tandem' );
     assert && assert( typeof name === 'string', 'name must be defined' );
     assert && assert( this.getTermRegex().test( name ), `name should match the regex pattern: ${name}` );
+    assert && assert( name !== Tandem_Tandem.METADATA_KEY, 'name cannot match Tandem.METADATA_KEY' );
 
     // @public (read-only) {Tandem|null}
     this.parentTandem = parentTandem;
@@ -2486,6 +3030,9 @@ class Tandem_Tandem {
 
     // @public (read-only)
     this.supplied = options.supplied;
+
+    // @private
+    this.isDisposed = false;
   }
 
   /**
@@ -2682,7 +3229,11 @@ class Tandem_Tandem {
    * @private
    */
   dispose() {
+    assert && assert( !this.isDisposed, 'already disposed' );
+
     this.parentTandem.removeChild( this.name );
+
+    this.isDisposed = true;
   }
 
   /**
@@ -2715,6 +3266,15 @@ class Tandem_Tandem {
       return this.children[ name ];
     }
     return new GroupTandem( this, name );
+  }
+
+  /**
+   * @param {Tandem} tandem
+   * @returns {boolean}
+   * @public
+   */
+  equals( tandem ) {
+    return this.phetioID === tandem.phetioID;
   }
 
   /**
@@ -2780,6 +3340,7 @@ class RootTandem extends Tandem_Tandem {
       const allowedOnRoot = name === window.phetio.PhetioIDUtils.GLOBAL_COMPONENT_NAME ||
                             name === REQUIRED_TANDEM_NAME ||
                             name === OPTIONAL_TANDEM_NAME ||
+                            name === TEST_TANDEM_NAME ||
                             name === window.phetio.PhetioIDUtils.GENERAL_COMPONENT_NAME ||
                             _.endsWith( name, 'Screen' );
       assert && assert( allowedOnRoot, `tandem name not allowed on root: "${name}"; perhaps try putting it under general or global` );
@@ -2801,14 +3362,20 @@ Tandem_Tandem.ROOT = new RootTandem( null, _.camelCase( packageJSON.name ) );
 
 /**
  * Many simulation elements are nested under "general". This tandem is for elements that exists in all sims. For a
- * place to put simulation specific globals, see `Tandem.GLOBAL`
+ * place to put simulation specific globals, see `GLOBAL`
  *
+ * @constant
+ * @type {Tandem}
+ */
+const GENERAL = Tandem_Tandem.ROOT.createTandem( window.phetio.PhetioIDUtils.GENERAL_COMPONENT_NAME );
+
+/**
+ * Used in unit tests
  * @public
  * @constant
  * @type {Tandem}
  */
-Tandem_Tandem.GENERAL = Tandem_Tandem.ROOT.createTandem( window.phetio.PhetioIDUtils.GENERAL_COMPONENT_NAME );
-
+Tandem_Tandem.ROOT_TEST = Tandem_Tandem.ROOT.createTandem( TEST_TANDEM_NAME );
 /**
  * Tandem for model simulation elements that are general to all sims.
  *
@@ -2816,7 +3383,7 @@ Tandem_Tandem.GENERAL = Tandem_Tandem.ROOT.createTandem( window.phetio.PhetioIDU
  * @constant
  * @type {Tandem}
  */
-Tandem_Tandem.GENERAL_MODEL = Tandem_Tandem.GENERAL.createTandem( window.phetio.PhetioIDUtils.MODEL_COMPONENT_NAME );
+Tandem_Tandem.GENERAL_MODEL = GENERAL.createTandem( window.phetio.PhetioIDUtils.MODEL_COMPONENT_NAME );
 
 /**
  * Tandem for view simulation elements that are general to all sims.
@@ -2825,7 +3392,7 @@ Tandem_Tandem.GENERAL_MODEL = Tandem_Tandem.GENERAL.createTandem( window.phetio.
  * @constant
  * @type {Tandem}
  */
-Tandem_Tandem.GENERAL_VIEW = Tandem_Tandem.GENERAL.createTandem( window.phetio.PhetioIDUtils.VIEW_COMPONENT_NAME );
+Tandem_Tandem.GENERAL_VIEW = GENERAL.createTandem( window.phetio.PhetioIDUtils.VIEW_COMPONENT_NAME );
 
 /**
  * Tandem for controller simulation elements that are general to all sims.
@@ -2834,7 +3401,7 @@ Tandem_Tandem.GENERAL_VIEW = Tandem_Tandem.GENERAL.createTandem( window.phetio.P
  * @constant
  * @type {Tandem}
  */
-Tandem_Tandem.GENERAL_CONTROLLER = Tandem_Tandem.GENERAL.createTandem( window.phetio.PhetioIDUtils.CONTROLLER_COMPONENT_NAME );
+Tandem_Tandem.GENERAL_CONTROLLER = GENERAL.createTandem( window.phetio.PhetioIDUtils.CONTROLLER_COMPONENT_NAME );
 
 /**
  * Simulation elements that don't belong in screens should be nested under "global". Note that this tandem should only
@@ -2842,11 +3409,10 @@ Tandem_Tandem.GENERAL_CONTROLLER = Tandem_Tandem.GENERAL.createTandem( window.ph
  * likely simulations elements should not be directly under this, but instead either under the model or view sub
  * tandems.
  *
- * @public
  * @constant
  * @type {Tandem}
  */
-Tandem_Tandem.GLOBAL = Tandem_Tandem.ROOT.createTandem( window.phetio.PhetioIDUtils.GLOBAL_COMPONENT_NAME );
+const GLOBAL = Tandem_Tandem.ROOT.createTandem( window.phetio.PhetioIDUtils.GLOBAL_COMPONENT_NAME );
 
 /**
  * Model simulation elements that don't belong in specific screens should be nested under this Tandem. Note that this
@@ -2856,7 +3422,7 @@ Tandem_Tandem.GLOBAL = Tandem_Tandem.ROOT.createTandem( window.phetio.PhetioIDUt
  * @constant
  * @type {Tandem}
  */
-Tandem_Tandem.GLOBAL_MODEL = Tandem_Tandem.GLOBAL.createTandem( window.phetio.PhetioIDUtils.MODEL_COMPONENT_NAME );
+Tandem_Tandem.GLOBAL_MODEL = GLOBAL.createTandem( window.phetio.PhetioIDUtils.MODEL_COMPONENT_NAME );
 
 /**
  * View simulation elements that don't belong in specific screens should be nested under this Tandem. Note that this
@@ -2866,7 +3432,16 @@ Tandem_Tandem.GLOBAL_MODEL = Tandem_Tandem.GLOBAL.createTandem( window.phetio.Ph
  * @constant
  * @type {Tandem}
  */
-Tandem_Tandem.GLOBAL_VIEW = Tandem_Tandem.GLOBAL.createTandem( window.phetio.PhetioIDUtils.VIEW_COMPONENT_NAME );
+Tandem_Tandem.GLOBAL_VIEW = GLOBAL.createTandem( window.phetio.PhetioIDUtils.VIEW_COMPONENT_NAME );
+
+/**
+ * Colors used in the simulation.
+ *
+ * @public
+ * @constant
+ * @type {Tandem}
+ */
+Tandem_Tandem.COLORS = Tandem_Tandem.GLOBAL_VIEW.createTandem( window.phetio.PhetioIDUtils.COLORS_COMPONENT_NAME );
 
 /**
  * Used to indicate a common code component that supports tandem, but doesn't not require it.  If a tandem is not
@@ -2917,11 +3492,33 @@ Tandem_Tandem.missingTandems = missingTandems;
 Tandem_Tandem.PHET_IO_ENABLED = PHET_IO_ENABLED;
 
 /**
+ * When generating an API (whether to output a file or for in-memory comparison), this is marked as true.
+ * @public
+ * @type {boolean}
+ */
+Tandem_Tandem.API_GENERATION = Tandem_Tandem.PHET_IO_ENABLED && ( phet.preloads.phetio.queryParameters.phetioPrintAPI ||
+                                                    phet.preloads.phetio.queryParameters.phetioCompareAPI );
+
+/**
  * If PhET-iO is running with validation enabled.
  * @public
  * @type {boolean}
  */
 Tandem_Tandem.VALIDATION = VALIDATION;
+
+/**
+ * For the API file, the key name for the metadata section.
+ * @type {string}
+ * @public
+ */
+Tandem_Tandem.METADATA_KEY = '_metadata';
+
+/**
+ * For the API file, the key name for the data section.
+ * @type {string}
+ * @public
+ */
+Tandem_Tandem.DATA_KEY = '_data';
 
 /**
  * Group Tandem -- Declared in the same file to avoid circular reference errors in module loading.
@@ -2963,14 +3560,61 @@ Tandem_Tandem.launched = false;
 
 tandemNamespace.register( 'Tandem', Tandem_Tandem );
 /* harmony default export */ var js_Tandem = (Tandem_Tandem);
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/tandem/js/LinkedElementIO.js
-// Copyright 2018-2020, University of Colorado Boulder
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/tandem/js/types/ValueIO.js
+// Copyright 2021, University of Colorado Boulder
+
+
+
+
+
+/**
+ * IO Type that uses value semantics for toStateObject/fromStateObject
+ * @author Sam Reid (PhET Interactive Simulations)
+ */
+const ValueIO = new types_IOType( 'ValueIO', {
+  isValidValue: _.stubTrue,
+  supertype: types_IOType.ObjectIO,
+  toStateObject: coreObject => coreObject,
+  fromStateObject: stateObject => stateObject,
+  stateSchema: types_StateSchema.asValue( '*', { isValidValue: _.stubTrue } )
+} );
+
+tandemNamespace.register( 'ValueIO', ValueIO );
+/* harmony default export */ var types_ValueIO = (ValueIO);
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/tandem/js/types/StringIO.js
+// Copyright 2018-2021, University of Colorado Boulder
+
+/**
+ * IO Type for JS's built-in string type.
+ *
+ * @author Sam Reid (PhET Interactive Simulations)
+ * @author Andrew Adare (PhET Interactive Simulations)
+ */
+
+
+
+
+
+
+const StringIO = new types_IOType( 'StringIO', {
+  supertype: types_ValueIO,
+  valueType: 'string',
+  documentation: 'IO Type for Javascript\'s string primitive type',
+  stateSchema: types_StateSchema.asValue( 'string', { valueType: 'string' } ),
+  toStateObject: _.identity
+} );
+
+tandemNamespace.register( 'StringIO', StringIO );
+/* harmony default export */ var types_StringIO = (StringIO);
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/tandem/js/LinkedElementIO.js
+// Copyright 2018-2021, University of Colorado Boulder
 
 /**
  * IO Type for LinkedElement
  *
  * @author Sam Reid (PhET Interactive Simulations)
  */
+
 
 
 
@@ -2983,52 +3627,15 @@ const LinkedElementIO = new types_IOType( 'LinkedElementIO', {
     assert && js_Tandem.VALIDATION && assert( linkedElement.element.isPhetioInstrumented(), 'Linked elements must be instrumented' );
     return { elementID: linkedElement.element.tandem.phetioID };
   },
-  fromStateObject: stateObject => ( {} )
+  fromStateObject: stateObject => ( {} ),
+  stateSchema: {
+    elementID: types_StringIO
+  }
 } );
 
 tandemNamespace.register( 'LinkedElementIO', LinkedElementIO );
 /* harmony default export */ var js_LinkedElementIO = (LinkedElementIO);
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/phet-core/js/copyWithSortedKeys.js
-// Copyright 2019-2020, University of Colorado Boulder
-
-/**
- * Preload file that sorts the keys in an object intended for JSON, using the strategy defined in
- * https://stackoverflow.com/questions/5467129/sort-javascript-object-by-key
- *
- * This is used in the simulation side to make sure the elements-baseline file is sorted, and used in the phet-io
- * wrapper side to make sure the elements-overrides file is sorted.
- *
- * Namespacing and naming are discussed in https://github.com/phetsims/phet-io/issues/1446#issuecomment-476842068 and below
- *
- * @author Sam Reid (PhET Interactive Simulations)
- * @author Chris Klusendorf (PhET Interactive Simulations)
- */
-
-
-/**
- * Creates a new object, recursively, by sorting the keys at each level.
- * @param {Object} unordered - jsonifiable object to be sorted by key name.  Sorting is recursive and hence.
- */
-const copyWithSortedKeys = unordered => {
-  if ( Array.isArray( unordered ) ) {
-    return unordered.map( copyWithSortedKeys );
-  }
-  else if ( typeof unordered !== 'object' || unordered === null ) {
-    return unordered;
-  }
-
-  const ordered = {};
-  Object.keys( unordered ).sort().forEach( key => {
-    const value = unordered[ key ];
-    ordered[ key ] = copyWithSortedKeys( value );
-  } );
-  return ordered;
-};
-
-js_phetCore.register( 'copyWithSortedKeys', copyWithSortedKeys );
-
-/* harmony default export */ var js_copyWithSortedKeys = (copyWithSortedKeys);
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/tandem/js/DynamicTandem.js
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/tandem/js/DynamicTandem.js
 // Copyright 2019-2020, University of Colorado Boulder
 
 /**
@@ -3087,28 +3694,22 @@ DynamicTandem_DynamicTandem.DYNAMIC_ARCHETYPE_NAME = DYNAMIC_ARCHETYPE_NAME;
 
 tandemNamespace.register( 'DynamicTandem', DynamicTandem_DynamicTandem );
 /* harmony default export */ var js_DynamicTandem = (DynamicTandem_DynamicTandem);
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/tandem/js/phetioAPIValidation.js
-// Copyright 2019-2020, University of Colorado Boulder
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/tandem/js/phetioAPIValidation.js
+// Copyright 2019-2021, University of Colorado Boulder
 
 /**
- * This singleton is responsible for ensuring that the phet-io api is correct through the lifetime of the simulation.
- * The phet-io api is defined through multiple preloaded files. The "elements baseline" file holds an exact match of
+ * This singleton is responsible for ensuring that the PhET-iO API is correct through the lifetime of the simulation.
+ * The PhET-iO API is defined through multiple preloaded files. The "elements baseline" API holds an exact match of
  * what PhetioObject instances/metadata the sim should create on startup, where the "elements overrides" file is a
  * sparse list that can overwrite metadata without changing the code. See `grunt generate-phet-io-api` for
- * more information. The complete list of checks was decided on in https://github.com/phetsims/phet-io/issues/1453 and
- * is as follows:
+ * more information. The complete list of checks was decided on in https://github.com/phetsims/phet-io/issues/1453
+ * (and later trimmed down) and is as follows:
  *
- * 1. A full schema is required - any phet-io brand sim without these will have a 404, but this rule isn't tested in this file.
- * 2. Registered PhetioObject baseline must equal baseline schema to ensure that baseline changes are intentional.
- * 3. ~~ is no more
- * 4. After startup, only dynamic instances prescribed by the baseline file can be registered.
- * 5. When the sim is finished starting up, all non-dynamic schema entries must be registered.
- * 6. Any static, registered PhetioObject can never be deregistered.
- * 7. Any schema entries in the overrides file must exist in the baseline file
- * 8. Any schema entries in the overrides file must be different from its baseline counterpart
- * 9. Types in the sim must exactly match types in the types file to ensure that type changes are intentional.
- * 10. Dynamic elements should not appear in the API.
- * 11. Dynamic element metadata should match the archetype in the API.
+ * 1. After startup, only dynamic instances prescribed by the baseline API can be registered.
+ * 2. Any static, registered PhetioObject can never be deregistered.
+ * 3. Any schema entries in the overrides file must exist in the baseline API
+ * 4. Any schema entries in the overrides file must be different from its baseline counterpart
+ * 5. Dynamic element metadata should match the archetype in the API.
  *
  * Terminology:
  * schema: specified through preloads. The full schema is the baseline plus the overrides, but those parts can be
@@ -3131,9 +3732,8 @@ tandemNamespace.register( 'DynamicTandem', DynamicTandem_DynamicTandem );
 
 
 
-
 // constants
-// The api-tracked and validated metadata keys
+// The API-tracked and validated metadata keys
 const KEYS_TO_CHECK = [
   'phetioDynamicElement',
   'phetioEventType',
@@ -3149,7 +3749,7 @@ class phetioAPIValidation_PhetioAPIValidation {
   constructor() {
 
     /**
-     * {Object[]} - Each object holds a single "api mismatch" with the following keys:
+     * {Object[]} - Each object holds a single "API mismatch" with the following keys:
      *                phetioID: {string}
      *                stack: {string} - for a stack trace
      *                ruleInViolation: {string} - one of the numbered list in the header doc.
@@ -3164,11 +3764,8 @@ class phetioAPIValidation_PhetioAPIValidation {
     // @private - keep track of when the sim has started.
     this.simHasStarted = false;
 
-    // @public {boolean} - settable by phetioAPITest.js. Validation is only enabled when all screens are present.
+    // @public {boolean} - settable by qunitStart.js. Validation is only enabled when all screens are present.
     this.enabled = assert && js_Tandem.VALIDATION;
-
-    // @private (read-only) {string}
-    this.referenceAPI = this.enabled && window.phet.preloads.phetio.queryParameters.phetioReferenceAPI;
 
     // @private {Object.<typeName:string, IOType>} - this must be all phet-io types so that the
     // following would fail: add a phetioType, then remove it, then add a different one under the same typeName.
@@ -3178,23 +3775,6 @@ class phetioAPIValidation_PhetioAPIValidation {
     // are passed to parametric IOTypes, so this pattern remains memory leak free. Furthermore, this list is only
     // populated when `this.enabled`.
     this.everyPhetioType = {};
-
-    // @private {Object|null} if defined, this is the API loaded from a generated API file
-    this.loadedReferenceAPI = null;
-
-    if ( this.enabled && this.referenceAPI ) {
-      assert && assert( phet.preloads.phetio.createArchetypes, 'archetypes are required to be created to validate' );
-
-      // See readFile.js
-      const xhr = new XMLHttpRequest();
-      xhr.open( 'GET', window.phet.preloads.phetio.queryParameters.phetioReferenceAPI );
-      xhr.send( null );
-      xhr.onreadystatechange = () => {
-        if ( xhr.readyState === 4 /*done*/ && xhr.status === 200 /*ok*/ ) {
-          this.loadedReferenceAPI = JSON.parse( xhr.responseText );
-        }
-      };
-    }
   }
 
   /**
@@ -3203,107 +3783,9 @@ class phetioAPIValidation_PhetioAPIValidation {
    * @public
    */
   onSimStarted( phetioEngine ) {
-
     this.simHasStarted = true;
-
     if ( this.enabled && phet.joist.sim.allScreensCreated ) {
       this.validateOverridesFile();
-
-      if ( this.referenceAPI ) {
-
-        assert && assert( this.loadedReferenceAPI, 'Expected a reference API but it was not loaded: ' + this.loadedReferenceAPI );
-
-        const desiredMetadata = this.loadedReferenceAPI.phetioElements;
-        const desiredTypes = this.loadedReferenceAPI.phetioTypes;
-
-        const actualMetadata = phetioEngine.getPhetioElementsMetadata();
-        const actualTypes = phetioEngine.getPhetioTypes();
-
-        // check to make sure all phet-io elements and type entries were used.  If an entry wasn't used, throw an
-        // assertion error because the sim is missing something it is supposed to have.
-        // Don't check for this when generating the API file from the code.
-        for ( const phetioID in desiredMetadata ) {
-          if ( desiredMetadata.hasOwnProperty( phetioID ) ) {
-            if ( desiredMetadata[ phetioID ].phetioDynamicElement ) {
-              this.assertAPIError( {
-                phetioID: phetioID,
-                ruleInViolation: '10. Dynamic elements should not appear in the API.',
-                message: 'dynamic phetioID not expected but found'
-              } );
-            }
-            if ( !actualMetadata.hasOwnProperty( phetioID ) ) {
-              this.assertAPIError( {
-                phetioID: phetioID,
-                ruleInViolation: '5. When the sim is finished starting up, all non-dynamic schema entries must be registered.',
-                message: 'phetioID expected but does not exist'
-              } );
-            }
-
-            // Compare PhET-iO Elements for compatibility
-            for ( let i = 0; i < KEYS_TO_CHECK.length; i++ ) {
-              const key = KEYS_TO_CHECK[ i ];
-              if ( desiredMetadata[ phetioID ][ key ] !== actualMetadata[ phetioID ][ key ] ) {
-                this.assertAPIError( {
-                  ruleInViolation: '2. Registered PhetioObject baseline must equal baseline schema to ensure that baseline changes are intentional.',
-                  phetioID: phetioID,
-                  message: `Incompatible value for ${key}, desired=${desiredMetadata[ phetioID ][ key ]}, actual=${actualMetadata[ phetioID ][ key ]}`
-                } );
-              }
-            }
-          }
-        }
-
-        // Compare IO Types for compatibility
-        for ( const type in desiredTypes ) {
-          if ( desiredTypes.hasOwnProperty( type ) ) {
-
-            // make sure we have the desired type
-            if ( !actualTypes.hasOwnProperty( type ) ) {
-              this.assertAPIError( {
-                ruleInViolation: 'Desired type missing: ' + type.typeName
-              } );
-            }
-            else {
-
-              // make sure we have all of the methods
-              const desiredMethods = desiredTypes[ type ].methods;
-              const actualMethods = actualTypes[ type ].methods;
-              for ( const method in desiredMethods ) {
-                if ( !actualMethods.hasOwnProperty( method ) ) {
-                  this.assertAPIError( { ruleInViolation: `Missing method, type=${type}, method=${method}` } );
-                }
-              }
-            }
-          }
-        }
-
-        if ( window.phet.preloads.phetio.queryParameters.phetioReferenceAPIValidationLevel === 'exact' ) {
-
-          if ( !_.isEqual( desiredMetadata, actualMetadata ) ) {
-            this.assertAPIError( {
-              // Note: this breaks rule 2 which may in some cases be rule 3
-              ruleInViolation: '2. Registered PhetioObject baseline must equal baseline schema to ensure that baseline changes are intentional.',
-              message: 'baseline schema does not match PhetioObject computed baseline metadata',
-              phetioElementsBaseline: desiredMetadata,
-              stringifiedBaseline: JSON.stringify( js_copyWithSortedKeys( desiredMetadata ), null, 2 ),
-              phetioElementsBaselineFromFile: desiredMetadata
-            } );
-          }
-
-          if ( !_.isEqual( desiredTypes, actualTypes ) ) {
-            const phetioTypesKeys = Object.keys( desiredTypes );
-            const windowPhetioTypesKeys = Object.keys( window.phet.preloads.phetio.phetioTypes );
-
-            this.assertAPIError( {
-              ruleInViolation: '9. Types in the sim must exactly match types in the types file to ensure that type changes are intentional.',
-              message: 'phetioTypes are not equivalent',
-              areKeysEquivalent: _.isEqual( phetioTypesKeys.sort(), windowPhetioTypesKeys.sort() ),
-              typesNotInSim: windowPhetioTypesKeys.filter( x => !phetioTypesKeys.includes( x ) ),
-              typesNotInFile: phetioTypesKeys.filter( x => !windowPhetioTypesKeys.includes( x ) )
-            } );
-          }
-        }
-      }
     }
   }
 
@@ -3323,7 +3805,7 @@ class phetioAPIValidation_PhetioAPIValidation {
     if ( !phetioObject.phetioDynamicElement ) {
       this.assertAPIError( {
         phetioID: phetioID,
-        ruleInViolation: '6. Any static, registered PhetioObject can never be deregistered.'
+        ruleInViolation: '2. Any static, registered PhetioObject can never be deregistered.'
       } );
     }
   }
@@ -3355,22 +3837,18 @@ class phetioAPIValidation_PhetioAPIValidation {
         if ( !phetioObject.phetioDynamicElement ) {
           this.assertAPIError( {
             phetioID: phetioObject.tandem.phetioID,
-            ruleInViolation: '4. After startup, only dynamic instances prescribed by the baseline file can be registered.'
+            ruleInViolation: '1. After startup, only dynamic instances prescribed by the baseline file can be registered.'
           } );
         }
         else {
 
-          // Compare the dynamic element to the archetype in to the loaded reference API, if specified
-          const archetypeID = phetioObject.tandem.getArchetypalPhetioID();
-
-          // Compare the dynamic element to the archetype in to the loaded reference API, if specified
-          if ( this.loadedReferenceAPI ) {
-            checkDynamicInstanceAgainstArchetype( this, phetioObject, this.loadedReferenceAPI.phetioElements[ archetypeID ], 'reference API' );
-          }
+          // Compare the dynamic element to the archetype if creating them this runtime.
           if ( phet.preloads.phetio.createArchetypes ) {
+            const archetypeID = phetioObject.tandem.getArchetypalPhetioID();
+            const archetypeMetadata = phet.phetio.phetioEngine.getPhetioObject( archetypeID ).getMetadata();
 
-            // Compare to the simulation-defined archetype, if it exists
-            checkDynamicInstanceAgainstArchetype( this, phetioObject, phet.phetio.phetioEngine.getPhetioObject( archetypeID ).getMetadata(), 'simulation archetype' );
+            // Compare to the simulation-defined archetype
+            checkDynamicInstanceAgainstArchetype( this, phetioObject, archetypeMetadata, 'simulation archetype' );
           }
         }
       } );
@@ -3388,13 +3866,13 @@ class phetioAPIValidation_PhetioAPIValidation {
     for ( const phetioID in window.phet.preloads.phetio.phetioElementsOverrides ) {
       const isArchetype = phetioID.indexOf( js_DynamicTandem.DYNAMIC_ARCHETYPE_NAME ) >= 0;
       if ( !phet.preloads.phetio.createArchetypes && !entireBaseline.hasOwnProperty( phetioID ) ) {
-        assert && assert( isArchetype, 'phetioID missing from the baseline that was not an archetype: ' + phetioID );
+        assert && assert( isArchetype, `phetioID missing from the baseline that was not an archetype: ${phetioID}` );
       }
       else {
         if ( !entireBaseline.hasOwnProperty( phetioID ) ) {
           this.assertAPIError( {
             phetioID: phetioID,
-            ruleInViolation: '7. Any schema entries in the overrides file must exist in the baseline file.',
+            ruleInViolation: '3. Any schema entries in the overrides file must exist in the baseline file.',
             message: 'phetioID expected in the baseline file but does not exist'
           } );
         }
@@ -3406,7 +3884,7 @@ class phetioAPIValidation_PhetioAPIValidation {
           if ( Object.keys( override ).length === 0 ) {
             this.assertAPIError( {
               phetioID: phetioID,
-              ruleInViolation: '8. Any schema entries in the overrides file must be different from its baseline counterpart.',
+              ruleInViolation: '4. Any schema entries in the overrides file must be different from its baseline counterpart.',
               message: 'no metadata keys found for this override.'
             } );
           }
@@ -3434,7 +3912,7 @@ class phetioAPIValidation_PhetioAPIValidation {
   }
 
   /**
-   * Assert out the failed api validation rule.
+   * Assert out the failed API validation rule.
    * @param {Object} apiErrorObject - see doc for this.apiMismatches
    * @private
    */
@@ -3444,7 +3922,7 @@ class phetioAPIValidation_PhetioAPIValidation {
                             `${apiErrorObject.ruleInViolation}`;
 
     console.log( 'error data:', apiErrorObject );
-    assert && assert( false, 'PhET-iO API error:\n' + mismatchMessage );
+    assert && assert( false, `PhET-iO API error:\n${mismatchMessage}` );
   }
 }
 
@@ -3452,7 +3930,7 @@ class phetioAPIValidation_PhetioAPIValidation {
  * Compare a dynamic phetioObject's metadata to the expected metadata
  * @param {phetioAPIValidation} phetioAPIValidation
  * @param {PhetioObject} phetioObject
- * @param {Object} archetypeMetadata - either from a reference API or from an archetype
+ * @param {Object} archetypeMetadata - from an archetype of the dynamic element
  * @param {string} source - where the archetype came from, for debugging
  */
 const checkDynamicInstanceAgainstArchetype = ( phetioAPIValidation, phetioObject, archetypeMetadata, source ) => {
@@ -3465,9 +3943,9 @@ const checkDynamicInstanceAgainstArchetype = ( phetioAPIValidation, phetioObject
       if ( archetypeMetadata[ key ] !== actualMetadata[ key ] ) {
         phetioAPIValidation.assertAPIError( {
           phetioID: phetioObject.tandem.phetioID,
-          ruleInViolation: '11. Dynamic element metadata should match the archetype in the API.',
+          ruleInViolation: '5. Dynamic element metadata should match the archetype in the API.',
           source: source,
-          message: 'mismatched metadata: ' + key
+          message: `mismatched metadata: ${key}`
         } );
       }
     }
@@ -3477,17 +3955,21 @@ const checkDynamicInstanceAgainstArchetype = ( phetioAPIValidation, phetioObject
 const phetioAPIValidation = new phetioAPIValidation_PhetioAPIValidation();
 tandemNamespace.register( 'phetioAPIValidation', phetioAPIValidation );
 /* harmony default export */ var js_phetioAPIValidation = (phetioAPIValidation);
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/tandem/js/PhetioObject.js
-// Copyright 2017-2020, University of Colorado Boulder
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/tandem/js/PhetioObject.js
+// Copyright 2017-2021, University of Colorado Boulder
 
 /**
  * Base type that provides PhET-iO features. An instrumented PhetioObject is referred to on the wrapper side/design side
  * as a "PhET-iO element".  Note that sims may have hundreds or thousands of PhetioObjects, so performance and memory
- * considerations are important.
+ * considerations are important.  For this reason, initializePhetioObject is only called in PhET-iO brand, which means
+ * many of the getters such as `phetioState` and `phetioDocumentation` will not work in other brands. We have opted
+ * to have these getters throw assertion errors in other brands to help identify problems if these are called
+ * unexpectedly.
  *
  * @author Sam Reid (PhET Interactive Simulations)
  * @author Michael Kauzmann (PhET Interactive Simulations)
  */
+
 
 
 
@@ -3526,44 +4008,57 @@ const DEFAULTS = {
 
   // {string} Useful notes about an instrumented PhetioObject, shown in the PhET-iO Studio Wrapper. It's an html
   // string, so "<br>" tags are required instead of "\n" characters for proper rendering in Studio
-  phetioDocumentation: '',
+  phetioDocumentation: js_TandemConstants.PHET_IO_OBJECT_METADATA_DEFAULTS.phetioDocumentation,
 
   // When true, includes the PhetioObject in the PhET-iO state (not automatically recursive, must be specified for
   // children explicitly)
-  phetioState: true,
+  phetioState: js_TandemConstants.PHET_IO_OBJECT_METADATA_DEFAULTS.phetioState,
 
   // This option controls how PhET-iO wrappers can interface with this PhetioObject. Predominately this occurs via
   // public methods defined on this PhetioObject's phetioType, in which some method are not executable when this flag
   // is true. See `ObjectIO.methods` for further documentation, especially regarding `invocableForReadOnlyElements`.
-  phetioReadOnly: false,
+  phetioReadOnly: js_TandemConstants.PHET_IO_OBJECT_METADATA_DEFAULTS.phetioReadOnly,
 
-  // Category of event type, can be overridden in phetioStartEvent options
+  // Category of event type, can be overridden in phetioStartEvent options.  Cannot be supplied through TandemConstants because
+  // that would create an import loop
   phetioEventType: js_EventType.MODEL,
 
   // High frequency events such as mouse moves can be omitted from data stream, see ?phetioEmitHighFrequencyEvents
   // and Client.launchSim option
-  phetioHighFrequency: false,
+  phetioHighFrequency: js_TandemConstants.PHET_IO_OBJECT_METADATA_DEFAULTS.phetioHighFrequency,
 
   // When true, emits events for data streams for playback, see handlePlaybackEvent.js
-  phetioPlayback: false,
+  phetioPlayback: js_TandemConstants.PHET_IO_OBJECT_METADATA_DEFAULTS.phetioPlayback,
 
   // When true, Studio is allowed to create a control for this PhetioObject (if it knows how)
-  phetioStudioControl: true,
+  phetioStudioControl: js_TandemConstants.PHET_IO_OBJECT_METADATA_DEFAULTS.phetioStudioControl,
 
   // When true, this is categorized as an important "featured" element in Studio.
-  phetioFeatured: false,
-
-  // {Object|null} optional - delivered with each event, if specified. phetioPlayback is appended here, if true.
-  // Note: unlike other options, this option can be mutated downstream, and hence should be created newly for each instance.
-  phetioEventMetadata: null,
+  phetioFeatured: js_TandemConstants.PHET_IO_OBJECT_METADATA_DEFAULTS.phetioFeatured,
 
   // {boolean} optional - indicates that an object may or may not have been created. Applies recursively automatically
   // and should only be set manually on the root dynamic element. Dynamic archetypes will have this overwritten to
   // false even if explicitly provided as true, as archetypes cannot be dynamic.
-  phetioDynamicElement: false
+  phetioDynamicElement: js_TandemConstants.PHET_IO_OBJECT_METADATA_DEFAULTS.phetioDynamicElement,
+
+  // {boolean} Marking phetioDesigned: true opts-in to API change detection tooling that can be used to catch inadvertent
+  // changes to a designed API.  A phetioDesigned:true PhetioObject (or any of its tandem descendants) will throw
+  // assertion errors on CT (or when running with ?phetioCompareAPI) when:
+  // (a) its package.json lists compareDesignedAPIChanges:true in the "phet-io" section
+  // (b) the simulation is listed in perennial/data/phet-io-api-stable
+  // (c) any of its metadata values deviate from the reference API
+  phetioDesigned: js_TandemConstants.PHET_IO_OBJECT_METADATA_DEFAULTS.phetioDesigned,
+
+  // {Object|null} optional - delivered with each event, if specified. phetioPlayback is appended here, if true.
+  // Note: unlike other options, this option can be mutated downstream, and hence should be created newly for each instance.
+  phetioEventMetadata: null
 };
 
+assert && assert( js_EventType.phetioType.toStateObject( DEFAULTS.phetioEventType ) === js_TandemConstants.PHET_IO_OBJECT_METADATA_DEFAULTS.phetioEventType,
+  'phetioEventType must have the same default as the default metadata values.' );
+
 class PhetioObject_PhetioObject {
+
   /**
    * @param {Object} [options]
    */
@@ -3638,17 +4133,18 @@ class PhetioObject_PhetioObject {
     config = js_merge( {}, DEFAULTS, baseOptions, config );
 
     // validate config before assigning to properties
-    assert && js_validate( config.phetioType, IO_TYPE_VALIDATOR );
-    assert && js_validate( config.phetioState, BOOLEAN_VALIDATOR );
-    assert && js_validate( config.phetioReadOnly, BOOLEAN_VALIDATOR );
-    assert && js_validate( config.phetioEventType, PHET_IO_EVENT_TYPE_VALIDATOR );
-    assert && js_validate( config.phetioDocumentation, PHET_IO_DOCUMENTATION_VALIDATOR );
-    assert && js_validate( config.phetioHighFrequency, BOOLEAN_VALIDATOR );
-    assert && js_validate( config.phetioPlayback, BOOLEAN_VALIDATOR );
-    assert && js_validate( config.phetioStudioControl, BOOLEAN_VALIDATOR );
-    assert && js_validate( config.phetioFeatured, BOOLEAN_VALIDATOR );
-    assert && js_validate( config.phetioEventMetadata, OBJECT_VALIDATOR );
-    assert && js_validate( config.phetioDynamicElement, BOOLEAN_VALIDATOR );
+    assert && js_validate( config.phetioType, IO_TYPE_VALIDATOR, 'phetioType must be an IOType' );
+    assert && js_validate( config.phetioState, BOOLEAN_VALIDATOR, 'phetioState must be a boolean' );
+    assert && js_validate( config.phetioReadOnly, BOOLEAN_VALIDATOR, 'phetioReadOnly must be a boolean' );
+    assert && js_validate( config.phetioEventType, PHET_IO_EVENT_TYPE_VALIDATOR, 'invalid phetioEventType' );
+    assert && js_validate( config.phetioDocumentation, PHET_IO_DOCUMENTATION_VALIDATOR, 'phetioDocumentation must be provided in the right format' );
+    assert && js_validate( config.phetioHighFrequency, BOOLEAN_VALIDATOR, 'phetioHighFrequency must be a boolean' );
+    assert && js_validate( config.phetioPlayback, BOOLEAN_VALIDATOR, 'phetioPlayback must be a boolean' );
+    assert && js_validate( config.phetioStudioControl, BOOLEAN_VALIDATOR, 'phetioStudioControl must be a boolean' );
+    assert && js_validate( config.phetioFeatured, BOOLEAN_VALIDATOR, 'phetioFeatured must be a boolean' );
+    assert && js_validate( config.phetioEventMetadata, OBJECT_VALIDATOR, 'object literal expected' );
+    assert && js_validate( config.phetioDynamicElement, BOOLEAN_VALIDATOR, 'phetioDynamicElement must be a boolean' );
+    assert && js_validate( config.phetioDesigned, BOOLEAN_VALIDATOR, 'phetioDesigned must be a boolean' );
 
     assert && assert( this.linkedElements !== null, 'this means addLinkedElement was called before instrumentation of this PhetioObject' );
 
@@ -3663,7 +4159,7 @@ class PhetioObject_PhetioObject {
     // baseline is created when a sim is run with assertions to assist in phetioAPIValidation.  However, even when
     // assertions are disabled, some wrappers such as studio need to generate the baseline anyway.
     // not all metadata are passed through via config, so store baseline for these additional properties
-    this.phetioBaselineMetadata = ( js_phetioAPIValidation.enabled || phet.preloads.phetio.queryParameters.studio ) ?
+    this.phetioBaselineMetadata = ( js_phetioAPIValidation.enabled || phet.preloads.phetio.queryParameters.phetioEmitAPIBaseline ) ?
                                   this.getMetadata( js_merge( {
                                     phetioIsArchetype: this.phetioIsArchetype
                                   }, config ) ) :
@@ -3721,6 +4217,9 @@ class PhetioObject_PhetioObject {
     // @private {Object|null}
     this._phetioEventMetadata = config.phetioEventMetadata;
 
+    // @private {boolean}
+    this._phetioDesigned = config.phetioDesigned;
+
     // @private {string|null} - for phetioDynamicElements, the corresponding phetioID for the element in the archetype subtree
     this.phetioArchetypePhetioID = null;
 
@@ -3746,70 +4245,76 @@ class PhetioObject_PhetioObject {
     this.phetioObjectInitialized = true;
   }
 
-  // @public
+  // @public - throws an assertion error in brands other than PhET-iO
   get phetioType() {
     assert && assert( PhetioObject_PHET_IO_ENABLED && this.isPhetioInstrumented(), 'phetioType only accessible for instrumented objects in PhET-iO brand.' );
     return this._phetioType;
   }
 
-  // @public
+  // @public - throws an assertion error in brands other than PhET-iO
   get phetioState() {
     assert && assert( PhetioObject_PHET_IO_ENABLED && this.isPhetioInstrumented(), 'phetioState only accessible for instrumented objects in PhET-iO brand.' );
     return this._phetioState;
   }
 
-  // @public
+  // @public - throws an assertion error in brands other than PhET-iO
   get phetioReadOnly() {
     assert && assert( PhetioObject_PHET_IO_ENABLED && this.isPhetioInstrumented(), 'phetioReadOnly only accessible for instrumented objects in PhET-iO brand.' );
     return this._phetioReadOnly;
   }
 
-  // @public
+  // @public - throws an assertion error in brands other than PhET-iO
   get phetioDocumentation() {
     assert && assert( PhetioObject_PHET_IO_ENABLED && this.isPhetioInstrumented(), 'phetioDocumentation only accessible for instrumented objects in PhET-iO brand.' );
     return this._phetioDocumentation;
   }
 
-  // @private
+  // @private - throws an assertion error in brands other than PhET-iO
   get phetioEventType() {
     assert && assert( PhetioObject_PHET_IO_ENABLED && this.isPhetioInstrumented(), 'phetioEventType only accessible for instrumented objects in PhET-iO brand.' );
     return this._phetioEventType;
   }
 
-  // @private
+  // @private - throws an assertion error in brands other than PhET-iO
   get phetioHighFrequency() {
     assert && assert( PhetioObject_PHET_IO_ENABLED && this.isPhetioInstrumented(), 'phetioHighFrequency only accessible for instrumented objects in PhET-iO brand.' );
     return this._phetioHighFrequency;
   }
 
-  // @private
+  // @private - throws an assertion error in brands other than PhET-iO
   get phetioPlayback() {
     assert && assert( PhetioObject_PHET_IO_ENABLED && this.isPhetioInstrumented(), 'phetioPlayback only accessible for instrumented objects in PhET-iO brand.' );
     return this._phetioPlayback;
   }
 
-  // @private
+  // @private - throws an assertion error in brands other than PhET-iO
   get phetioStudioControl() {
     assert && assert( PhetioObject_PHET_IO_ENABLED && this.isPhetioInstrumented(), 'phetioStudioControl only accessible for instrumented objects in PhET-iO brand.' );
     return this._phetioStudioControl;
   }
 
-  // @public
+  // @public - throws an assertion error in brands other than PhET-iO
   get phetioDynamicElement() {
     assert && assert( PhetioObject_PHET_IO_ENABLED && this.isPhetioInstrumented(), 'phetioDynamicElement only accessible for instrumented objects in PhET-iO brand.' );
     return this._phetioDynamicElement;
   }
 
-  // @public
+  // @public - throws an assertion error in brands other than PhET-iO
   get phetioFeatured() {
     assert && assert( PhetioObject_PHET_IO_ENABLED && this.isPhetioInstrumented(), 'phetioFeatured only accessible for instrumented objects in PhET-iO brand.' );
     return this._phetioFeatured;
   }
 
-  // @private
+  // @private - throws an assertion error in brands other than PhET-iO
   get phetioEventMetadata() {
     assert && assert( PhetioObject_PHET_IO_ENABLED && this.isPhetioInstrumented(), 'phetioEventMetadata only accessible for instrumented objects in PhET-iO brand.' );
     return this._phetioEventMetadata;
+  }
+
+  // @private - throws an assertion error in brands other than PhET-iO
+  get phetioDesigned() {
+    assert && assert( PhetioObject_PHET_IO_ENABLED && this.isPhetioInstrumented(), 'phetioDesigned only accessible for instrumented objects in PhET-iO brand.' );
+    return this._phetioDesigned;
   }
 
   /**
@@ -4039,6 +4544,16 @@ class PhetioObject_PhetioObject {
   dispose() {
     assert && assert( !this.isDisposed, 'PhetioObject can only be disposed once' );
 
+    const descendants = [];
+    if ( js_Tandem.PHET_IO_ENABLED && this.tandem.supplied ) {
+      const phetioEngine = phet.phetio.phetioEngine;
+      this.tandem.iterateDescendants( tandem => {
+        if ( phetioEngine.hasPhetioObject( tandem.phetioID ) ) {
+          descendants.push( phetioEngine.getPhetioObject( tandem.phetioID ) );
+        }
+      } );
+    }
+
     // In order to support the structured data stream, PhetioObjects must end the messages in the correct
     // sequence, without being interrupted by dispose() calls.  Therefore, we do not clear out any of the state
     // related to the endEvent.  Note this means it is acceptable (and expected) for endEvent() to be called on
@@ -4050,6 +4565,10 @@ class PhetioObject_PhetioObject {
       // Uninstrumented PhetioObjects don't have a phetioMessageStack attribute.
       assert && assert( !this.hasOwnProperty( 'phetioMessageStack' ) || this.phetioMessageStack.length === 0,
         'phetioMessageStack should be clear' );
+
+      descendants.forEach( descendant => {
+        assert && assert( descendant.isDisposed, `All descendants must be disposed by the next frame: ${descendant.tandem.phetioID}` );
+      } );
     } );
 
     if ( this.phetioObjectInitialized ) {
@@ -4087,34 +4606,18 @@ class PhetioObject_PhetioObject {
       phetioStudioControl: object.phetioStudioControl,
       phetioDynamicElement: object.phetioDynamicElement,
       phetioIsArchetype: object.phetioIsArchetype,
-      phetioFeatured: object.phetioFeatured
+      phetioFeatured: object.phetioFeatured,
+      phetioDesigned: object.phetioDesigned
     };
     if ( object.phetioArchetypePhetioID ) {
       metadata.phetioArchetypePhetioID = object.phetioArchetypePhetioID;
     }
     return metadata;
   }
-
 }
 
-
+// @public
 PhetioObject_PhetioObject.DEFAULT_OPTIONS = DEFAULTS; // the default options for the phet-io object
-
-// THe keys that constitute the publicly available PHET-iO metadata for the PhetioObject.
-PhetioObject_PhetioObject.METADATA_KEYS = [
-  'phetioTypeName',
-  'phetioDocumentation',
-  'phetioState',
-  'phetioReadOnly',
-  'phetioEventType',
-  'phetioHighFrequency',
-  'phetioPlayback',
-  'phetioStudioControl',
-  'phetioDynamicElement',
-  'phetioIsArchetype',
-  'phetioFeatured',
-  'phetioArchetypePhetioID'
-];
 
 /**
  * Determine if any of the options keys are intended for PhetioObject. Semantically equivalent to
@@ -4185,8 +4688,8 @@ class PhetioObject_LinkedElement extends PhetioObject_PhetioObject {
 
 tandemNamespace.register( 'PhetioObject', PhetioObject_PhetioObject );
 /* harmony default export */ var js_PhetioObject = (PhetioObject_PhetioObject);
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/axon/js/Action.js
-// Copyright 2019-2020, University of Colorado Boulder
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/axon/js/Action.js
+// Copyright 2019-2021, University of Colorado Boulder
 
 /**
  * An action that can be executed and sent to the PhET-iO data stream, and optionally recorded for playback. This type
@@ -4219,11 +4722,13 @@ const PARAMETER_KEYS = [
   'phetioType', // {IOType} - required for phet-io instrumented Actions
   'phetioDocumentation', // {string} - optional, additional documentation for this specific parameter
 
-  // {boolean=true} - specify this to keep the parameter private to the phet-io api. To support emitting and executing over
-  // the phet-io api, phetioPrivate parameters must not ever be before a public one. For example
+  // {boolean=true} - specify this to keep the parameter private to the PhET-iO API. To support emitting and executing over
+  // the PhET-iO API, phetioPrivate parameters must not ever be before a public one. For example
   // `emit1( public1, private1, public2)` is not allowed. Instead it must be ordered like `emit( public1, public2, private1 )`
   'phetioPrivate'
 ].concat( js_ValidatorDef.VALIDATOR_KEYS );
+
+const PHET_IO_STATE_DEFAULT = false;
 
 // helper closures
 const paramToPhetioType = param => param.phetioType;
@@ -4247,7 +4752,7 @@ class Action_Action extends js_PhetioObject {
       // {function(IOType[]):IOType} - The non parameterized IOType. Override this to create a subtype of ActionIO as
       // the phetioType instead of a parameterized ActionIO Type.
       phetioOuterType: Action_Action.ActionIO,
-      phetioState: false,
+      phetioState: PHET_IO_STATE_DEFAULT,
       phetioPlayback: js_PhetioObject.DEFAULT_OPTIONS.phetioPlayback,
       phetioEventMetadata: js_PhetioObject.DEFAULT_OPTIONS.phetioEventMetadata,
       phetioDocumentation: 'A function that executes.'
@@ -4326,7 +4831,7 @@ class Action_Action extends js_PhetioObject {
         `validator must be specified for parameter ${i}` );
 
       for ( const key in parameter ) {
-        assert && assert( PARAMETER_KEYS.includes( key ), 'unrecognized parameter key: ' + key );
+        assert && assert( PARAMETER_KEYS.includes( key ), `unrecognized parameter key: ${key}` );
       }
 
       // Changing after construction indicates a logic error.
@@ -4345,7 +4850,7 @@ class Action_Action extends js_PhetioObject {
    * @returns {Object} - the data, keys dependent on parameter metadata
    * @private
    */
-  getPhetioData() {
+  getPhetioData( ...args ) {
 
     assert && assert( js_Tandem.PHET_IO_ENABLED, 'should only get phet-io data in phet-io brand' );
 
@@ -4358,7 +4863,7 @@ class Action_Action extends js_PhetioObject {
       for ( let i = 0; i < this._parameters.length; i++ ) {
         const element = this._parameters[ i ];
         if ( !element.phetioPrivate ) {
-          data[ element.name ] = element.phetioType.toStateObject( arguments[ i ] );
+          data[ element.name ] = element.phetioType.toStateObject( args[ i ] );
         }
       }
     }
@@ -4380,8 +4885,8 @@ class Action_Action extends js_PhetioObject {
       return `<li>${param.name}: ${param.phetioType.typeName}${docText}</li>`;
     };
 
-    return currentPhetioDocumentation + ( parameters.length === 0 ? '<br>No parameters.' : '<br>The parameters are:<br/>' +
-           '<ol>' + parameters.map( paramToDocString ).join( '<br/>' ) + '</ol>' );
+    return currentPhetioDocumentation + ( parameters.length === 0 ? '<br>No parameters.' : `${'<br>The parameters are:<br/>' +
+           '<ol>'}${parameters.map( paramToDocString ).join( '<br/>' )}</ol>` );
   }
 
   /**
@@ -4389,28 +4894,28 @@ class Action_Action extends js_PhetioObject {
    * @params - expected parameters are based on options.parameters, see constructor
    * @public
    */
-  execute() {
+  execute( ...args ) {
     if ( assert ) {
-      assert( arguments.length === this._parameters.length,
-        `Emitted unexpected number of args. Expected: ${this._parameters.length} and received ${arguments.length}`
+      assert( args.length === this._parameters.length,
+        `Emitted unexpected number of args. Expected: ${this._parameters.length} and received ${args.length}`
       );
       for ( let i = 0; i < this._parameters.length; i++ ) {
         const parameter = this._parameters[ i ];
-        js_validate( arguments[ i ], parameter, Action_VALIDATE_OPTIONS_FALSE );
+        js_validate( args[ i ], parameter, 'argument does not match provided parameter validator', Action_VALIDATE_OPTIONS_FALSE );
 
         // valueType overrides the phetioType validator so we don't use that one if there is a valueType
         if ( parameter.phetioType && !this._parameters.valueType ) {
-          js_validate( arguments[ i ], parameter.phetioType.validator, Action_VALIDATE_OPTIONS_FALSE );
+          js_validate( args[ i ], parameter.phetioType.validator, 'argument does not match parameter\'s phetioType validator', Action_VALIDATE_OPTIONS_FALSE );
         }
       }
     }
 
     // handle phet-io data stream for the emitted event
     this.phetioStartEvent( 'emitted', {
-      getData: () => this.getPhetioData.apply( this, arguments ) // put this in a closure so that it is only called in phet-io brand
+      getData: () => this.getPhetioData( ...args ) // put this in a closure so that it is only called in phet-io brand
     } );
 
-    this._action.apply( null, arguments );
+    this._action.apply( null, args );
 
     this.phetioEndEvent();
   }
@@ -4430,14 +4935,17 @@ Action_Action.ActionIO = parameterTypes => {
       documentation: 'Executes when an event occurs',
       events: [ 'emitted' ],
       parameterTypes: parameterTypes,
+      metadataDefaults: {
+        phetioState: PHET_IO_STATE_DEFAULT
+      },
       methods: {
         execute: {
           returnType: types_VoidIO,
           parameterTypes: parameterTypes,
 
           // Match `Action.execute`'s dynamic number of arguments
-          implementation: function() {
-            this.execute.apply( this, arguments );
+          implementation: function( ...args ) {
+            this.execute( ...args );
           },
           documentation: 'Executes the function the Action is wrapping.',
           invocableForReadOnlyElements: false
@@ -4450,8 +4958,8 @@ Action_Action.ActionIO = parameterTypes => {
 
 axon.register( 'Action', Action_Action );
 /* harmony default export */ var js_Action = (Action_Action);
-// CONCATENATED MODULE: C:/Users/Michael/PhET/git/axon/js/Emitter.js
-// Copyright 2019-2020, University of Colorado Boulder
+// CONCATENATED MODULE: C:/Users/Michael/PHET/git/axon/js/Emitter.js
+// Copyright 2019-2021, University of Colorado Boulder
 
 /**
  * Event & listener abstraction for a single "event" type. The type provides extra functionality beyond just notifying
@@ -4470,6 +4978,11 @@ axon.register( 'Action', Action_Action );
 
 
 
+// This JSDoc template attribute allows us to treate Property as a generic type with type parameter T. TypeScript
+// knows how to read this template variable, and gives correct type information for Emitter<[T]>.
+// For instance, new Emitter<[]>() or new Emitter<[number,string]>()
+// See https://stackoverflow.com/a/19322784/1009071
+/** @template T */
 class Emitter_Emitter extends js_Action {
 
   /**
@@ -4478,20 +4991,24 @@ class Emitter_Emitter extends js_Action {
   constructor( options ) {
 
     options = js_merge( {
-      phetioOuterType: Emitter_Emitter.EmitterIO
+      phetioOuterType: Emitter_Emitter.EmitterIO,
+
+      // {function()|null} - if specified, runs before listeners are notified. Typically used to ensure a consistent state
+      //                   - or accomplish any work that must be done before any listeners are notified.
+      onBeforeNotify: null
     }, options );
 
-    super( function() {
+    super( ( ...args ) => {
       assert && assert( self.tinyEmitter instanceof js_TinyEmitter,
         'Emitter should not emit until after its constructor has completed' );
 
-      self.tinyEmitter.emit.apply( self.tinyEmitter, arguments );
+      self.tinyEmitter.emit( ...args );
     }, options );
 
     const self = this;
 
     // @private - provide Emitter functionality via composition
-    this.tinyEmitter = new js_TinyEmitter();
+    this.tinyEmitter = new js_TinyEmitter( options.onBeforeNotify );
   }
 
   /**
@@ -4507,10 +5024,10 @@ class Emitter_Emitter extends js_Action {
   /**
    * Emit to notify listeners; implemented by executing the action of the parent class.
    * @public
-   * @params {*}
+   * @param {T} args
    */
-  emit() {
-    super.execute.apply( this, arguments );
+  emit( ...args ) {
+    super.execute.apply( this, args );
   }
 
   /**
@@ -4525,7 +5042,7 @@ class Emitter_Emitter extends js_Action {
 
   /**
    * Adds a listener which will be called during emit.
-   * @param {function} listener
+   * @param {(v0:T[0],v1:T[1],v2:T[2])=>void} listener
    * @public
    */
   addListener( listener ) {
@@ -4534,7 +5051,7 @@ class Emitter_Emitter extends js_Action {
 
   /**
    * Removes a listener
-   * @param {function} listener
+   * @param {(v0:T[0],v1:T[1],v2:T[2])=>void} listener
    * @public
    */
   removeListener( listener ) {
@@ -4551,7 +5068,7 @@ class Emitter_Emitter extends js_Action {
 
   /**
    * Checks whether a listener is registered with this Emitter
-   * @param {function} listener
+   * @param {(v0:T[0],v1:T[1],v2:T[2])=>void} listener
    * @returns {boolean}
    * @public
    */
@@ -4634,8 +5151,8 @@ Emitter_Emitter.EmitterIO = parameterTypes => {
           parameterTypes: parameterTypes,
 
           // Match `Emitter.emit`'s dynamic number of arguments
-          implementation: function() {
-            this.emit.apply( this, arguments );
+          implementation: function( ...args ) {
+            this.emit( ...args );
           },
           documentation: 'Emits a single event to all listeners.',
           invocableForReadOnlyElements: false
