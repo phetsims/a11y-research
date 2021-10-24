@@ -16,7 +16,7 @@
 <body>
 
 <div id="content">
-  <h3>Dynamic Phrase Manipulator</h3>
+  <h3>Phrase Builder</h3>
   <p>
     This phrase creator is designed to support prototyping dynamic descriptions. To use, first input description
     content in the first text area. Within that area, factor out sections that may have dynamic content (multiple
