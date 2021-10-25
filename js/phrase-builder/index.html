@@ -16,29 +16,43 @@
 <body>
 
 <div id="content">
-  <h3>Phrase Builder</h3>
+  <h1>Phrase Builder</h1>
   <p>
-    This phrase creator is designed to support prototyping dynamic descriptions. To use, first input description
-    content in the first text area. Within that area, factor out sections that may have dynamic content (multiple
-    options) into variables annotated like "{{templateVariable}}". Each of these (note two curly braces on each side and
-    no spaces) will be automatically detected, and a ui created for them to input each possible dynamic option for that
-    variable. An example sentence may look like "I like to eat, eat, eat, apples and {{otherFruit}}." In this case, a
-    single variable text box will be added, and each option for "otherFruit" can be added on a new line there.
+    This phrase builder is a tool designed to support prototyping dynamic descriptions such as dynamic state descriptions, object responses, and/or context responses. 
   </p>
+  
   <p>
-    As the input sentence and variable options are populated, the output will display the original sentence, but with
-    each variable filled in with a select box filled with all the dynamic options filled in for that variable.
+    To create parameters in a dynamic description:
   </p>
+  
+  <ol>
+    <li>Enter the description that will have changing parts (i.e., parameters) in the first text area.</li>
+    
+    <li>Within the description in the text area, surround the words, or groups of words, that are to be made into parameters 
+      with double curly braces like this “{{very bright}}”.</li>
+    
+    <li>Replace the words inside the braces with a name that represents the parameter like this "{{parameterName}}". 
+      Ensure there are no spaces between the parameter name and the curly braces. A simple example description with 
+      a named parameter may look like "Stars in night sky are {{starBrightness}}." In this case, a single text area
+      will be added, and each option for the "starBrightness" parameter can be added.</li>
+    
+    <li>Enter options for each named parameter on a new line in each new text area.</li>
+  </ol>
+  
   <p>
-    Refreshing the page will automatically load the most recently autosaved descriptions.
+    <strong>Note:</strong> As named parameters are placed in curly braces in the initial text area and options are added
+    in the created text areas, the output sentence (below) will be displayed with select boxes containing the options for each named parameter. 
+    You can use the select box(es) to easily test how each option sounds within the description. Refreshing the page 
+    will automatically load the most recently autosaved descriptions. To clear everything, you may need to clear your browser cache.
   </p>
+  
   <div id="container"></div>
 
   <br>
   <br>
   <hr>
   <h3>Save and load</h3>
-  <p>save and load under a specific name to get it back later.</p>
+  <p>Save and load under a specific name to get it back later.</p>
   <label>Description Name:</label>
   <input type="text" id="descriptionName"/>
 
