@@ -3,9 +3,8 @@ This issue helps tracks the big picture progress of the description design, desc
 # Inclusive Features 
 **Checked features that are being worked on for this sim**
 - [ ] Alternative Input -  (Started: ) (Completed: )
-  - [ ] Mobile A11y included
 - [ ] Interactive Description - (Started: ) (Completed: )
-- [ ] Interactive Description on mobile - (Started: ) (Completed: )
+  - [ ] Mobile A11y included - (Started: ) (Completed: )
 - [ ] Sonification - (Started: ) (Completed: )
   - [ ] Estimated date for incorporating sound into the main sim repo: ()
   - [ ] Created issue for sound incorporation
