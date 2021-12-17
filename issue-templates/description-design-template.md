@@ -14,7 +14,7 @@ This issue helps tracks the big picture progress of the description design, desc
 - [ ] Multimodal Features folder created in PhET Sim Design folder. Sub-folders (Desciption, Sound, Voicing) created as needed. A11y Design Main design doc created in Description sub-folder (Date: )
    - **Note** Folder/File naming convention: {{Sim}}: Mulitmodal Features/Description/{{Sim Name}} A11y Design Main
 - [ ] Link to [Sim Interactive Description]()
-- [ ] This is a multi-screen sim! (If so, you may need to add links for each screen)  
+- [ ] This is a multi-screen sim! (If so, use the multi-screen design doc template)  
 
 # Design Prep for Interactive Description Design
 - [ ] Main Sim Design reviewed for learning goals
