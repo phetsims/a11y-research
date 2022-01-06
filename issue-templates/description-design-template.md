@@ -5,19 +5,17 @@ This issue helps tracks the big picture progress of the description design, desc
 - [ ] Alternative Input -  (Started: ) (Completed: )
 - [ ] Interactive Description - (Started: ) (Completed: )
   - [ ] Mobile A11y included - (Started: ) (Completed: )
-- [ ] Sonification - (Started: ) (Completed: )
-  - [ ] Estimated date for incorporating sound into the main sim repo: ()
-  - [ ] Created issue for sound incorporation
-- [ ] Voicing (Started: ) (Completed: )
+- [ ] Sonification - (see sound design doc)
+- [ ] Voicing (see voicing design doc)
 
 # Design Tasks
-- [ ] Multimodal Features folder created in PhET Sim Design folder. Sub-folders (Desciption, Sound, Voicing) created as needed. A11y Design Main design doc created in Description sub-folder (Date: )
-   - **Note** Folder/File naming convention: {{Sim}}: Mulitmodal Features/Description/{{Sim Name}} A11y Design Main
-- [ ] Link to [Sim Interactive Description]()
+- [ ] Multimodal Features folder created in PhET Sim Design folder. Sub-folders (Interactive Desciption, Sound and Sonification, Voicing) created as needed. Description design doc created in Interactive Description sub-folder (Date: )
+   - **Note** Folder/File naming convention: {{Sim}}-Mulitmodal Features/Interactive Description/{{Sim Name}}: Interactive Description
+- [ ] Link to [{{Sim}}: Interactive Description]()
 - [ ] This is a multi-screen sim! (If so, use the multi-screen design doc template)  
 
 # Design Prep for Interactive Description Design
-- [ ] Main Sim Design reviewed for learning goals
+- [ ] Learning goals reviewed (see Main Sim Design Doc or Teacher Tips)
 - [ ] Teaching materials reviewed
 - [ ] Reviewed model properties with Responsible Developer or A11y Developer
 - [ ] Identify visual enhancements that deviate from model (e.g. "hollywooding")
@@ -27,22 +25,22 @@ This issue helps tracks the big picture progress of the description design, desc
 <details>
 <summary>Interactive Description</summary>
 
-## PDOM 
-**Checked items have PDOM structures identified & determined**
+## State Descriptions for PDOM 
+**Checked items have names & structures identified & determined**
 - [ ] Dynamic objects that warrant their own name and description in the Play Area
-- [ ] All interactive objects and their PhET types (e.g., sliders, buttons, etc.)
-- [ ] New interaction types (i.e., new PDOM components or patterns) in this sims, or check:
+- [ ] All interactive objects and their interaction types (e.g., sliders, buttons, etc.)
+- [ ] New interaction types in this sim (i.e., no existing design pattern), or check:
   - [ ] There are no new interaction types in this sim
 
 ## [State Descriptions](url to section design doc)
 **Checked items drafted & ready for implementation**
 ### Static State Descriptions
+- [ ] Heading Outline (Sign Posts) & Navigation Order (Interaction Points) 
 - [ ] Static screen summary
-- [ ] Initial sim-specific interaction hint (place in own paragraph)
+- [ ] Initial sim-specific interaction hint
 - [ ] Headings for objects/groups in Play Area
-- [ ] Labels for interactive elements
-- [ ] Heading outline & Focus Order 
-- [ ] Help text for interactive elements 
+- [ ] Names & interaction types for interactive objects
+- [ ] Help text for interactive objects 
 
 ### [Dynamic State Descriptions](url to section design doc)
 **Checked items completed in design document**
