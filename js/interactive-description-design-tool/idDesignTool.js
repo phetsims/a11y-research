@@ -3,7 +3,7 @@
 
 import NumberProperty from '../../../axon/js/NumberProperty.js';
 import Range from '../../../dot/js/Range.js';
-import PhraseBuilder from '../phrase-builder/PhraseBuilder.js';
+import PhraseBuilder from '../phrase-builder/src/PhraseBuilder.js';
 
 const phraseBuilder = PhraseBuilder.create(
   document.getElementById( 'phrase-builder' ), {

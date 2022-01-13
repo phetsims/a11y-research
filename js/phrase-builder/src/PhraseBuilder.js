@@ -1,7 +1,7 @@
 // Copyright 2019-2020, University of Colorado Boulder
 
-import Emitter from '../../../axon/js/Emitter.js';
-import merge from '../../../phet-core/js/merge.js';
+import Emitter from '../../../../axon/js/Emitter.js';
+import merge from '../../../../phet-core/js/merge.js';
 import TemplateVariable from './TemplateVariable.js';
 
 // constants

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Phrase Builder</title>
+  <style>
+    select {
+      margin: 0px 5px; /* a bit of width */
+    }
+
+    #content {
+      margin: 50px
+    }
+  </style>
+</head>
+<body>
+
+<div id="content">
+  <h1>Phrase Builder</h1>
+  <p>
+    This phrase builder is a tool designed to support prototyping dynamic descriptions such as dynamic state
+    descriptions,
+    object responses, and/or context responses.
+  </p>
+
+  <p>
+    To create parameters in a dynamic description:
+  </p>
+
+  <ol>
+    <li>Enter the description that will have changing parts (i.e., parameters) in the first text area.</li>
+
+    <li>Within the description in the text area, surround the words, or groups of words, that are to be made into
+      parameters
+      with double curly braces like this “{{very bright}}”.
+    </li>
+
+    <li>Replace the words inside the braces with a name that represents the parameter like this "{{parameterName}}".
+      Ensure there are no spaces between the parameter name and the curly braces. A simple example description with
+      a named parameter may look like "Stars in night sky are {{starBrightness}}." In this case, a single text area
+      will be added, and each option for the "starBrightness" parameter can be added.
+    </li>
+
+    <li>Enter options for each named parameter on a new line in each new text area.</li>
+  </ol>
+
+  <p>
+    <strong>Note:</strong> As named parameters are placed in curly braces in the initial text area and options are added
+    in the created text areas, the output description (below) will be displayed with select boxes containing the options
+    for each named parameter.
+    You can use the select box(es) to easily test how each option sounds within the description. Refreshing the page
+    will automatically load the most recently autosaved descriptions. To clear everything, you may need to clear your
+    browser cache.
+  </p>
+
+  <div id="container"></div>
+
+  <br>
+  <br>
+  <hr>
+  <h3>Save and load</h3>
+  <p>Save and load under a specific name to get it back later.</p>
+  <label>Description Name:</label>
+  <input type="text" id="descriptionName"/>
+
+  <button id="save">Save</button>
+  <button id="load">Load</button>
+</div>
+</body>
+<script src="../../../../assert/js/assert.js"></script>
+<script src="../../../../sherpa/lib/lodash-4.17.4.min.js"></script>
+<script src="../../../../tandem/js/PhetioIDUtils.js"></script>
+<script type="module" src="../../../../chipper/dist/js/a11y-research/js/phrase-builder/src/main.js"></script>
+</html>

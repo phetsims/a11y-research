@@ -33,11 +33,11 @@ function createIndex() {
   let preloads;
   let main;
   if ( isDev ) {
-    preloads = preloadNames.map( preloadFileName => `<script src="${'../../../' + preloadFileName}"></script>` ).join( '\n' );
+    preloads = preloadNames.map( preloadFileName => `<script src="${'../../../../' + preloadFileName}"></script>` ).join( '\n' );
     main = '<script type="module" src="main.js"></script>';
   }
   else {
-    preloads = preloadNames.map( preloadFileName => `<script>${fs.readFileSync( '../../../' + preloadFileName )}</script>` ).join( '\n\n' );
+    preloads = preloadNames.map( preloadFileName => `<script>${fs.readFileSync( '../../../../' + preloadFileName )}</script>` ).join( '\n\n' );
 
     const builtMainFilePath = path.resolve( __dirname, buildDir, mainJSFile );
     main = `<script type="module">${fs.readFileSync( builtMainFilePath )}</script>`;
