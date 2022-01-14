@@ -45,7 +45,7 @@ class TemplateVariable {
       this.setOptions( inputOptions.filter( option => option !== '' ) );
     } );
 
-    this.optionAddingArea.id = 'optionAddingArea-${name}';
+    this.optionAddingArea.id = `optionAddingArea-${name}`;
     const uiLabel = document.createElement( 'label' );
     uiLabel.innerHTML = `<strong>${this.name}:</strong>`;
     uiLabel.setAttribute( 'for', this.optionAddingArea.id );

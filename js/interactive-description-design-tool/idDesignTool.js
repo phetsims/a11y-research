@@ -107,14 +107,3 @@ document.getElementById( 'create-element' ).addEventListener( 'click', event => 
   elementContainer.appendChild( element );
   elementsElement.appendChild( elementContainer );
 } );
-
-
-
-
-
-
-
-
-
-
-

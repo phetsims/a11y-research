@@ -9,7 +9,6 @@
  */
 
 /* eslint-env node */
-'use strict';
 
 // modules
 const fs = require( 'fs' );
@@ -78,7 +77,7 @@ else {
   compiler.run( ( err, stats ) => {
     if ( err || stats.hasErrors() ) {
       console.error( 'Webpack build errors:', stats.compilation.errors );
-      throw  err || stats.compilation.errors[ 0 ];
+      throw err || stats.compilation.errors[ 0 ];
     }
     else {
       createIndex();
