@@ -1,63 +1,65 @@
 This issue helps tracks the big picture progress of the description design, description implementation, and implementation of alternative input. Sound and adaptive features are incorporated only at a high-level here, though could be added as we move forward and learn more.
-
-# A11y Features 
-**Checked features are being worked on for this sim**
+ 
+# Inclusive Features 
+**Checked features that are being worked on for this sim**
 - [ ] Alternative Input -  (Started: ) (Completed: )
-  - [ ] Mobile A11y included
-- [ ] Simple Description (Started: ) (Completed: )
-- [ ] Full Description - (Started: ) (Completed: )
-- [ ] Sonification - (Started: ) (Completed: )
-  - [ ] Estimated date for incorporating sound into the main sim repo: ()
-  - [ ] Created issue for sound incorporation
+- [ ] Interactive Description - (Started: ) (Completed: )
+  - [ ] Mobile A11y included - (Started: ) (Completed: )
+- [ ] Sonification - (see sound design doc)
+- [ ] Voicing (see voicing design doc)
 
+# Design Tasks
+- [ ] Multimodal Features folder created in PhET Sim Design folder. Sub-folders (Interactive Desciption, Sound and Sonification, Voicing) created as needed. Description design doc created in Interactive Description sub-folder (Date: )
+   - **Note** Folder/File naming convention: {{Sim}}-Mulitmodal Features/Interactive Description/{{Sim Name}}: Interactive Description
+- [ ] Link to [{{Sim}}: Interactive Description]()
+- [ ] This is a multi-screen sim! (If so, use the multi-screen design doc template)  
 
-# A11y Design
-- [ ] Multimodal Features folder created in PhET Sim Design folder. Sub-folders (Desciption and Sound) created as needed. A11y Design Main design doc created in Description sub-folder (Date: )
-   - **Note** Folder/File naming convention: {{Sim}}: Mulitmodal Features/Description/{{Sim Name}} A11y Design Main
-- [ ] Link to [Sim A11y Design Main]()
-- [ ] This is a multi-screen sim! (If so, you may need to add links for each screen)  
-
-# A11y Design Prep
-- [ ] Main Sim Design reviewed for learning goals
+# Design Prep for Interactive Description Design
+- [ ] Learning goals reviewed (see Main Sim Design Doc or Teacher Tips)
 - [ ] Teaching materials reviewed
-- [ ] Reviewed model properties with Main Developer or A11y Developer
+- [ ] Reviewed model properties with Responsible Developer or A11y Developer
 - [ ] Identify visual enhancements that deviate from model (e.g. "hollywooding")
 
-# Parallel DOM (PDOM)
-**Checked items have PDOM structures identified & determined**
+# Interactive Description
+
+<details>
+<summary>Interactive Description</summary>
+
+## State Descriptions for PDOM 
+**Checked items have names & structures identified & determined**
 - [ ] Dynamic objects that warrant their own name and description in the Play Area
-- [ ] All interactive objects and their PhET types (e.g., sliders, buttons, etc.)
-- [ ] New interaction types (i.e., new a11y types) in this sims, or check:
+- [ ] All interactive objects and their interaction types (e.g., sliders, buttons, etc.)
+- [ ] New interaction types in this sim (i.e., no existing design pattern), or check:
   - [ ] There are no new interaction types in this sim
 
 ## [State Descriptions](url to section design doc)
 **Checked items drafted & ready for implementation**
 ### Static State Descriptions
+- [ ] Heading Outline (Sign Posts) & Navigation Order (Interaction Points) 
 - [ ] Static screen summary
-- [ ] Initial sim-specific interaction hint (place in own paragraph)
+- [ ] Initial sim-specific interaction hint
 - [ ] Headings for objects/groups in Play Area
-- [ ] Labels for interactive elements
-- [ ] Heading outline & Focus Order 
-- [ ] Help text for interactive elements 
+- [ ] Names & interaction types for interactive objects
+- [ ] Help text for interactive objects 
 
 ### [Dynamic State Descriptions](url to section design doc)
-**Checked items completd in design document**
+**Checked items completed in design document**
 - [ ] PDOM section of Design Doc contains 1 clear example of each dynamic description
-- [ ] MOre examples and possible edge cases have been explored for:
+- [ ] More examples and possible edge cases have been explored for:
     - [ ] Dynamic screen summary (i.e., brief state-of-the-sim)
-	- [ ] Dynamic states for identified dynamic objects (can add list to this issue)
-- [ ] Dynamic parameters (scales and ranges) for dynamic objects ready
-    - [ ] Special case parameters or phrases identified (dynamic screen summary, dynamic states)
+    - [ ] Dynamic states for identified dynamic objects (can add list to this issue)
+- [ ] Dynamic parameters (scales and approximate ranges) for dynamic objects ready
+    - [ ] Special case parameters or phrases for dynamic state descriptions identified (can add list)
 
 ## Responsive Descriptions
 **Checked items drafted & ready for implementation**
 ### [Object Responses](url to section design doc)
-**[Parameters, Scales & Ranges](link to section in design doc)**
+**[Qualitative Scales & Parameters](link to section in design doc)**
 - Tables (or lists) outlining dynamic parameters (scales & ranges) for each sim concept created
   - [ ] Scale determined for __CONCEPT 1__ : __OBJECT 1__ 
   - [ ] Scale determined for __CONCEPT 2__ : __OBJECT 2__
 
-### [Complex Context Responses](url to section design doc)
+### [Context Responses](url to section design doc)
 **[Complex Context Responses - By Interaction](link to design doc)**
 - List out different objects/concepts as needed
   - [ ] Context responses for __OBJECT 1__ 
@@ -69,9 +71,11 @@ This issue helps tracks the big picture progress of the description design, desc
   - [ ] Common code responses (e.g., Reset All, Mute Sound) verified
   
 ## [Description Design Testing](url to section design doc)
-- [ ] Brief cognitive walkthrough document's of sim's main interaction (highly reccommended) 
+- [ ] Brief cognitive walkthrough document's the sim's main interaction (highly reccommended) 
+</details>
 
-# A11y Implementation
+
+# Interactive Description - Implementation
 **Checked items verified by designer**
 ## State Descriptions
 ### Static State Descriptions (Screen Summary)
@@ -97,7 +101,7 @@ This issue helps tracks the big picture progress of the description design, desc
 - [ ] Keyboard Shortcuts dialog completed
     - [ ] Keyboard Shortcuts dialog accessible
 	- [ ] Keyboard Shortcuts button added
-- [ ] Mute Sound button (added when sound is added to main sim repo)
+- [ ] All Audio button (added when sound is added to main sim repo)
 
 ### Dynamic State Descriptions
 **Add or remove details as needed**
@@ -107,7 +111,7 @@ This issue helps tracks the big picture progress of the description design, desc
 - [ ] Punctuation verified
 - [ ] Edge cases verified
 
-**Play Area Object Descriptions**
+**Play Area Dynamic State Descriptions for Objects**
 - [ ] Phrases work with all parameters
 - [ ] Capitalization verified
 - [ ] Punctuation verified
@@ -115,10 +119,11 @@ This issue helps tracks the big picture progress of the description design, desc
 
 ## Responsive Descriptions
 ### Object Responses (often aria-valuetext)
-**Name Objects and details as needed**
-**Add or remove object details as needed**
+**Name interactive objects and details as needed**
+**Add or remove interactive object details as needed**
 **OBJECT Response 1**
-- [ ] Values and ranges verified
+- [ ] Qualitative scales verified
+- [ ] Quantitative scales verified
 - [ ] Increases/decreases verified
 - [ ] Steps verified
 - [ ] Interaction shotcuts verified (e.g., Home/End keys when appropriate)
@@ -137,23 +142,30 @@ This issue helps tracks the big picture progress of the description design, desc
   - [ ] Checking/unchecking alerts, verified
 
 # Other A11y ToDo's
-**Make a website issues to add/update URL to working prototype on the website's [Accessible Sims page](https://phet.colorado.edu/en/accessibility/prototypes)**
-- [ ] Once there is a working prototype
-- [ ] At Dev Testing
-- [ ] At RC Testing
-- [ ] At publication
+**Maintain [Accessible Sims page](https://phet.colorado.edu/en/accessibility/prototypes)**
+- [ ] Use website admin page (or create issue) to add sim to to A11y Sims page once there is a working prototype
+- [ ] Update link to prototype from time to time
+  - [ ] At Dev Testing
+  - [ ] At RC Testing
+  - [ ] At publication
+
+**Accessory Materials**
+- [ ] Create issue to update Teacher tips
+- [ ] Create issue to create Sound feature videos
+- [ ] Create issues to document new or improved design patterns
 
 **Other Features & Items (e.g., Mobile A11y features?)**
 - [ ] List items as needed
 
 **Check Credits**
-- [ ] Verify A11y team has been added
+- [ ] Verified A11y team additions: (add names here)
+- [ ] Ceate issue with verified a11y team member additions
 
 **Once Evaluation begins**
-- [ ] Ensure interviews are recorded to this sim's interview spreadsheet
+- [ ] Ensure interviews are recorded to the sim's interview spreadsheet
 
 **During QA or just after publication**
-- [ ] Clean and polish up A11y design doc
+- [ ] Clean and polish up Interactive Description design doc
 - [ ] List out main design challenges (if any and if necessary)
 - [ ] List out lessons learned from this sim (e.g., found focus issues for iOS)
 - [ ] Suggest improvements to THIS issue template
