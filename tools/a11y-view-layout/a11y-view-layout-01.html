@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	body {
+  padding: 20px;
+}
+
+div {
+	width: 200px;
+	  height: 300px;
+	  margin-right: 20px;
+	  overflow-y: scroll; /* has to be scroll, not auto */
+	  float: left;
+}
+
+.touch {
+  -webkit-overflow-scrolling: touch;
+}
+
+
+}
+footer {
+	width: 100%;
+	height: 200px;
+	clear: left;
+	background-color: grey;
+}
+</style>
+</head>
+
+<body>
+<!-- Block 1 Header -->
+<header>
+<h1>A11y View for Name of Sim</h1>
+<p><strong>Please note</strong> learners do not use the A11y View. Learners use the accessible simulation, alone, which is rendered here inside the iframe.</p>
+</header>
+
+<!-- Block 2 Fixed left -->
+<div>
+		<h2>Accessible Sim</h2>
+	
+		<h2>Context Responses</h2>
+		<details>
+			<summary>Responsive Descriptions</summary>
+			Interactive alerts are read out as the user interacts providing a description of what is happening in real-time. Alerts appear in reverse chronological order with the latest on top.
+		</details>
+</div>
+
+<!-- Block 3 Scroll -->
+<div class="touch">
+ <h2>State Descriptions</h2>
+
+  <h1>Molarity</h1>
+	  <p>‪‪Molarity‬ is an interactive sim. It changes as you play with it. It has a Play Area and a Control Area.</p>
+	 <p>In the Play Area, you find a beaker containing a solution, and a concentration readout. You can change solute amount, solution volume, and choose from nine different solutes to play with the solution in beaker.</p>
+	 <p>In the Control Area there is a checkbox to show exact values for amount of solute (in moles), volume of solution (in liters), and concentration (in molar), and a button to reset the sim.</p>
+	 <p>Currently, beaker is half full of a red ‬solution containing some ‪drink mix‬ solute. Solution is not saturated and has low concentration.</p>
+	 <p>Play with solution in beaker and observe changes to concentration.</p>
+	 <p>If needed, check out keyboard shortcuts under Sim Resources.</p>
+
+</div>
+	
+
+<!-- Block 4 Footer: clear both -->
+<footer>
+	<h2>About the A11y View Tool</h2>
+	<p>The A11y View is a design and presentation tool that allows us to visually demonstrate the accessibility layer of the simulation. We refer to this layer as the Parallel DOM, or PDOM. The PDOM (copied into the blue box) exposes the simulation’s full document structure and all the dynamic descriptive content that lives within that structure to a student accessing the simulation using assistive technology, such as screen reader software. The activity log (copied into the orange box), exposes the interactive alerts that a student would hear in real-time as they interact with the simulation. Interact with the accessible version of Molarity in the iframe, with either a keyboard or a mouse, and notice how the activity log (orange box) and the content of the PDOM (blue box) update as you interact.</p>
+</footer>
+</body>
+</html>

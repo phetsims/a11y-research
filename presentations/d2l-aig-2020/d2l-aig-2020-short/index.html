@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=1024, user-scalable=yes">
+
+  <title>W4A 2018 Challenge: Parallel DOM Architecture for Interative Science Simulations</title>
+
+  <!-- Required stylesheet -->
+  <link rel="stylesheet" media="screen" href="../deck/core/deck.core.css">
+
+  <!-- Extension CSS files go here. Remove or add as needed. -->
+  <link rel="stylesheet" media="screen" href="../deck/extensions/goto/deck.goto.css">
+  <link rel="stylesheet" media="screen" href="../deck/extensions/menu/deck.menu.css">
+  <link rel="stylesheet" media="screen" href="../deck/extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" media="screen" href="../deck/extensions/status/deck.status.css">
+  <link rel="stylesheet" media="screen" href="../deck/extensions/scale/deck.scale.css">
+
+  <!-- Style theme. More available in /themes/style/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="../deck/themes/style/swiss.css">
+  <link rel="stylesheet" media="screen" type="text/css" href="../deck/custom/custom.css">
+
+  <!-- Transition theme. More available in /themes/transition/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="../deck/themes/transition/horizontal-slide.css">
+
+  <!-- Basic black and white print styles -->
+  <link rel="stylesheet" media="print" href="../deck/core/print.css">
+
+  <!-- Required Modernizr file -->
+  <script src="../deck/modernizr.custom.js"></script>
+</head>
+<body>
+  <div class="deck-container">
+
+    <!-- Begin slides. Just make elements with a class of slide. -->
+    <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-01">
+	  	<div class="vcenter">
+				<h1 id="slide-title-01" style="font-size: 2.5em;">Parallel DOM Architecture for <br>Interactive Science Simulations</h1>
+				<br>
+				<img src="img/_logo-phet.png" alt="PhET Interactive Simulations Project" style="width:300px;">
+				<h2 style="color: #001B70; padding: 0; margin: 0; font-size:1.5em">Taliesin L. Smith &amp; Jesse Greenberg</h2>
+				<p>Co-authors: Sam Reid &amp; Emily B. Moore</p>
+				<p><small>W4A TPG Web Accessibility Challenge, April 23, 2018<br>
+					(Winner of Delegates Award)</small>
+				</p> 
+		</div>  				
+    </section>
+	
+	<section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-02">
+      <h2 id="slide-title-02">Interactive Simulations</h2>
+   		<figure class="panel panel-left">	
+			<img src="img/_lab-liquid.jpg" alt="A student and teacher wearing goggles examine a blue liquid in a beaker." style="width: 75%;">
+			<img src="img/ocad-exp-play-main.jpg" alt="Art installation of Balloons and Static Electricity. A wooly sweater hangs from a coat rack and several pairs of green and yellow helium balloons are placed around the sweater. Posters with pencils are attached to wall encourage people to record their observations." style="width: 75%;">
+		</figure>
+   		<figure class="panel panel-right">
+			<img src="img/sim-molarity.png" alt="Screenshot of the PhET Sim, Molarity." style="width: 75%;">	
+		 	<img src="img/sim-base.png" alt="Screenshot of the PhET Sim, Balloons and Static Electricity." style="width: 75%;">
+		</figure>
+    </section>
+	
+	<section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-03">
+      <h2 id="slide-title-03">PhET Interactive Simulations</h2>
+		<figure class="panel panel-left" style="width:50%;">
+    		<img src="img/phet-sims.png" alt="Several New PhET Simulations that are available in HTML5.">
+    	</figure>
+		
+		<div class="panel" style="width:45%;">
+		  <ul>
+			<li>Large suite of math &amp; science sims</li>
+		  	<li>50 built in HTML5</li>
+			<li>Very popular 100 Million+ runs/year</li>
+			<li>Used in classrooms around the world</li>
+			<li>Free!</li>
+		  </ul>
+		  <p>Until recently, not accessible.</p>
+		</div>
+    </section>
+	
+	<section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-04">
+      <h2 id="slide-title-04">Scene Graph: Scenery</h2>
+		<div class="panel panel-left" style="width:40%;">
+		  <ul>
+			 <li>Data structure made up of parent &amp; child nodes</li>
+			 <li>Nodes contain visual properties of all the sim's elements</li>
+			 <li>Scenery draws the sim based on this scene graph information</li>
+			 <li>Uses multiple graphics renderers, <strong>Canvas, WebGL, &amp; SVG</strong>, for performance reasons</li>
+		  </ul>
+		</div>
+		<figure class="panel panel-right" style="width:50%;">
+    		<img src="img/scenery-graphical-mode.jpg" alt="A simplified piece of Scenery's tree-like scene graph data structure being rendered visually as a charged yellow balloon against teh wall. The Play Area node has two child nodes, the Yellow Balloon node and the Wall node. The balloon and wall nodes each have a few child charge nodes representing pairs of positive and negative charges.">
+    	</figure>
+    </section>
+	
+	<section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-05">
+      <h2 id="slide-title-05">Scenery's Challenges</h2>
+		<div class="panel panel-left">
+			  <ul>
+				  <li>Draws everything, providing zero semantic information</li>
+				  <li>Uses multiple graphics renderers, each of which has their own way of embedding accessibility information</li>
+		
+				  <li>Complicates design &amp; implementation</li>
+				  <li>Offers little benefit as support for these techniques, varies greatly as well</li> 
+			  </ul>
+		</div>
+		<figure class="panel panel-right">
+    		<img src="img/sim-as-blackbox.jpg" alt="Balloons and Static Electricity simulation with empty blackbox callouts pointing to all the interactive objects within the visual sim.">
+		</figure>
+    </section>
+	
+	<section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-06">
+      <h2 id="slide-title-06">Enhanced Scenery: Parallel DOM</h2>
+		<figure class="panel panel-left" style="width:50%;">
+    		<img src="img/scenery-parallel-modes.jpg" alt="Scenery's same tree-like data structure now being rendered visually and in semantically rich HTML, representing a small piece of the Parallel DOM.">
+    	</figure>
+		
+		<div class="panel panel-right" style="width:40%;">
+		<ul> 
+			<li>Add accessibility information to the scene graph</li>
+			<li>Scenery now renders nodes from the scene graph in HTML (and ARIA)</li>
+		</ul>
+		
+		<h3>Accessible mode</h3>
+		<ul> 
+			<li>Same level as the visual mode</li>
+			<li>Agnostic to graphics renderer</li>
+			<li>Can be used for all of PhET's HTML5 sims</li>
+			<li>Other projects that use a scene graph may benefit from a PDOM</li>
+		</ul>	  
+		</div>
+    </section>
+	
+	<section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-07">
+      <h2 id="slide-title-07">Benefits of PDOM</h2>
+		<div class="panel panel-left">
+			<h3>HTML &amp; ARIA</h3>
+			<ul>
+				<li>Rich document &amp; interaction semantics natively</li>
+				<li>Flexibility for custom interactions</li>
+				<li>Supports alerts to describe interactive experience</li>
+				<li>Keeps all accessibility features in one place</li>
+				<li>Reduces complexity of sim code</li>
+				<li>Minimizes implementation &amp; maintenance costs</li>		
+			</ul>
+		</div>
+		
+		<div class="panel panel-right">
+			<h3>Users love it!</h3>
+			<ul>
+				<li>Very accessible, intuitive &amp; engaging experience</li>
+			</ul>
+			<figure style="width:90%;">
+	    		<img src="img/_p5.png" alt="An interview participant using a keyboard and screen reader to explore Balloons and Static Electricity." style="width: 80%;">
+	    	</figure>
+		</div>
+    </section>
+	
+    <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-08">
+      <h2 id="slide-title-08">See &amp; Hear PDOM in Action</h2>
+	<div style="clear:both; float:none;">
+	  <ul>
+		<li>Bold focus highlights &amp; robust interactions</li>
+		<li>Static descriptions for orientation &amp; guiding (scaffolding)</li>
+		<li>Rich document &amp; interaction semantics natively (non-visual scaffolding)</li>
+		<li>Alerts during interaction describing what is happening</li>
+		<li>Dynamic descriptions of changing state information available on-demand</li>
+	  </ul>
+	</div>
+	<figure class="panel span-two">
+		<a href="https://www.colorado.edu/physics/phet/dev/html/ohms-law/1.4.0-dev.22/phet/ohms-law_en_phet.html?accessibility"><img src="img/sim-ol.png" alt="Accessible Ohm's Law" style="width:90%;"></a>
+		<figcaption><a href="https://www.colorado.edu/physics/phet/dev/html/ohms-law/1.4.0-dev.22/phet/ohms-law_a11y_view.html" title="A11y View for Ohm's Law">Ohm's Law</a></figcaption>
+	</figure>
+	
+	<figure class="panel span-two">
+		<a href="https://phet.colorado.edu/sims/html/john-travoltage/latest/john-travoltage_en.html"><img src="img/sim-jt.png" alt="Accessible John Travoltage" style="width:90%;"></a>
+		<figcaption>John Travoltage</figcaption>
+	</figure>
+	
+	<figure class="panel span-two">
+		<a href="https://bayes.colorado.edu/dev/html/balloons-and-static-electricity/1.4.0-dev.24/phet/balloons-and-static-electricity_en_phet.html?accessibility"><img src="img/sim-base.png" alt="Accessible Balloons and Static Electricity" style="width:90%;"></a>
+		<figcaption><a href="https://phet.colorado.edu/sims/html/balloons-and-static-electricity/latest/balloons-and-static-electricity_en.html" title="A11y View for Balloons and Static Electricity">Balloons &amp; Static Electricity</a></figcaption>
+	</figure>
+    </section>
+	
+    <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-09">
+      <h2 id="slide-title-09">Resources &amp; Funders</h2>
+		<div class="panel panel-left">
+			<h3>Resources</h3>
+	 		  	<ul>
+					<li>Slide Deck: <a href="http://terracoda.net/research/w4a-2018">terracoda.net/research/w4a-2018</a></li>
+	 			  <li><a href="https://phet.colorado.edu/">phet.colorado.edu</a></li>
+	 		  	  <li><a href="https://phet.colorado.edu/en/about/accessibility">PhET's Accessibility Research</a></li>
+	 			</ul> 
+	 	
+	 		  <h3>Funders</h3>
+	 		  <p>The National Science Foundation; The Hewlett Foundation; University of Colorado.</p>
+		  </div>
+		  
+	    	 <div class="panel panel-right">
+		 		 <h3>Questions</h3>
+		    	 	  <ul>
+						  <li><a href="mailto:taliesin.smith@colorado.edu">Taliesin.Smith@colorado.edu</a></li>
+						  <li><a href="mailto:jesse.greenberg@colorado.edu">Jesse.Greenberg@colorado.edu</a></li>
+						  <li><a href="mailto:Emily.Moore@colorado.edu">Emily.Moore@colorado.edu</a></li>
+		    	 	   </ul>
+	 		 <h3>Get involved</h3>
+	    	 	  <ul>
+	    	 	  	  <li>Twitter: <a href="https://twitter.com/phetsims">@PhETSims</a></li>
+	    	 		  <li>GitHub: <a href="https://github.com/phetsims">@phetsims</a>
+	    	 	  	  <li>facebook: <a href="https://www.facebook.com/PhETSims/">@PhETSims</a></li>
+	    	 	   </ul>
+	    	   </div>
+    </section>
+
+    <!-- End slides. -->
+
+    <!-- Begin extension snippets. Add or remove as needed. -->
+
+    <!-- deck.navigation snippet -->
+    <div role="navigation">
+      <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+      <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+    </div>
+
+    <!-- deck.status snippet -->
+    <p class="deck-status" role="status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.goto snippet -->
+    <form action="." method="get" class="goto-form">
+      <label for="goto-slide">Go to slide:</label>
+      <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+      <datalist id="goto-datalist"></datalist>
+      <input type="submit" value="Go">
+    </form>
+
+    <!-- End extension snippets. -->
+  </div>
+
+<!-- Required JS files. -->
+<script src="../deck/jquery.min.js"></script>
+<script src="../deck/core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="../deck/extensions/menu/deck.menu.js"></script>
+<script src="../deck/extensions/goto/deck.goto.js"></script>
+<script src="../deck/extensions/status/deck.status.js"></script>
+<script src="../deck/extensions/navigation/deck.navigation.js"></script>
+<script src="../deck/extensions/scale/deck.scale.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+  $(function() {
+    $.deck('.slide');
+  });
+</script>
+</body>
+</html>

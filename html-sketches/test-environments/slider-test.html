@@ -2,15 +2,16 @@
 <html lang="en">
  <head>
    <meta charset="UTF-8">
-   <title>Slider Test</title>
+   <title>Slider and Number Spinner Tests</title>
    <style>
-   input[role="slider"]:focus {outline: 3px solid hotpink;}
+   input[type="range"]:focus {outline: 3px solid hotpink;}
    p:focus, ul:focus, h1:focus, li:focus, label:focus {outline: 3px solid hotpink;}
 	</style>
  </head>
  <body>
-	 <h1 tabindex="-1">Example sliders</h1>
-	 <p tabindex="-1">Test help text.</p>
+	 <h1>Slider and Number Spinner Tests</h1>
+	 <h2 tabindex="-1">Example sliders</h2>
+	 <p tabindex="-1">Test help text for sliders.</p>
    <ul tabindex="-1">
      <li tabindex="-1">
 		<label for="slider-1">Slider One</label>
@@ -19,12 +20,87 @@
      </li>
      <li tabindex="-1">
 		<label for="slider-2">Slider Two</label>
-       <input aria-label="Slider Two" type="range" role="slider" id="slider-2" tabindex="0" aria-valuemax="10" aria-valuemin="1" aria-valuenow="5">
+       <input type="range" id="slider-2" tabindex="0" aria-valuemax="10" aria-valuemin="1" aria-valuenow="5">
      </li>
      <li tabindex="-1">
 		 <label for="slider-3">Slider Three</label>
-       <input aria-label="Slider Three" type="range" role="slider" id="slider-3" tabindex="0" aria-valuemax="10" aria-valuemin="1" aria-valuenow="5">
+       <input type="range" id="slider-3" tabindex="0" aria-valuemax="10" aria-valuemin="1" aria-valuenow="5">
      </li>
    </ul>
+   
+ <h2 tabindex="-1">Example numnber spinners</h2>
+ 
+ <div>
+	 <p tabindex="-1">Test help text for number spinners.</p>
+ 	<label id="left-value-label" data-focusable="false" 
+		for="left-value">Left Value</label>
+ 	<input id="left-value" type="range" aria-orientation="vertical" 
+ 		min="1" 
+ 		max="10" 
+ 		step="1" 
+ 		aria-valuenow="1" 
+ 		aria-roledescription="number spinner">
+		
+<br>
+  
+   <label id="right-value-label" data-focusable="false" 
+   		for="right-value">Right Value</label>
+   <input id="right-value" type="range" aria-orientation="vertical" 
+ 		min="1" 
+ 		max="10" 
+ 		step="1" 
+ 		aria-valuenow="3"
+ 		aria-roledescription="number spinner">
+ </div>
+ 
+<h2 tabindex="-1">Number Spinner Code from PDOM</h2>
+<p>Two things removed from PDOM code:</p>
+<ol>
+	<li>tabindex="-1" from input element</li>
+	<li>aria-valuetext="" from input element</li>
+</ol>
+	
+<div data-trail-id="1127-1128-1506-1512-1507-1794-1813-1811-1789" id="1127-1128-1506-1512-1507-1794-1813-1811-1789"
+     data-focusable="false" class="pdom-sibling" tabindex="-1"><label
+    data-trail-id="1127-1128-1506-1512-1507-1794-1813-1811-1789-1728-1727-1669"
+    id="label-1127-1128-1506-1512-1507-1794-1813-1811-1789-1728-1727-1669" data-focusable="false" class="pdom-sibling"
+    for="1127-1128-1506-1512-1507-1794-1813-1811-1789-1728-1727-1669" tabindex="-1">Left Value</label>
+	<input
+    data-trail-id="1127-1128-1506-1512-1507-1794-1813-1811-1789-1728-1727-1669"
+    id="1127-1128-1506-1512-1507-1794-1813-1811-1789-1728-1727-1669" data-focusable="true" class="pdom-sibling"
+    type="range" aria-orientation="vertical" aria-valuemin="1" aria-valuemax="10" step="1" aria-valuenow="1">
+  <p class="pdom-style" tabindex="-1" style="opacity: 0.55;">1</p><label
+      data-trail-id="1127-1128-1506-1512-1507-1794-1813-1811-1789-1788-1787-1729"
+      id="label-1127-1128-1506-1512-1507-1794-1813-1811-1789-1788-1787-1729" data-focusable="false" class="pdom-sibling"
+      for="1127-1128-1506-1512-1507-1794-1813-1811-1789-1788-1787-1729" tabindex="-1">Right Value</label><input
+      data-trail-id="1127-1128-1506-1512-1507-1794-1813-1811-1789-1788-1787-1729"
+      id="1127-1128-1506-1512-1507-1794-1813-1811-1789-1788-1787-1729" data-focusable="true" class="pdom-sibling"
+      type="range" aria-orientation="vertical" min="1" max="10" step="1" aria-valuenow="2"
+      aria-roledescription="number spinner">
+  <p class="pdom-style" tabindex="-1" style="opacity: 0.55;">2</p></div>
+  
+<h2>GLFB's Number Spinners</h2>
+<div data-trail-id="378-465-469-640" id="378-465-469-640" data-focusable="false" class="a11y-sibling" aria-labelledby="label-378-465-469-640">
+    <div data-trail-id="378-465-469-640-641-619" id="378-465-469-640-641-619" data-focusable="false" class="a11y-sibling">
+		<label data-trail-id="378-465-469-640-641-619-618-617-603" id="label-378-465-469-640-641-619-618-617-603" data-focusable="false" class="a11y-sibling" for="378-465-469-640-641-619-618-617-603" style="top: 146.93948412698415px; left: 575.9257541232639px; width: 18.821847098214334px; height: 25.457797969766176px;">‪Mass 1‬</label>
+		<input data-trail-id="378-465-469-640-641-619-618-617-603" id="378-465-469-640-641-619-618-617-603" data-focusable="true" class="a11y-sibling" type="range" aria-orientation="vertical" aria-valuetext="2 billion kilograms" min="1000000000" max="10000000000" step="90000000" aria-valuenow="2000000000" aria-roledescription="number spinner" style="top: 146.93948412698415px; left: 575.9257541232639px; width: 18.821847098214334px; height: 25.457797969766176px;">
+	</div>
+		
+    <div data-trail-id="378-465-469-640-641-638" id="378-465-469-640-641-638" data-focusable="false" class="a11y-sibling">
+		<label data-trail-id="378-465-469-640-641-638-637-636-622" id="label-378-465-469-640-641-638-637-636-622" data-focusable="false" class="a11y-sibling" for="378-465-469-640-641-638-637-636-622" style="top: 146.93948412698415px; left: 663.6638493613591px; width: 18.821847098214334px; height: 25.457797969766176px;">‪Mass 2‬</label>
+		<input data-trail-id="378-465-469-640-641-638-637-636-622" id="378-465-469-640-641-638-637-636-622" data-focusable="true" class="a11y-sibling" type="range" aria-orientation="vertical" aria-valuetext="4 billion kilograms" min="1000000000" max="10000000000" step="90000000" aria-valuenow="4000000000" aria-roledescription="number spinner" style="top: 146.93948412698415px; left: 663.6638493613591px; width: 18.821847098214334px; height: 25.457797969766176px;">
+	</div>
+</div>
+
+<h2>RaP's Number Spinners</h2>
+<div data-trail-id="1127-1128-1506-1512-1507-1794-1813-1811-1789" id="1127-1128-1506-1512-1507-1794-1813-1811-1789" data-focusable="false" class="pdom-sibling">
+	<label data-trail-id="1127-1128-1506-1512-1507-1794-1813-1811-1789-1728-1727-1669" id="label-1127-1128-1506-1512-1507-1794-1813-1811-1789-1728-1727-1669" data-focusable="false" class="pdom-sibling" for="1127-1128-1506-1512-1507-1794-1813-1811-1789-1728-1727-1669">Left Value</label>
+	<input data-trail-id="1127-1128-1506-1512-1507-1794-1813-1811-1789-1728-1727-1669" id="1127-1128-1506-1512-1507-1794-1813-1811-1789-1728-1727-1669" data-focusable="true" class="pdom-sibling" type="range" aria-orientation="vertical" aria-valuetext="1" min="1" max="10" step="1" aria-valuenow="1" aria-roledescription="number spinner">
+	
+	<label data-trail-id="1127-1128-1506-1512-1507-1794-1813-1811-1789-1788-1787-1729" id="label-1127-1128-1506-1512-1507-1794-1813-1811-1789-1788-1787-1729" data-focusable="false" class="pdom-sibling" for="1127-1128-1506-1512-1507-1794-1813-1811-1789-1788-1787-1729">Right Value</label>
+	<input data-trail-id="1127-1128-1506-1512-1507-1794-1813-1811-1789-1788-1787-1729" id="1127-1128-1506-1512-1507-1794-1813-1811-1789-1788-1787-1729" data-focusable="true" class="pdom-sibling" type="range" aria-orientation="vertical" aria-valuetext="2" min="1" max="10" step="1" aria-valuenow="2" aria-roledescription="number spinner">
+</div>
+
+   
  </body>
 </html>
