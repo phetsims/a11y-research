@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=1024, user-scalable=no">
+
+  <title>ID24 2017 Presentation: Building Accessibility and Inclusion into Interactive Science Simulations</title>
+
+  <!-- Required stylesheet -->
+  <link rel="stylesheet" media="screen" href="deck/core/deck.core.css">
+
+  <!-- Extension CSS files go here. Remove or add as needed. -->
+  <link rel="stylesheet" media="screen" href="deck/extensions/goto/deck.goto.css">
+  <link rel="stylesheet" media="screen" href="deck/extensions/menu/deck.menu.css">
+  <link rel="stylesheet" media="screen" href="deck/extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" media="screen" href="deck/extensions/status/deck.status.css">
+  <link rel="stylesheet" media="screen" href="deck/extensions/scale/deck.scale.css">
+
+  <!-- Style theme. More available in /themes/style/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="deck/themes/style/swiss.css">
+  <link rel="stylesheet" media="screen" type="text/css" href="deck/custom/custom.css">
+
+  <!-- Transition theme. More available in /themes/transition/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="deck/themes/transition/horizontal-slide.css">
+
+  <!-- Basic black and white print styles -->
+  <link rel="stylesheet" media="print" href="deck/core/print.css">
+
+  <!-- Required Modernizr file -->
+  <script src="deck/modernizr.custom.js"></script>
+</head>
+<body>
+  <div class="deck-container">
+
+    <!-- Begin slides. Just make elements with a class of slide. -->
+
+    <section class="slide" aria-roledescription="slide-title-01">
+	  	<div class="vcenter">
+				<h1 id="slide-title-01" style="font-size: 2.5em;">Building Accessibility &amp; Inclusion into Interactive Science Simulations</h1>
+				<br>
+				<img src="img/_logo-phet.png" alt="PhET Interactive Simulations Project" style="width:300px;">
+				<h2 style="color: #001B70; padding: 0; margin: 0; font-size:1.5em">Taliesin Smith</h2>
+				<p><small>#ID24, November 16, 2017</small></p> 
+		</div>  				
+    </section>
+	
+	<section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-02">
+      <h2 id="slide-title-02">Outline</h2>
+	  <ul>
+		  <li>Introduce PhET Interactive Simulations Project</li>
+		  <li>Tell you about PhET Simulation Design &amp; Design Philosophy</li>
+		  <li>Share our accessibility challenge</li>
+		  <li>Describe the infrastructure we have created</li>
+		  <li>Demonstrate the infrastructure in a simulation</li>
+	  </ul>
+    </section>
+	
+    <section class="slide" aria-roledescription="slide-title-03">
+      <h2 id="slide-title-03">Introductions</h2>
+	  	<div class="panel panel-left">
+			<h3>Taliesin Smith</h3>
+	  		<ul>
+	  			<li>Email: <a href="mailto:Taliesin.Smith@colorado.edu">Taliesin.Smith@colorado.edu</a></li>
+	  			<li>Twitter: @TaliesinSmith</li>
+	  			<li>GitHub: @terracoda</li>
+	  		</ul>
+	  	</div>
+    	<figure class="panel panel-right">	
+			<h3>PhET Interactive Simualtions</h3>		
+	    	  <ul>
+	    	  	<li>Website: <a href="https://phet.colorado.edu/">phet.colorado.edu/</a></li>
+	    		<li>Accessibility Research: <a href="https://phet.colorado.edu/en/accessibility">phet.colorado.edu/en/accessibility</a> </li>
+	    		<li>GitHub: <a href="https://github.com/phetsims">@phetsims</a> 
+	    	  </ul>
+			  <p style="text-align:left;"><img src="img/_logo-phet.png" alt="PhET Interactive Simulations Project" style="width:250px;margin:0;padding:0;"></p>
+			  
+    	</figure>
+  	  
+    </section>
+
+    <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-05">
+      <h2 id="slide-title-05">Experimentation</h2>
+  		<div class="panel panel-left">
+			<figure>
+  				  <h3>Labs &amp; Demonstrations</h3>
+  				  <ul>
+  					  <li>Key to exploring science</li>
+  				  </ul>
+  		  			<img src="img/_lab-liquid.jpg" alt="Student and teacher weearing safety glasses examining a blue liquid in a jar.">
+  		  		</figure>
+		</div>
+ 		<div class="panel panel-right">
+ 			 <ul>
+ 				  <li>Not accessible all the time</li>
+				  <li>Pose a range of access issues for students with disabilities</li>
+ 			  </ul>
+	    		<figure>
+	    			<img src="img/_lab-collab.jpg" alt="Student working together to explore air flow with a fan and small windmill prototype.">
+	    		</figure>
+ 		</div>
+		<div style="clear:both;"></div>
+		<p><small>Courtesy of Allison Shelley/The Verbatim Agency for American Education: Images of Teachers and Students in Action. For more information about acceptable uses and licensing terms visit <a href="https://creativecommons.org/licenses/by-nc/4.0/">https://creativecommons.org/licenses/by-nc/4.0/</a>.</small></p>
+    </section>
+	
+    <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-06">
+      <h2 id="slide-title-06">Interactive Science Simulations</h2>
+   		<div class="panel panel-left" style="width: 55%;">
+ 			<ul>
+ 			 <li>Are more readily available</li>
+			 <li>Help students learn &amp; <strong>think</strong> about science</li>
+ 			 <li>Do not require special equipment</li>
+			 <li>Create a safe lab-like exploratory experience</li>
+			 <li>Allow students to experiment &amp; discover science like a scientist</li>
+		 	</ul>
+			<p><small>Images from <a href="https://www.facebook.com/PhETSims/">PhET's facebook page</a>.</small></p>
+		</div>
+   		<figure class="panel panel-right">	
+			<img src="img/_fb-class-use.jpg" alt="PhET Interactive Simulations being used in a classroom with desktop computers." style="width:300px;">
+		 	<img src="img/_fb-international-use.jpg" alt="PhET Interactive Sim being used in foreign country and language." style="width:300px;">
+			<img src="img/_fb-kids-fun.jpg" alt="PhET Interactive Simulations being used by small kids for fun on the couch." style="width:300px;">
+		</figure>
+    </section>
+	
+	<section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-07">
+      <h2 id="slide-title-07">PhET Interactive Simulations</h2>
+		<figure class="panel panel-left" style="width:50%;">
+    		<img src="img/_phet-sims.jpg" alt="Several New HTML5 PhET Simulations.">
+    	</figure>
+		
+		<div class="panel" style="width:40%;">
+		  <ul>
+		  	<li>Started in 2002</li>
+		  	<li>170 science &amp; math simulations</li>
+		  	<li>Run 100 Million+ times/year</li>
+			<li>87 languages</li>
+			<li>Flexible, exploratory learning tools</li>
+			<li>Used with a diverse age range</li>
+			<li><strong>Free of cost</strong> &amp; openly licensed</li>
+		  </ul>
+		</div>
+    </section> 
+	
+    <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-08">
+      <h2 id="slide-title-08">Balloons &amp; Static Electricity <small>{demo}</small></h2>
+  	  	<div class="panel panel-left">
+		<h3>PhET Sim Design</h3>
+	  	  <ul>
+			  <li>Intuitive &amp; easy to use</li>
+	  		  <li>Highly interactive</li>
+	  		  <li>Real-time feedback</li> 
+	  		  <li>Fun &amp; game-like</li>
+			  <li>Very flexible</li> 
+	  	  </ul>	
+		</div>
+		<figure class="panel panel-left">
+      		<a href="https://phet.colorado.edu/sims/html/balloons-and-static-electricity/latest/balloons-and-static-electricity_en.html"><img src="img/_base-screenshot.jpg" alt="Balloons and Static Electricy Simulation"></a>
+      	</figure>	
+    </section>
+	
+  	<section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-09">
+        <h2 id="slide-title-09">Fexibility is Useful</h2>
+    
+    	<figure class="panel panel-left">
+  		<h3>Actvities are diverse</h3>
+    		<img src="img/_learning-group.jpg" alt="Students working on a project.">
+  		<figcaption><small>Courtesy of Allison Shelley/The Verbatim Agency for American Education: Images of Teachers and Students in Action. For more information about acceptable uses and licensing terms visit <a href="https://creativecommons.org/licenses/by-nc/4.0/">https://creativecommons.org/licenses/by-nc/4.0/</a>.</small></figcaption>
+    	</figure>
+	
+    <div class="panel panel-right slide">
+  	  <h3>Abilities are diverse</h3>
+    	  <ul>
+    		   <li>Inclusive education creates integrated classrooms</li>
+    		   <li>98% of students with disabilities are integrated into general education schools</li>
+    	  	   <li>40% of their time is spent in general education classrooms</li>
+    	  </ul>
+  	  <p><small>(Source: Texas Board of Education)</small></p>
+    </div>
+  	</section>
+	
+    <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-10">
+      <h2 id="slide-title-10">PhET's <abbr title="Accessibility">A11y</abbr> Challenge</h2>
+	  <div class="panel panel-left" style="width:65%;">
+		  <h3>Everything is rendered graphically</h3>  
+	  	 	<p>with <strong>Scenery</strong>, a custom scene graph for HTML5.</p>
+	  	  
+	  	  <h3><strong>Scenery</strong> makes interactive graphics </h3>
+	  	  <ul>
+	  		  <li>Using Canvas, SVG, or WebGL</li>
+	  		  <li>Exposing no useful information within the DOM for accessibility</li>
+	  	  </ul>
+	  	<h3>Scenery's graphics provide</h3>
+	  	  <ul>
+	  		  <li>No semantic structure. No keyboard operation. No text alternatives.</li>  
+	  	  </ul>
+	  </div>
+	  <figure class="panel panel-right" style="width:30%;">
+		  <img src="img/_base-screenshot.jpg" alt="Balloons and Static Electricy Simulation" style="width:300px;">
+	  </figure>
+
+    </section>
+	
+    <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-11">
+      <h2 id="slide-title-11">Sea of Black Boxes</h2>
+  	<figure>
+  		<a href=""><img src="img/_sim-callouts-black.jpg" alt="Balloons and Static Electricity with empty black callouts pointing to objects in the sim."></a>
+  	</figure>
+
+    </section>
+	
+	<section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-12">
+		<h2 id="slide-title-12">PhET's Accessibility Initiative</h2>
+		<p>Re-thinking accessibilty of PhET Simulation architecture through the lens of inclusive design.</p>
+		<p class="speaker-note">Through this lens disability is defined as a mismatch between the user and the user interface.</p>
+		<div>
+			<h3>Mismatch</h3>
+					<blockquote>
+						<p class="slide-note">user + black box = disability</p>
+					 </blockquote>
+				 </div>
+ 
+				 <div class="slide">
+				 <h3>Accessible simulation architecture</h3>
+					<blockquote>
+						<p>The ability of the system's architecture to build simulations that <strong>meet or flex to the needs</strong> of the user.</p> 	
+					 </blockquote></div>
+
+					<p class="speaker-note">Removing the label of disability from the person, makes accessibility the responsibility of the design process.</p>
+	</section>
+	
+    <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-13">
+      <h2 id="slide-title-13">Inclusive System Architecture</h2>
+	  <h3>System goal: Build a sim that enables a blind student</h3>
+	  	  <ul>
+	  		  <li>to use the keyboard to grab and move the balloon</li>
+	  		  <li>to explore where and how charges are accumulated</li> 
+			  <li>to collaborate with the classmates in a group activity</li>
+	  	  </ul>
+	  <h3>System constraints</h3>
+	  <ul>
+		  <li>And still run natively in a browser</li>
+		  <li>Interface easily with assistive technology, such as screen reader software</li>
+		  <li>Offer flexibility for pedagogical design &amp; use, like the visual simulations</li>
+	  </ul>
+    </section>
+	
+    <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-14">
+      <h2 id="slide-title-14">Traditional Approaches</h2>
+ 		<figure>
+		  <img src="img/_html-DOM-a11y-tree-horizontal-3.jpg" alt="HTML points to DOM which points to the AAPI which points to Accessibility Tree which points to user.">
+		  <img class="slide" src="img/_html-DOM-a11y-tree-horizontal-1.jpg" alt="Canvas, SGV and WebGL point to DOM which points to the AAPI which points to Accessibility Tree which points to user.">
+		  <img class="slide" src="img/_html-DOM-a11y-tree-horizontal-2.jpg" alt="Canvas subtree points to DOM which points to the AAPI which points to Accessibility Tree which points to user.">
+ 		</figure>
+		<div class="slide">
+			<h3>Difficult for PhET Sim Architecture</h3>
+			<ul>
+				<li>Accessibility information ends up in multiple places</li>
+				<li>WebGL didn't work with the Canvas subtree</li>
+			</ul>
+		</div>
+  </section>
+	
+	
+    <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-15">
+      <h2 id="slide-title-15">PhET's Approach</h2>
+		<div>
+	  	  	<h3>Generate a parallel structure</h3>
+	  		<ul>
+	  			<li>matches all visual elements (in the scene graph)</li>
+	  			<li>with <abbr title="Hyper Text Markup Language">HTML</abbr> elements</li>
+	  			<li>in a Parallel <abbr title="Document Object Model">DOM</abbr></li>
+	  		</ul>
+	  	</div>
+		<figure class="slide">
+			  <img src="img/_phet-pdom-approach.jpg" alt="Canvas and html semantics point to the DOM which points to the AAPI which points to the Accessibility Tree, which finally points to user.">
+	 	</figure>
+		
+	 	
+
+    </section>
+    <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-16">
+      <h2 id="slide-title-16">Our PDOM has Power</h2>
+   	<figure class="panel panel-left">
+  		  <img src="img/_power-fist-tech.jpg" alt="HTML5 power fist with ARIA knuckles. Power of A11y Technology.">
+   	</figure>
+	<figure>
+		  <img src="img/_power-fist-ped.jpg" alt="Power fist holding a pencil. Power of Pedagogy.">
+ 	</figure>
+	  
+	</section>
+	
+    <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-17">
+      <h2 id="slide-title-17">Technical Power</h2>
+			<h3><abbr>HTML</abbr> provides</h3>
+			<ul>
+ 		 		   <li>Familiar <strong>semantic structure</strong></li>
+ 		 		   <li>Easy <strong>keyboard accessibility</strong> for native HTML form elements</li>
+ 		 		   <li>Customizable repository for naming &amp; describing sim objects</li> 
+ 		 	   </ul>
+			   
+			   <h3><abbr title="Accessible Rich Internet Applications">ARIA</abbr> supports</h3>
+   			<ul>
+    		 	<li><strong>Special semantics</strong> for custom interactive objects</li>
+				<li>Description during interaction with <strong>ARIA-live regions</strong></li>
+    		 	   </ul> 	
+    </section>
+	
+    <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-18">
+      <h2 id="slide-title-18">PDOM A11y View <small>{demo}</small></h2>
+ 	  <figure>
+		<a href="https://www.colorado.edu/physics/phet/dev/html/balloons-and-static-electricity/1.4.0-dev.7/balloons-and-static-electricity-a11y-view.html"><img src="img/_base-screenshot.jpg" alt="Balloons and Static Electricy Simulation" style="width:400px; float:left;">
+ 			  <img src="img/_base-fig-PDOM.png" alt="Accessibility view of Balloons and Static Electricity with side-by-side descriptions."></a>
+ 	 	</figure></section>
+	
+    <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-19">
+      <h2 id="slide-title-19">Pedagogical Power</h2>
+	  <h3>Robust platform for non-visual implicit scaffolds</h3>	
+		 	<figure>
+				  <img src="img/_3-pathways.jpg" alt="Exploration paths: high-level with headings, interactions with Tab key, deep level (line by line) with arrow keys.">
+		 	</figure>
+    </section>
+	
+    <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-20">
+      <h2 id="slide-title-20">Sea of Information <small>{demo}</small></h2>
+  		<figure>
+  			<a href="https://www.colorado.edu/physics/phet/dev/html/balloons-and-static-electricity/1.4.0-dev.7/balloons-and-static-electricity_en.html?accessibility"><img src="img/_sim-callouts-yellow.jpg" alt="Accessible prototype of Balloons and Static Electricity."></a>
+  		</figure>
+	</section>
+	
+    <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-21">
+      <h2 id="slide-title-21">PDOM Technical Summary</h2>
+ 	   	<div style="width: 80%;">
+			<ul>
+ 	   	 	   		<li>Compatible with Canvas, SVG, &amp; WebGL</li>
+ 	   				<li>Minimizes complexity with simplified structure</li>   		
+ 	   	 	   		<li>Contains all accessibility information &amp; descriptions in one place</li>
+ 	   	 	   		<li>Represents visual elements with native HTML elements (familiar to users)</li>
+ 	   		   		<li>Harnasses exisiting accessibility support by browsers &amp; Assistive Technologies (HTML &amp; ARIA)</li>
+ 	   	 	   		<li>Embraces <abbr>WCAG</abbr> principles creating a robust &amp; flexible accessibility layer</li>
+ 	   	 	   	</ul>
+			</div>
+		<blockquote>
+			<p>HTML is often overlooked and under-valued. -Aaron Gustafson, #ID24 2017</p>
+		</blockquote>
+	</section>
+	
+    <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-22">
+      <h2 id="slide-title-22">Continued Challenges</h2>
+		  <ul>
+			  <li><strong>Keyboard users:</strong> interactive sim objects often don't look like HTML controls</li>
+			  <li><strong>Mark-up limitations:</strong> Standard HTML is limited for complex interactive objects</li>
+			  <li><strong>Accessibility of custom interactions:</strong> many objects like the balloon that will need explicit instruction</li>
+			  <li><strong>Complex elements &amp; roles:</strong> have complex keyboard design patterns (how will young users react?)</li>
+	  	  	  <li><strong>Fixed combinations of <abbr title="Assistive Technology">AT</abbr> &amp; browsers:</strong> limit platforms &amp; exhibit many inconsistencies</li>
+	  		  <li><strong>Help:</strong> Avoiding verbosity &amp; repetition when using screen readers</li>
+			  <li><strong>Help:</strong> Tips on using live regions</li>
+	  	  </ul> 
+    </section>
+    
+	<section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-23">
+      <h2 id="slide-title-23">Big Take Aways</h2>
+	  <div class="panel panel-left">
+		  <ul>
+	  		  <li>Screen reader users explore &amp; engage with the sim</li>
+	  	  	  <li>Students familiar with keyboard commands easily use the sim with a keyboard</li>
+	  	  	  <li>Keyboard presses are easily learned by users less familiar with using a keyboard</li>
+	  	</ul>
+	  </div>
+	<figure class="panel panel-right">
+		<img src="img/_p5.png" alt="Blind user using Balloons and Static Electricity.">
+	</figure>
+    </section>
+    
+	<section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-24">
+      <h2 id="slide-title-24">Broader Beneficial Impact</h2>
+	  <ul>
+		  <li>Benefit all keyboard users</li>
+	  	  <li>Descriptions we have designed may benefit students with cognitive disabilities</li>
+	  	  <li>Designers &amp; developers of interactives may want to consider this approach</li>
+	  </ul>
+    </section>
+	
+	<section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-25">
+      <h2 id="slide-title-25">Concluding Message</h2>
+		
+		<blockquote>
+			<p>Action and agency begin with the ability to imagine. - Danis Goulet</p> 	
+	 	</blockquote>
+		<p>In the context of science, action and agency begin with the ability to experiment.
+		<blockquote>
+			<p>Students do best when they are able to study what interests them.</p> 	
+	 	</blockquote>
+		
+		
+		<h3>Ongoing design project</h3>
+		<ul>
+			<li>Alternative input</li>
+			<li>Auditory description</li>
+			<li>Sonification</li>
+		</ul>
+		<p>Find out more: <a href="https://phet.colorado.edu/en/accessibility">phet.colorado.edu/en/accessibility</a> </p>
+		  
+    </section>
+	
+    <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-26">
+      <h2 id="slide-title-26">Available Sims</h2>
+	  <div class="panel panel-left">
+		  <h3>Published Simulations</h3>
+	  	  <ul>
+	  		  <li><a href="https://phet.colorado.edu/en/simulations/category/html">All PhET's HTML5 Sims</a></li>
+			   <li><a href="https://phet.colorado.edu/en/simulation/john-travoltage">John Travoltage</a> (only published accessible sim)</li>
+	  	  </ul>
+	  </div>
+	  
+	  <div class="panel panel-left">
+		  <h3>Accessible Prototypes</h3>
+	  	  <ul>
+	  		  <li><a href="https://www.colorado.edu/physics/phet/dev/html/balloons-and-static-electricity/1.4.0-dev.7/balloons-and-static-electricity_en.html?accessibility">Balloons and Static Electicity</a></li>
+			  <li><a href="https://www.colorado.edu/physics/phet/dev/html/balloons-and-static-electricity/1.4.0-dev.7/balloons-and-static-electricity-a11y-view.html">Ally View for <em>Balloons and Static Electricity</em></a> (visible descriptions &amp; alerts)</li>
+	  		  <li><a href=" https://www.colorado.edu/physics/phet/dev/html/ohms-law/1.4.0-dev.16/ohms-law_en.html?accessibility">Ohm's Law Simulation</a></li>
+			  <li><a href=" https://www.colorado.edu/physics/phet/dev/html/ohms-law/1.4.0-dev.16/ohms-law-a11y-view.html">A11y View for <em>Ohm's Law</em></a> (visible descriptions &amp; alerts)</li>
+	  	  </ul>
+	  </div>
+	  
+    </section>
+	
+    <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-27">
+      <h2 id="slide-title-27">Big Shout Out</h2>
+	  <h3>Software developers &amp; PhET team members</h3>
+	  <ul>
+		  <li>* Jesse Greenberg *</li>
+		  <li>Michael Kauzmann</li>
+		  <li>Michael Barlow</li>
+	  </ul>
+	  
+	  <h3>Collaborators at the <abbr title="Inclusive Design Research Centre, Toronto, Canada">IDRC</abbr></h3>
+		<ul>
+			<li>Jon Hung</li>
+			<li>Justin Obara</li>
+			<li>Caren Watkins</li>
+	  </ul>
+    </section>
+	
+    <section class="slide" aria-roledescription="slide" aria-labelledby="slide-title-28">
+      <h2 id="slide-title-28">Resources &amp; Funders</h2>
+		<div class="panel panel-left">
+			<h3>Resources</h3>
+	 		  	<ul>
+	 			  <li><a href="https://phet.colorado.edu/">phet.colorado.edu</a></li>
+	 		  	  <li><a href="https://phet.colorado.edu/en/about/accessibility">PhET's Accessibility Research</a></li>
+	 		  	  <li>Slide Deck: <a href="http://bit.ly/2017ID24">bit.ly/2017ID24</a></li>
+	 			</ul> 
+	 	
+	 		  <h3>Funders</h3>
+	 		  <p>The National Science Foundation; The Hewlett Foundation; University of Colorado.</p>
+		  </div>
+		  
+	    	 <div class="panel panel-right">
+		 		 <h3>Contact me</h3>
+		    	 	  <ul>
+						  <li>Email: <a href="mailto:Taliesin.Smith@colorado.edu">Taliesin.Smith@colorado.edu</a></li>
+						  <li>Questions, research, &amp; usability testing</li>
+		    	 	  	  <li>Twitter: @TaliesinSmith</li>
+		    	 	   </ul>
+	 		 <h3>Get involved! Follow PhET</h3>
+	    	 	  <ul>
+	    	 	  	  <li>Twitter: @PhETSims</li>
+	    	 		  <li>GitHub: <a href="https://github.com/phetsims">@phetsims</a>
+	    	 	  	  <li>facebook: PhETSims</li>
+	    	 	  	  <li><a href="https://phet.colorado.edu/blog">phet.colorado.edu/blog</a></li>
+	    	 	   </ul>
+	    	   </div>
+    </section>
+
+    <!-- End slides. -->
+
+    <!-- Begin extension snippets. Add or remove as needed. -->
+
+    <!-- deck.navigation snippet -->
+    <div role="navigation">
+      <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+      <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+    </div>
+
+    <!-- deck.status snippet -->
+    <p class="deck-status" role="status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.goto snippet -->
+    <form action="." method="get" class="goto-form">
+      <label for="goto-slide">Go to slide:</label>
+      <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+      <datalist id="goto-datalist"></datalist>
+      <input type="submit" value="Go">
+    </form>
+
+    <!-- End extension snippets. -->
+  </div>
+
+<!-- Required JS files. -->
+<script src="deck/jquery.min.js"></script>
+<script src="deck/core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="deck/extensions/menu/deck.menu.js"></script>
+<script src="deck/extensions/goto/deck.goto.js"></script>
+<script src="deck/extensions/status/deck.status.js"></script>
+<script src="deck/extensions/navigation/deck.navigation.js"></script>
+<script src="deck/extensions/scale/deck.scale.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+  $(function() {
+    $.deck('.slide');
+  });
+</script>
+</body>
+</html>
