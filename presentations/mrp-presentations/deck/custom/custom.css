@@ -1,0 +1,69 @@
+/* Custom  CSS */
+
+/*p, li {
+	font-size: 200%;
+}
+li li {
+	font-size: 100%;
+}  */
+ul.norm li {
+	font-size: 80%;
+} 
+blockquote {
+	font-size: 100%;
+}
+.slide a {
+   border-bottom: 1px dotted;
+}
+figure img {
+	margin-bottom: 0.25em;   
+}
+figcaption {
+	text-align: center;
+	margin: 0 0 1em 0;
+}
+figure img.stairs-ramp {
+  height: 1000px;
+}
+figure img.img-large {
+  height: 800px;
+}
+figure img.persona {
+	height: 350px;
+}
+
+.slide-note,
+.demo {
+	font-size: 200%;
+} 
+.speaker-note, .wcag-note, .demo-note {
+   font-size: 1px;
+	display: block;
+	text-indent: -10000em;
+}
+.speaker-note, .wcag-note, .demo-note {
+	list-style-type: none;
+}
+.demo, .wcag-note {
+	margin: 1em 0 0 0;
+	list-style: none; 
+}
+.wcag-note {
+	color: #888;
+	font-style: italic;
+}
+
+.panel {
+	display: inline-block;
+}
+.panel-span-three, .panel-left {
+	width: 45%;
+	float: left;
+}
+.panel-right {
+	width: 45%;
+	float: right;
+}
+.span-two {
+	width: 32%;
+}

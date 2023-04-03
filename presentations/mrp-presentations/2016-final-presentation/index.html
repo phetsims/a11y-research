@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=1024, user-scalable=no">
+
+  <title>Final MRP Presentation</title>
+
+  <!-- Required stylesheet -->
+  <link rel="stylesheet" media="screen" href="../deck/core/deck.core.css">
+
+  <!-- Extension CSS files go here. Remove or add as needed. -->
+  <link rel="stylesheet" media="screen" href="../deck/extensions/goto/deck.goto.css">
+  <link rel="stylesheet" media="screen" href="../deck/extensions/menu/deck.menu.css">
+  <link rel="stylesheet" media="screen" href="../deck/extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" media="screen" href="../deck/extensions/status/deck.status.css">
+  <link rel="stylesheet" media="screen" href="../deck/extensions/scale/deck.scale.css">
+
+  <!-- Style theme. More available in /themes/style/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="../deck/themes/style/swiss.css"> 
+<link rel="stylesheet" type="text/css" href="../deck/custom/custom.css" media="screen"> 
+
+  <!-- Transition theme. More available in /themes/transition/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="../deck/themes/transition/fade.css">
+
+  <!-- Basic black and white print styles -->
+  <link rel="stylesheet" media="print" href="../deck/core/print.css">
+
+  <!-- Required Modernizr file -->
+  <script src="../deck/modernizr.custom.js"></script>
+</head>
+<body>
+  <div class="deck-container">
+
+    <!-- Begin slides. Just make elements with a class of slide. -->
+
+    <section class="slide"> 
+			<h2>Master of Design, Inclusive Design, OCAD University</small></h2>
+		  	<div class="vcenter">
+					<h1>Access, Action & Agency: Inclusive Design for the Non-visual Use of a Highly Interactive Simulation</h1>
+					<p>Taliesin L. Smith</p>
+					<h3>Advisory Committee</h3> 
+					<ul>
+						<li>Clayton Lewis &amp; Emily B. Moore</li>
+						<li>University Colorado, Boulder</li>
+					</ul> 
+					
+					<p>April 15, 2016</p>  
+				</div>
+    </section>
+
+<section class="slide">
+	<h2>Importance of Accessible Science Education</h2>
+  <div class="panel panel-left" style="width: 60%;">
+	<blockquote style="padding-top: 0;">P1 (paraphrased): I wanted to study Chemistry, but when I started losing my sight in high school, my teachers could not figure out a way for me to do it. They suggested Biology, but still that was still a passive experience.</blockquote>
+	<blockquote style="padding-top: 0;">P6: &quot; Interesting, I hear you talk about the negative charges and everything, and I feel kind of stupid because I don't even remember if like the little static shocks we get are negative or positive.&quot;</blockquote>
+	</div>
+	 
+	 <figure class="panel panel-right" style="width: 400px">
+			<a href="http://www.colorado.edu/physics/phet/dev/html/balloons-and-static-electricity/1.2.0-accessible-instance.16/balloons-and-static-electricity_en.html?accessibility"><img src="img/des-pageload.png" alt="Balloons and Satic Electricity"> </a>
+		</figure>
+</section>
+
+<section class="slide">
+		<h2>PhET Sims are Effective Learning Tools</h2>
+		<figure class="panel-left">
+			<figcaption><h3>Implicit Scaffolding</h3></figcaption> 
+	    <img src="img/triad-TML.png"alt="">
+			<a href="http://www.colorado.edu/physics/phet/dev/html/balloons-and-static-electricity/1.2.0-accessible-instance.16/balloons-and-static-electricity_en.html?accessibility"><img style="width: 400px" src="img/des-pageload.png"alt=""></a>
+	    </figure>
+		<div class="panel-right">
+		<h3>Target User</h3> <p>Student with vision loss who uses a screen reader and a keyboard.</p> 
+		<h3>Problem</h3>
+		<ul>
+			<li>No description for visual representations</li>
+			<li>No keyboard access for interaction</li>
+			<li>A black box to screen readers</li> 
+		</ul> 
+		</ul>
+		</div>
+</section>  
+
+<section class="slide">
+		<h2>Design Challenge</h2>  
+		
+		<figure>
+			<img  style="width: 400px;" src="img/triad-AAA.png" alt="Three connected circles connecting: Access, Acrion and Agency.">
+		</figure> 
+		<ul>
+			<li><strong>Access:</strong> Descriptions of visual representations in a mode that is perceivable to the user.</li>
+			<li><strong>Action:</strong> Buttons & interactions that are operable via the keyboard.</li> 
+			<li><strong>Agency:</strong> Descriptions & interactions are understandable & make sense when accessed in different ways.</li>	
+		</ul>
+		
+</section>
+<section class="slide">
+		<h2>Methods: Inclusive Iterative Evaluation</h2> 
+		<figure class="panel" >
+			<img  style="width:350px;" src="img/p5.png" alt="Experimental Play: Live Installation of a PhET Sim.">
+		</figure> 
+		<figure class="panel">
+			<img  style="width: 350px;" src="img/methods-camera.jpg" alt="Experimental Play: Live Installation of a PhET Sim.">
+		</figure>
+		<figure class="panel">
+			<img  style="width: 350px;" src="img/methods-signing.jpg" alt="Experimental Play: Live Installation of a PhET Sim.">
+		</figure>
+ <ul class="norm">
+			<li><strong>Recruited 12 screen reader users:</strong> 5 women and 7 men, spanning 19 to 61 years.</li>
+			<li><strong>Hardware:</strong> Desktop PCs (2), Mac Air (2), Surface Pro 3 Tablet (1), Lenovo E541 (1), Lenovo T520 (6)</li>
+			<li><strong>Browser & Screen readers:</strong> Chrome & JAWS 17 professional (1), IE11 & JAWS 17 Home (1), Safari & VoiceOver (2), Firefox & JAWS 17 Home (1), Firefox & JAWS 15 (1), Firefox & JAWS 17 demo (5), Firefox & NVDA (1)</li> 
+			<li>Made changes to the prototype & descriptions in between interviews.</li>
+			<li>Analysed recordings to identify issues with the design & the descriptions.</li> 
+		</ul>
+		 
+</section>
+<section class="slide">
+		<h2>Design Features: PDOM, Hotkeys & Descriptions</h2> 
+		<figure class="panel" style="width: 450px">
+		 <img src="img/des-pdom.png" alt="Parallel DOM">
+		</figure>
+		<figure class="panel" style="width: 400px">
+			<img src="img/des-dialog.png" alt=""> 
+			<a href="http://www.colorado.edu/physics/phet/dev/html/balloons-and-static-electricity/1.2.0-accessible-instance.16/balloons-and-static-electricity_en.html?accessibility"><img src="img/des-focus.png" alt=""> </a>  
+		</figure>
+</section>  
+
+<section class="slide">
+		<h2>What Worked Well</h2>
+		<ul>
+			<li><strong>Parallel DOM</strong> is very effective; supports listening, then interacting; it does this in many ways.</li> 
+			<li><strong>Custom interactions & hotkeys</strong> for Balloon were learnable.</li>
+		<li><strong>3 aspects of Descriptions:</strong> Scene Summary, timely dynamic descriptions of charge information, timely alerts of UI changes.</li>
+		</ul>
+</section>
+
+<section class="slide">
+		<h2>Challenges</h2>
+		<ul>
+			<li>Navigation cues</li> 
+			<li>Hotkeys combinations were hard to find</li>
+		  <li>Descriptions not always understood</li>
+		  <li>Balloon is a complex element</li>
+		  <li>Browser & screenreader inconsistencies</li>
+		</ul>
+</section>
+
+<section class="slide">
+		<h2>Description Strategy Framework Emerged</h2>
+		<ul>
+			<li><strong>Static:</strong> do not change; form an outline of the sim.</li> 
+			<li><strong>Dynamic:</strong> describe changes in the scientific model; form the main content of the sim.</li>
+		  <li><strong>Interaction Alerts:</strong> strings that do not change, & are delivered dynamically to support interaction.</li>
+		</ul>
+		<figure class="panel" style="width: 900px;">
+		 <img src="img/descrip-framework.jpg" alt="">
+		</figure>
+</section>
+
+<section class="slide">
+		<h2>Discussion: Complex Design Space</h2>
+		<ul>
+			<li>Technical issues with standards & browsers</li> 
+			<li>WASD Keys less intuitive than Arrow keys, but learnable, & Arrow keys will eventually work.</li>
+		  <li>Interactive sims pose unique challenges to the design of descriptions.</li>
+		</ul>
+	 	
+</section>
+
+<section class="slide">
+		<h2>Conclusions & Future Work</h2>
+		<figure class="panel" style="width: 1100px; margin-bottom: 40px;">
+		 <img src="img/triad-equation.png" alt="">
+		</figure>
+
+		<div class="panel panel-left"><h3>Inclusive Design</h3>
+		<ul>
+			<li>Focused on screen reader users</li> 
+			<li>Created an inclusive tool using an inclusive process</li>
+			<li>Benefit students with dexterity impairments, teachers & other makers of highly interactive learning tools</li>
+		</ul> </div>
+		<div class="panel panel-right"><h3>Future Work</h3>
+		<ul>
+			<li>Complete descriptions</li> 
+			<li>Provide help in more flexible and findable ways</li>
+			<li>Investigate where sonification</li>
+			<li>Apply our description framework to other sims</li> 
+		</ul></div>
+</section>
+
+<section class="slide">
+		<h2>Special Acknowledgements</h2>
+			 <ul>
+						<li>Jesse Greenberg, PhET Software developer</li>
+					  <li>Sambhavi Chandrashekar, OCAD University</li>
+					  <li>Vera Roberts & Bert Shire, IDRC</li>
+					  <li>DELTS & DELTS Media Services, Memorial University</li> 
+		  </ul>
+</section> 
+
+<section class="slide">
+		<h2>Quotes</h2>
+		<h3>Navigational strategies</h3>
+		<blockquote style="padding-top: 0;">P1: &quot;I generally use the arrow keys to navigate line by line.&quot;</blockquote> 
+		<blockquote>P4: [Starts off by navigating by section] &quot;Nice, lots of regions...now, I'll look for the Main region.&quot; [Finds it on second go around.]</blockquote>
+		<blockquote>P8 (paraphased) &quot;I'm new to this site, so I am first going to go through everything with the down arrow [...] I'm repeating stuff to make sure I didn't miss anything. [...] Now, I'm going to a Tab through&quot; </blockquote>   
+		 <h3>Engagement with science</h3>
+			 <blockquote style="padding-top: 0;">P3: [with 2 negatively charged balloons on the Sweater] &quot;I want to see what happens if I put one balloon on top of the other.&quot; [second Balloon repels and moves to the bottom of the sweater.] &quot;What will happen if I do the same thing on the Wall?&quot;</blockquote>
+</section>
+
+<section class="slide">
+		<h2>Questions</h2>
+
+</section>
+
+<section class="slide">
+		<h2>References</h2>
+		<ul class="norm">
+			<li>Caldwell, B., Cooper, M., Guarino Reid, L., &amp; Vanderheiden, G. (2008, December). Web Content Accessibility Guidelines (WCAG) 2.0. W3C. Retrieved from <a href="http://www.w3.org/TR/WCAG20/">http://www.w3.org/TR/WCAG20/</a></li>
+			<li>Horton, S., &amp; Quesenbery, W. (2013). A Web for Everyone: Designing Accessible User Experiences. Brooklyn, New York: Rosenfeld Media. Retrieved from <a href="http://rosenfeldmedia.com/books/a-web-for-everyone">http://rosenfeldmedia.com/books/a-web-for-everyone</a>/</li>
+			<li>Scheuhammer, J., Cooper, M., Pappas, L., &amp; Schwerdtfeger, R. (2013, March). WAI-ARIA 1.0 Authoring Practices. Retrieved March 2, 2015, from <a href="http://www.w3.org/TR/wai-aria-practices">http://www.w3.org/TR/wai-aria-practices</a>/</li>
+			 <li>Keane, K., &amp; Laverent, C. (2014). Interactive Scientific Graphics Recommended Practices for Verbal Description (Research) (p. 53). Champaign, IL: Wolfram Research, Inc. Retrieved from <a href="http://diagramcenter.org/accessible-dynamic-scientific-graphics.html">http://diagramcenter.org/accessible-dynamic-scientific-graphics.html</a></li>
+				<li>Lisa Pappas, Richard Schwerdtfeger, Joseph Scheuhammer, &amp; Michael Cooper. (2014). 11. Design Patterns. In WAI-ARIA 1.0 Authoring Practices. W3C. Retrieved from <a href="http://www.w3.org/WAI/PF/aria-practices/#aria-write">http://www.w3.org/WAI/PF/aria-practices/#aria-write</a></li>
+				<li>Maximova, S. (2013, November 5). J,K, or How to choose keyboard shortcuts for web applications [Online Magazine]. Retrieved from <a href="https://medium.com/@sashika/j-k-or-how-to-choose-keyboard-shortcuts-for-web-applications-a7c3b7b408ee#.mrzwq3n1q">https://medium.com/@sashika/j-k-or-how-to-choose-keyboard-shortcuts-for-web-applications-a7c3b7b408ee#.mrzwq3n1q</a></li>	
+		</ul>
+</section>
+	
+
+		
+		
+
+    <!-- End slides. -->
+
+    <!-- Begin extension snippets. Add or remove as needed. -->
+
+    <!-- deck.navigation snippet -->
+    <div aria-role="navigation">
+      <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+      <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+    </div>
+
+    <!-- deck.status snippet -->
+    <p class="deck-status" aria-role="status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.goto snippet -->
+    <form action="." method="get" class="goto-form">
+      <label for="goto-slide">Go to slide:</label>
+      <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+      <datalist id="goto-datalist"></datalist>
+      <input type="submit" value="Go">
+    </form>
+
+    <!-- End extension snippets. -->
+  </div>
+
+<!-- Required JS files. -->
+<script src="../deck/jquery.min.js"></script>
+<script src="../deck/core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="../deck/extensions/menu/deck.menu.js"></script>
+<script src="../deck/extensions/goto/deck.goto.js"></script>
+<script src="../deck/extensions/status/deck.status.js"></script>
+<script src="../deck/extensions/navigation/deck.navigation.js"></script>
+<!-- <script src="../deck/extensions/scale/deck.scale.js"></script>  -->
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+  $(function() {
+    $.deck('.slide');
+  });
+</script>
+</body>
+</html>
