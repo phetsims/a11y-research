@@ -1,5 +1,12 @@
 // Copyright 2019-2020, University of Colorado Boulder
 
+/**
+ * This is a prototype that creates description phrases. The idea is that it allows designers to create
+ * dynamic sentences with template variables, and see how they may change.
+ *
+ * See https://github.com/phetsims/a11y-research/issues/141.
+ */
+
 import Emitter from '../../../../axon/js/Emitter.js';
 import merge from '../../../../phet-core/js/merge.js';
 import TemplateVariable from './TemplateVariable.js';
